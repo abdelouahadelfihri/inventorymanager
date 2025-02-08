@@ -4,6 +4,7 @@ class Constants {
     companion object {
         //Room
         const val BOOK_TABLE = "book_table"
+        const val PROVIDER_TABLE = "provider_table"
 
         //Screens
         const val BOOKS_SCREEN = "Books"
