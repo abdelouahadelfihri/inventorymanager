@@ -1,108 +1,130 @@
-package ro.alexmamo.roomjetpackcompose.presentation.books
-
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
+import android.app.Application
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.grid.*
-import androidx.compose.material3.*
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.*
-import androidx.compose.ui.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.room.*
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 
-@Composable
-@ExperimentalMaterialApi
-fun MainScreen() {
-    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-    val coroutineScope = rememberCoroutineScope()
+@Entity(tableName = "items")
+data class ItemEntity(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val label: String,
+    val count: Int
+)
 
-    ModalNavigationDrawer(
-        drawerState = drawerState,
-        drawerContent = {
-            DrawerContent { coroutineScope.launch { drawerState.close() } }
-        }
-    ) {
-        Scaffold(
-            topBar = { MyToolbar { coroutineScope.launch { drawerState.open() } } }
-        ) { paddingValues ->
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues)
-            ) {
-                ClickableBar { /* Handle Click Action */ }
-                ButtonGrid()
+@Dao
+interface ItemDao {
+    @Query("SELECT * FROM items")
+    fun getAllItems(): Flow<List<ItemEntity>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertItem(item: ItemEntity)
+}
+
+@Database(entities = [ItemEntity::class], version = 1, exportSchema = false)
+abstract class AppDatabase : RoomDatabase() {
+    abstract fun itemDao(): ItemDao
+
+    companion object {
+        @Volatile
+        private var INSTANCE: AppDatabase? = null
+
+        fun getDatabase(context: android.content.Context): AppDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    AppDatabase::class.java,
+                    "app_database"
+                ).build()
+                INSTANCE = instance
+                instance
             }
         }
     }
 }
 
+
+
 @Composable
-fun MyToolbar(onMenuClick: () -> Unit) {
-    TopAppBar(
-        title = { Text("My App") },
-        navigationIcon = {
-            IconButton(onClick = onMenuClick) {
-                Icon(Icons.Filled.Menu, contentDescription = "Menu")
-            }
+fun MainScreen(viewModel: MainViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
+    val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
+    val scope = rememberCoroutineScope()
+
+    Scaffold(
+        scaffoldState = scaffoldState,
+        topBar = {
+            TopAppBar(
+                title = { Text("Your App Name") },
+                navigationIcon = {
+                    IconButton(onClick = { scope.launch { scaffoldState.drawerState.open() } }) {
+                        Icon(Icons.Filled.Menu, contentDescription = "Menu")
+                    }
+                }
+            )
         },
-        actions = {
-            IconButton(onClick = { /* Handle settings click */ }) {
-                Icon(Icons.Filled.Settings, contentDescription = "Settings")
-            }
+        drawerContent = {
+            Text("Drawer Item 1", modifier = Modifier.padding(16.dp))
+            Text("Drawer Item 2", modifier = Modifier.padding(16.dp))
         }
-    )
-}
+    ) { paddingValues ->
+        Column(modifier = Modifier.padding(paddingValues)) {
+            // Secondary Bar
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text("Your Secondary Text", fontSize = 20.sp, color = Color.Black)
+            }
 
-@Composable
-fun ClickableBar(onClick: () -> Unit) {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(50.dp)
-            .background(Color.Gray)
-            .clickable { onClick() },
-        contentAlignment = Alignment.Center
-    ) {
-        Text("Click Me", color = Color.White, fontWeight = FontWeight.Bold)
+            // Grid View
+            GridView(viewModel)
+        }
     }
 }
 
 @Composable
-fun ButtonGrid() {
-    val buttons = listOf("Button 1", "Button 2", "Button 3", "Button 4", "Button 5", "Button 6")
+fun GridView(viewModel: MainViewModel) {
+    val items by viewModel.items.collectAsState()
 
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(16.dp)
+        contentPadding = PaddingValues(8.dp)
     ) {
-        items(buttons) { buttonText ->
-            Button(
-                onClick = { /* Handle Button Click */ },
-                modifier = Modifier
-                    .padding(8.dp)
-                    .fillMaxWidth()
-            ) {
-                Text(buttonText)
-            }
+        items(items.size) { index ->
+            GridItemView(item = items[index])
         }
     }
 }
 
 @Composable
-fun DrawerContent(onItemClick: () -> Unit) {
-    Column(Modifier.fillMaxSize().padding(16.dp)) {
-        Text("Home", modifier = Modifier.clickable { onItemClick() })
-        Spacer(modifier = Modifier.height(8.dp))
-        Text("Settings", modifier = Modifier.clickable { onItemClick() })
+fun GridItemView(item: ItemEntity) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+            .clickable { },
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Icon(imageVector = Icons.Default.Folder, contentDescription = item.label, modifier = Modifier.size(50.dp))
+        Text(text = item.label, fontSize = 16.sp, textAlign = TextAlign.Center)
+        Text(text = "Count: ${item.count}", fontSize = 14.sp, color = Color.Gray)
     }
 }

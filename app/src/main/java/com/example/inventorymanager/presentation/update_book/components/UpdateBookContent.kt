@@ -1,4 +1,4 @@
-package ro.alexmamo.roomjetpackcompose.presentation.update_book.components
+package com.example.inventorymanager.presentation.update_book.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
