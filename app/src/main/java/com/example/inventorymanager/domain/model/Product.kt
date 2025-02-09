@@ -1,10 +1,10 @@
-package ro.alexmamo.roomjetpackcompose.domain.model
+package com.example.inventorymanager.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import ro.alexmamo.roomjetpackcompose.core.Constants.Companion.PROVIDER_TABLE
+import com.example.inventorymanager.core.Constants.Companion.PRODUCT_TABLE
 
-@Entity(tableName = PROVIDER_TABLE)
+@Entity(tableName = PRODUCT_TABLE)
 data class Product(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
