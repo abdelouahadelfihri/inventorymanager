@@ -1,10 +1,12 @@
-package ro.alexmamo.roomjetpackcompose.core
+package com.example.inventorymanager.core
 
 class Constants {
     companion object {
         //Room
         const val BOOK_TABLE = "book_table"
         const val PROVIDER_TABLE = "provider_table"
+        const val INVENTORY_TABLE = "inventory_table"
+        const val PRODUCT_TABLE = "product_table"
 
         //Screens
         const val BOOKS_SCREEN = "Books"
