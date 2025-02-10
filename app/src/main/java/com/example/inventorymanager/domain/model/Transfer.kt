@@ -4,12 +4,11 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.ForeignKey
 import androidx.room.Index
-import androidx.room.ColumnInfo
 import com.example.inventorymanager.core.Constants.Companion.INVENTORY_TABLE
 import java.util.Date
 
 @Entity(
-    tableName = "transfer",
+    tableName = INVENTORY_TABLE,
     foreignKeys = [
         ForeignKey(
             entity = Warehouse::class,
