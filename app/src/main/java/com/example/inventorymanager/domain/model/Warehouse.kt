@@ -9,5 +9,5 @@ data class Warehouse(
     @PrimaryKey(autoGenerate = true)
     val warehouseId: Long,
     val name: String,
-    val isRefrigerated: Boolean
+    val isRefrigerated: Int
 )
