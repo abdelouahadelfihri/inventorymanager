@@ -7,7 +7,7 @@ import com.example.inventorymanager.core.Constants.Companion.INVENTORY_TABLE
 @Entity(tableName = INVENTORY_TABLE)
 data class Inventory(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val inventoryId: Int,
     val quantityAvailable: Int,
     val minimumStockLevel: Int,
     val maximumStockLevel: Int,
