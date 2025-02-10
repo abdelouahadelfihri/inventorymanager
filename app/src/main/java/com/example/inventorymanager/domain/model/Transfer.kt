@@ -9,6 +9,8 @@ import java.util.Date
 data class Transfer(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
+    val wareHouseOrigin: Int,
+    val wareHouseDestination: Int,
     val transferQuantity: Int,
     val dispatchDate: Date,
     val receiptDate: Date
