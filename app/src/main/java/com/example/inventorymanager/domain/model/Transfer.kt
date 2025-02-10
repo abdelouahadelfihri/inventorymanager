@@ -5,7 +5,6 @@ import androidx.room.PrimaryKey
 import androidx.room.ForeignKey
 import androidx.room.Index
 import com.example.inventorymanager.core.Constants.Companion.INVENTORY_TABLE
-import java.util.Date
 
 @Entity(
     tableName = INVENTORY_TABLE,
