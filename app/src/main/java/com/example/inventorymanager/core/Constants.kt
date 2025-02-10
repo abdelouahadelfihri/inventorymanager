@@ -9,6 +9,7 @@ class Constants {
         const val PRODUCT_TABLE = "product_table"
         const val ORDER_TABLE = "order_table"
         const val WAREHOUSE_TABLE = "warehouse_table"
+        const val LOCATION_TABLE = "location_table"
 
         //Screens
         const val BOOKS_SCREEN = "Books"
