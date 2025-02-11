@@ -1,4 +1,4 @@
-package ro.alexmamo.roomjetpackcompose.domain.repository
+package com.example.inventorymanager.domain.repository
 
 import kotlinx.coroutines.flow.Flow
 import ro.alexmamo.roomjetpackcompose.domain.model.Book
