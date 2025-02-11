@@ -7,15 +7,17 @@ import com.example.inventorymanager.domain.model.Product
 
 @Entity(
     tableName = "order_details",
-    primaryKeys = ["orderId", "productId"],
+    primaryKeys = ["orderId", "productId","warehouseId"],
     foreignKeys = [
         ForeignKey(entity = Order::class, parentColumns = ["orderId"], childColumns = ["orderId"], onDelete = ForeignKey.CASCADE),
-        ForeignKey(entity = Product::class, parentColumns = ["productId"], childColumns = ["productId"], onDelete = ForeignKey.CASCADE)
+        ForeignKey(entity = Product::class, parentColumns = ["productId"], childColumns = ["productId"], onDelete = ForeignKey.CASCADE),
+        ForeignKey(entity = Warehouse::class, parentColumns = ["warehouseId"], childColumns = ["warehouseId"], onDelete = ForeignKey.CASCADE)
     ],
-    indices = [Index(value = ["orderId"]), Index(value = ["productId"])]
+    indices = [Index(value = ["orderId"]), Index(value = ["productId"]), Index(value = ["warehouseId"])]
 )
 data class OrderDetails(
     val orderId: Long,
     val productId: Long,
+    val warehouseId: Long,
     val quantity: Int
 )
