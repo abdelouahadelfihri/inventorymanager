@@ -1,11 +1,10 @@
 package com.example.inventory.domain.model
 
 import androidx.room.Entity
-import androidx.room.PrimaryKey
 import androidx.room.ForeignKey
-import androidx.room.Index
+import androidx.room.PrimaryKey
 import com.example.inventorymanager.domain.model.Provider
-import com.example.inventorymanager.core.Constants.Companion.ORDER_TABLE
+import java.util.Date
 
 @Entity(
     tableName = "orders",
@@ -20,5 +19,5 @@ data class Order(
     @PrimaryKey(autoGenerate = true)
     val orderId: Long = 0,
     val providerId: Long?, // Nullable to allow unassigned orders
-    val description: String
+    val orderDate: Date
 )
