@@ -3,7 +3,7 @@ package com.example.inventorymanager.core
 class Constants {
     companion object {
         //Room
-        const val BOOK_TABLE = "book_table"
+        const val BOOK_TABLE = "book"
         const val PROVIDER_TABLE = "provider"
         const val INVENTORY_TABLE = "inventory"
         const val PRODUCT_TABLE = "product"
