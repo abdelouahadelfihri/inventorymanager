@@ -13,10 +13,10 @@ interface ProviderDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertProvider(provider: Provider): Long
 
-    @Query("SELECT * FROM providers")
+    @Query("SELECT * FROM provider")
     suspend fun getAllProviders(): List<Provider>
 
-    @Query("SELECT * FROM providers WHERE providerId = :id")
+    @Query("SELECT * FROM provider WHERE providerId = :id")
     suspend fun getProviderById(id: Long): Provider?
 
     @Query("SELECT * FROM $BOOK_TABLE ORDER BY id ASC")
