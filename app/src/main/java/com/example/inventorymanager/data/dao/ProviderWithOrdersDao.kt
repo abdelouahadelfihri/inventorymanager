@@ -9,5 +9,5 @@ import com.example.inventorymanager.domain.relationshipdataclasses.ProviderWithO
 interface ProviderWithOrdersDao {
     @Transaction
     @Query("SELECT * FROM provider WHERE providerId = :providerId")
-    suspend fun getProviderWithOrders(providerId: Long): ProviderWithOrders?
+    suspend fun getProviderWithOrders(providerId: Int): ProviderWithOrders?
 }
