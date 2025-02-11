@@ -4,14 +4,14 @@ class Constants {
     companion object {
         //Room
         const val BOOK_TABLE = "book_table"
-        const val PROVIDER_TABLE = "provider_table"
-        const val INVENTORY_TABLE = "inventory_table"
-        const val PRODUCT_TABLE = "product_table"
-        const val ORDER_TABLE = "order_table"
-        const val WAREHOUSE_TABLE = "warehouse_table"
-        const val LOCATION_TABLE = "location_table"
-        const val DELIVERY_TABLE = "delivery_table"
-        const val DELIVERY_DETAILS_TABLE = "delivery_details_table"
+        const val PROVIDER_TABLE = "provider"
+        const val INVENTORY_TABLE = "inventory"
+        const val PRODUCT_TABLE = "product"
+        const val ORDER_TABLE = "order"
+        const val WAREHOUSE_TABLE = "warehouse"
+        const val LOCATION_TABLE = "location"
+        const val DELIVERY_TABLE = "delivery"
+        const val DELIVERY_DETAILS_TABLE = "delivery_details"
 
         //Screens
         const val BOOKS_SCREEN = "Books"
