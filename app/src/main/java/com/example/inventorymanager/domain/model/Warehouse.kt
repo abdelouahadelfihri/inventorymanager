@@ -18,9 +18,9 @@ import com.example.inventorymanager.domain.model.Location
 )
 data class Warehouse(
     @PrimaryKey(autoGenerate = true)
-    val warehouseId: Long,
+    val warehouseId: Int,
     val name: String,
     val isRefrigerated: Int,
-    @ColumnInfo(index = true) // Index improves query performance
-    val locationOwnerId: Long,  // Foreign key linking to Location
+    @ColumnInfo(index = true)
+    val locationOwnerId: Int,
 )
