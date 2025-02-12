@@ -17,7 +17,7 @@ import java.util.Date
 )
 data class Order(
     @PrimaryKey(autoGenerate = true)
-    val orderId: Long = 0,
-    val providerId: Long?, // Nullable to allow unassigned orders
+    val orderId: Int = 0,
+    val providerId: Int?, // Nullable to allow unassigned orders
     val orderDate: Date
 )
