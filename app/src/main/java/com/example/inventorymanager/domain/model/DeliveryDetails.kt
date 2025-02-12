@@ -17,8 +17,8 @@ import com.example.inventorymanager.core.Constants.Companion.DELIVERY_DETAILS_TA
     indices = [Index(value = ["deliveryId"]), Index(value = ["productId"]), Index(value = ["warehouseId"])]
 )
 data class DeliveryDetails(
-    val deliveryId: Long,
-    val productId: Long,
-    val warehouseId: Long,
+    val deliveryId: Int,
+    val productId: Int,
+    val warehouseId: Int,
     val quantity: Int
 )
