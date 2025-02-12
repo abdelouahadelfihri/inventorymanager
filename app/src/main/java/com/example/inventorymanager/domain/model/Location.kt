@@ -7,7 +7,7 @@ import com.example.inventorymanager.core.Constants.Companion.PROVIDER_TABLE
 @Entity(tableName = PROVIDER_TABLE)
 data class Location(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val locationId: Int,
     val name: String,
     val address: String
 )
