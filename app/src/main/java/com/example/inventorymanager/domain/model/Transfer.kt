@@ -6,6 +6,7 @@ import androidx.room.ForeignKey
 import androidx.room.Index
 import com.example.inventorymanager.core.Constants.Companion.INVENTORY_TABLE
 import com.example.inventorymanager.domain.model.Product
+import java.util.Date
 
 @Entity(
     tableName = INVENTORY_TABLE,
@@ -34,7 +35,7 @@ import com.example.inventorymanager.domain.model.Product
 data class Transfer(
     @PrimaryKey(autoGenerate = true)
     val transferId: Int,
-    val date: String,
+    val date: Date,
     val quantity: Int,
     val originWarehouseId: Int,
     val destinationWarehouseId: Int,
