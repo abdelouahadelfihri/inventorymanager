@@ -5,7 +5,7 @@ import androidx.room.Relation
 import androidx.room.Junction
 import com.example.inventory.domain.model.Order
 import com.example.inventorymanager.domain.model.Product
-import com.example.inventorymanager.domain.model.OrderDetails
+import com.example.inventory.domain.model.OrderDetails
 
 data class OrderWithProducts(
     @Embedded val order: Order,
