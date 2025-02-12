@@ -5,6 +5,7 @@ class Constants {
         //Room
         const val BOOK_TABLE = "book"
         const val PROVIDER_TABLE = "provider"
+        const val CUSTOMER_TABLE = "customer"
         const val INVENTORY_TABLE = "inventory"
         const val PRODUCT_TABLE = "product"
         const val ORDER_TABLE = "order"
