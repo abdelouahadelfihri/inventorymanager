@@ -16,8 +16,8 @@ import com.example.inventorymanager.domain.model.Product
     indices = [Index(value = ["orderId"]), Index(value = ["productId"]), Index(value = ["warehouseId"])]
 )
 data class OrderDetails(
-    val orderId: Long,
-    val productId: Long,
-    val warehouseId: Long,
+    val orderId: Int,
+    val productId: Int,
+    val warehouseId: Int,
     val quantity: Int
 )
