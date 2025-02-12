@@ -32,7 +32,8 @@ import com.example.inventorymanager.domain.model.Product
     indices = [Index(value = ["originWarehouseId"]), Index(value = ["destinationWarehouseId"])]
 )
 data class Transfer(
-    @PrimaryKey(autoGenerate = true) val transferId: Long,
+    @PrimaryKey(autoGenerate = true)
+    val transferId: Int,
     val date: String,
     val quantity: Int,
     val originWarehouseId: Long,      // Foreign key to Warehouse (origin)
