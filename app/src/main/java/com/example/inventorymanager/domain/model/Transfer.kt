@@ -5,6 +5,7 @@ import androidx.room.PrimaryKey
 import androidx.room.ForeignKey
 import androidx.room.Index
 import com.example.inventorymanager.core.Constants.Companion.INVENTORY_TABLE
+import com.example.inventorymanager.domain.model.Product
 
 @Entity(
     tableName = INVENTORY_TABLE,
@@ -20,6 +21,12 @@ import com.example.inventorymanager.core.Constants.Companion.INVENTORY_TABLE
             parentColumns = ["warehouseId"],
             childColumns = ["destinationWarehouseId"],
             onDelete = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = Product::class,
+            parentColumns = ["productId"],
+            childColumns = ["productId"],
+            onDelete = ForeignKey.CASCADE
         )
     ],
     indices = [Index(value = ["originWarehouseId"]), Index(value = ["destinationWarehouseId"])]
@@ -29,5 +36,6 @@ data class Transfer(
     val date: String,
     val quantity: Int,
     val originWarehouseId: Long,      // Foreign key to Warehouse (origin)
-    val destinationWarehouseId: Long  // Foreign key to Warehouse (destination)
+    val destinationWarehouseId: Long,
+    val productId: Int// Foreign key to Warehouse (destination)
 )
