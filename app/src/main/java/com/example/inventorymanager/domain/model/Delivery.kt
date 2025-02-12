@@ -22,7 +22,7 @@ import java.util.Date
 )
 data class Delivery(
     @PrimaryKey(autoGenerate = true)
-    val deliveryId: Long,
+    val deliveryId: Int,
     val saleDate: Date,
     val customerId: Long  // Foreign key referencing Provider
 )
