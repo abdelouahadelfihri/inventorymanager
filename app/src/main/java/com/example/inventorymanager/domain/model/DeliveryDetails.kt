@@ -8,7 +8,7 @@ import com.example.inventorymanager.core.Constants.Companion.DELIVERY_DETAILS_TA
 
 @Entity(
     tableName = DELIVERY_DETAILS_TABLE,
-    primaryKeys = ["orderId", "productId", "warehouseId"],
+    primaryKeys = ["deliveryId", "productId", "warehouseId"],
     foreignKeys = [
         ForeignKey(entity = Delivery::class, parentColumns = ["deliveryId"], childColumns = ["deliveryId"], onDelete = ForeignKey.CASCADE),
         ForeignKey(entity = Product::class, parentColumns = ["productId"], childColumns = ["productId"], onDelete = ForeignKey.CASCADE),
