@@ -21,6 +21,6 @@ interface CustomerDao {
 
     @Transaction
     @Query("SELECT * FROM customer WHERE customerId = :customerId")
-    suspend fun getCustomerWithDeliveries(customerId: Long): CustomerWithDeliveries?
+    suspend fun getCustomerWithDeliveries(customerId: Int): CustomerWithDeliveries?
 
 }
