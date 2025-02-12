@@ -36,7 +36,7 @@ data class Transfer(
     val transferId: Int,
     val date: String,
     val quantity: Int,
-    val originWarehouseId: Long,      // Foreign key to Warehouse (origin)
-    val destinationWarehouseId: Long,
-    val productId: Int// Foreign key to Warehouse (destination)
+    val originWarehouseId: Int,
+    val destinationWarehouseId: Int,
+    val productId: Int
 )
