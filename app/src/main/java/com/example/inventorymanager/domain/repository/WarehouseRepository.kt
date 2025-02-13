@@ -1,17 +1,21 @@
 package com.example.inventorymanager.domain.repository
 
+import com.example.inventory.domain.model.Warehouse
 import kotlinx.coroutines.flow.Flow
-import com.example.inventorymanager.domain.model.Book
-typealias Books = List<Book>
+
+
+typealias Warehouses = List<Warehouse>
 
 interface WarehouseRepository {
-    fun getBooksFromRoom(): Flow<Books>
 
-    suspend fun getBookFromRoom(id: Int): Book
+    fun getWarehousesFromRoom(): Flow<Warehouses>
 
-    suspend fun addBookToRoom(book: Book)
+    suspend fun getWarehouseFromRoom(id: Int): Warehouse
 
-    suspend fun updateBookInRoom(book: Book)
+    suspend fun addWarehouseToRoom(warehouse: Warehouse)
 
-    suspend fun deleteBookFromRoom(book: Book)
+    suspend fun updateWarehouseInRoom(warehouse: Warehouse)
+
+    suspend fun deleteWarehouseFromRoom(warehouse: Warehouse)
+
 }
