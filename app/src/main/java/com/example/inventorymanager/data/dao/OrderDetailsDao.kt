@@ -16,4 +16,7 @@ interface OrderDetailsDao {
     @Query("SELECT * FROM order_details WHERE orderId = :orderId")
     suspend fun getOrderDetailsForOrder(orderId: Long): List<OrderDetails>
 
+    @Query("SELECT * FROM order_details WHERE productId = :productId")
+    suspend fun getOrderDetailsForProduct(productId: Long): List<OrderDetails>
+
 }
