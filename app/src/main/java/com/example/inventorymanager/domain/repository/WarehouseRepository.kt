@@ -2,10 +2,9 @@ package com.example.inventorymanager.domain.repository
 
 import kotlinx.coroutines.flow.Flow
 import com.example.inventorymanager.domain.model.Book
-
 typealias Books = List<Book>
 
-interface BookRepository {
+interface WarehouseRepository {
     fun getBooksFromRoom(): Flow<Books>
 
     suspend fun getBookFromRoom(id: Int): Book
