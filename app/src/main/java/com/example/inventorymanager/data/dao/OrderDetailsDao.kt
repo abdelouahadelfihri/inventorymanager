@@ -1,10 +1,8 @@
 package com.example.inventory.data.dao
 
 import androidx.room.*
-import com.example.inventory.domain.model.Order
 import com.example.inventory.domain.model.OrderDetails
-import com.example.inventorymanager.core.Constants.Companion.ORDER_TABLE
-import com.example.inventorymanager.domain.relationshipdataclasses.OrderWithProducts
+
 
 
 @Dao
