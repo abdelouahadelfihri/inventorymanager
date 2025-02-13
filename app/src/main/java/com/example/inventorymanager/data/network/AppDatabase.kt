@@ -6,6 +6,9 @@ import androidx.room.RoomDatabase
 import com.example.inventorymanager.domain.model.Product
 import com.example.inventory.domain.model.Order
 import com.example.inventory.domain.model.OrderDetails
+import com.example.inventory.data.dao.ProductDao
+import com.example.inventory.data.dao.OrderDetailsDao
+import com.example.inventory.data.dao.OrderDao
 
 
 @Database(entities = [Product::class, Order::class, OrderDetails::class], version = 1)
