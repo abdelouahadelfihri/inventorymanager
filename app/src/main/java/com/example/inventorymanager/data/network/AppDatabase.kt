@@ -4,6 +4,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.inventorymanager.domain.model.Product
+import com.example.inventory.domain.model.Order
+import com.example.inventory.domain.model.OrderDetails
 
 
 @Database(entities = [Product::class, Order::class, OrderDetails::class], version = 1)
