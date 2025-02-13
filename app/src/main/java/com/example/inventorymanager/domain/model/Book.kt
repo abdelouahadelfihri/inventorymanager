@@ -1,8 +1,8 @@
-package ro.alexmamo.roomjetpackcompose.domain.model
+package com.example.inventorymanager.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import ro.alexmamo.roomjetpackcompose.core.Constants.Companion.BOOK_TABLE
+import com.example.inventorymanager.core.Constants.Companion.BOOK_TABLE
 
 @Entity(tableName = BOOK_TABLE)
 data class Book(
