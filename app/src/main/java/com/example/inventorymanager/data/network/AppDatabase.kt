@@ -7,7 +7,7 @@ import com.example.inventorymanager.domain.model.Order
 import com.example.inventorymanager.domain.model.OrderDetails
 
 @Database(entities = [Product::class, Order::class, OrderDetails::class], version = 1)
-abstract class InventoryManagementDb : RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
     abstract fun productDao(): ProductDao
     abstract fun orderDao(): OrderDao
     abstract fun orderDetailsDao(): OrderDetailsDao
