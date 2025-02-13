@@ -8,7 +8,7 @@ import androidx.room.OnConflictStrategy
 import com.example.inventory.domain.model.Delivery
 import com.example.inventorymanager.domain.model.Customer
 import com.example.inventorymanager.domain.relationshipdataclasses.CustomerWithDeliveries
-import com.example.inventorymanager.domain.relationshipdataclasses.ProviderWithOrders
+import com.example.inventorymanager.core.Constants.Companion.CUSTOMER_TABLE
 
 @Dao
 interface CustomerDao {
@@ -20,7 +20,7 @@ interface CustomerDao {
     suspend fun insertDelivery(delivery: Delivery): Long
 
     @Transaction
-    @Query("SELECT * FROM customer WHERE customerId = :customerId")
+    @Query("SELECT * FROM $CUSTOMER_TABLE WHERE customerId = :customerId")
     suspend fun getCustomerWithDeliveries(customerId: Int): CustomerWithDeliveries?
 
 }
