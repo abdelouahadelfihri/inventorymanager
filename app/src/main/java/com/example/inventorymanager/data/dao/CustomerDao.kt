@@ -4,6 +4,7 @@ import androidx.room.Transaction
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Insert
+import androidx.room.Delete
 import androidx.room.OnConflictStrategy
 import com.example.inventory.domain.model.Delivery
 import com.example.inventorymanager.domain.model.Customer
