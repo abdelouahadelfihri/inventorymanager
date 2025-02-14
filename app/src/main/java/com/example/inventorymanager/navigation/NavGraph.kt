@@ -1,4 +1,4 @@
-package ro.alexmamo.roomjetpackcompose.navigation
+package com.example.inventorymanager.navigation
 
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
@@ -7,11 +7,11 @@ import androidx.navigation.NavType.Companion.IntType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import ro.alexmamo.roomjetpackcompose.core.Constants.Companion.BOOK_ID
-import ro.alexmamo.roomjetpackcompose.navigation.Screen.BooksScreen
-import ro.alexmamo.roomjetpackcompose.navigation.Screen.UpdateBookScreen
-import ro.alexmamo.roomjetpackcompose.presentation.books.BooksScreen
-import ro.alexmamo.roomjetpackcompose.presentation.update_book.UpdateBookScreen
+import com.example.inventorymanager.core.Constants.Companion.BOOK_ID
+import com.example.inventorymanager.navigation.Screen.BooksScreen
+import com.example.inventorymanager.navigation.Screen.UpdateBookScreen
+import com.example.inventorymanager.presentation.books.BooksScreen
+import com.example.inventorymanager.presentation.update_book.UpdateBookScreen
 
 @Composable
 @ExperimentalMaterialApi
