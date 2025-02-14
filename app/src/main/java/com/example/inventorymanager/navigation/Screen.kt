@@ -1,4 +1,4 @@
-package ro.alexmamo.roomjetpackcompose.navigation
+package com.example.inventorymanager.navigation
 
 import com.example.inventorymanager.core.Constants.Companion.BOOKS_SCREEN
 import com.example.inventorymanager.core.Constants.Companion.UPDATE_BOOK_SCREEN
