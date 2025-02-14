@@ -1,4 +1,4 @@
-package ro.alexmamo.roomjetpackcompose.presentation.books
+package com.example.inventorymanager.presentation.deliveries.list
 
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Scaffold
