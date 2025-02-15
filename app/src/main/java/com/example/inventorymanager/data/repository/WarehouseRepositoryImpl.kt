@@ -1,19 +1,20 @@
-package ro.alexmamo.roomjetpackcompose.data.repository
+package com.example.inventorymanager.data.repository
 
-import ro.alexmamo.roomjetpackcompose.data.dao.BookDao
-import ro.alexmamo.roomjetpackcompose.domain.model.Book
-import ro.alexmamo.roomjetpackcompose.domain.repository.BookRepository
+import com.example.inventory.domain.model.Warehouse
+import com.example.inventorymanager.data.dao.WarehouseDao
+import com.example.inventorymanager.domain.repository.WarehouseRepository
+
 
 class WarehouseRepositoryImpl(
-    private val bookDao: BookDao
-) : BookRepository {
-    override fun getBooksFromRoom() = bookDao.getBooks()
+    private val warehouseDao: WarehouseDao
+) : WarehouseRepository {
+    override fun getWarehousesFromRoom() = warehouseDao.getWarehouses()
 
-    override suspend fun getBookFromRoom(id: Int) = bookDao.getBook(id)
+    override suspend fun getWarehouseFromRoom(id: Int) = warehouseDao.getWarehouse(id)
 
-    override suspend fun addBookToRoom(book: Book) = bookDao.addBook(book)
+    override suspend fun addWarehouseToRoom(warehouse: Warehouse) = warehouseDao.addWarehouse(warehouse)
 
-    override suspend fun updateBookInRoom(book: Book) = bookDao.updateBook(book)
+    override suspend fun updateWarehouseInRoom(warehouse: Warehouse) = warehouseDao.updateWarehouse(warehouse)
 
-    override suspend fun deleteBookFromRoom(book: Book) = bookDao.deleteBook(book)
+    override suspend fun deleteWarehouseFromRoom(warehouse: Warehouse) = warehouseDao.deleteWarehouse(warehouse)
 }
