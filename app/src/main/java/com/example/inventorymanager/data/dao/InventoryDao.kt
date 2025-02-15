@@ -1,22 +1,30 @@
 package com.example.inventorymanager.data.dao
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Query
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Update
 import com.example.inventorymanager.domain.model.Inventory
+import com.example.inventorymanager.core.Constants.Companion.INVENTORY_TABLE
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface InventoryDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(inventory: Inventory)
+
+    @Query("SELECT * FROM $INVENTORY_TABLE ORDER BY inventoryId ASC")
+    fun getInventories(): Flow<List<Inventory>>
+
+    @Query("SELECT * FROM $INVENTORY_TABLE WHERE inventoryId = :id")
+    suspend fun getInventory(id: Int): Inventory
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun addInventory(inventory: Inventory)
 
     @Update
-    suspend fun update(inventory: Inventory)
+    suspend fun updateInventory(inventory: Inventory)
 
     @Delete
-    suspend fun delete(inventory: Inventory)
-
-    @Query("SELECT * FROM inventory")
-    suspend fun getAll(): List<Inventory>
-
-    @Query("SELECT * FROM inventory WHERE inventoryId = :id")
-    suspend fun getById(id: Int): Inventory?
+    suspend fun deleteInventory(inventory: Inventory)
 }

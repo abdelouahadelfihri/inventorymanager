@@ -6,7 +6,6 @@ import androidx.room.ForeignKey
 import androidx.room.ColumnInfo
 import androidx.room.Index
 import com.example.inventorymanager.core.Constants.Companion.INVENTORY_TABLE
-import com.example.inventorymanager.domain.model.Product
 
 @Entity(
     tableName = INVENTORY_TABLE,

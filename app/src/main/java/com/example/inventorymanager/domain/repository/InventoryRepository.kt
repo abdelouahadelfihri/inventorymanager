@@ -3,7 +3,6 @@ package com.example.inventorymanager.domain.repository
 import com.example.inventorymanager.domain.model.Inventory
 import kotlinx.coroutines.flow.Flow
 
-
 typealias Inventories = List<Inventory>
 
 interface InventoryRepository {
@@ -17,5 +16,4 @@ interface InventoryRepository {
     suspend fun updateInventoryInRoom(inventory: Inventory)
 
     suspend fun deleteInventoryFromRoom(inventory: Inventory)
-
 }

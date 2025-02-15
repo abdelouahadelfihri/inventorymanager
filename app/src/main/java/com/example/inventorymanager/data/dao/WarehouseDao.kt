@@ -1,13 +1,12 @@
 package com.example.inventorymanager.data.dao
 
-import androidx.room.Transaction
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.Companion.IGNORE
 import androidx.room.Update
-import com.example.inventory.domain.model.Warehouse
+import com.example.inventorymanager.domain.model.Warehouse
 import com.example.inventorymanager.core.Constants.Companion.WAREHOUSE_TABLE
 import com.example.inventorymanager.domain.repository.Warehouses
 import kotlinx.coroutines.flow.Flow

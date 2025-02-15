@@ -1,6 +1,6 @@
 package com.example.inventorymanager.data.repository
 
-import com.example.inventory.domain.model.Warehouse
+import com.example.inventorymanager.domain.model.Warehouse
 import com.example.inventorymanager.data.dao.WarehouseDao
 import com.example.inventorymanager.domain.repository.WarehouseRepository
 
