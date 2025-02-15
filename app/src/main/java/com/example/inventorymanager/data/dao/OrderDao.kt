@@ -4,7 +4,6 @@ import androidx.room.*
 import com.example.inventorymanager.domain.model.Order
 import com.example.inventorymanager.core.Constants.Companion.ORDER_TABLE
 
-
 @Dao
 interface OrderDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -14,11 +13,11 @@ interface OrderDao {
     suspend fun update(order: Order)
 
     @Delete
-    suspend fun delete(id: Int)
+    suspend fun delete(order: Order)
 
     @Query("SELECT * FROM $ORDER_TABLE")
-    suspend fun getOrders(): List<Order>
+    suspend fun getAll(): List<Order>
 
     @Query("SELECT * FROM $ORDER_TABLE WHERE orderId = :id")
-    suspend fun getOrderById(id: Int): Order?
+    suspend fun getById(id: Int): Order?
 }
