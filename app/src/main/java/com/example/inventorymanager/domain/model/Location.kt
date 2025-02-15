@@ -2,9 +2,9 @@ package com.example.inventorymanager.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.inventorymanager.core.Constants.Companion.PROVIDER_TABLE
+import com.example.inventorymanager.core.Constants.Companion.LOCATION_TABLE
 
-@Entity(tableName = PROVIDER_TABLE)
+@Entity(tableName = LOCATION_TABLE)
 data class Location(
     @PrimaryKey(autoGenerate = true)
     val locationId: Int,
