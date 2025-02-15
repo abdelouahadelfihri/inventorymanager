@@ -1,7 +1,7 @@
 package com.example.inventorymanager.data.dao
 
 import androidx.room.*
-import com.example.inventory.domain.model.Inventory
+import com.example.inventorymanager.domain.model.Inventory
 
 @Dao
 interface InventoryDao {
