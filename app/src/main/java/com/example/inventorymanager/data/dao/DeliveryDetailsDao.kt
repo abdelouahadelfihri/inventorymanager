@@ -4,8 +4,6 @@ import androidx.room.*
 import com.example.inventory.domain.model.DeliveryDetails
 import com.example.inventorymanager.core.Constants.Companion.DELIVERY_DETAILS_TABLE
 
-
-
 @Dao
 interface DeliveryDetailsDao {
 
@@ -18,15 +16,15 @@ interface DeliveryDetailsDao {
     @Delete
     suspend fun delete(deliveryDetails: DeliveryDetails)
 
-    @Query("SELECT * FROM delivery_details WHERE deliveryId = :deliveryId")
+    @Query("SELECT * FROM $DELIVERY_DETAILS_TABLE WHERE deliveryId = :deliveryId")
     suspend fun getByDeliveryId(deliveryId: Int): List<DeliveryDetails>
 
-    @Query("SELECT * FROM delivery_details WHERE productId = :productId")
+    @Query("SELECT * FROM $DELIVERY_DETAILS_TABLE WHERE productId = :productId")
     suspend fun getByProductId(productId: Int): List<DeliveryDetails>
 
-    @Query("SELECT * FROM delivery_details WHERE warehouseId = :warehouseId")
+    @Query("SELECT * FROM $DELIVERY_DETAILS_TABLE WHERE warehouseId = :warehouseId")
     suspend fun getByWarehouseId(warehouseId: Int): List<DeliveryDetails>
 
-    @Query("SELECT * FROM delivery_details WHERE deliveryId = :deliveryId AND productId = :productId AND warehouseId = :warehouseId")
+    @Query("SELECT * FROM $DELIVERY_DETAILS_TABLE WHERE deliveryId = :deliveryId AND productId = :productId AND warehouseId = :warehouseId")
     suspend fun getByIds(deliveryId: Int, productId: Int, warehouseId: Int): DeliveryDetails?
 }
