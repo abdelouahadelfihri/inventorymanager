@@ -6,7 +6,6 @@ import androidx.room.Query
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Update
-import com.example.inventory.domain.model.Inventory
 import com.example.inventorymanager.core.Constants.Companion.LOCATION_TABLE
 import com.example.inventorymanager.domain.model.Location
 
@@ -16,7 +15,7 @@ interface LocationDao {
     suspend fun insert(location: Location)
 
     @Update
-    suspend fun update(location: Inventory)
+    suspend fun update(location: Location)
 
     @Delete
     suspend fun delete(location: Location)
