@@ -1,4 +1,4 @@
-package ro.alexmamo.roomjetpackcompose.data.dao
+package com.example.inventorymanager.data.dao
 
 import androidx.room.*
 import com.example.inventory.domain.model.Inventory
