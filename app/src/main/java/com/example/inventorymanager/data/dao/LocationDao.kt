@@ -18,7 +18,7 @@ interface LocationDao {
     suspend fun update(location: Location)
 
     @Delete
-    suspend fun delete(location: Location)
+    suspend fun delete(id: Int)
 
     @Query("SELECT * FROM $LOCATION_TABLE")
     suspend fun getLocations(): List<Location>
