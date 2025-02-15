@@ -4,7 +4,6 @@ import com.example.inventory.domain.model.Warehouse
 import com.example.inventorymanager.data.dao.WarehouseDao
 import com.example.inventorymanager.domain.repository.WarehouseRepository
 
-
 class WarehouseRepositoryImpl(
     private val warehouseDao: WarehouseDao
 ) : WarehouseRepository {
