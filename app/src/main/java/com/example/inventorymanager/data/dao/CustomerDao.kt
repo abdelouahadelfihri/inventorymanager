@@ -1,6 +1,5 @@
 package com.example.inventorymanager.data.dao
 
-import androidx.room.Transaction
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Insert
