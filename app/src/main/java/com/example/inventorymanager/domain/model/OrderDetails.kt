@@ -3,7 +3,6 @@ package com.example.inventorymanager.domain.model
 import androidx.room.ForeignKey
 import androidx.room.Entity
 import androidx.room.Index
-import com.example.inventorymanager.domain.model.Product
 
 @Entity(
     tableName = "order_details",
