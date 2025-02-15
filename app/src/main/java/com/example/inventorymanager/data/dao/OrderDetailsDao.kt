@@ -1,9 +1,9 @@
-package com.example.inventory.data.dao
+package com.example.inventorymanager.data.dao
 
 import androidx.room.*
-import com.example.inventory.domain.model.OrderDetails
 import com.example.inventorymanager.core.Constants.Companion.ORDER_DETAILS_TABLE
 import com.example.inventorymanager.domain.model.Order
+import com.example.inventorymanager.domain.model.OrderDetails
 
 
 @Dao
