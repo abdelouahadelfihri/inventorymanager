@@ -1,33 +1,33 @@
 package com.example.inventorymanager.data.repository
 
-import com.example.inventorymanager.domain.model.OrderDetails
-import com.example.inventorymanager.domain.repository.OrderDetailsRepository
-import com.example.inventorymanager.data.dao.OrderDetailsDao
+import com.example.inventory.domain.model.DeliveryDetails
+import com.example.inventorymanager.data.dao.DeliveryDetailsDao
+import com.example.inventorymanager.domain.repository.DeliveryDetailsRepository
 import kotlinx.coroutines.flow.Flow
 
 class DeliveryDetailsRepositoryImpl(
-    private val orderDetailsDao: OrderDetailsDao
-) : OrderDetailsRepository {
+    private val deliveryDetailsDao: DeliveryDetailsDao
+) : DeliveryDetailsRepository {
 
-    override fun getOrdersDetailsFromRoom(): Flow<List<OrderDetails>> {
-        return orderDetailsDao.getAll() // Assuming you have a method that returns all orders as a Flow
+    override fun getDeliveriesDetailsFromRoom(): Flow<List<DeliveryDetails>> {
+        return deliveryDetailsDao.getAll() // Assuming you have a method that returns all orders as a Flow
     }
 
-    override suspend fun getOrderDetailsFromRoom(orderId: Int, productId: Int, warehouseId: Int): OrderDetails {
-        return orderDetailsDao.getByIds(orderId, productId, warehouseId) ?: throw Exception("Order not found")
+    override suspend fun getDeliveryDetailsFromRoom(deliveryId: Int, productId: Int, warehouseId: Int): DeliveryDetails {
+        return deliveryDetailsDao.getByIds(deliveryId, productId, warehouseId) ?: throw Exception("Delivery Details not found")
     }
 
-    override suspend fun addOrderDetailsToRoom(orderDetails: OrderDetails) {
-        orderDetailsDao.insert(orderDetails)
+    override suspend fun addDeliveryDetailsToRoom(deliveryDetails: DeliveryDetails) {
+        deliveryDetailsDao.insert(deliveryDetails)
     }
 
-    override suspend fun updateOrderDetailsInRoom(orderDetails: OrderDetails) {
-        orderDetailsDao.update(orderDetails)
+    override suspend fun updateDeliveryDetailsInRoom(deliveryDetails: DeliveryDetails) {
+        deliveryDetailsDao.update(deliveryDetails)
     }
 
-    override suspend fun deleteOrderDetailsFromRoom(orderId: Int, productId: Int, warehouseId: Int) {
-        val orderDetails = orderDetailsDao.getByIds(orderId, productId, warehouseId)
+    override suspend fun deleteDeliveryDetailsFromRoom(deliveryId: Int, productId: Int, warehouseId: Int) {
+        val deliveryDetails = deliveryDetailsDao.getByIds(deliveryId, productId, warehouseId)
             ?: throw Exception("Order not found")
-        orderDetailsDao.delete(orderDetails)
+        deliveryDetailsDao.delete(deliveryDetails)
     }
 }
