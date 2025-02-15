@@ -2,11 +2,9 @@ package com.example.inventorymanager.data.dao
 
 import androidx.room.*
 import com.example.inventorymanager.core.Constants.Companion.ORDER_DETAILS_TABLE
-import com.example.inventorymanager.domain.model.Order
 import com.example.inventorymanager.domain.model.OrderDetails
 
-
-import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface OrderDetailsDao {
@@ -20,15 +18,9 @@ interface OrderDetailsDao {
     @Delete
     suspend fun delete(orderDetails: OrderDetails)
 
-    @Query("SELECT * FROM order_details WHERE orderId = :orderId")
-    suspend fun getByOrderId(orderId: Int): List<OrderDetails>
-
-    @Query("SELECT * FROM order_details WHERE productId = :productId")
-    suspend fun getByProductId(productId: Int): List<OrderDetails>
-
-    @Query("SELECT * FROM order_details WHERE warehouseId = :warehouseId")
-    suspend fun getByWarehouseId(warehouseId: Int): List<OrderDetails>
-
-    @Query("SELECT * FROM order_details WHERE orderId = :orderId AND productId = :productId AND warehouseId = :warehouseId")
+    @Query("SELECT * FROM $ORDER_DETAILS_TABLE WHERE orderId = :orderId AND productId = :productId AND warehouseId = :warehouseId LIMIT 1")
     suspend fun getByIds(orderId: Int, productId: Int, warehouseId: Int): OrderDetails?
+
+    @Query("SELECT * FROM $ORDER_DETAILS_TABLE")
+    fun getAll(): Flow<List<OrderDetails>>
 }
