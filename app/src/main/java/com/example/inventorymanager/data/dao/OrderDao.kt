@@ -1,7 +1,7 @@
-package ro.alexmamo.roomjetpackcompose.data.dao
+package com.example.inventorymanager.data.dao
 
 import androidx.room.*
-import com.example.inventory.domain.model.Order
+import com.example.inventorymanager.domain.model.Order
 import com.example.inventorymanager.core.Constants.Companion.ORDER_TABLE
 
 
