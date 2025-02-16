@@ -5,15 +5,15 @@ import com.example.inventorymanager.data.dao.TransferDao
 import com.example.inventorymanager.domain.repository.TransferRepository
 
 class TransferRepositoryImpl(
-    private val orderDao: TransferDao
+    private val transferDao: TransferDao
 ) : TransferRepository {
-    override fun getTransfersFromRoom() = orderDao.getTransfers()
+    override fun getTransfersFromRoom() = transferDao.getTransfers()
 
-    override suspend fun getTransferFromRoom(id: Int) = orderDao.getTransfer(id)
+    override suspend fun getTransferFromRoom(id: Int) = transferDao.getTransfer(id)
 
-    override suspend fun addTransferToRoom(order: Transfer) = orderDao.addTransfer(order)
+    override suspend fun addTransferToRoom(transfer: Transfer) = transferDao.addTransfer(transfer)
 
-    override suspend fun updateTransferInRoom(order: Transfer) = orderDao.updateTransfer(order)
+    override suspend fun updateTransferInRoom(transfer: Transfer) = transferDao.updateTransfer(transfer)
 
-    override suspend fun deleteTransferFromRoom(order: Transfer) = orderDao.deleteTransfer(order)
+    override suspend fun deleteTransferFromRoom(transfer: Transfer) = transferDao.deleteTransfer(transfer)
 }
