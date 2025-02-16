@@ -7,26 +7,26 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy.Companion.IGNORE
 import androidx.room.Update
 import com.example.inventorymanager.domain.model.Provider
-import com.example.inventorymanager.core.Constants.Companion.ORDER_TABLE
+import com.example.inventorymanager.core.Constants.Companion.PROVIDER_TABLE
 import com.example.inventorymanager.domain.repository.Providers
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ProviderDao {
 
-    @Query("SELECT * FROM $ORDER_TABLE ORDER BY providerId ASC")
+    @Query("SELECT * FROM $PROVIDER_TABLE ORDER BY providerId ASC")
     fun getProviders(): Flow<Providers>
 
-    @Query("SELECT * FROM $ORDER_TABLE WHERE providerId = :id")
+    @Query("SELECT * FROM $PROVIDER_TABLE WHERE providerId = :id")
     suspend fun getProvider(id: Int): Provider
 
     @Insert(onConflict = IGNORE)
-    suspend fun addProvider(provider: Provider)
+    suspend fun addProvider(product: Provider)
 
     @Update
-    suspend fun updateProvider(provider: Provider)
+    suspend fun updateProvider(product: Provider)
 
     @Delete
-    suspend fun deleteProvider(provider: Provider)
+    suspend fun deleteProvider(id: Int)
 
 }
