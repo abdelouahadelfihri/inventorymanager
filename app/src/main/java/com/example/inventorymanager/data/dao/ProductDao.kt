@@ -21,12 +21,12 @@ interface ProductDao {
     suspend fun getProduct(id: Int): Product
 
     @Insert(onConflict = IGNORE)
-    suspend fun addProduct(order: Product)
+    suspend fun addProduct(product: Product)
 
     @Update
-    suspend fun updateProduct(order: Product)
+    suspend fun updateProduct(product: Product)
 
     @Delete
-    suspend fun deleteProduct(order: Product)
+    suspend fun deleteProduct(id: Int)
 
 }
