@@ -1,36 +1,32 @@
-package ro.alexmamo.roomjetpackcompose.data.dao
+package com.example.inventorymanager.data.dao
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Query
+import androidx.room.Insert
 import androidx.room.OnConflictStrategy.Companion.IGNORE
-import kotlinx.coroutines.flow.Flow
-import com.example.inventorymanager.core.Constants.Companion.BOOK_TABLE
+import androidx.room.Update
 import com.example.inventorymanager.domain.model.Provider
-import com.example.inventorymanager.domain.repository.Books
+import com.example.inventorymanager.core.Constants.Companion.ORDER_TABLE
+import com.example.inventorymanager.domain.repository.Providers
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ProviderDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertProvider(provider: Provider): Long
+    @Query("SELECT * FROM $ORDER_TABLE ORDER BY providerId ASC")
+    fun getProviders(): Flow<Providers>
 
-    @Query("SELECT * FROM provider")
-    suspend fun getAllProviders(): List<Provider>
-
-    @Query("SELECT * FROM provider WHERE providerId = :id")
-    suspend fun getProviderById(id: Long): Provider?
-
-    @Query("SELECT * FROM $BOOK_TABLE ORDER BY id ASC")
-    fun getBooks(): Flow<Books>
-
-    @Query("SELECT * FROM $BOOK_TABLE WHERE id = :id")
-    suspend fun getBook(id: Int): Book
+    @Query("SELECT * FROM $ORDER_TABLE WHERE providerId = :id")
+    suspend fun getProvider(id: Int): Provider
 
     @Insert(onConflict = IGNORE)
-    suspend fun addBook(book: Book)
+    suspend fun addProvider(provider: Provider)
 
     @Update
-    suspend fun updateBook(book: Book)
+    suspend fun updateProvider(provider: Provider)
 
     @Delete
-    suspend fun deleteBook(book: Book)
+    suspend fun deleteProvider(provider: Provider)
+
 }
