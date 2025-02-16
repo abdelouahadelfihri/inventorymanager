@@ -6,27 +6,27 @@ import androidx.room.Query
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.Companion.IGNORE
 import androidx.room.Update
-import com.example.inventorymanager.domain.model.Warehouse
-import com.example.inventorymanager.core.Constants.Companion.WAREHOUSE_TABLE
-import com.example.inventorymanager.domain.repository.Warehouses
+import com.example.inventorymanager.domain.model.Location
+import com.example.inventorymanager.core.Constants.Companion.LOCATION_TABLE
+import com.example.inventorymanager.domain.repository.Locations
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface WarehouseDao {
+interface LocationDao {
 
-    @Query("SELECT * FROM $WAREHOUSE_TABLE ORDER BY warehouseId ASC")
-    fun getWarehouses(): Flow<Warehouses>
+    @Query("SELECT * FROM $LOCATION_TABLE ORDER BY locationId ASC")
+    fun getLocations(): Flow<Locations>
 
-    @Query("SELECT * FROM $WAREHOUSE_TABLE WHERE warehouseId = :id")
-    suspend fun getWarehouse(id: Int): Warehouse
+    @Query("SELECT * FROM $LOCATION_TABLE WHERE locationId = :id")
+    suspend fun getLocation(id: Int): Location
 
     @Insert(onConflict = IGNORE)
-    suspend fun addWarehouse(warehouse: Warehouse)
+    suspend fun addLocation(location: Location)
 
     @Update
-    suspend fun updateWarehouse(warehouse: Warehouse)
+    suspend fun updateLocation(location: Location)
 
     @Delete
-    suspend fun deleteWarehouse(warehouse: Warehouse)
+    suspend fun deleteLocation(location: Location)
 
 }
