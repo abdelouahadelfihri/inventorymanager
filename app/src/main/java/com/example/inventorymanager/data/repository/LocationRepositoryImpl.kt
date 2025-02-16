@@ -1,19 +1,19 @@
 package com.example.inventorymanager.data.repository
 
-import com.example.inventorymanager.domain.model.Warehouse
-import com.example.inventorymanager.data.dao.WarehouseDao
-import com.example.inventorymanager.domain.repository.WarehouseRepository
+import com.example.inventorymanager.domain.model.Location
+import com.example.inventorymanager.data.dao.LocationDao
+import com.example.inventorymanager.domain.repository.LocationRepository
 
-class WarehouseRepositoryImpl(
-    private val warehouseDao: WarehouseDao
-) : WarehouseRepository {
-    override fun getWarehousesFromRoom() = warehouseDao.getWarehouses()
+class LocationRepositoryImpl(
+    private val locationDao: LocationDao
+) : LocationRepository {
+    override fun getLocationsFromRoom() = locationDao.getLocations()
 
-    override suspend fun getWarehouseFromRoom(id: Int) = warehouseDao.getWarehouse(id)
+    override suspend fun getLocationFromRoom(id: Int) = locationDao.getLocation(id)
 
-    override suspend fun addWarehouseToRoom(warehouse: Warehouse) = warehouseDao.addWarehouse(warehouse)
+    override suspend fun addLocationToRoom(warehouse: Location) = locationDao.addLocation(warehouse)
 
-    override suspend fun updateWarehouseInRoom(warehouse: Warehouse) = warehouseDao.updateWarehouse(warehouse)
+    override suspend fun updateLocationInRoom(warehouse: Location) = locationDao.updateLocation(warehouse)
 
-    override suspend fun deleteWarehouseFromRoom(warehouse: Warehouse) = warehouseDao.deleteWarehouse(warehouse)
+    override suspend fun deleteLocationFromRoom(warehouse: Location) = locationDao.deleteLocation(warehouse)
 }
