@@ -11,9 +11,9 @@ class LocationRepositoryImpl(
 
     override suspend fun getLocationFromRoom(id: Int) = locationDao.getLocation(id)
 
-    override suspend fun addLocationToRoom(warehouse: Location) = locationDao.addLocation(warehouse)
+    override suspend fun addLocationToRoom(location: Location) = locationDao.addLocation(location)
 
-    override suspend fun updateLocationInRoom(warehouse: Location) = locationDao.updateLocation(warehouse)
+    override suspend fun updateLocationInRoom(location: Location) = locationDao.updateLocation(location)
 
-    override suspend fun deleteLocationFromRoom(warehouse: Location) = locationDao.deleteLocation(warehouse)
+    override suspend fun deleteLocationFromRoom(location: Location) = locationDao.deleteLocation(location)
 }
