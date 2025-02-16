@@ -21,12 +21,12 @@ interface OrderDao {
     suspend fun getOrder(id: Int): Order
 
     @Insert(onConflict = IGNORE)
-    suspend fun addOrder(delivery: Order)
+    suspend fun addOrder(order: Order)
 
     @Update
-    suspend fun updateOrder(delivery: Order)
+    suspend fun updateOrder(order: Order)
 
     @Delete
-    suspend fun deleteOrder(delivery: Order)
+    suspend fun deleteOrder(order: Order)
 
 }
