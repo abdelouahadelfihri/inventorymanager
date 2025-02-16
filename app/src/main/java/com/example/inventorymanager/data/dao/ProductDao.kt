@@ -1,24 +1,32 @@
-package ro.alexmamo.roomjetpackcompose.data.dao
+package com.example.inventorymanager.data.dao
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Query
+import androidx.room.Insert
 import androidx.room.OnConflictStrategy.Companion.IGNORE
-import kotlinx.coroutines.flow.Flow
-import com.example.inventorymanager.core.Constants.Companion.BOOK_TABLE
+import androidx.room.Update
 import com.example.inventorymanager.domain.model.Product
-import com.example.inventorymanager.domain.relationshipdataclasses.ProductWithOrders
-import com.example.inventorymanager.domain.repository.Books
+import com.example.inventorymanager.core.Constants.Companion.PRODUCT_TABLE
+import com.example.inventorymanager.domain.repository.Products
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ProductDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertProduct(product: Product): Long
+    @Query("SELECT * FROM $PRODUCT_TABLE ORDER BY productId ASC")
+    fun getProducts(): Flow<Products>
 
-    @Query("SELECT * FROM product")
-    suspend fun getAllProducts(): List<Product>
+    @Query("SELECT * FROM $PRODUCT_TABLE WHERE productId = :id")
+    suspend fun getProduct(id: Int): Product
 
-    @Transaction
-    @Query("SELECT * FROM product WHERE productId = :productId")
-    suspend fun getProductWithOrders(productId: Long): ProductWithOrders
+    @Insert(onConflict = IGNORE)
+    suspend fun addProduct(order: Product)
+
+    @Update
+    suspend fun updateProduct(order: Product)
+
+    @Delete
+    suspend fun deleteProduct(order: Product)
 
 }
