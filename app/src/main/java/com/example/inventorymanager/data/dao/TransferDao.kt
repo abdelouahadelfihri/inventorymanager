@@ -1,26 +1,32 @@
 package com.example.inventorymanager.data.dao
 
-import androidx.room.Transaction
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import com.example.inventory.domain.model.Transfer
-import com.example.inventory.domain.model.Warehouse
-import com.example.inventorymanager.domain.relationshipdataclasses.ProviderWithOrders
-import com.example.inventorymanager.domain.relationshipdataclasses.TransferWithWarehouses
+import androidx.room.OnConflictStrategy.Companion.IGNORE
+import androidx.room.Update
+import com.example.inventorymanager.domain.model.Order
+import com.example.inventorymanager.core.Constants.Companion.TRANSFER_TABLE
+import com.example.inventorymanager.domain.repository.Orders
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TransferDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertWarehouse(warehouse: Warehouse): Long
+    @Query("SELECT * FROM $TRANSFER_TABLE ORDER BY transferId ASC")
+    fun getOrders(): Flow<Orders>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTransfer(transfer: Transfer): Long
+    @Query("SELECT * FROM $TRANSFER_TABLE WHERE orderId = :id")
+    suspend fun getOrder(id: Int): Order
 
-    @Transaction
-    @Query("SELECT * FROM transfer")
-    suspend fun getTransfersWithWarehouses(): List<TransferWithWarehouses>
+    @Insert(onConflict = IGNORE)
+    suspend fun addOrder(order: Order)
+
+    @Update
+    suspend fun updateOrder(order: Order)
+
+    @Delete
+    suspend fun deleteOrder(order: Order)
 
 }
