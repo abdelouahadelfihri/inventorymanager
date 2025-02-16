@@ -1,23 +1,32 @@
 package com.example.inventorymanager.data.dao
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Query
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy.Companion.IGNORE
+import androidx.room.Update
 import com.example.inventory.domain.model.Delivery
 import com.example.inventorymanager.core.Constants.Companion.DELIVERY_TABLE
+import com.example.inventorymanager.domain.repository.Deliveries
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface DeliveryDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(delivery: Delivery)
 
-    @Update
-    suspend fun update(delivery: Delivery)
-
-    @Delete
-    suspend fun delete(delivery: Delivery)
-
-    @Query("SELECT * FROM $DELIVERY_TABLE")
-    suspend fun getAll(): List<Delivery>
+    @Query("SELECT * FROM $DELIVERY_TABLE ORDER BY deliveryId ASC")
+    fun getDeliveries(): Flow<Deliveries>
 
     @Query("SELECT * FROM $DELIVERY_TABLE WHERE deliveryId = :id")
-    suspend fun getById(id: Int): Delivery?
+    suspend fun getDelivery(id: Int): Delivery
+
+    @Insert(onConflict = IGNORE)
+    suspend fun addDelivery(delivery: Delivery)
+
+    @Update
+    suspend fun updateDelivery(delivery: Delivery)
+
+    @Delete
+    suspend fun deleteDelivery(delivery: Delivery)
+
 }
