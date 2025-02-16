@@ -8,14 +8,14 @@ import androidx.room.OnConflictStrategy.Companion.IGNORE
 import androidx.room.Update
 import com.example.inventorymanager.domain.model.Order
 import com.example.inventorymanager.core.Constants.Companion.ORDER_TABLE
-import com.example.inventorymanager.domain.repository.Deliveries
+import com.example.inventorymanager.domain.repository.Orders
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface OrderDao {
 
     @Query("SELECT * FROM $ORDER_TABLE ORDER BY orderId ASC")
-    fun getDeliveries(): Flow<Deliveries>
+    fun getOrders(): Flow<Orders>
 
     @Query("SELECT * FROM $ORDER_TABLE WHERE orderId = :id")
     suspend fun getOrder(id: Int): Order
