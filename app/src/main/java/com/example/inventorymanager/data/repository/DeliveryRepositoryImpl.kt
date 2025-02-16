@@ -5,15 +5,15 @@ import com.example.inventorymanager.data.dao.DeliveryDao
 import com.example.inventorymanager.domain.repository.DeliveryRepository
 
 class DeliveryRepositoryImpl(
-    private val warehouseDao: DeliveryDao
+    private val deliveryDao: DeliveryDao
 ) : DeliveryRepository {
-    override fun getDeliveriesFromRoom() = warehouseDao.getDeliverys()
+    override fun getDeliveriesFromRoom() = deliveryDao.getDeliveries()
 
-    override suspend fun getDeliveryFromRoom(id: Int) = warehouseDao.getDelivery(id)
+    override suspend fun getDeliveryFromRoom(id: Int) = deliveryDao.getDelivery(id)
 
-    override suspend fun addDeliveryToRoom(warehouse: Delivery) = warehouseDao.addDelivery(warehouse)
+    override suspend fun addDeliveryToRoom(delivery: Delivery) = deliveryDao.addDelivery(delivery)
 
-    override suspend fun updateDeliveryInRoom(warehouse: Delivery) = warehouseDao.updateDelivery(warehouse)
+    override suspend fun updateDeliveryInRoom(delivery: Delivery) = deliveryDao.updateDelivery(delivery)
 
-    override suspend fun deleteDeliveryFromRoom(warehouse: Delivery) = warehouseDao.deleteDelivery(warehouse)
+    override suspend fun deleteDeliveryFromRoom(delivery: Delivery) = deliveryDao.deleteDelivery(delivery)
 }
