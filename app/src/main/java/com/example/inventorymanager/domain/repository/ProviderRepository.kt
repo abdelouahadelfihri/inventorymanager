@@ -16,6 +16,6 @@ interface ProviderRepository {
 
     suspend fun updateProviderInRoom(provider: Provider)
 
-    suspend fun deleteProviderFromRoom(provider: Provider)
+    suspend fun deleteProviderFromRoom(id: Int)
 
 }

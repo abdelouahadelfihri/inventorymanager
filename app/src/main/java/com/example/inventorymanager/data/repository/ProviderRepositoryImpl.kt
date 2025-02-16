@@ -1,19 +1,21 @@
 package com.example.inventorymanager.data.repository
 
-import com.example.inventorymanager.domain.model.Product
-import com.example.inventorymanager.data.dao.ProductDao
-import com.example.inventorymanager.domain.repository.ProductRepository
+import com.example.inventorymanager.domain.model.Provider
+import com.example.inventorymanager.data.dao.ProviderDao
+import com.example.inventorymanager.domain.repository.ProviderRepository
 
 class ProviderRepositoryImpl(
-    private val productDao: ProductDao
-) : ProductRepository {
-    override fun getProductsFromRoom() = productDao.getProducts()
+    private val providerDao: ProviderDao
+) : ProviderRepository {
 
-    override suspend fun getProductFromRoom(id: Int) = productDao.getProduct(id)
+    override fun getProvidersFromRoom() = providerDao.getProviders()
 
-    override suspend fun addProductToRoom(product: Product) = productDao.addProduct(product)
+    override suspend fun getProviderFromRoom(id: Int) = providerDao.getProvider(id)
 
-    override suspend fun updateProductInRoom(product: Product) = productDao.updateProduct(product)
+    override suspend fun addProviderToRoom(provider: Provider) = providerDao.addProvider(provider)
 
-    override suspend fun deleteProductFromRoom(id: Int) = productDao.deleteProduct(id)
+    override suspend fun updateProviderInRoom(provider: Provider) = providerDao.updateProvider(provider)
+
+    override suspend fun deleteProviderFromRoom(id: Int) = providerDao.deleteProvider(id)
+
 }
