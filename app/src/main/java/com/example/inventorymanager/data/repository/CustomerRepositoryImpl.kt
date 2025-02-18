@@ -1,21 +1,21 @@
 package com.example.inventorymanager.data.repository
 
-import com.example.inventorymanager.data.dao.LocationDao
-import com.example.inventorymanager.domain.model.Location
-import com.example.inventorymanager.domain.repository.LocationRepository
+import com.example.inventorymanager.data.dao.CustomerDao
+import com.example.inventorymanager.domain.model.Customer
+import com.example.inventorymanager.domain.repository.CustomerRepository
 
 class CustomerRepositoryImpl(
-    private val locationDao: LocationDao
-) : LocationRepository {
+    private val customerDao: CustomerDao
+) : CustomerRepository {
 
-    override fun getLocationsFromRoom() = locationDao.getLocations()
+    override fun getCustomersFromRoom() = customerDao.getCustomers()
 
-    override suspend fun getLocationoFromRoom(id: Int) = locationDao.getById(id)
+    override suspend fun getCustomerFromRoom(id: Int) = customerDao.getCustomer(id)
 
-    override suspend fun addLocationToRoom(location: Location) = locationDao.insert(location)
+    override suspend fun addCustomerToRoom(customer: Customer) = customerDao.addCustomer(customer)
 
-    override suspend fun updateLocationInRoom(location: Location) = locationDao.update(location)
+    override suspend fun updateCustomerInRoom(customer: Customer) = customerDao.updateCustomer(customer)
 
-    override suspend fun deleteLocationFromRoom(id: Int) = locationDao.delete(id)
+    override suspend fun deleteCustomerFromRoom(id: Int) = customerDao.deleteCustomer(id)
 
 }
