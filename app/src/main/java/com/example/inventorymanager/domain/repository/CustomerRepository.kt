@@ -16,6 +16,6 @@ interface CustomerRepository {
 
     suspend fun updateCustomerInRoom(customer: Customer)
 
-    suspend fun deleteCustomerFromRoom(customer: Customer)
+    suspend fun deleteCustomerFromRoom(id: Int)
 
 }
