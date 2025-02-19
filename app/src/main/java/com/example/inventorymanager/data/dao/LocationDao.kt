@@ -6,8 +6,10 @@ import androidx.room.Query
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.Companion.IGNORE
 import androidx.room.Update
+import com.example.inventorymanager.core.Constants.Companion.INVENTORY_TABLE
 import com.example.inventorymanager.domain.model.Location
 import com.example.inventorymanager.core.Constants.Companion.LOCATION_TABLE
+import com.example.inventorymanager.domain.model.Inventory
 import com.example.inventorymanager.domain.repository.Locations
 import kotlinx.coroutines.flow.Flow
 
@@ -28,5 +30,8 @@ interface LocationDao {
 
     @Delete
     suspend fun deleteLocation(location: Location)
+
+    @Query("SELECT * FROM $LOCATION_TABLE WHERE name LIKE :searchQuery")
+    fun searchLocations(searchQuery: String): Flow<List<Location>>
 
 }
