@@ -2,7 +2,9 @@ package com.example.inventorymanager.data.repository
 
 import com.example.inventorymanager.domain.model.Warehouse
 import com.example.inventorymanager.data.dao.WarehouseDao
+import com.example.inventorymanager.domain.model.Transfer
 import com.example.inventorymanager.domain.repository.WarehouseRepository
+import kotlinx.coroutines.flow.Flow
 
 class WarehouseRepositoryImpl(
     private val warehouseDao: WarehouseDao
@@ -16,4 +18,8 @@ class WarehouseRepositoryImpl(
     override suspend fun updateWarehouseInRoom(warehouse: Warehouse) = warehouseDao.updateWarehouse(warehouse)
 
     override suspend fun deleteWarehouseFromRoom(warehouse: Warehouse) = warehouseDao.deleteWarehouse(warehouse)
+
+    override fun searchWarehouses(query: String): Flow<List<Warehouse>> {
+        return warehouseDao.searchWarehouses("%$query%")
+    }
 }

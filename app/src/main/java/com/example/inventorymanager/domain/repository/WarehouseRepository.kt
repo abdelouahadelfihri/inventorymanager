@@ -1,5 +1,6 @@
 package com.example.inventorymanager.domain.repository
 
+import com.example.inventorymanager.domain.model.Transfer
 import com.example.inventorymanager.domain.model.Warehouse
 import kotlinx.coroutines.flow.Flow
 
@@ -17,5 +18,7 @@ interface WarehouseRepository {
     suspend fun updateWarehouseInRoom(warehouse: Warehouse)
 
     suspend fun deleteWarehouseFromRoom(warehouse: Warehouse)
+
+    fun searchWarehouses(query: String): Flow<List<Warehouse>>
 
 }
