@@ -29,4 +29,7 @@ interface ProviderDao {
     @Delete
     suspend fun deleteProvider(id: Int)
 
+    @Query("SELECT * FROM $PROVIDER_TABLE WHERE name LIKE :searchQuery")
+    fun searchProviders(searchQuery: String): Flow<List<Provider>>
+
 }
