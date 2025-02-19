@@ -18,4 +18,6 @@ interface ProviderRepository {
 
     suspend fun deleteProviderFromRoom(id: Int)
 
+    fun searchProviders(query: String): Flow<List<Provider>>
+
 }
