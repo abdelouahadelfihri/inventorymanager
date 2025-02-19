@@ -1,4 +1,4 @@
-package ro.alexmamo.roomjetpackcompose.presentation.books
+package com.example.inventorymanager.presentation.books
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -7,13 +7,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import ro.alexmamo.roomjetpackcompose.core.Constants.Companion.EMPTY_STRING
-import ro.alexmamo.roomjetpackcompose.domain.model.Book
-import ro.alexmamo.roomjetpackcompose.domain.repository.BookRepository
+import com.example.inventorymanager.core.Constants.Companion.EMPTY_STRING
+import com.example.inventorymanager.domain.model.Book
+import com.example.inventorymanager.domain.repository.BookRepository
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class BooksViewModel @Inject constructor(
+class CustomersViewModel @Inject constructor(
     private val repo: BookRepository
 ) : ViewModel() {
     var book by mutableStateOf(Book(0, EMPTY_STRING, EMPTY_STRING))
@@ -21,6 +23,10 @@ class BooksViewModel @Inject constructor(
     var openDialog by mutableStateOf(false)
 
     val books = repo.getBooksFromRoom()
+
+    // 🔹 Add StateFlow for search results
+    private val _searchResults = MutableStateFlow<List<Book>>(emptyList())
+    val searchResults: StateFlow<List<Book>> = _searchResults
 
     fun getBook(id: Int) = viewModelScope.launch {
         book = repo.getBookFromRoom(id)
@@ -38,16 +44,21 @@ class BooksViewModel @Inject constructor(
         repo.deleteBookFromRoom(book)
     }
 
+    // 🔹 Search function
+    fun searchBooks(query: String) {
+        viewModelScope.launch {
+            repo.searchBooks(query).collect { books ->
+                _searchResults.value = books
+            }
+        }
+    }
+
     fun updateTitle(title: String) {
-        book = book.copy(
-            title = title
-        )
+        book = book.copy(title = title)
     }
 
     fun updateAuthor(author: String) {
-        book = book.copy(
-            author = author
-        )
+        book = book.copy(author = author)
     }
 
     fun openDialog() {

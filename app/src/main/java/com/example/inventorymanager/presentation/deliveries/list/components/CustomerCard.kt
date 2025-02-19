@@ -1,4 +1,4 @@
-package ro.alexmamo.roomjetpackcompose.presentation.books.components
+package com.example.inventorymanager.presentation.books.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import ro.alexmamo.roomjetpackcompose.domain.model.Book
+import com.example.inventorymanager.domain.model.Book
 
 @Composable
 @ExperimentalMaterialApi

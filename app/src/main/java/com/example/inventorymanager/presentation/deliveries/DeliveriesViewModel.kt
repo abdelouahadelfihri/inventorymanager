@@ -13,7 +13,7 @@ import ro.alexmamo.roomjetpackcompose.domain.repository.BookRepository
 import javax.inject.Inject
 
 @HiltViewModel
-class BooksViewModel @Inject constructor(
+class DeliveriesViewModel @Inject constructor(
     private val repo: BookRepository
 ) : ViewModel() {
     var book by mutableStateOf(Book(0, EMPTY_STRING, EMPTY_STRING))
