@@ -1,5 +1,6 @@
 package com.example.inventorymanager.domain.repository
 
+import com.example.inventorymanager.domain.model.Inventory
 import com.example.inventorymanager.domain.model.Location
 import kotlinx.coroutines.flow.Flow
 
@@ -17,5 +18,7 @@ interface LocationRepository {
     suspend fun updateLocationInRoom(location: Location)
 
     suspend fun deleteLocationFromRoom(location: Location)
+
+    fun searchLocations(query: String): Flow<List<Location>>
 
 }
