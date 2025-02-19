@@ -2,6 +2,8 @@ package com.example.inventorymanager.data.dao
 
 import androidx.room.*
 import com.example.inventorymanager.core.Constants.Companion.ORDER_DETAILS_TABLE
+import com.example.inventorymanager.core.Constants.Companion.ORDER_TABLE
+import com.example.inventorymanager.domain.model.Order
 import com.example.inventorymanager.domain.model.OrderDetails
 
 import kotlinx.coroutines.flow.Flow
@@ -23,4 +25,7 @@ interface OrderDetailsDao {
 
     @Query("SELECT * FROM $ORDER_DETAILS_TABLE")
     fun getAll(): Flow<List<OrderDetails>>
+
+    @Query("SELECT * FROM $ORDER_TABLE WHERE name LIKE :searchQuery")
+    fun searchOrdersDetails(searchQuery: String): Flow<List<OrderDetails>>
 }
