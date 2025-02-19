@@ -2,6 +2,7 @@ package com.example.inventorymanager.data.repository
 
 import com.example.inventory.domain.model.DeliveryDetails
 import com.example.inventorymanager.data.dao.DeliveryDetailsDao
+import com.example.inventorymanager.domain.model.Delivery
 import com.example.inventorymanager.domain.repository.DeliveryDetailsRepository
 import kotlinx.coroutines.flow.Flow
 
@@ -29,5 +30,9 @@ class DeliveryDetailsRepositoryImpl(
         val deliveryDetails = deliveryDetailsDao.getByIds(deliveryId, productId, warehouseId)
             ?: throw Exception("Order not found")
         deliveryDetailsDao.delete(deliveryDetails)
+    }
+
+    override fun searchDeliveriesDetails(query: String): Flow<List<DeliveryDetails>> {
+        return deliveryDetailsDao.searchDeliveriesDetails("%$query%")
     }
 }
