@@ -1,5 +1,6 @@
 package com.example.inventorymanager.domain.repository
 
+import com.example.inventorymanager.domain.model.Location
 import com.example.inventorymanager.domain.model.Order
 import kotlinx.coroutines.flow.Flow
 
@@ -17,5 +18,7 @@ interface OrderRepository {
     suspend fun updateOrderInRoom(order: Order)
 
     suspend fun deleteOrderFromRoom(order: Order)
+
+    fun searchOrders(query: String): Flow<List<Order>>
 
 }

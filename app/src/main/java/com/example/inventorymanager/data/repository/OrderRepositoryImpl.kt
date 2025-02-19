@@ -2,7 +2,9 @@ package com.example.inventorymanager.data.repository
 
 import com.example.inventorymanager.domain.model.Order
 import com.example.inventorymanager.data.dao.OrderDao
+import com.example.inventorymanager.domain.model.Location
 import com.example.inventorymanager.domain.repository.OrderRepository
+import kotlinx.coroutines.flow.Flow
 
 class OrderRepositoryImpl(
     private val orderDao: OrderDao
@@ -16,4 +18,8 @@ class OrderRepositoryImpl(
     override suspend fun updateOrderInRoom(order: Order) = orderDao.updateOrder(order)
 
     override suspend fun deleteOrderFromRoom(order: Order) = orderDao.deleteOrder(order)
+
+    override fun searchOrders(query: String): Flow<List<Order>> {
+        return orderDao.searchOrders("%$query%")
+    }
 }
