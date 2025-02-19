@@ -1,5 +1,6 @@
 package com.example.inventorymanager.domain.repository
 
+import com.example.inventorymanager.domain.model.Provider
 import com.example.inventorymanager.domain.model.Transfer
 import kotlinx.coroutines.flow.Flow
 
@@ -17,5 +18,7 @@ interface TransferRepository {
     suspend fun updateTransferInRoom(transfer: Transfer)
 
     suspend fun deleteTransferFromRoom(transfer: Transfer)
+
+    fun searchTransfers(query: String): Flow<List<Transfer>>
 
 }
