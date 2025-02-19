@@ -2,7 +2,6 @@ package com.example.inventorymanager.data.repository
 
 import com.example.inventorymanager.domain.model.Order
 import com.example.inventorymanager.data.dao.OrderDao
-import com.example.inventorymanager.domain.model.Location
 import com.example.inventorymanager.domain.repository.OrderRepository
 import kotlinx.coroutines.flow.Flow
 
