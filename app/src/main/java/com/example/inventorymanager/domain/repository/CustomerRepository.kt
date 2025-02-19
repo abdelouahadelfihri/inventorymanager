@@ -18,4 +18,7 @@ interface CustomerRepository {
 
     suspend fun deleteCustomerFromRoom(id: Int)
 
+    // 🔹 Add search function
+    fun searchCustomers(query: String): Flow<List<Customer>>
+
 }

@@ -29,4 +29,7 @@ interface CustomerDao {
     @Delete
     suspend fun deleteCustomer(id: Int)
 
+    @Query("SELECT * FROM $CUSTOMER_TABLE WHERE name LIKE :searchQuery")
+    fun searchCustomers(searchQuery: String): Flow<List<Customer>>
+
 }
