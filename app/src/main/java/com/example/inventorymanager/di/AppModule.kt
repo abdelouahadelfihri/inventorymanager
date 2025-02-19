@@ -7,11 +7,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import com.example.inventorymanager.core.Constants.Companion.BOOK_TABLE
 import com.example.inventorymanager.data.dao.BookDao
-import com.example.inventorymanager.data.network.AppDatabase
 import com.example.inventorymanager.data.repository.BookRepositoryImpl
-import com.example.inventorymanager.domain.repository.BookRepository
 
 @Module
 @InstallIn(SingletonComponent::class)
