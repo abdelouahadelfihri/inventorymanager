@@ -6,10 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.inventorymanager.presentation.books.components.AddBookAlertDialog
-import com.example.inventorymanager.presentation.books.components.AddBookFloatingActionButton
-import com.example.inventorymanager.presentation.books.components.BooksContent
-import com.example.inventorymanager.presentation.books.components.BooksTopBar
+import com.example.inventorymanager.presentation.customers.list.components.AddBookAlertDialog
+import com.example.inventorymanager.presentation.customers.list.components.AddBookFloatingActionButton
+import com.example.inventorymanager.presentation.customers.list.components.BooksContent
+import com.example.inventorymanager.presentation.customers.list.components.BooksTopBar
 
 @Composable
 @ExperimentalMaterialApi
