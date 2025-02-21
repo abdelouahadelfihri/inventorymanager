@@ -1,4 +1,4 @@
-package ro.alexmamo.roomjetpackcompose.presentation.books.components
+package com.example.inventorymanager.presentation.books.components
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -12,29 +12,39 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import ro.alexmamo.roomjetpackcompose.domain.model.Book
-import ro.alexmamo.roomjetpackcompose.domain.repository.Books
+import com.example.inventorymanager.domain.model.Customer
+import com.example.inventorymanager.domain.repository.Customers
+import com.example.inventorymanager.presentation.books.CustomersViewModel
 
 @Composable
 @ExperimentalMaterialApi
-fun BooksContent(
+fun CustomersContent(
     padding: PaddingValues,
-    books: Books,
-    deleteBook: (book: Book) -> Unit,
-    navigateToUpdateBookScreen: (bookId: Int) -> Unit
+    viewModel: CustomersViewModel = hiltViewModel(),
+    deleteCustomer: (customer: Customer) -> Unit,
+    navigateToUpdateCustomerScreen: (customerId: Int) -> Unit
 ) {
+
+    var searchQuery by remember { mutableStateOf("") }
+
+    val books by viewModel.searchResults.collectAsState()
+
+    TextField(
+        value = searchQuery,
+        onValueChange = {
+            searchQuery = it
+            viewModel.searchBooks(it) // Call search function
+        },
+        label = { Text("Search Books") },
+        leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
+        modifier = Modifier.fillMaxWidth()
+    )
+
+    Spacer(modifier = Modifier.height(16.dp))
+
     LazyColumn(
         modifier = Modifier.fillMaxSize().padding(padding)
     ) {
-        TextField(
-            value = searchQuery,
-            onValueChange = { searchQuery = it },
-            label = { Text("Search...") },
-            leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
         items(
             items = books
         ) { book ->

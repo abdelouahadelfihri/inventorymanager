@@ -1,4 +1,4 @@
-package ro.alexmamo.roomjetpackcompose.presentation.books
+package com.example.inventorymanager.presentation.books
 
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Scaffold
@@ -6,10 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
-import ro.alexmamo.roomjetpackcompose.presentation.books.components.AddBookAlertDialog
-import ro.alexmamo.roomjetpackcompose.presentation.books.components.AddBookFloatingActionButton
-import ro.alexmamo.roomjetpackcompose.presentation.books.components.BooksContent
-import ro.alexmamo.roomjetpackcompose.presentation.books.components.BooksTopBar
+import com.example.inventorymanager.presentation.books.components.AddBookAlertDialog
+import com.example.inventorymanager.presentation.books.components.AddBookFloatingActionButton
+import com.example.inventorymanager.presentation.books.components.BooksContent
+import com.example.inventorymanager.presentation.books.components.BooksTopBar
 
 @Composable
 @ExperimentalMaterialApi
@@ -28,7 +28,6 @@ fun BooksScreen(
         content = { padding ->
             BooksContent(
                 padding = padding,
-                books = books,
                 deleteBook = { book ->
                     viewModel.deleteBook(book)
                 },

@@ -41,6 +41,8 @@ android {
 
 dependencies {
     implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation("androidx.compose.material:material:1.5.1")
     implementation(libs.androidx.core.ktx)
     implementation("com.google.dagger:dagger:2.24")
     implementation("com.google.dagger:hilt-android:2.50")
