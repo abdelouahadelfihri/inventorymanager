@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.books
+package com.example.inventorymanager.presentation.customers.list
 
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Scaffold
@@ -6,15 +6,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.inventorymanager.presentation.customers.list.components.AddBookAlertDialog
-import com.example.inventorymanager.presentation.customers.list.components.AddBookFloatingActionButton
-import com.example.inventorymanager.presentation.customers.list.components.BooksContent
-import com.example.inventorymanager.presentation.customers.list.components.BooksTopBar
 
 @Composable
 @ExperimentalMaterialApi
 fun BooksScreen(
-    viewModel: BooksViewModel = hiltViewModel(),
+    viewModel: CustomersViewModel = hiltViewModel(),
     navigateToUpdateBookScreen: (bookId: Int) -> Unit
 ) {
     val books by viewModel.books.collectAsState(
@@ -23,17 +19,17 @@ fun BooksScreen(
 
     Scaffold(
         topBar = {
-            BooksTopBar()
+            CustomersTopBar()
         },
         content = { padding ->
-            BooksContent(
+            CustomersContent(
                 padding = padding,
                 deleteBook = { book ->
                     viewModel.deleteBook(book)
                 },
                 navigateToUpdateBookScreen = navigateToUpdateBookScreen
             )
-            AddBookAlertDialog(
+            AddCustomerAlertDialog(
                 openDialog = viewModel.openDialog,
                 closeDialog = {
                     viewModel.closeDialog()
@@ -44,7 +40,7 @@ fun BooksScreen(
             )
         },
         floatingActionButton = {
-            AddBookFloatingActionButton(
+            AddCustomerFloatingActionButton(
                 openDialog = {
                     viewModel.openDialog()
                 }
