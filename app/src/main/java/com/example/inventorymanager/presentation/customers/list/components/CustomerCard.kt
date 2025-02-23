@@ -8,13 +8,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.inventorymanager.domain.model.Customer
 
 @Composable
 @ExperimentalMaterialApi
-fun BookCard(
-    book: Book,
-    deleteBook: () -> Unit,
-    navigateToUpdateBookScreen: (bookId: Int) -> Unit
+fun CustomerCard(
+    customer: Customer,
+    deleteCustomer: () -> Unit,
+    navigateToUpdateCustomerScreen: (customerId: Int) -> Unit
 ) {
     Card(
         shape = MaterialTheme.shapes.small,
