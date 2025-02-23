@@ -5,6 +5,9 @@
       <SelectionState runConfigName="Inventory_Manager.app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="Expenses Incomes Manager.Expenses_Incomes_Manager.app">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
     </selectionStates>
   </component>
 </project>
