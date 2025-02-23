@@ -55,6 +55,34 @@ fun CustomersContent(
     LazyColumn(
         modifier = Modifier.fillMaxSize().padding(padding)
     ) {
+        item {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colorScheme.primary)
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = "Title",
+                    modifier = Modifier.weight(1f),
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "Author",
+                    modifier = Modifier.weight(1f),
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "Actions",
+                    modifier = Modifier.weight(1f),
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
         items(
             items = customers
         ) { customer ->
