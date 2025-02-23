@@ -24,8 +24,8 @@ class Constants {
         const val BOOK_ID = "bookId"
 
         //Actions
-        const val ADD_BOOK = "Add a book."
-        const val DELETE_BOOK = "Delete a book."
+        const val ADD_CUSTOMER = "Add a customer."
+        const val DELETE_CUSTOMER = "Delete a customer."
 
         //Buttons
         const val ADD_BUTTON = "Add"
@@ -33,7 +33,7 @@ class Constants {
         const val UPDATE_BUTTON = "Update"
 
         //Placeholders
-        const val BOOK_TITLE = "Type a book title..."
+        const val CUSTOMER_TITLE = "Type a customer title..."
         const val AUTHOR = "Type the author name..."
         const val EMPTY_STRING = ""
     }
