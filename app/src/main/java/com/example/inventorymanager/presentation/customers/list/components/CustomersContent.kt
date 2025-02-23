@@ -93,9 +93,9 @@ fun CustomersContent(
         items(
             items = customers
         ) { customer ->
-            BookCard(
+            CustomerCard(
                 customer = customer,
-                deleteBook = {
+                deleteCustomer = {
                     deleteCustomer(customer)
                 },
                 navigateToUpdateCustomerScreen = navigateToUpdateCustomerScreen
