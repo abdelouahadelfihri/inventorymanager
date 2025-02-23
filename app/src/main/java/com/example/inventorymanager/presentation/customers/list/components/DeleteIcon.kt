@@ -5,7 +5,7 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
-import com.example.inventorymanager.core.Constants.Companion.DELETE_BOOK
+import com.example.inventorymanager.core.Constants.Companion.DELETE_CUSTOMER
 
 @Composable
 fun DeleteIcon(
