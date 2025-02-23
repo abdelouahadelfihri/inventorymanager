@@ -40,6 +40,23 @@ android {
 }
 
 dependencies {
+    // For Material 3
+    implementation("androidx.compose.material3:material3:1.2.0")
+
+    // Core Compose libraries
+    implementation("androidx.compose.ui:ui:1.5.1")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.5.1")
+
+    // For Compose Activity integration
+    implementation("androidx.activity:activity-compose:1.7.2")
+    // Jetpack Compose
+    implementation("androidx.compose.ui:ui:1.5.1")
+    implementation("androidx.compose.runtime:runtime-livedata:1.5.1")
+
+// Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation("androidx.compose.material:material:1.5.1")
