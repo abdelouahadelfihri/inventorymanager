@@ -63,7 +63,7 @@ fun CustomersContent(
                 deleteBook = {
                     deleteCustomer(customer)
                 },
-                navigateToUpdateBookScreen = navigateToUpdateBookScreen
+                navigateToUpdateCustomerScreen = navigateToUpdateCustomerScreen
             )
         }
     }
