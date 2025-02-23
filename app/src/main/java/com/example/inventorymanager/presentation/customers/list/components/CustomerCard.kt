@@ -13,7 +13,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.inventorymanager.domain.model.Customer
-import ro.alexmamo.roomjetpackcompose.presentation.books.components.DeleteIcon
+import com.example.inventorymanager.presentation.customers.list.DeleteIcon
+
 
 @Composable
 @ExperimentalMaterialApi
@@ -66,26 +67,7 @@ fun CustomerCard(
                 modifier = Modifier.weight(1f)
             )
             DeleteIcon(
-                deleteBook = deleteBook
-            )
-        }
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(12.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Column {
-                TextTitle(
-                    bookTitle = book.title
-                )
-                TextAuthor(
-                    bookAuthor = book.author
-                )
-            }
-            Spacer(
-                modifier = Modifier.weight(1f)
-            )
-            DeleteIcon(
-                deleteBook = deleteBook
+                deleteCustomer = deleteCustomer
             )
         }
     }
