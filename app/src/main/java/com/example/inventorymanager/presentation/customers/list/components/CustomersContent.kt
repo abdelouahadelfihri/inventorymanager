@@ -71,19 +71,13 @@ fun CustomersContent(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = "Title",
+                    text = "Customer Id",
                     modifier = Modifier.weight(1f),
                     color = Color.White,
                     fontWeight = FontWeight.Bold
                 )
                 Text(
-                    text = "Author",
-                    modifier = Modifier.weight(1f),
-                    color = Color.White,
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = "Actions",
+                    text = "Customer Name",
                     modifier = Modifier.weight(1f),
                     color = Color.White,
                     fontWeight = FontWeight.Bold
