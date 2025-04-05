@@ -7,7 +7,6 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -46,7 +45,7 @@ fun CustomerCard(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Title",
+                text = "${customer.customerId}",
                 modifier = Modifier.weight(1f),
                 color = Color.White,
                 fontWeight = FontWeight.Bold
