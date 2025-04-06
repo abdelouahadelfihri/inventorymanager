@@ -3,7 +3,6 @@ package com.example.inventorymanager.core
 class Constants {
     companion object {
         //Room
-        const val BOOK_TABLE = "book"
         const val PROVIDER_TABLE = "provider"
         const val CUSTOMER_TABLE = "customer"
         const val INVENTORY_TABLE = "inventory"
@@ -24,7 +23,7 @@ class Constants {
         const val BOOK_ID = "bookId"
 
         //Actions
-        const val ADD_CUSTOMER = "Add a customer."
+        const val ADD_CUSTOMER = "Add A Customer."
         const val DELETE_CUSTOMER = "Delete a customer."
 
         //Buttons
@@ -33,8 +32,9 @@ class Constants {
         const val UPDATE_BUTTON = "Update"
 
         //Placeholders
-        const val CUSTOMER_TITLE = "Type a customer title..."
         const val AUTHOR = "Type the author name..."
+        const val CUSTOMER_NAME = "Customer Name"
+        const val CUSTOMER_ADDRESS = "Customer Address"
         const val EMPTY_STRING = ""
     }
 }
