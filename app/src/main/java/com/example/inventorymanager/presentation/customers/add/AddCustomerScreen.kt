@@ -6,7 +6,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.inventorymanager.presentation.customers.CustomersViewModel
 import com.example.inventorymanager.presentation.customers.add.components.AddCustomerContent
-import com.example.inventorymanager.presentation.customers.add.components.AddBookContent
+import com.example.inventorymanager.presentation.customers.add.components.AddCustomerTopBar
 
 
 @Composable

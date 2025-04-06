@@ -1,4 +1,4 @@
-package ro.alexmamo.roomjetpackcompose.presentation.update_book.components
+package com.example.inventorymanager.presentation.customers.add.components
 
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import com.example.inventorymanager.core.Constants.Companion.ADD_CUSTOMER
 
 @Composable
-fun UpdateCustomerTopBar(
+fun AddCustomerTopBar(
     navigateBack: () -> Unit
 ) {
     TopAppBar (
