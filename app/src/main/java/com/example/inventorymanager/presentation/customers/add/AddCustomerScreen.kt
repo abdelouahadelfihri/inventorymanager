@@ -27,15 +27,9 @@ fun AddCustomerScreen(
         content = { padding ->
             AddCustomerContent(
                 padding = padding,
-                book = viewModel.customer,
-                updateTitle = { title ->
-                    viewModel.updateTitle(title)
-                },
-                updateAuthor = { author ->
-                    viewModel.updateAuthor(author)
-                },
-                updateBook = { book ->
-                    viewModel.updateBook(book)
+                customer = viewModel.customer,
+                addCustomer = { customer ->
+                    viewModel.addCustomer(customer)
                 },
                 navigateBack = navigateBack
             )
