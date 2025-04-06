@@ -9,12 +9,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.core.Constants.Companion.CUSTOMER_ADDRESS
-import com.example.inventorymanager.core.Constants.Companion.CUSTOMER_NAME
-import com.example.inventorymanager.core.Constants.Companion.ADD_BUTTON
 import com.example.inventorymanager.domain.model.Customer
 
 @Composable
