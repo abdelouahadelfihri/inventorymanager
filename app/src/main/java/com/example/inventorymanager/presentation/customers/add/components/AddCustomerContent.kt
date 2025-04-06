@@ -5,6 +5,10 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -20,39 +24,42 @@ fun AddCustomerContent(
     addCustomer: (customer: Customer) -> Unit,
     navigateBack: () -> Unit
 ) {
+    var name by remember { mutableStateOf("") }
+    var address by remember { mutableStateOf("") }
+
     Column(
-        modifier = Modifier.fillMaxSize().padding(padding),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp) // spacing between fields
     ) {
         TextField(
-            value = customer.name,
+            value = name,
+            onValueChange = { name = it },
             placeholder = {
-                Text(
-                    text = CUSTOMER_NAME
-                )
-            }
+                Text(text = "Enter customer name")
+            },
+            modifier = Modifier.fillMaxWidth()
         )
-        Spacer(
-            modifier = Modifier.height(8.dp)
-        )
+
         TextField(
-            value = customer.address,
+            value = address,
+            onValueChange = { address = it },
             placeholder = {
-                Text(
-                    text = CUSTOMER_ADDRESS
-                )
-            }
+                Text(text = "Enter customer address")
+            },
+            modifier = Modifier.fillMaxWidth()
         )
+
         Button(
             onClick = {
-                addCustomer(customer)
-                navigateBack()
-            }
+                // Handle Save Button Click
+                // e.g., save to database or navigate back
+            },
+            modifier = Modifier.fillMaxWidth()
         ) {
-            Text(
-                text = ADD_BUTTON
-            )
+            Text(text = "Save Customer")
         }
     }
+
 }
