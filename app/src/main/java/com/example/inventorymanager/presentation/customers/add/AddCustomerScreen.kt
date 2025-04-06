@@ -5,26 +5,29 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.inventorymanager.presentation.customers.CustomersViewModel
+import com.example.inventorymanager.presentation.customers.add.components.AddCustomerContent
+import com.example.inventorymanager.presentation.customers.add.components.AddBookContent
+
 
 @Composable
 fun AddCustomerScreen(
     viewModel: CustomersViewModel = hiltViewModel(),
-    bookId: Int,
+    customerId: Int,
     navigateBack: () -> Unit
 ) {
     LaunchedEffect(Unit) {
-        viewModel.getBook(bookId)
+        viewModel.getCustomer(customerId)
     }
     Scaffold(
         topBar = {
-            UpdateBookTopBar(
+            AddCustomerTopBar(
                 navigateBack = navigateBack
             )
         },
         content = { padding ->
-            UpdateBookContent(
+            UpdateCustomerContent(
                 padding = padding,
-                book = viewModel.book,
+                book = viewModel.customer,
                 updateTitle = { title ->
                     viewModel.updateTitle(title)
                 },

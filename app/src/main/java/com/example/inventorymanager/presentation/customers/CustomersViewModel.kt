@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.books
+package com.example.inventorymanager.presentation.customers
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -51,14 +51,6 @@ class CustomersViewModel @Inject constructor(
                 _searchResults.value = customers
             }
         }
-    }
-
-    fun updateTitle(title: String) {
-        customer = customer.copy(title = title)
-    }
-
-    fun updateAuthor(author: String) {
-        customer = customer.copy(author = author)
     }
 
     fun openDialog() {

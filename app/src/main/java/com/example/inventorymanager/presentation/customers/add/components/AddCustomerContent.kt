@@ -14,7 +14,7 @@ import com.example.inventorymanager.core.Constants.Companion.ADD_BUTTON
 import com.example.inventorymanager.domain.model.Customer
 
 @Composable
-fun AddBookContent(
+fun AddCustomerContent(
     padding: PaddingValues,
     customer: Customer,
     updateTitle: (title: String) -> Unit,
