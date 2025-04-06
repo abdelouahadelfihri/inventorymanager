@@ -27,9 +27,6 @@ fun AddCustomerContent(
     ) {
         TextField(
             value = customer.name,
-            onValueChange = { title ->
-                updateTitle(title)
-            },
             placeholder = {
                 Text(
                     text = CUSTOMER_NAME
@@ -41,9 +38,6 @@ fun AddCustomerContent(
         )
         TextField(
             value = customer.address,
-            onValueChange = { author ->
-                updateAuthor(author)
-            },
             placeholder = {
                 Text(
                     text = CUSTOMER_ADDRESS
