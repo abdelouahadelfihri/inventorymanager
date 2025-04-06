@@ -8,18 +8,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import ro.alexmamo.roomjetpackcompose.core.Constants.Companion.AUTHOR
-import ro.alexmamo.roomjetpackcompose.core.Constants.Companion.BOOK_TITLE
-import ro.alexmamo.roomjetpackcompose.core.Constants.Companion.UPDATE_BUTTON
-import ro.alexmamo.roomjetpackcompose.domain.model.Book
+import com.example.inventorymanager.core.Constants.Companion.AUTHOR
+import com.example.inventorymanager.core.Constants.Companion.CUSTOMER_TITLE
+import com.example.inventorymanager.core.Constants.Companion.UPDATE_BUTTON
+import com.example.inventorymanager.domain.model.Customer
 
 @Composable
-fun UpdateBookContent(
+fun AddBookContent(
     padding: PaddingValues,
-    book: Book,
+    customer: Customer,
     updateTitle: (title: String) -> Unit,
     updateAuthor: (author: String) -> Unit,
-    updateBook: (book: Book) -> Unit,
+    addCustomer: (customer: Customer) -> Unit,
     navigateBack: () -> Unit
 ) {
     Column(
@@ -28,13 +28,13 @@ fun UpdateBookContent(
         verticalArrangement = Arrangement.Center
     ) {
         TextField(
-            value = book.title,
+            value = customer.name,
             onValueChange = { title ->
                 updateTitle(title)
             },
             placeholder = {
                 Text(
-                    text = BOOK_TITLE
+                    text = CUSTOMER_NAME
                 )
             }
         )
@@ -42,24 +42,24 @@ fun UpdateBookContent(
             modifier = Modifier.height(8.dp)
         )
         TextField(
-            value = book.author,
+            value = customer.address,
             onValueChange = { author ->
                 updateAuthor(author)
             },
             placeholder = {
                 Text(
-                    text = AUTHOR
+                    text = CUSTOMER_ADDRESS
                 )
             }
         )
         Button(
             onClick = {
-                updateBook(book)
+                addCustomer(customer)
                 navigateBack()
             }
         ) {
             Text(
-                text = UPDATE_BUTTON
+                text = ADD_BUTTON
             )
         }
     }
