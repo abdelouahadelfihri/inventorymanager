@@ -8,8 +8,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.core.Constants.Companion.AUTHOR
-import com.example.inventorymanager.core.Constants.Companion.CUSTOMER_TITLE
+import com.example.inventorymanager.core.Constants.Companion.CUSTOMER_ADDRESS
+import com.example.inventorymanager.core.Constants.Companion.CUSTOMER_NAME
 import com.example.inventorymanager.core.Constants.Companion.ADD_BUTTON
 import com.example.inventorymanager.domain.model.Customer
 
