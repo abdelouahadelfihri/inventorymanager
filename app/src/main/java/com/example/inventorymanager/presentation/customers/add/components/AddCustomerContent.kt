@@ -49,8 +49,8 @@ fun AddCustomerContent(
 
         Button(
             onClick = {
-                // Handle Save Button Click
-                // e.g., save to database or navigate back
+                addCustomer(customer)
+                navigateBack()
             },
             modifier = Modifier.fillMaxWidth()
         ) {
