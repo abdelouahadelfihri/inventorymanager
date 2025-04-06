@@ -25,7 +25,7 @@ fun AddCustomerScreen(
             )
         },
         content = { padding ->
-            UpdateCustomerContent(
+            AddCustomerContent(
                 padding = padding,
                 book = viewModel.customer,
                 updateTitle = { title ->

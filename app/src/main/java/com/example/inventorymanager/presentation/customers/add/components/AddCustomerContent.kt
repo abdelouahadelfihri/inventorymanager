@@ -17,8 +17,6 @@ import com.example.inventorymanager.domain.model.Customer
 fun AddCustomerContent(
     padding: PaddingValues,
     customer: Customer,
-    updateTitle: (title: String) -> Unit,
-    updateAuthor: (author: String) -> Unit,
     addCustomer: (customer: Customer) -> Unit,
     navigateBack: () -> Unit
 ) {
