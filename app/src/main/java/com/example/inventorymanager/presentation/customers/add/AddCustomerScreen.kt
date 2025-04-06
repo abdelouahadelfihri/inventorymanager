@@ -1,15 +1,14 @@
-package ro.alexmamo.roomjetpackcompose.presentation.update_book
+package com.example.inventorymanager.presentation.customers.add
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
-import ro.alexmamo.roomjetpackcompose.presentation.update_book.components.UpdateBookContent
-import ro.alexmamo.roomjetpackcompose.presentation.update_book.components.UpdateBookTopBar
+import com.example.inventorymanager.presentation.customers.CustomersViewModel
 
 @Composable
-fun UpdateBookScreen(
-    viewModel: BooksViewModel = hiltViewModel(),
+fun AddCustomerScreen(
+    viewModel: CustomersViewModel = hiltViewModel(),
     bookId: Int,
     navigateBack: () -> Unit
 ) {
