@@ -17,7 +17,7 @@ class Constants {
 
         //Screens
         const val BOOKS_SCREEN = "Books"
-        const val UPDATE_BOOK_SCREEN = "Update book"
+        const val ADD_DELIVERY_SCREEN = "Add Delivery"
 
         //Arguments
         const val BOOK_ID = "bookId"

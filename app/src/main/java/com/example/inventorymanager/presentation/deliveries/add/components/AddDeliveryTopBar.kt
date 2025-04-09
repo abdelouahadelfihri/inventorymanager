@@ -7,7 +7,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.runtime.Composable
-import com.example.inventorymanager.core.Constants.Companion.UPDATE_BOOK_SCREEN
+import com.example.inventorymanager.core.Constants.Companion.ADD_DELIVERY_SCREEN
 
 @Composable
 fun AddDeliveryTopBar(
@@ -16,7 +16,7 @@ fun AddDeliveryTopBar(
     TopAppBar (
         title = {
             Text(
-                text = UPDATE_BOOK_SCREEN
+                text = ADD_DELIVERY_SCREEN
             )
         },
         navigationIcon = {
