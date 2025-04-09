@@ -16,8 +16,14 @@ class Constants {
         const val ORDER_DETAILS_TABLE = "order_details"
 
         //Screens
-        const val BOOKS_SCREEN = "Books"
         const val ADD_DELIVERY_SCREEN = "Add Delivery"
+        const val ADD_LOCATION_SCREEN = "Add Location"
+        const val ADD_ORDER_SCREEN = "Add Order"
+        const val ADD_PRODUCT_SCREEN = "Add Product"
+        const val ADD_PROVIDER_SCREEN = "Add Provider"
+        const val ADD_TRANSFER_SCREEN = "Add Transfer"
+        const val ADD_WAREHOUSE_SCREEN = "Add Warehouse"
+        const val ADD_CUSTOMER_SCREEN = "Add Customer"
 
         //Arguments
         const val BOOK_ID = "bookId"
