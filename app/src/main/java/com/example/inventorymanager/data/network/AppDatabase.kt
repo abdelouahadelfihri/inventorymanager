@@ -1,14 +1,15 @@
 package com.example.inventory.data.network
 
+import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.inventorymanager.domain.model.Product
-import com.example.inventory.domain.model.Order
-import com.example.inventory.domain.model.OrderDetails
-import com.example.inventory.data.dao.ProductDao
-import com.example.inventory.data.dao.OrderDetailsDao
-import com.example.inventory.data.dao.OrderDao
+import com.example.inventorymanager.domain.model.Order
+import com.example.inventorymanager.domain.model.OrderDetails
+import com.example.inventorymanager.data.dao.ProductDao
+import com.example.inventorymanager.data.dao.OrderDetailsDao
+import com.example.inventorymanager.data.dao.OrderDao
 
 
 @Database(entities = [Product::class, Order::class, OrderDetails::class], version = 1)
