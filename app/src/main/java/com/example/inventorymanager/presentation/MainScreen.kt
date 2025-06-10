@@ -61,7 +61,7 @@ abstract class AppDatabase : RoomDatabase() {
 
 
 @Composable
-fun DashboardScreen() {
+fun MainScreen() {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
@@ -209,76 +209,5 @@ fun IconCard(icon: ImageVector, modifier: Modifier = Modifier) {
         ) {
             Icon(icon, contentDescription = null, modifier = Modifier.size(28.dp))
         }
-    }
-}
-
-
-@Composable
-fun MainScreen(viewModel: MainViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
-    val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
-    val scope = rememberCoroutineScope()
-
-    Scaffold(
-        scaffoldState = scaffoldState,
-        topBar = {
-            TopAppBar(
-                title = { Text("Your App Name") },
-                navigationIcon = {
-                    IconButton(onClick = { scope.launch { scaffoldState.drawerState.open() } }) {
-                        Icon(Icons.Filled.Menu, contentDescription = "Menu")
-                    }
-                }
-            )
-        },
-        drawerContent = {
-            Text("Drawer Item 1", modifier = Modifier.padding(16.dp))
-            Text("Drawer Item 2", modifier = Modifier.padding(16.dp))
-        }
-    ) { paddingValues ->
-        Column(modifier = Modifier.padding(paddingValues)) {
-            // Secondary Bar
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Text("Your Secondary Text", fontSize = 20.sp, color = Color.Black)
-            }
-
-            // Grid View
-            GridView(viewModel)
-        }
-    }
-}
-
-@Composable
-fun GridView(viewModel: MainViewModel) {
-    val items by viewModel.items.collectAsState()
-
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
-        modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(8.dp)
-    ) {
-        items(items.size) { index ->
-            GridItemView(item = items[index])
-        }
-    }
-}
-
-@Composable
-fun GridItemView(item: ItemEntity) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp)
-            .clickable { },
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Icon(imageVector = Icons.Default.Folder, contentDescription = item.label, modifier = Modifier.size(50.dp))
-        Text(text = item.label, fontSize = 16.sp, textAlign = TextAlign.Center)
-        Text(text = "Count: ${item.count}", fontSize = 14.sp, color = Color.Gray)
     }
 }
