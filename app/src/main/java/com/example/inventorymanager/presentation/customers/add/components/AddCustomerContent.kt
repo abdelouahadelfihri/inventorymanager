@@ -19,8 +19,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 
-
-
 @Composable
 fun AddCustomerContent(
     padding: PaddingValues,
