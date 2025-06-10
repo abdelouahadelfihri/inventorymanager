@@ -49,21 +49,27 @@ fun UpdateCustomerContent(
             ) {
                 OutlinedTextField(
                     value = customer.customerId,
-                    onValueChange = { name = it },
+                    onValueChange = { title ->
+                        updateTitle(title)
+                    },
                     label = { Text("Customer Name") },
                     modifier = Modifier.fillMaxWidth()
                 )
 
                 OutlinedTextField(
                     value = customer.name,
-                    onValueChange = { name = it },
+                    onValueChange = { title ->
+                        updateTitle(title)
+                    },
                     label = { Text("Customer Name") },
                     modifier = Modifier.fillMaxWidth()
                 )
 
                 OutlinedTextField(
                     value = customer.address,
-                    onValueChange = { address = it },
+                    onValueChange = { title ->
+                        updateTitle(title)
+                    },
                     label = { Text("Customer Address") },
                     placeholder = { Text("Enter customer address") },
                     modifier = Modifier

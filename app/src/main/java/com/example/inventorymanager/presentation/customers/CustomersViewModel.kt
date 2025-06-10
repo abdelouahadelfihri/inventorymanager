@@ -32,6 +32,18 @@ class CustomersViewModel @Inject constructor(
         customer = repo.getCustomerFromRoom(id)
     }
 
+    fun updateTitle(title: String) {
+        book = book.copy(
+            title = title
+        )
+    }
+
+    fun updateAuthor(author: String) {
+        book = book.copy(
+            author = author
+        )
+    }
+
     fun addCustomer(customer: Customer) = viewModelScope.launch {
         repo.addCustomerToRoom(customer)
     }
