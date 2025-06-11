@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,6 +20,7 @@ fun UpdateCustomerContent(
     padding: PaddingValues,
     customer: Customer,
     updateCustomer: (Customer) -> Unit,
+    deleteCustomer: (Int) -> Unit,
     navigateBack: () -> Unit
 ) {
     var name by remember { mutableStateOf(customer.name) }
@@ -90,7 +92,7 @@ fun UpdateCustomerContent(
             ) {
                 Button(
                     onClick = {
-                        addCustomer(customer)
+                        updateCustomer(customer)
                         navigateBack()
                     }
                 ) {
@@ -99,8 +101,8 @@ fun UpdateCustomerContent(
 
                 Button(
                     onClick = {
-                        name = ""
-                        address = ""
+                        deleteCustomer(customer.customerId)
+                        navigateBack()
                     }
                 ) {
                     Text("Clear")
