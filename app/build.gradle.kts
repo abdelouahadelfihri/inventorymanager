@@ -1,9 +1,9 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
-    kotlin("kapt")
-    id("dagger.hilt.android.plugin")
+    alias(libs.plugins.androidApplication)   // because android-application -> androidApplication
+    alias(libs.plugins.kotlinAndroid)        // kotlin-android -> kotlinAndroid
+    alias(libs.plugins.kotlinCompose)        // kotlin-compose -> kotlinCompose
+    alias(libs.plugins.kotlinKapt)            // kotlin-kapt -> kotlinKapt
+    alias(libs.plugins.hilt)                   // hilt -> hilt
 }
 
 android {
@@ -63,10 +63,6 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     // Hilt core
     implementation("com.google.dagger:hilt-android:2.46.1") // Use latest version
-
-// Hilt compiler for annotation processing
-    kapt("com.google.dagger:hilt-android-compiler:2.46.1")
-
 // Hilt ViewModel integration with Jetpack ViewModel
     implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03") // (Deprecated but still used in older projects)
 
