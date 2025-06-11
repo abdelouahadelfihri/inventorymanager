@@ -61,7 +61,7 @@ dependencies {
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.compose.material:material:1.5.1")
     implementation(libs.androidx.core.ktx)
-    implementation("com.google.dagger:dagger:2.24")
+    implementation("com.google.dagger:dagger:2.50")
     implementation("com.google.dagger:hilt-android:2.50")
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
