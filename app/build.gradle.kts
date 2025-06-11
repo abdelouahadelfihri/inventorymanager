@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -59,6 +61,15 @@ dependencies {
 
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    // Hilt core
+    implementation("com.google.dagger:hilt-android:2.46.1") // Use latest version
+
+// Hilt compiler for annotation processing
+    kapt("com.google.dagger:hilt-android-compiler:2.46.1")
+
+// Hilt ViewModel integration with Jetpack ViewModel
+    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03") // (Deprecated but still used in older projects)
+
     implementation("androidx.compose.material:material:1.5.1")
     implementation(libs.androidx.core.ktx)
     implementation("com.google.dagger:dagger:2.24")
