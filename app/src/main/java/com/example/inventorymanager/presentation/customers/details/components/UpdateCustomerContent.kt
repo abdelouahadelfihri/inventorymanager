@@ -46,7 +46,7 @@ fun UpdateCustomerContent(
             ) {
 
                 OutlinedTextField(
-                    value = customer.customerId,
+                    value = customer.customerId.toString(),
                     onValueChange = {},
                     label = { Text("Customer ID") },
                     modifier = Modifier.fillMaxWidth(),
