@@ -32,13 +32,13 @@ class CustomersViewModel @Inject constructor(
         customer = repo.getCustomerFromRoom(id)
     }
 
-    fun updateTitle(title: String) {
-        book = book.copy(
-            title = title
+    fun updateName(name: String) {
+        customer = customer.copy(
+            name = name
         )
     }
 
-    fun updateAuthor(author: String) {
+    fun updateAddress(address: String) {
         book = book.copy(
             author = author
         )
