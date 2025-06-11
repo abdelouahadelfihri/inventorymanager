@@ -1,9 +1,7 @@
 plugins {
-    alias(libs.plugins.androidApplication)   // because android-application -> androidApplication
-    alias(libs.plugins.kotlinAndroid)        // kotlin-android -> kotlinAndroid
-    alias(libs.plugins.kotlinCompose)        // kotlin-compose -> kotlinCompose
-    alias(libs.plugins.kotlinKapt)            // kotlin-kapt -> kotlinKapt
-    alias(libs.plugins.hilt)                   // hilt -> hilt
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
