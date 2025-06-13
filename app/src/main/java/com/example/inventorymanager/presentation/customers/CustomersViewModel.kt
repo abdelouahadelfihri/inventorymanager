@@ -1,66 +1,48 @@
+package ro.alexmamo.roomjetpackcompose.presentation.customers
+
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import com.example.inventorymanager.core.Constants.Companion.EMPTY_STRING
 import com.example.inventorymanager.domain.model.Customer
 import com.example.inventorymanager.domain.repository.CustomerRepository
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CustomerViewModel(
-    private val repository: CustomerRepository
+@HiltViewModel
+class CustomersViewModel @Inject constructor(
+    private val repo: CustomerRepository
 ) : ViewModel() {
+    var customer by mutableStateOf(Customer(0, EMPTY_STRING, EMPTY_STRING))
+        private set
+    var openDialog by mutableStateOf(false)
 
-    private val _customers = MutableStateFlow<List<Customer>>(emptyList())
-    val customers: StateFlow<List<Customer>> = _customers
+    val customers = repo.getCustomersFromRoom()
 
-    var searchQuery by mutableStateOf("")
-    var selectedFilter by mutableStateOf("All")
-    val filters = listOf("All", "VIP", "Regular")
-
-    init {
-        loadCustomers()
+    fun getCustomer(id: Int) = viewModelScope.launch {
+        customer = repo.getCustomerFromRoom(id)
     }
 
-    fun loadCustomers() {
-        viewModelScope.launch {
-            _customers.value = repository.getCustomersFromRoom()
-        }
+    fun addCustomer(customer: Customer) = viewModelScope.launch {
+        repo.addCustomerToRoom(customer)
     }
 
-    fun onAddCustomer() {
-        viewModelScope.launch {
-            val newId = (_customers.value.maxOfOrNull { it.id } ?: 0) + 1
-            val newCustomer = Customer(newId, "New Customer $newId", "Regular")
-            repository.addCustomer(newCustomer)
-            loadCustomers() // refresh list from DB/repo
-        }
+    fun updateCustomer(customer: Customer) = viewModelScope.launch {
+        repo.updateCustomerInRoom(customer)
     }
 
-    fun onClearCustomers() {
-        viewModelScope.launch {
-            _customers.value.forEach {
-                repository.deleteCustomer(it)
-            }
-            loadCustomers()
-        }
+    fun deleteCustomer(id: Int) = viewModelScope.launch {
+        repo.deleteCustomerFromRoom(id)
     }
 
-    fun onRefreshCustomers() {
-        loadCustomers()
+    fun openDialog() {
+        openDialog = true
     }
 
-    fun onFilterSelected(filter: String) {
-        selectedFilter = filter
+    fun closeDialog() {
+        openDialog = false
     }
-
-    fun onSearchChange(query: String) {
-        searchQuery = query
-    }
-
-    val filteredCustomers: List<Customer>
-        get() = _customers.value.filter {
-            (selectedFilter == "All" || it.type == selectedFilter) &&
-                    it.name.contains(searchQuery, ignoreCase = true)
-        }
 }
