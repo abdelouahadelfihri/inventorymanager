@@ -18,6 +18,8 @@ class CustomersViewModel @Inject constructor(
 ) : ViewModel() {
     var customer by mutableStateOf(Customer(0, EMPTY_STRING, EMPTY_STRING))
         private set
+
+    val customers: StateFlow<List<Customer>> = _customers
     var openDialog by mutableStateOf(false)
 
     var searchQuery by mutableStateOf("")
@@ -54,5 +56,11 @@ class CustomersViewModel @Inject constructor(
 
     fun onRefreshCustomers() {
         loadCustomers()
+    }
+
+    fun loadCustomers() {
+        viewModelScope.launch {
+            _customers.value = repository.getAllCustomers()
+        }
     }
 }
