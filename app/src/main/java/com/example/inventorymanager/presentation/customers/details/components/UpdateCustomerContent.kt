@@ -96,7 +96,7 @@ fun UpdateCustomerContent(
                         navigateBack()
                     }
                 ) {
-                    Text("Save Customer")
+                    Text("Update")
                 }
 
                 Button(
@@ -105,7 +105,7 @@ fun UpdateCustomerContent(
                         navigateBack()
                     }
                 ) {
-                    Text("Clear")
+                    Text("Delete")
                 }
             }
         }
