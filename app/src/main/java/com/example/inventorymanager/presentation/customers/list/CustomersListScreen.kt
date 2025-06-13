@@ -16,9 +16,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import ro.alexmamo.roomjetpackcompose.presentation.customers.CustomersViewModel
 
 @Composable
-fun CustomerListScreen(viewModel: CustomerViewModel = hiltViewModel()) {
+fun CustomerListScreen(viewModel: CustomersViewModel = hiltViewModel()) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -27,19 +28,32 @@ fun CustomerListScreen(viewModel: CustomerViewModel = hiltViewModel()) {
             )
         },
         floatingActionButton = {
+            val navController = rememberNavController() // Or pass it from your NavHost
+
             Column(
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 horizontalAlignment = Alignment.End,
                 modifier = Modifier.padding(end = 16.dp, bottom = 16.dp)
             ) {
-                FloatingActionButton(onClick = { viewModel.onAddCustomer() }) {
+                // ➕ Add Customer: Navigate to Add Screen
+                FloatingActionButton(onClick = {
+                    navController.navigate("add_customer") // Example navigation route
+                }) {
                     Icon(Icons.Default.Add, contentDescription = "Add")
                 }
-                FloatingActionButton(onClick = { viewModel.onRefreshCustomers() }) {
+
+                // 🔄 Refresh: Reload from repository
+                FloatingActionButton(onClick = {
+                    viewModel.onRefreshCustomers()
+                }) {
                     Icon(Icons.Default.Refresh, contentDescription = "Refresh")
                 }
-                FloatingActionButton(onClick = { viewModel.onClearCustomers() }) {
-                    Icon(Icons.Default.Clear, contentDescription = "Clear")
+
+                // ❌ Clear: Clear only search field
+                FloatingActionButton(onClick = {
+                    viewModel.onClearSearch()
+                }) {
+                    Icon(Icons.Default.Clear, contentDescription = "Clear Search")
                 }
             }
         },
@@ -59,6 +73,7 @@ fun CustomerListScreen(viewModel: CustomerViewModel = hiltViewModel()) {
                         .fillMaxWidth()
                         .padding(bottom = 8.dp)
                 )
+
 
                 // Filter Row
                 Row(

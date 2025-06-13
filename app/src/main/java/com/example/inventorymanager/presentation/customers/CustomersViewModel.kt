@@ -45,4 +45,12 @@ class CustomersViewModel @Inject constructor(
     fun closeDialog() {
         openDialog = false
     }
+
+    fun onClearSearch() {
+        searchQuery = ""
+    }
+
+    fun onRefreshCustomers() {
+        loadCustomers()
+    }
 }
