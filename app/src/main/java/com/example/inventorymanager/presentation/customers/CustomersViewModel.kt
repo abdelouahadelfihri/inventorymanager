@@ -20,6 +20,8 @@ class CustomersViewModel @Inject constructor(
         private set
     var openDialog by mutableStateOf(false)
 
+    var searchQuery by mutableStateOf("")
+
     val customers = repo.getCustomersFromRoom()
 
     fun getCustomer(id: Int) = viewModelScope.launch {
