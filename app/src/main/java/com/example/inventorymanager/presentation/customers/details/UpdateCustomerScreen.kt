@@ -1,20 +1,19 @@
-package ro.alexmamo.roomjetpackcompose.presentation.update_book
+package com.example.inventorymanager.presentation.customers.details
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
-import ro.alexmamo.roomjetpackcompose.presentation.update_book.components.UpdateBookContent
-import ro.alexmamo.roomjetpackcompose.presentation.update_book.components.UpdateBookTopBar
+import com.example.inventorymanager.presentation.customers.CustomersViewModel
 
 @Composable
-fun UpdateBookScreen(
-    viewModel: BooksViewModel = hiltViewModel(),
-    bookId: Int,
+fun UpdateCustomerScreen(
+    viewModel: CustomersViewModel = hiltViewModel(),
+    customerId: Int,
     navigateBack: () -> Unit
 ) {
     LaunchedEffect(Unit) {
-        viewModel.getBook(bookId)
+        viewModel.getCustomer(customerId)
     }
     Scaffold(
         topBar = {
@@ -23,16 +22,13 @@ fun UpdateBookScreen(
             )
         },
         content = { padding ->
-            UpdateBookContent(
+            UpdateCustomerContent(
                 padding = padding,
-                book = viewModel.book,
-                updateTitle = { title ->
-                    viewModel.updateTitle(title)
+                book = viewModel.customer,
+                updateCustomer = { customer ->
+                    viewModel.updateCustomer(customer)
                 },
-                updateAuthor = { author ->
-                    viewModel.updateAuthor(author)
-                },
-                updateBook = { book ->
+                deleteBook = { book ->
                     viewModel.updateBook(book)
                 },
                 navigateBack = navigateBack

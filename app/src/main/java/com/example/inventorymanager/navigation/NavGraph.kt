@@ -3,51 +3,32 @@ package com.example.inventorymanager.navigation
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType.Companion.IntType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.navArgument
-import com.example.inventorymanager.core.Constants.Companion.BOOK_ID
-import com.example.inventorymanager.navigation.Screen.BooksScreen
-import com.example.inventorymanager.navigation.Screen.UpdateBookScreen
-import com.example.inventorymanager.presentation.books.BooksScreen
-import com.example.inventorymanager.presentation.update_book.UpdateBookScreen
+import com.example.inventorymanager.presentation.customers.list.CustomerListScreen
+import com.example.inventorymanager.presentation.customers.details.UpdateCustomerScreen
+import com.example.inventorymanager.presentation.customers.add.AddCustomerScreen
+import androidx.navigation.compose.rememberNavController
 
-@Composable
+
 @ExperimentalMaterialApi
-fun NavGraph (
-    navController: NavHostController
-) {
+@Composable
+fun AppNavHost(navController: NavHostController = rememberNavController()) {
     NavHost(
         navController = navController,
-        startDestination = BooksScreen.route
+        startDestination = "customer_list"
     ) {
-        composable(
-            route = BooksScreen.route
-        ) {
-            BooksScreen(
-                navigateToUpdateBookScreen = { bookId ->
-                    navController.navigate(
-                        route = "${UpdateBookScreen.route}/${bookId}"
-                    )
-                }
-            )
+        composable("customer_list") {
+            CustomerListScreen(navController)
         }
-        composable(
-            route = "${UpdateBookScreen.route}/{$BOOK_ID}",
-            arguments = listOf(
-                navArgument(BOOK_ID) {
-                    type = IntType
-                }
-            )
-        ) { backStackEntry ->
-            val bookId = backStackEntry.arguments?.getInt(BOOK_ID) ?: 0
-            UpdateBookScreen(
-                bookId = bookId,
-                navigateBack = {
-                    navController.popBackStack()
-                }
-            )
+        composable("add_customer") {
+            AddCustomerScreen(navController)
+        }
+        composable("update_customer/{customerId}") { backStackEntry ->
+            val customerId = backStackEntry.arguments?.getString("customerId")?.toIntOrNull()
+            if (customerId != null) {
+                UpdateCustomerScreen(navController, customerId)
+            }
         }
     }
 }
