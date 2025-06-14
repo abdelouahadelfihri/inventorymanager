@@ -1,4 +1,4 @@
-package ro.alexmamo.roomjetpackcompose.presentation.customers
+package com.example.inventorymanager.presentation.customers
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
