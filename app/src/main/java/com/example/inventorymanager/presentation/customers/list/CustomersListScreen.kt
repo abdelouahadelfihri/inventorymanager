@@ -120,20 +120,47 @@ fun CustomerListScreen(viewModel: CustomersViewModel = hiltViewModel()) {
                     ) { customer ->
                         // Now `customer` is of type Customer ✅
                         Card(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 8.dp),
                             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
                         ) {
                             Column(modifier = Modifier.padding(16.dp)) {
-                                Text(
-                                    text = "ID: ${customer.customerId}",
-                                    style = MaterialTheme.typography.titleMedium
-                                )
-                                Text(
-                                    text = "Type: ${customer.type}",
-                                    style = MaterialTheme.typography.bodySmall
-                                )
+
+                                // 🔹 Row 1: ID and Name
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween
+                                ) {
+                                    Text(
+                                        text = "ID: ${customer.customerId}",
+                                        style = MaterialTheme.typography.titleMedium
+                                    )
+                                    Text(
+                                        text = customer.name,
+                                        style = MaterialTheme.typography.titleMedium
+                                    )
+                                }
+
+                                Spacer(modifier = Modifier.height(8.dp))
+
+                                // 🔹 Row 2: Type and Contact (or leave contact out if not available)
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween
+                                ) {
+                                    Text(
+                                        text = "Type: ${customer.type}",
+                                        style = MaterialTheme.typography.bodySmall
+                                    )
+                                    Text(
+                                        text = "", // or customer.contact if available
+                                        style = MaterialTheme.typography.bodySmall
+                                    )
+                                }
                             }
                         }
+
                     }
 
                 }
