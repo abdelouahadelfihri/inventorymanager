@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ro.alexmamo.roomjetpackcompose.presentation.customers.CustomersViewModel
 import androidx.navigation.compose.rememberNavController
+import androidx.compose.foundation.lazy.items
 
 
 @Composable
@@ -113,7 +114,11 @@ fun CustomerListScreen(viewModel: CustomersViewModel = hiltViewModel()) {
                     verticalArrangement = Arrangement.spacedBy(6.dp),
                     contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
                 ) {
-                    items(viewModel.filteredCustomers) { customer ->
+                    items(
+                        items = viewModel.filteredCustomers,
+                        key = { it.customerId }
+                    ) { customer ->
+                        // Now `customer` is of type Customer ✅
                         Card(
                             modifier = Modifier.fillMaxWidth(),
                             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
@@ -130,6 +135,7 @@ fun CustomerListScreen(viewModel: CustomersViewModel = hiltViewModel()) {
                             }
                         }
                     }
+
                 }
 
             }
