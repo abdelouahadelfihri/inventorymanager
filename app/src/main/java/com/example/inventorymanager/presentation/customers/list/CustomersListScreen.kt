@@ -150,11 +150,11 @@ fun CustomerListScreen(viewModel: CustomersViewModel = hiltViewModel()) {
                                     horizontalArrangement = Arrangement.SpaceBetween
                                 ) {
                                     Text(
-                                        text = "Type: ${customer.type}",
+                                        text = "Type: ${customer.mobile}",
                                         style = MaterialTheme.typography.bodySmall
                                     )
                                     Text(
-                                        text = "", // or customer.contact if available
+                                        text = "Type: ${customer.phone}",
                                         style = MaterialTheme.typography.bodySmall
                                     )
                                 }
