@@ -24,7 +24,13 @@ class CustomersViewModel @Inject constructor(
 
     var selectedFilter by mutableStateOf("All")
     var filters = listOf("All", "Category 1", "Category 2")
-    var customer by mutableStateOf(Customer(0, EMPTY_STRING, EMPTY_STRING))
+    var customer by mutableStateOf(Customer(
+        0, EMPTY_STRING, EMPTY_STRING,
+        phone = TODO(),
+        mobile = TODO(),
+        fax = TODO(),
+        address = TODO()
+    ))
         private set
 
     var openDialog by mutableStateOf(false)
