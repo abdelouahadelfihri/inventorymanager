@@ -10,5 +10,9 @@ data class Customer(
     @PrimaryKey(autoGenerate = true)
     val customerId: Int,
     val name: String,
+    val email: String,
+    val phone: String,
+    val mobile: String,
+    val fax: String,
     val address: String
 )
