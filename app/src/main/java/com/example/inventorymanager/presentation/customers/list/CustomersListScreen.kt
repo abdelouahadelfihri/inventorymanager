@@ -20,7 +20,7 @@ import ro.alexmamo.roomjetpackcompose.presentation.customers.CustomersViewModel
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.foundation.lazy.items
 
-
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomerListScreen(viewModel: CustomersViewModel = hiltViewModel()) {
     Scaffold(
