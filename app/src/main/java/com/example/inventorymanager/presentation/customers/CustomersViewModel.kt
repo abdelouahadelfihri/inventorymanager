@@ -22,7 +22,6 @@ class CustomersViewModel @Inject constructor(
     private val _customers = MutableStateFlow<List<Customer>>(emptyList())
     val customers: StateFlow<List<Customer>> = _customers
 
-    var searchQuery by mutableStateOf("")
     var selectedFilter by mutableStateOf("All")
     var filters = listOf("All", "Category 1", "Category 2")
     var customer by mutableStateOf(Customer(0, EMPTY_STRING, EMPTY_STRING))
