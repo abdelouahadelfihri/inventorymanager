@@ -26,12 +26,12 @@ fun UpdateCustomerScreen(
         content = { padding ->
             UpdateCustomerContent(
                 padding = padding,
-                book = viewModel.customer,
+                customer = viewModel.customer,
                 updateCustomer = { customer ->
                     viewModel.updateCustomer(customer)
                 },
-                deleteBook = { book ->
-                    viewModel.updateBook(book)
+                deleteCustomer = { customerId ->
+                    viewModel.deleteCustomer(customerId)
                 },
                 navigateBack = navigateBack
             )
