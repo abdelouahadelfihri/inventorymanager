@@ -17,7 +17,7 @@ fun UpdateCustomerScreen(
     }
     Scaffold(
         topBar = {
-            UpdateBookTopBar(
+            UpdateCustomerTopBar(
                 navigateBack = navigateBack
             )
         },
