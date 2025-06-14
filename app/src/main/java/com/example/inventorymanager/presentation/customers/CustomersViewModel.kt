@@ -10,20 +10,27 @@ import kotlinx.coroutines.launch
 import com.example.inventorymanager.core.Constants.Companion.EMPTY_STRING
 import com.example.inventorymanager.domain.model.Customer
 import com.example.inventorymanager.domain.repository.CustomerRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 @HiltViewModel
 class CustomersViewModel @Inject constructor(
     private val repo: CustomerRepository
 ) : ViewModel() {
+
+    val customers: Flow<List<Customer>> = repo.getCustomersFromRoom()
+
+    var searchQuery by mutableStateOf("")
+    var selectedFilter by mutableStateOf("All")
+    var filters = listOf("All", "Category 1", "Category 2")
     var customer by mutableStateOf(Customer(0, EMPTY_STRING, EMPTY_STRING))
         private set
 
     var openDialog by mutableStateOf(false)
 
     var searchQuery by mutableStateOf("")
-
-    val customers = repo.getCustomersFromRoom()
 
     fun getCustomer(id: Int) = viewModelScope.launch {
         customer = repo.getCustomerFromRoom(id)
@@ -52,14 +59,11 @@ class CustomersViewModel @Inject constructor(
     fun onClearSearch() {
         searchQuery = ""
     }
-
-    fun onRefreshCustomers() {
-        loadCustomers()
+    fun onFilterSelected(filter: String) {
+        selectedFilter = filter
     }
 
-    fun loadCustomers() {
-        viewModelScope.launch {
-            _customers.value = repo.getCustomersFromRoom()
-        }
+    fun onSearchChange(query: String) {
+        searchQuery = query
     }
 }
