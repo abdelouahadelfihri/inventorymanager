@@ -10,7 +10,6 @@ import kotlinx.coroutines.launch
 import com.example.inventorymanager.core.Constants.Companion.EMPTY_STRING
 import com.example.inventorymanager.domain.model.Customer
 import com.example.inventorymanager.domain.repository.CustomerRepository
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject

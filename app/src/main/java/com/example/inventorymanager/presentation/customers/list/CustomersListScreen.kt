@@ -113,14 +113,14 @@ fun CustomerListScreen(viewModel: CustomersViewModel = hiltViewModel()) {
                     verticalArrangement = Arrangement.spacedBy(6.dp),
                     contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
                 ) {
-                    items(viewModel.filteredCustomers) { customer ->
+                    items(viewModel.filteredCustomers.size) { customer ->
                         Card(
                             modifier = Modifier.fillMaxWidth(),
                             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
                         ) {
                             Column(modifier = Modifier.padding(16.dp)) {
                                 Text(
-                                    text = "ID: ${customer.id}",
+                                    text = "ID: ${customer.customerId}",
                                     style = MaterialTheme.typography.titleMedium
                                 )
                                 Text(
