@@ -20,7 +20,8 @@ class CustomersViewModel @Inject constructor(
     private val repo: CustomerRepository
 ) : ViewModel() {
 
-    val customers: Flow<List<Customer>> = repo.getCustomersFromRoom()
+    private val _customers = MutableStateFlow<List<Customer>>(emptyList())
+    val customers: StateFlow<List<Customer>> = _customers
 
     var searchQuery by mutableStateOf("")
     var selectedFilter by mutableStateOf("All")
@@ -34,6 +35,10 @@ class CustomersViewModel @Inject constructor(
 
     fun getCustomer(id: Int) = viewModelScope.launch {
         customer = repo.getCustomerFromRoom(id)
+    }
+
+    init {
+        observeCustomersFromRoom()
     }
 
     fun addCustomer(customer: Customer) = viewModelScope.launch {
@@ -54,6 +59,26 @@ class CustomersViewModel @Inject constructor(
 
     fun closeDialog() {
         openDialog = false
+    }
+
+    private fun observeCustomersFromRoom() {
+        viewModelScope.launch {
+            repo.getCustomersFromRoom()
+                .collect { list ->
+                    _customers.value = list
+                }
+        }
+    }
+
+    val filteredCustomers: List<Customer>
+        get() = _customers.value.filter {
+            it.name.contains(searchQuery, ignoreCase = true)
+        }
+
+    // Optional: Triggered by Refresh FAB
+    fun onRefreshCustomers() {
+        // This is optional if Room is live. But you can re-collect:
+        observeCustomersFromRoom()
     }
 
     fun onClearSearch() {
