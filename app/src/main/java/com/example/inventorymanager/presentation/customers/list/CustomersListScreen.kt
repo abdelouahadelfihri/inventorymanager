@@ -49,7 +49,6 @@ fun CustomerListScreen(viewModel: CustomersViewModel = hiltViewModel()) {
                     Icon(Icons.Default.Refresh, contentDescription = "Refresh")
                 }
 
-                // ❌ Clear: Clear only search field
                 FloatingActionButton(onClick = {
                     viewModel.onClearSearch()
                 }) {
