@@ -1,4 +1,4 @@
-package ro.alexmamo.roomjetpackcompose.presentation.update_book.components
+package com.example.inventorymanager.presentation.customers.details.components
 
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
