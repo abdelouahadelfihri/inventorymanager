@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import com.example.inventorymanager.presentation.customers.CustomersViewModel
-import com.example.inventorymanager.presentation.customers.components.CustomersContent
+import com.example.inventorymanager.presentation.customers.list.components.CustomersContent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
