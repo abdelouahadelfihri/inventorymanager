@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.books.components
+package com.example.inventorymanager.presentation.customers.list.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -25,7 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.inventorymanager.domain.model.Customer
-import com.example.inventorymanager.presentation.books.CustomersViewModel
+import com.example.inventorymanager.presentation.customers.CustomersViewModel
 import androidx.compose.material3.Text
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.MaterialTheme
