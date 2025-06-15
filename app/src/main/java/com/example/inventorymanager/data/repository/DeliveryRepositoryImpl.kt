@@ -17,7 +17,7 @@ class DeliveryRepositoryImpl(
 
     override suspend fun updateDeliveryInRoom(delivery: Delivery) = deliveryDao.updateDelivery(delivery)
 
-    override suspend fun deleteDeliveryFromRoom(delivery: Delivery) = deliveryDao.deleteDelivery(delivery)
+    override suspend fun deleteDeliveryFromRoom(id: Int) = deliveryDao.deleteDelivery(id)
 
     override fun searchDeliveries(query: String): Flow<List<Delivery>> {
         return deliveryDao.searchDeliveries("%$query%")

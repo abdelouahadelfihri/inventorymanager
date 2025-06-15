@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.deliveries.list
+package com.example.inventorymanager.presentation.customers.list
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import com.example.inventorymanager.presentation.deliveries.DeliveriesViewModel
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DeliveriesListScreen(viewModel: DeliveriesViewModel = hiltViewModel()) {
@@ -24,7 +23,7 @@ fun DeliveriesListScreen(viewModel: DeliveriesViewModel = hiltViewModel()) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Deliveries List") },
+                title = { Text("Deliveries") },
                 modifier = Modifier.fillMaxWidth()
             )
         },

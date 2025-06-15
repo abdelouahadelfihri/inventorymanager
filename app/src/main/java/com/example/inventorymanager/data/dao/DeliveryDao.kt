@@ -29,7 +29,7 @@ interface DeliveryDao {
     suspend fun updateDelivery(delivery: Delivery)
 
     @Delete
-    suspend fun deleteDelivery(delivery: Delivery)
+    suspend fun deleteDelivery(id: Int)
 
     @Query("SELECT * FROM $DELIVERY_TABLE WHERE name LIKE :searchQuery")
     fun searchDeliveries(searchQuery: String): Flow<List<Delivery>>

@@ -6,10 +6,13 @@ import kotlinx.coroutines.flow.Flow
 
 
 typealias Deliveries = List<Delivery>
+typealias Customers = List<Customer>
 
 interface DeliveryRepository {
 
     fun getDeliveriesFromRoom(): Flow<Deliveries>
+
+    fun getCustomersFromRoom(): Flow<Customers>
 
     suspend fun getDeliveryFromRoom(id: Int): Delivery
 
