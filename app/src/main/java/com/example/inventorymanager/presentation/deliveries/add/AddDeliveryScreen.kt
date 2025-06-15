@@ -5,12 +5,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.inventorymanager.presentation.customers.CustomersViewModel
-import com.example.inventorymanager.presentation.customers.add.components.AddCustomerContent
-import com.example.inventorymanager.presentation.customers.add.components.AddCustomerTopBar
-
+import com.example.inventorymanager.presentation.deliveries.add.components.AddDeliveryContent
+import com.example.inventorymanager.presentation.deliveries.add.components.AddDeliveryTopBar
 
 @Composable
-fun AddCustomerScreen(
+fun AddDeliveryScreen(
     viewModel: CustomersViewModel = hiltViewModel(),
     customerId: Int,
     navigateBack: () -> Unit
@@ -20,16 +19,16 @@ fun AddCustomerScreen(
     }
     Scaffold(
         topBar = {
-            AddCustomerTopBar(
+            AddDeliveryTopBar(
                 navigateBack = navigateBack
             )
         },
         content = { padding ->
-            AddCustomerContent(
+            AddDeliveryContent(
                 padding = padding,
-                customer = viewModel.customer,
-                addCustomer = { customer ->
-                    viewModel.addCustomer(customer)
+                delivery = viewModel.delivery,
+                addDelivery = { delivery ->
+                    viewModel.addDelivery(delivery)
                 },
                 navigateBack = navigateBack
             )
