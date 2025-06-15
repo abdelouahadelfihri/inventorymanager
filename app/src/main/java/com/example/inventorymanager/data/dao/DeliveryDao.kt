@@ -6,10 +6,10 @@ import androidx.room.Query
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.Companion.IGNORE
 import androidx.room.Update
-import com.example.inventorymanager.core.Constants.Companion.CUSTOMER_TABLE
 import com.example.inventorymanager.domain.model.Delivery
 import com.example.inventorymanager.core.Constants.Companion.DELIVERY_TABLE
-import com.example.inventorymanager.domain.model.Customer
+import com.example.inventorymanager.core.Constants.Companion.CUSTOMER_TABLE
+import com.example.inventorymanager.domain.repository.Customers
 import com.example.inventorymanager.domain.repository.Deliveries
 import kotlinx.coroutines.flow.Flow
 
@@ -18,6 +18,8 @@ interface DeliveryDao {
 
     @Query("SELECT * FROM $DELIVERY_TABLE ORDER BY deliveryId ASC")
     fun getDeliveries(): Flow<Deliveries>
+    @Query("SELECT * FROM $CUSTOMER_TABLE ORDER BY customerId ASC")
+    fun getCustomers(): Flow<Customers>
 
     @Query("SELECT * FROM $DELIVERY_TABLE WHERE deliveryId = :id")
     suspend fun getDelivery(id: Int): Delivery
