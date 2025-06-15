@@ -17,7 +17,7 @@ interface DeliveryRepository {
 
     suspend fun updateDeliveryInRoom(delivery: Delivery)
 
-    suspend fun deleteDeliveryFromRoom(delivery: Delivery)
+    suspend fun deleteDeliveryFromRoom(id: Int)
 
     fun searchDeliveries(query: String): Flow<List<Delivery>>
 
