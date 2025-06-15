@@ -59,6 +59,7 @@ fun DeliveriesContent(
         }
 
         val customers by viewModel.customers.collectAsState()
+
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(6.dp),
