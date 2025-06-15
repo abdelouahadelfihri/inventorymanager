@@ -10,7 +10,7 @@ class DeliveryRepositoryImpl(
     private val deliveryDao: DeliveryDao
 ) : DeliveryRepository {
     override fun getDeliveriesFromRoom() = deliveryDao.getDeliveries()
-    override fun getCustomersFromRoom() = deliveryDao.getDeliveries()
+    override fun getCustomersFromRoom() = deliveryDao.getCustomers()
 
     override suspend fun getDeliveryFromRoom(id: Int) = deliveryDao.getDelivery(id)
 
