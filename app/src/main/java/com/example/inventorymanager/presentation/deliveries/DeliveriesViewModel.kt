@@ -75,12 +75,21 @@ class DeliveriesViewModel @Inject constructor(
     }
 
     val filteredDeliveries: List<Delivery>
-        get() = _deliveries.value.filter { delivery ->
-            val query = searchQuery.trim().lowercase()
+        get() {
+            val terms = searchQuery
+                .trim()
+                .lowercase()
+                .split(";")
+                .map { it.trim() }
+                .filter { it.isNotEmpty() }
 
-            delivery.deliveryId.toString().contains(query) ||
-                    delivery.saleDate.toString().lowercase().contains(query) ||
-                    delivery.customerId.toString().contains(query)
+            return _deliveries.value.filter { delivery ->
+                terms.any { term ->
+                    delivery.deliveryId.toString().contains(term) ||
+                            delivery.saleDate.toString().lowercase().contains(term) ||
+                            delivery.customerId.toString().contains(term)
+                }
+            }
         }
 
     // Optional: Triggered by Refresh FAB
