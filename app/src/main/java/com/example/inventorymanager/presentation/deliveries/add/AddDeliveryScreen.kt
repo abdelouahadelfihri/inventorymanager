@@ -11,12 +11,8 @@ import com.example.inventorymanager.presentation.deliveries.add.components.AddDe
 @Composable
 fun AddDeliveryScreen(
     viewModel: CustomersViewModel = hiltViewModel(),
-    customerId: Int,
     navigateBack: () -> Unit
 ) {
-    LaunchedEffect(Unit) {
-        viewModel.getCustomer(customerId)
-    }
     Scaffold(
         topBar = {
             AddDeliveryTopBar(
