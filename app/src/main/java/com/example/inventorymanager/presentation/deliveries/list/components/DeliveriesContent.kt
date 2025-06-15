@@ -57,15 +57,15 @@ fun DeliveriesContent(
                 }
             }
         }
+
         val customers by viewModel.customers.collectAsState()
-        // 📄 Customer List
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(6.dp),
             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
         ) {
             items(viewModel.filteredDeliveries, key = { it.deliveryId }) { delivery ->
-                val customerName = viewModel.customers.find { it.customerId == delivery.customerId }?.name ?: "Unknown"
+                val customerName = customers.find { it.customerId == delivery.customerId }?.name ?: "Unknown"
                 DeliveryCard(delivery = delivery, customerName = customerName)
             }
         }
