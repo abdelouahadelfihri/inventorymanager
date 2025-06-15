@@ -93,8 +93,6 @@ class Constants {
         const val UPDATE_CUSTOMER_ORDER = "Update customer order."
         const val DELETE_CUSTOMER_ORDER = "Delete customer order."
         const val ADD_CUSTOMER_TRANSFER = "Add customer transfer."
-        const val UPDATE_CUSTOMER_TRANSFER = "Update customer transfer."
-        const val DELETE_CUSTOMER_TRANSFER = "Delete customer transfer."
         const val ADD_CUSTOMER_DELIVERY = "Add customer delivery."
         const val UPDATE_CUSTOMER_DELIVERY = "Update customer delivery."
         const val DELETE_CUSTOMER_DELIVERY = "Delete customer delivery."
