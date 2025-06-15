@@ -29,8 +29,9 @@ class DeliveriesViewModel @Inject constructor(
     // You would typically populate it from a repository
     init {
         viewModelScope.launch {
-            val data = repo.getCustomersFromRoom()
-            _customers.value = data
+            repo.getCustomersFromRoom().collect { customerList ->
+                _customers.value = customerList
+            }
         }
     }
 
