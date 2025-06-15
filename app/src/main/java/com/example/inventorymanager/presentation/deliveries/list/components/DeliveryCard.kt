@@ -23,7 +23,7 @@ fun DeliveryCard(delivery: Delivery) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = "ID: ${customer.customerId}",
+                    text = "ID: ${delivery.customerId}",
                     style = MaterialTheme.typography.titleMedium
                 )
                 Text(
