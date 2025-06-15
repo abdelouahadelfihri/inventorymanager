@@ -55,6 +55,7 @@ class Constants {
 
         //Actions
         const val ADD_CUSTOMER = "Add A Customer."
+        const val ADD_DELIVERY = "Add A Delivery."
         const val DELETE_CUSTOMER = "Delete a customer."
 
         //Buttons
