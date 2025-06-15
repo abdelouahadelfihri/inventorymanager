@@ -8,53 +8,54 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import com.example.inventorymanager.core.Constants.Companion.EMPTY_STRING
-import com.example.inventorymanager.domain.model.Customer
-import com.example.inventorymanager.domain.repository.CustomerRepository
+import com.example.inventorymanager.domain.model.Delivery
+import com.example.inventorymanager.domain.repository.DeliveryRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import java.util.Date
 import javax.inject.Inject
 
 @HiltViewModel
-class CustomersViewModel @Inject constructor(
-    private val repo: CustomerRepository
+class DeliveriesViewModel @Inject constructor(
+    private val repo: DeliveryRepository
 ) : ViewModel() {
 
-    private val _customers = MutableStateFlow<List<Customer>>(emptyList())
-    val customers: StateFlow<List<Customer>> = _customers
+    private val _deliveries = MutableStateFlow<List<Delivery>>(emptyList())
+    val deliveries: StateFlow<List<Delivery>> = _deliveries
 
     var selectedFilter by mutableStateOf("All")
     var filters = listOf("All", "Category 1", "Category 2")
-    var customer by mutableStateOf(Customer(
-        0, EMPTY_STRING, EMPTY_STRING,
-        phone = TODO(),
-        mobile = TODO(),
-        fax = TODO(),
-        address = TODO()
-    ))
+    var delivery by mutableStateOf(
+        Delivery(
+            deliveryId = 0,
+            saleDate = Date(), // or any default Date, like SimpleDateFormat().parse("1970-01-01")
+            customerId = 0
+        )
+    )
         private set
 
     var openDialog by mutableStateOf(false)
 
     var searchQuery by mutableStateOf("")
 
-    fun getCustomer(id: Int) = viewModelScope.launch {
-        customer = repo.getCustomerFromRoom(id)
+    fun getDelivery(id: Int) = viewModelScope.launch {
+        delivery = repo.getDeliveryFromRoom(id)
     }
 
     init {
-        observeCustomersFromRoom()
+        observeDeliveriesFromRoom()
     }
 
-    fun addCustomer(customer: Customer) = viewModelScope.launch {
-        repo.addCustomerToRoom(customer)
+    fun addDelivery(customer: Delivery) = viewModelScope.launch {
+        repo.addDeliveryToRoom(customer)
     }
 
-    fun updateCustomer(customer: Customer) = viewModelScope.launch {
-        repo.updateCustomerInRoom(customer)
+    fun updateDelivery(customer: Delivery) = viewModelScope.launch {
+        repo.updateDeliveryInRoom(customer)
     }
 
-    fun deleteCustomer(id: Int) = viewModelScope.launch {
-        repo.deleteCustomerFromRoom(id)
+    fun deleteDelivery(id: Int) = viewModelScope.launch {
+        repo.deleteDeliveryFromRoom(id)
     }
 
     fun openDialog() {
@@ -65,24 +66,24 @@ class CustomersViewModel @Inject constructor(
         openDialog = false
     }
 
-    private fun observeCustomersFromRoom() {
+    private fun observeDeliveriesFromRoom() {
         viewModelScope.launch {
-            repo.getCustomersFromRoom()
+            repo.getDeliveriesFromRoom()
                 .collect { list ->
-                    _customers.value = list
+                    _deliveries.value = list
                 }
         }
     }
 
-    val filteredCustomers: List<Customer>
-        get() = _customers.value.filter {
+    val filteredDeliveries: List<Delivery>
+        get() = _deliveries.value.filter {
             it.name.contains(searchQuery, ignoreCase = true)
         }
 
     // Optional: Triggered by Refresh FAB
-    fun onRefreshCustomers() {
+    fun onRefreshDeliveries() {
         // This is optional if Room is live. But you can re-collect:
-        observeCustomersFromRoom()
+        observeDeliveriesFromRoom()
     }
 
     fun onClearSearch() {
