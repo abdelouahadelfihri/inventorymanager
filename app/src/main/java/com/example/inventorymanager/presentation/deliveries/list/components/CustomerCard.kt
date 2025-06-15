@@ -1,54 +1,53 @@
-package com.example.inventorymanager.presentation.books.components
+package com.example.inventorymanager.presentation.customers.list
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Card
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.inventorymanager.domain.model.Customer
 
 @Composable
-@ExperimentalMaterialApi
-fun BookCard(
-    book: Book,
-    deleteBook: () -> Unit,
-    navigateToUpdateBookScreen: (bookId: Int) -> Unit
-) {
+fun CustomerCard(customer: Customer) {
     Card(
-        shape = MaterialTheme.shapes.small,
         modifier = Modifier
-            .padding(
-                start = 8.dp,
-                end = 8.dp,
-                top = 4.dp,
-                bottom = 4.dp
-            )
-            .fillMaxWidth(),
-        elevation = 3.dp,
-        onClick = {
-            navigateToUpdateBookScreen(book.id)
-        }
+            .fillMaxWidth()
+            .padding(horizontal = 8.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(12.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Column {
-                TextTitle(
-                    bookTitle = book.title
+        Column(modifier = Modifier.padding(16.dp)) {
+
+            // 🔹 Row 1: ID and Name
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = "ID: ${customer.customerId}",
+                    style = MaterialTheme.typography.titleMedium
                 )
-                TextAuthor(
-                    bookAuthor = book.author
+                Text(
+                    text = customer.name,
+                    style = MaterialTheme.typography.titleMedium
                 )
             }
-            Spacer(
-                modifier = Modifier.weight(1f)
-            )
-            DeleteIcon(
-                deleteBook = deleteBook
-            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            // 🔹 Row 2: Mobile and Phone
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = "Mobile: ${customer.mobile}",
+                    style = MaterialTheme.typography.bodySmall
+                )
+                Text(
+                    text = "Phone: ${customer.phone}",
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
         }
     }
 }

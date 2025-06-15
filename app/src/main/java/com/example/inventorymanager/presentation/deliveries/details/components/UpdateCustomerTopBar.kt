@@ -1,4 +1,4 @@
-package ro.alexmamo.roomjetpackcompose.presentation.update_book.components
+package com.example.inventorymanager.presentation.deliveries.details.components
 
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -7,16 +7,16 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.runtime.Composable
-import ro.alexmamo.roomjetpackcompose.core.Constants.Companion.UPDATE_BOOK_SCREEN
+import com.example.inventorymanager.core.Constants.Companion.UPDATE_CUSTOMER_SCREEN
 
 @Composable
-fun UpdateBookTopBar(
+fun UpdateCustomerTopBar(
     navigateBack: () -> Unit
 ) {
     TopAppBar (
         title = {
             Text(
-                text = UPDATE_BOOK_SCREEN
+                text = UPDATE_CUSTOMER_SCREEN
             )
         },
         navigationIcon = {

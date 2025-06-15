@@ -7,16 +7,16 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.runtime.Composable
-import com.example.inventorymanager.core.Constants.Companion.ADD_DELIVERY_SCREEN
+import com.example.inventorymanager.core.Constants.Companion.ADD_CUSTOMER
 
 @Composable
-fun AddDeliveryTopBar(
+fun AddCustomerTopBar(
     navigateBack: () -> Unit
 ) {
     TopAppBar (
         title = {
             Text(
-                text = ADD_DELIVERY_SCREEN
+                text = ADD_CUSTOMER
             )
         },
         navigationIcon = {
