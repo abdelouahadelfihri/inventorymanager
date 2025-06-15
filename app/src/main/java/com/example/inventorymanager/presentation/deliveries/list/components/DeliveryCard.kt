@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.dp
 import com.example.inventorymanager.domain.model.Delivery
 
 @Composable
-fun DeliveryCard(delivery: Delivery) {
+fun DeliveryCard(delivery: Delivery, customerName: String) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -17,7 +17,6 @@ fun DeliveryCard(delivery: Delivery) {
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            // 🔹 Row 1: ID and Name
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -25,19 +24,19 @@ fun DeliveryCard(delivery: Delivery) {
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
-                    text = "ID: ${customer.customerId}",
+                    text = "ID: ${delivery.deliveryId}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(0.8f)
                 )
                 Text(
-                    text = customer.name,
+                    text = customerName,
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(1.2f),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = "Mobile: ${customer.mobile}",
+                    text = "Sale Date: ${delivery.saleDate}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(1.2f),
                     maxLines = 1,
