@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import com.example.inventorymanager.core.Constants.Companion.EMPTY_STRING
 import com.example.inventorymanager.domain.model.Delivery
 import com.example.inventorymanager.domain.repository.DeliveryRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -76,8 +75,12 @@ class DeliveriesViewModel @Inject constructor(
     }
 
     val filteredDeliveries: List<Delivery>
-        get() = _deliveries.value.filter {
-            it.name.contains(searchQuery, ignoreCase = true)
+        get() = _deliveries.value.filter { delivery ->
+            val query = searchQuery.trim().lowercase()
+
+            delivery.deliveryId.toString().contains(query) ||
+                    delivery.saleDate.toString().lowercase().contains(query) ||
+                    delivery.customerId.toString().contains(query)
         }
 
     // Optional: Triggered by Refresh FAB
