@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import com.example.inventorymanager.core.Constants.Companion.ADD_DELIVERY
 
 @Composable
-fun AddDeliveryTopBar(
+fun AddLocationTopBar(
     navigateBack: () -> Unit
 ) {
     TopAppBar (
