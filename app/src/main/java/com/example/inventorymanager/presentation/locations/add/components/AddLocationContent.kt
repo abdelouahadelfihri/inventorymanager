@@ -1,6 +1,7 @@
-package com.example.inventorymanager.presentation.locations.add.components
+package com.example.inventorymanager.presentation.customers.add.components
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -12,32 +13,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.Delivery
+import com.example.inventorymanager.domain.model.Location
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Icon
-import androidx.compose.material.icons.Icons
-import java.util.Date
-import android.app.DatePickerDialog
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.ui.platform.LocalContext
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Locale
-import androidx.compose.material.icons.filled.Search
 
 @Composable
-fun AddDeliveryContent(
+fun AddLocationContent(
     padding: PaddingValues,
-    delivery: Delivery,
-    addDelivery: (Delivery) -> Unit,
+    location: Location,
+    addLocation: (Location) -> Unit,
     navigateBack: () -> Unit
 ) {
-
-    var saleDate by remember { mutableStateOf<Date?>(delivery.saleDate) }
-    var customerId by remember { mutableStateOf(delivery.customerId.toString()) }
+    var name by remember { mutableStateOf(location.name) }
+    var address by remember { mutableStateOf(location.address) }
 
     val scrollState = rememberScrollState()
 
@@ -57,39 +47,28 @@ fun AddDeliveryContent(
                     .verticalScroll(scrollState),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                DatePickerField(
-                    label = "Sale Date",
-                    selectedDate = saleDate,
-                    onDateSelected = { saleDate = it }
+                OutlinedTextField(
+                    value = name,
+                    onValueChange = { name = it },
+                    label = { Text("Customer Name") },
+                    modifier = Modifier.fillMaxWidth()
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
-
-                // Customer ID and Select Button
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    OutlinedTextField(
-                        value = customerId.toString(),
-                        onValueChange = { customerId = it },
-                        label = { Text("Customer ID") },
-                        modifier = Modifier
-                            .weight(1f)
+                OutlinedTextField(
+                    value = address,
+                    onValueChange = { address = it },
+                    label = { Text("Customer Address") },
+                    placeholder = { Text("Enter customer address") },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(120.dp),
+                    singleLine = false,
+                    maxLines = 5,
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        keyboardType = KeyboardType.Text,
+                        imeAction = ImeAction.Default
                     )
-
-                    Spacer(modifier = Modifier.width(8.dp))
-
-                    Button(
-                        onClick = { /* Open customer selection logic here */ },
-                        modifier = Modifier
-                            .height(56.dp) // Match TextField height
-                    ) {
-                        Icon(Icons.Default.Search, contentDescription = "Select Customer")
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text("Select")
-                    }
-                }
+                )
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -103,7 +82,7 @@ fun AddDeliveryContent(
             ) {
                 Button(
                     onClick = {
-                        addDelivery(delivery)
+                        addLocation(location)
                         navigateBack()
                     }
                 ) {
@@ -112,8 +91,8 @@ fun AddDeliveryContent(
 
                 Button(
                     onClick = {
-                        customerId = ""
-                        saleDate = null
+                        name = ""
+                        address = ""
                     }
                 ) {
                     Text("Clear")
@@ -121,52 +100,4 @@ fun AddDeliveryContent(
             }
         }
     }
-}
-
-@Composable
-fun DatePickerField(
-    label: String,
-    selectedDate: Date?,               // Nullable Date now
-    onDateSelected: (Date) -> Unit
-) {
-    val context = LocalContext.current
-    val calendar = Calendar.getInstance().apply {
-        time = selectedDate
-    }
-
-    val year = calendar.get(Calendar.YEAR)
-    val month = calendar.get(Calendar.MONTH)
-    val day = calendar.get(Calendar.DAY_OF_MONTH)
-
-    val datePickerDialog = remember {
-        DatePickerDialog(context, { _, y, m, d ->
-            val pickedCalendar = Calendar.getInstance().apply {
-                set(Calendar.YEAR, y)
-                set(Calendar.MONTH, m)
-                set(Calendar.DAY_OF_MONTH, d)
-            }
-            onDateSelected(pickedCalendar.time)
-        }, year, month, day)
-    }
-
-    OutlinedTextField(
-        value = selectedDate?.toFormattedString() ?: "",
-        onValueChange = {},
-        readOnly = true,
-        label = { Text(label) },
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { datePickerDialog.show() },
-        trailingIcon = {
-            Icon(
-                imageVector = Icons.Default.DateRange,
-                contentDescription = "Select Date"
-            )
-        }
-    )
-}
-
-fun Date.toFormattedString(): String {
-    val format = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-    return format.format(this)
 }
