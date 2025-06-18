@@ -6,10 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.Delivery
+import com.example.inventorymanager.domain.model.Location
 
 @Composable
-fun DeliveryCard(delivery: Delivery, customerName: String) {
+fun LocationCard(location: Location) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
