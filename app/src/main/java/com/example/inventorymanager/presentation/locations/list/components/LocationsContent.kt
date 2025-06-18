@@ -8,12 +8,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.presentation.deliveries.DeliveriesViewModel
-import com.example.inventorymanager.presentation.deliveries.list.components.DeliveryCard
+import com.example.inventorymanager.presentation.locations.LocationsViewModel
+import com.example.inventorymanager.presentation.locations.list.components.LocationCard
 
 @Composable
-fun DeliveriesContent(
-    viewModel: DeliveriesViewModel,
+fun LocationsContent(
+    viewModel: LocationsViewModel,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
@@ -58,16 +58,15 @@ fun DeliveriesContent(
             }
         }
 
-        val customers by viewModel.customers.collectAsState()
+        val customers by viewModel.locations.collectAsState()
 
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(6.dp),
             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
         ) {
-            items(viewModel.filteredDeliveries, key = { it.deliveryId }) { delivery ->
-                val customerName = customers.find { it.customerId == delivery.customerId }?.name ?: "Unknown"
-                DeliveryCard(delivery = delivery, customerName = customerName)
+            items(viewModel.filteredLocations, key = { it.locationId }) { location ->
+                LocationCard(location = location)
             }
         }
     }
