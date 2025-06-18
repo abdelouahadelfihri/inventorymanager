@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.locations.list.components
+package com.example.inventorymanager.presentation.customers.list.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -17,6 +17,7 @@ fun LocationCard(location: Location) {
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
+            // 🔹 Row 1: ID and Name
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -24,19 +25,19 @@ fun LocationCard(location: Location) {
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
-                    text = "ID: ${delivery.deliveryId}",
+                    text = "ID: ${location.locationId}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(0.8f)
                 )
                 Text(
-                    text = customerName,
+                    text = "Name: ${location.name}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(1.2f),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = "Sale Date: ${delivery.saleDate}",
+                    text = "Mobile: ${location.address}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(1.2f),
                     maxLines = 1,
