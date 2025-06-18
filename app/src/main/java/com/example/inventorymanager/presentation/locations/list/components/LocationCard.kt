@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.customers.list.components
+package com.example.inventorymanager.presentation.locations.list.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
