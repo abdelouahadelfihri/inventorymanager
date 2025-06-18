@@ -11,20 +11,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.Customer
+import com.example.inventorymanager.domain.model.Location
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 
 @Composable
-fun UpdateCustomerContent(
+fun UpdateLocationContent(
     padding: PaddingValues,
-    customer: Customer,
-    updateCustomer: (Customer) -> Unit,
-    deleteCustomer: (Int) -> Unit,
+    location: Location,
+    updateLocation: (Location) -> Unit,
+    deleteLocation: (Int) -> Unit,
     navigateBack: () -> Unit
 ) {
-    var name by remember { mutableStateOf(customer.name) }
-    var address by remember { mutableStateOf(customer.address) }
+    var name by remember { mutableStateOf(location.name) }
+    var address by remember { mutableStateOf(location.address) }
 
     val scrollState = rememberScrollState()
 
@@ -46,9 +46,9 @@ fun UpdateCustomerContent(
             ) {
 
                 OutlinedTextField(
-                    value = customer.customerId.toString(),
+                    value = location.locationId.toString(),
                     onValueChange = {},
-                    label = { Text("Customer ID") },
+                    label = { Text("Location ID") },
                     modifier = Modifier.fillMaxWidth(),
                     enabled = false
                 )
@@ -59,15 +59,15 @@ fun UpdateCustomerContent(
                     onValueChange = {
                         name = it
                     },
-                    label = { Text("Customer Name") },
+                    label = { Text("Location Name") },
                     modifier = Modifier.fillMaxWidth()
                 )
 
                 OutlinedTextField(
                     value = address,
                     onValueChange = { address = it },
-                    label = { Text("Customer Address") },
-                    placeholder = { Text("Enter customer address") },
+                    label = { Text("Location Address") },
+                    placeholder = { Text("Enter location address") },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(120.dp),
@@ -92,7 +92,7 @@ fun UpdateCustomerContent(
             ) {
                 Button(
                     onClick = {
-                        updateCustomer(customer)
+                        updateLocation(location)
                         navigateBack()
                     }
                 ) {
@@ -101,7 +101,7 @@ fun UpdateCustomerContent(
 
                 Button(
                     onClick = {
-                        deleteCustomer(customer.customerId)
+                        deleteLocation(location.locationId)
                         navigateBack()
                     }
                 ) {
