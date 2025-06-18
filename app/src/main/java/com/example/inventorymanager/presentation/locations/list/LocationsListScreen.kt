@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.customers.list
+package com.example.inventorymanager.presentation.locations.list
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
@@ -13,11 +13,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
-import com.example.inventorymanager.presentation.deliveries.DeliveriesViewModel
+import com.example.inventorymanager.presentation.locations.LocationsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DeliveriesListScreen(viewModel: DeliveriesViewModel = hiltViewModel()) {
+fun LocationsListScreen(viewModel: LocationsViewModel = hiltViewModel()) {
     val navController = rememberNavController()
 
     Scaffold(
@@ -39,7 +39,7 @@ fun DeliveriesListScreen(viewModel: DeliveriesViewModel = hiltViewModel()) {
                     Icon(Icons.Default.Add, contentDescription = "Add")
                 }
                 FloatingActionButton(onClick = {
-                    viewModel.onRefreshDeliveries()
+                    viewModel.onRefreshLocations()
                 }) {
                     Icon(Icons.Default.Refresh, contentDescription = "Refresh")
                 }
@@ -51,7 +51,7 @@ fun DeliveriesListScreen(viewModel: DeliveriesViewModel = hiltViewModel()) {
             }
         }
     ) { innerPadding ->
-        DeliveriesContent(
+        LocationsContent(
             viewModel = viewModel,
             modifier = Modifier
                 .fillMaxSize()
