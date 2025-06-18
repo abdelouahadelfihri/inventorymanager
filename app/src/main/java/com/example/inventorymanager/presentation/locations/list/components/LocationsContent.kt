@@ -58,7 +58,7 @@ fun LocationsContent(
             }
         }
 
-        val customers by viewModel.locations.collectAsState()
+        val locations by viewModel.locations.collectAsState()
 
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
