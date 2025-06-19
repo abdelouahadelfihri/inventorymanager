@@ -27,8 +27,9 @@ fun UpdateDeliveryContent(
     onSelectCustomerClick: () -> Unit // You can hook up navigation or dialog here
 ) {
     var saleDate by remember { mutableStateOf<Date?>(delivery.saleDate) }
-    val customerId = delivery.customerId.toString()
     val deliveryId = delivery.deliveryId.toString()
+    var customerId by remember { mutableStateOf(delivery.customerId.toString()) }
+
 
     val scrollState = rememberScrollState()
 
@@ -98,8 +99,11 @@ fun UpdateDeliveryContent(
             ) {
                 Button(
                     onClick = {
-                        saleDate?.let {
-                            val updatedDelivery = delivery.copy(saleDate = it)
+                        saleDate?.let { date ->
+                            val updatedDelivery = delivery.copy(
+                                saleDate = date,
+                                customerId = customerId.toIntOrNull() ?: delivery.customerId
+                            )
                             updateDelivery(updatedDelivery)
                             navigateBack()
                         }
