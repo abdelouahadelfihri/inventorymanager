@@ -1,12 +1,9 @@
 package com.example.inventorymanager.domain.repository
 
-import com.example.inventorymanager.domain.model.Customer
 import com.example.inventorymanager.domain.model.Delivery
 import kotlinx.coroutines.flow.Flow
-
-
-typealias Deliveries = List<Delivery>
-typealias Customers = List<Customer>
+import com.example.inventorymanager.domain.common.Customers
+import com.example.inventorymanager.domain.common.Deliveries
 
 interface DeliveryRepository {
 
