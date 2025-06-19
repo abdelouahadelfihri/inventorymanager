@@ -37,7 +37,7 @@ class ProvidersViewModel @Inject constructor(
     var searchQuery by mutableStateOf("")
 
     fun getProvider(id: Int) = viewModelScope.launch {
-        provider = repo.getProviderFromRoom(id)
+        provider.value = repo.getProviderFromRoom(id)
     }
 
     init {
