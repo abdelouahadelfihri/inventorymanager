@@ -8,18 +8,17 @@ import androidx.navigation.compose.composable
 import com.example.inventorymanager.presentation.customers.list.CustomerListScreen
 import com.example.inventorymanager.presentation.customers.details.UpdateCustomerScreen
 import com.example.inventorymanager.presentation.customers.add.AddCustomerScreen
-import androidx.navigation.compose.rememberNavController
 import com.example.inventorymanager.presentation.dashboard.DashboardScreen
 
 @ExperimentalMaterialApi
 @Composable
-fun AppNavHost(navController: NavHostController = rememberNavController()) {
+fun AppNavHost(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = "dashboard"   // Set dashboard as start destination or "customer_list"
+        startDestination = "dashboard"
     ) {
         composable("dashboard") {
-            DashboardScreen()  // Pass navController if you want navigation from dashboard
+            DashboardScreen() // pass navController if needed for navigation
         }
         composable("customer_list") {
             CustomerListScreen()
@@ -30,7 +29,10 @@ fun AppNavHost(navController: NavHostController = rememberNavController()) {
         composable("update_customer/{customerId}") { backStackEntry ->
             val customerId = backStackEntry.arguments?.getString("customerId")?.toIntOrNull()
             if (customerId != null) {
-                UpdateCustomerScreen(navController, customerId)
+                UpdateCustomerScreen(
+                    customerId = customerId,
+                    navigateBack = { navController.popBackStack() }
+                )
             }
         }
     }
