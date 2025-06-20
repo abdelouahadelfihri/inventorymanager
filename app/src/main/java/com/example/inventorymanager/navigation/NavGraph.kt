@@ -19,13 +19,13 @@ fun AppNavHost(navController: NavHostController = rememberNavController()) {
         startDestination = "dashboard"   // Set dashboard as start destination or "customer_list"
     ) {
         composable("dashboard") {
-            DashboardScreen(navController)  // Pass navController if you want navigation from dashboard
+            DashboardScreen()  // Pass navController if you want navigation from dashboard
         }
         composable("customer_list") {
-            CustomerListScreen(navController)
+            CustomerListScreen()
         }
         composable("add_customer") {
-            AddCustomerScreen(navController)
+            AddCustomerScreen()
         }
         composable("update_customer/{customerId}") { backStackEntry ->
             val customerId = backStackEntry.arguments?.getString("customerId")?.toIntOrNull()
