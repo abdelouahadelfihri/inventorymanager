@@ -1,4 +1,4 @@
-package com.example.dashboardapp
+package com.example.inventorymanager
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -18,7 +18,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.dashboardapp.ui.theme.DashboardAppTheme
+import com.example.inventorymanager.ui.theme.DashboardAppTheme
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -30,17 +30,6 @@ class MainActivity : ComponentActivity() {
                 NavGraph(navController = navController)
             }
         }
-    }
-}
-
-// NAVIGATION
-@Composable
-fun NavGraph(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = "dashboard") {
-        composable("dashboard") {
-            DashboardScreen()
-        }
-        // Add other routes here if needed
     }
 }
 
