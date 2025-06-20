@@ -9,7 +9,7 @@ import com.example.inventorymanager.presentation.customers.list.CustomerListScre
 import com.example.inventorymanager.presentation.customers.details.UpdateCustomerScreen
 import com.example.inventorymanager.presentation.customers.add.AddCustomerScreen
 import androidx.navigation.compose.rememberNavController
-
+import com.example.inventorymanager.presentation.dashboard.DashboardScreen
 
 @ExperimentalMaterialApi
 @Composable
