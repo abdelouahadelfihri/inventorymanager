@@ -1,4 +1,4 @@
-package com.example.dashboardapp
+package com.example.inventorymanager
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
