@@ -12,12 +12,8 @@ import com.example.inventorymanager.presentation.customers.add.components.AddCus
 @Composable
 fun AddCustomerScreen(
     viewModel: CustomersViewModel = hiltViewModel(),
-    customerId: Int,
     navigateBack: () -> Unit
 ) {
-    LaunchedEffect(Unit) {
-        viewModel.getCustomer(customerId)
-    }
     Scaffold(
         topBar = {
             AddCustomerTopBar(

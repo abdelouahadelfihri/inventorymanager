@@ -24,7 +24,9 @@ fun AppNavHost(navController: NavHostController) {
             CustomerListScreen()
         }
         composable("add_customer") {
-            AddCustomerScreen()
+            AddCustomerScreen(
+                navigateBack = { navController.popBackStack() }
+            )
         }
         composable("update_customer/{customerId}") { backStackEntry ->
             val customerId = backStackEntry.arguments?.getString("customerId")?.toIntOrNull()
