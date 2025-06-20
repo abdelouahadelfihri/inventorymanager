@@ -12,12 +12,8 @@ import com.example.inventorymanager.presentation.providers.add.components.AddPro
 @Composable
 fun AddProviderScreen(
     viewModel: ProvidersViewModel = hiltViewModel(),
-    providerId: Int,
     navigateBack: () -> Unit
 ) {
-    LaunchedEffect(Unit) {
-        viewModel.getProvider(providerId)
-    }
     Scaffold(
         topBar = {
             AddProviderTopBar(
