@@ -13,21 +13,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.Customer
+import com.example.inventorymanager.domain.model.Provider
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 
 @Composable
-fun AddCustomerContent(
+fun AddProviderContent(
     padding: PaddingValues,
-    customer: Customer,
-    addCustomer: (Customer) -> Unit,
+    provider: Provider,
+    addProvider: (Provider) -> Unit,
     navigateBack: () -> Unit
 ) {
-    var name by remember { mutableStateOf(customer.name) }
-    var address by remember { mutableStateOf(customer.address) }
+    var name by remember { mutableStateOf(provider.name) }
+    var address by remember { mutableStateOf(provider.address) }
 
     val scrollState = rememberScrollState()
 
@@ -50,15 +50,15 @@ fun AddCustomerContent(
                 OutlinedTextField(
                     value = name,
                     onValueChange = { name = it },
-                    label = { Text("Customer Name") },
+                    label = { Text("Provider Name") },
                     modifier = Modifier.fillMaxWidth()
                 )
 
                 OutlinedTextField(
                     value = address,
                     onValueChange = { address = it },
-                    label = { Text("Customer Address") },
-                    placeholder = { Text("Enter customer address") },
+                    label = { Text("Provider Address") },
+                    placeholder = { Text("Enter provider address") },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(120.dp),
@@ -82,11 +82,11 @@ fun AddCustomerContent(
             ) {
                 Button(
                     onClick = {
-                        addCustomer(customer)
+                        addProvider(provider)
                         navigateBack()
                     }
                 ) {
-                    Text("Save Customer")
+                    Text("Save Provider")
                 }
 
                 Button(
