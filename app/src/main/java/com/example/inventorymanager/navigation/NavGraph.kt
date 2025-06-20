@@ -16,8 +16,11 @@ import androidx.navigation.compose.rememberNavController
 fun AppNavHost(navController: NavHostController = rememberNavController()) {
     NavHost(
         navController = navController,
-        startDestination = "customer_list"
+        startDestination = "dashboard"   // Set dashboard as start destination or "customer_list"
     ) {
+        composable("dashboard") {
+            DashboardScreen(navController)  // Pass navController if you want navigation from dashboard
+        }
         composable("customer_list") {
             CustomerListScreen(navController)
         }

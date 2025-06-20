@@ -33,17 +33,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-// NAVIGATION
-@Composable
-fun NavGraph(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = "dashboard") {
-        composable("dashboard") {
-            DashboardScreen()
-        }
-        // Add other routes here if needed
-    }
-}
-
 // MAIN SCREEN WITH DRAWER & APP BAR
 @Composable
 fun DashboardScreen() {
