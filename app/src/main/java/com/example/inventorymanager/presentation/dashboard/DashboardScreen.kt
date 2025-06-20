@@ -11,10 +11,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import kotlinx.coroutines.launch
 
 @Composable
-fun DashboardScreen() {
+fun DashboardScreen(navController: NavHostController) {
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
 

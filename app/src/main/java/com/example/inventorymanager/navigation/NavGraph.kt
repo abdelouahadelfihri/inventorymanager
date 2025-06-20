@@ -18,10 +18,10 @@ fun AppNavHost(navController: NavHostController) {
         startDestination = "dashboard"
     ) {
         composable("dashboard") {
-            DashboardScreen() // pass navController if needed for navigation
+            DashboardScreen(navController = navController)
         }
         composable("customer_list") {
-            CustomerListScreen()
+            CustomerListScreen(navController = navController)
         }
         composable("add_customer") {
             AddCustomerScreen(

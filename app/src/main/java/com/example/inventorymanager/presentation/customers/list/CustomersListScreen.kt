@@ -12,13 +12,14 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.inventorymanager.presentation.customers.CustomersViewModel
 import com.example.inventorymanager.presentation.customers.list.components.CustomersContent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CustomerListScreen(viewModel: CustomersViewModel = hiltViewModel()) {
+fun CustomerListScreen(viewModel: CustomersViewModel = hiltViewModel(),navController: NavHostController) {
     val navController = rememberNavController()
 
     Scaffold(
