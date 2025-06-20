@@ -4,32 +4,32 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.inventorymanager.presentation.customers.CustomersViewModel
-import com.example.inventorymanager.presentation.customers.add.components.AddCustomerContent
-import com.example.inventorymanager.presentation.customers.add.components.AddCustomerTopBar
+import com.example.inventorymanager.presentation.providers.ProvidersViewModel
+import com.example.inventorymanager.presentation.providers.add.components.AddProviderContent
+import com.example.inventorymanager.presentation.providers.add.components.AddProviderTopBar
 
 
 @Composable
-fun AddCustomerScreen(
-    viewModel: CustomersViewModel = hiltViewModel(),
-    customerId: Int,
+fun AddProviderScreen(
+    viewModel: ProvidersViewModel = hiltViewModel(),
+    providerId: Int,
     navigateBack: () -> Unit
 ) {
     LaunchedEffect(Unit) {
-        viewModel.getCustomer(customerId)
+        viewModel.getProvider(providerId)
     }
     Scaffold(
         topBar = {
-            AddCustomerTopBar(
+            AddProviderTopBar(
                 navigateBack = navigateBack
             )
         },
         content = { padding ->
-            AddCustomerContent(
+            AddProviderContent(
                 padding = padding,
-                customer = viewModel.customer,
-                addCustomer = { customer ->
-                    viewModel.addCustomer(customer)
+                provider = viewModel.provider.value,
+                addProvider = { provider ->
+                    viewModel.addProvider(provider)
                 },
                 navigateBack = navigateBack
             )
