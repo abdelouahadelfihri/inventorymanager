@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import com.example.inventorymanager.core.Constants.Companion.ADD_CUSTOMER
 
 @Composable
-fun AddCustomerTopBar(
+fun AddProviderTopBar(
     navigateBack: () -> Unit
 ) {
     TopAppBar (
