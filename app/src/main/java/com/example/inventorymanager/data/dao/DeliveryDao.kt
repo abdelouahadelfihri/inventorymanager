@@ -9,8 +9,8 @@ import androidx.room.Update
 import com.example.inventorymanager.domain.model.Delivery
 import com.example.inventorymanager.core.Constants.Companion.DELIVERY_TABLE
 import com.example.inventorymanager.core.Constants.Companion.CUSTOMER_TABLE
-import com.example.inventorymanager.domain.repository.Customers
-import com.example.inventorymanager.domain.repository.Deliveries
+import com.example.inventorymanager.domain.common.Customers
+import com.example.inventorymanager.domain.common.Deliveries
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -32,8 +32,5 @@ interface DeliveryDao {
 
     @Delete
     suspend fun deleteDelivery(id: Int)
-
-    @Query("SELECT * FROM $DELIVERY_TABLE WHERE name LIKE :searchQuery")
-    fun searchDeliveries(searchQuery: String): Flow<List<Delivery>>
 
 }
