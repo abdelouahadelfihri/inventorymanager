@@ -21,7 +21,7 @@ fun ProvidersContent(
         OutlinedTextField(
             value = viewModel.searchQuery,
             onValueChange = viewModel::onSearchChange,
-            label = { Text("Search customers...") },
+            label = { Text("Search providers...") },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 8.dp)
