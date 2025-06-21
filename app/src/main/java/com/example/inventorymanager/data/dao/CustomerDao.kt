@@ -8,7 +8,7 @@ import androidx.room.OnConflictStrategy.Companion.IGNORE
 import androidx.room.Update
 import com.example.inventorymanager.domain.model.Customer
 import com.example.inventorymanager.core.Constants.Companion.CUSTOMER_TABLE
-import com.example.inventorymanager.domain.repository.Customers
+import com.example.inventorymanager.domain.common.Customers
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -28,8 +28,5 @@ interface CustomerDao {
 
     @Delete
     suspend fun deleteCustomer(id: Int)
-
-    @Query("SELECT * FROM $CUSTOMER_TABLE WHERE customerId LIKE :searchQuery OR name LIKE :searchQuery OR address LIKE :searchQuery")
-    fun searchCustomers(searchQuery: String): Flow<List<Customer>>
 
 }
