@@ -29,7 +29,7 @@ interface OrderDao {
     suspend fun updateOrder(order: Order)
 
     @Delete
-    suspend fun deleteOrder(order: Order)
+    suspend fun deleteOrder(id: Int)
 
     @Query("SELECT * FROM $ORDER_TABLE WHERE name LIKE :searchQuery")
     fun searchOrders(searchQuery: String): Flow<List<Order>>
