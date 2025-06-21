@@ -29,6 +29,6 @@ interface WarehouseDao {
     suspend fun updateWarehouse(warehouse: Warehouse)
 
     @Delete
-    suspend fun deleteWarehouse(warehouse: Warehouse)
+    suspend fun deleteWarehouse(id: Int)
 
 }
