@@ -29,7 +29,4 @@ interface TransferDao {
     @Delete
     suspend fun deleteTransfer(order: Transfer)
 
-    @Query("SELECT * FROM $TRANSFER_TABLE WHERE name LIKE :searchQuery")
-    fun searchTransfers(searchQuery: String): Flow<List<Transfer>>
-
 }
