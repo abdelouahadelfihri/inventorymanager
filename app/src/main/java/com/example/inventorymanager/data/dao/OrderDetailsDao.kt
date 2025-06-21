@@ -18,14 +18,11 @@ interface OrderDetailsDao {
     suspend fun update(orderDetails: OrderDetails)
 
     @Delete
-    suspend fun delete(orderDetails: OrderDetails)
+    suspend fun delete(orderId: Int, productId: Int, warehouseId: Int)
 
     @Query("SELECT * FROM $ORDER_DETAILS_TABLE WHERE orderId = :orderId AND productId = :productId AND warehouseId = :warehouseId LIMIT 1")
     suspend fun getByIds(orderId: Int, productId: Int, warehouseId: Int): OrderDetails?
 
     @Query("SELECT * FROM $ORDER_DETAILS_TABLE")
     fun getAll(): Flow<List<OrderDetails>>
-
-    @Query("SELECT * FROM $ORDER_TABLE WHERE name LIKE :searchQuery")
-    fun searchOrdersDetails(searchQuery: String): Flow<List<OrderDetails>>
 }
