@@ -29,19 +29,19 @@ class OrdersViewModel @Inject constructor(
     // You would typically populate it from a repository
     init {
         viewModelScope.launch {
-            repo.getCustomersFromRoom().collect { customerList ->
-                _customers.value = customerList
+            repo.getOrdersFromRoom().collect { orderList ->
+                _orders.value = orderList
             }
         }
     }
 
     var selectedFilter by mutableStateOf("All")
     var filters = listOf("All", "Category 1", "Category 2")
-    var delivery by mutableStateOf(
+    var order by mutableStateOf(
         Order(
-            deliveryId = 0,
-            saleDate = Date(), // or any default Date, like SimpleDateFormat().parse("1970-01-01")
-            customerId = 0
+            orderId = 0,
+            providerId = 0,
+            orderDate = Date()
         )
     )
         private set
@@ -51,7 +51,7 @@ class OrdersViewModel @Inject constructor(
     var searchQuery by mutableStateOf("")
 
     fun getOrder(id: Int) = viewModelScope.launch {
-        delivery = repo.getOrderFromRoom(id)
+        order = repo.getOrderFromRoom(id)
     }
 
     init {
@@ -100,7 +100,7 @@ class OrdersViewModel @Inject constructor(
                 terms.any { term ->
                     order.orderId.toString().contains(term) ||
                             order.orderDate.toString().contains(term) ||
-                            order.toString().contains(term)
+                            order.providerId.toString().contains(term)
                 }
             }
         }
