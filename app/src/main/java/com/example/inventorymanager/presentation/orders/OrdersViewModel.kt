@@ -16,7 +16,7 @@ import java.util.Date
 import javax.inject.Inject
 
 @HiltViewModel
-class DeliveriesViewModel @Inject constructor(
+class OrdersViewModel @Inject constructor(
     private val repo: DeliveryRepository
 ) : ViewModel() {
 
