@@ -13,12 +13,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
-import com.example.inventorymanager.presentation.customers.CustomersViewModel
-import com.example.inventorymanager.presentation.customers.list.components.CustomersContent
+import com.example.inventorymanager.presentation.providers.ProvidersViewModel
+import com.example.inventorymanager.presentation.providers.list.components.ProvidersContent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CustomerListScreen(viewModel: CustomersViewModel = hiltViewModel()) {
+fun ProvidersListScreen(viewModel: ProvidersViewModel = hiltViewModel()) {
     val navController = rememberNavController()
 
     Scaffold(
@@ -40,7 +40,7 @@ fun CustomerListScreen(viewModel: CustomersViewModel = hiltViewModel()) {
                     Icon(Icons.Default.Add, contentDescription = "Add")
                 }
                 FloatingActionButton(onClick = {
-                    viewModel.onRefreshCustomers()
+                    viewModel.onRefreshProviders()
                 }) {
                     Icon(Icons.Default.Refresh, contentDescription = "Refresh")
                 }
@@ -52,7 +52,7 @@ fun CustomerListScreen(viewModel: CustomersViewModel = hiltViewModel()) {
             }
         }
     ) { innerPadding ->
-        CustomersContent(
+        ProvidersContent(
             viewModel = viewModel,
             modifier = Modifier
                 .fillMaxSize()
