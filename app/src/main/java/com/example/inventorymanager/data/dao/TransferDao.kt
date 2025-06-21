@@ -27,6 +27,6 @@ interface TransferDao {
     suspend fun updateTransfer(order: Transfer)
 
     @Delete
-    suspend fun deleteTransfer(order: Transfer)
+    suspend fun deleteTransfer(id: Int)
 
 }
