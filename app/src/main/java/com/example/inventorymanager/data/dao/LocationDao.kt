@@ -29,6 +29,6 @@ interface LocationDao {
     suspend fun updateLocation(location: Location)
 
     @Delete
-    suspend fun deleteLocation(location: Location)
+    suspend fun deleteLocation(id: Int)
 
 }
