@@ -26,6 +26,4 @@ interface DeliveryDetailsDao {
     @Query("SELECT * FROM $DELIVERY_DETAILS_TABLE")
     fun getAll(): Flow<List<DeliveryDetails>>
 
-    @Query("SELECT * FROM $DELIVERY_DETAILS_TABLE WHERE name LIKE :searchQuery")
-    fun searchDeliveriesDetails(searchQuery: String): Flow<List<DeliveryDetails>>
 }
