@@ -6,10 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.Customer
+import com.example.inventorymanager.domain.model.Provider
 
 @Composable
-fun CustomerCard(customer: Customer) {
+fun ProviderCard(provider: Provider) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -25,19 +25,19 @@ fun CustomerCard(customer: Customer) {
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
-                    text = "ID: ${customer.customerId}",
+                    text = "ID : ${provider.providerId}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(0.8f)
                 )
                 Text(
-                    text = customer.name,
+                    text = "Name : ${provider.name}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(1.2f),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = "Mobile: ${customer.mobile}",
+                    text = "Address: ${provider.address}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(1.2f),
                     maxLines = 1,
