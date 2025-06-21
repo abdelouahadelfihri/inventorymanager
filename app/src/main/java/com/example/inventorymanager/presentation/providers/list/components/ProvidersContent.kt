@@ -2,17 +2,18 @@ package com.example.inventorymanager.presentation.providers.list.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.presentation.customers.CustomersViewModel
+import com.example.inventorymanager.presentation.providers.ProvidersViewModel
+import com.example.inventorymanager.presentation.providers.list.components.ProviderCard
+import androidx.compose.foundation.lazy.items
 
 @Composable
-fun CustomersContent(
-    viewModel: CustomersViewModel,
+fun ProvidersContent(
+    viewModel: ProvidersViewModel,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
@@ -63,8 +64,8 @@ fun CustomersContent(
             verticalArrangement = Arrangement.spacedBy(6.dp),
             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
         ) {
-            items(viewModel.filteredCustomers, key = { it.customerId }) { customer ->
-                CustomerCard(customer = customer)
+            items(viewModel.filteredProviders, key = { it.providerId }) { provider ->
+                ProviderCard(provider = provider)
             }
         }
     }
