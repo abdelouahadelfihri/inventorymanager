@@ -17,7 +17,7 @@ import com.example.inventorymanager.presentation.deliveries.DeliveriesViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DeliveriesListScreen(viewModel: DeliveriesViewModel = hiltViewModel()) {
+fun OrdersListScreen(viewModel: DeliveriesViewModel = hiltViewModel()) {
     val navController = rememberNavController()
 
     Scaffold(
@@ -51,7 +51,7 @@ fun DeliveriesListScreen(viewModel: DeliveriesViewModel = hiltViewModel()) {
             }
         }
     ) { innerPadding ->
-        DeliveriesContent(
+        OrdersContent(
             viewModel = viewModel,
             modifier = Modifier
                 .fillMaxSize()
