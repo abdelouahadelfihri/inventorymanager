@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.customers.list.components
+package com.example.inventorymanager.presentation.orders.list.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -8,12 +8,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.presentation.deliveries.DeliveriesViewModel
-import com.example.inventorymanager.presentation.deliveries.list.components.DeliveryCard
+import com.example.inventorymanager.presentation.orders.OrdersViewModel
+import com.example.inventorymanager.presentation.orders.list.components.OrderCard
 
 @Composable
-fun DeliveriesContent(
-    viewModel: DeliveriesViewModel,
+fun OrdersContent(
+    viewModel: OrdersViewModel,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
@@ -58,7 +58,7 @@ fun DeliveriesContent(
             }
         }
 
-        val customers by viewModel.customers.collectAsState()
+        val orders by viewModel.orders.collectAsState()
 
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
