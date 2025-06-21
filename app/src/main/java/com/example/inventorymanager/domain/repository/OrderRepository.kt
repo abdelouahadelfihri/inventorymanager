@@ -17,7 +17,7 @@ interface OrderRepository {
 
     suspend fun updateOrderInRoom(order: Order)
 
-    suspend fun deleteOrderFromRoom(order: Order)
+    suspend fun deleteOrderFromRoom(id: Int)
 
     fun searchOrders(query: String): Flow<List<Order>>
 
