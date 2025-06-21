@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.inventorymanager.presentation.customers.list.CustomerListScreen
+import com.example.inventorymanager.presentation.orders.list.OrdersListScreen
 import com.example.inventorymanager.presentation.customers.details.UpdateCustomerScreen
 import com.example.inventorymanager.presentation.customers.add.AddCustomerScreen
 import com.example.inventorymanager.presentation.dashboard.DashboardScreen
@@ -22,6 +23,9 @@ fun AppNavHost(navController: NavHostController) {
         }
         composable("customer_list") {
             CustomerListScreen(navController = navController)
+        }
+        composable("orders_list") {
+            OrdersListScreen(navController = navController)
         }
         composable("add_customer") {
             AddCustomerScreen(
