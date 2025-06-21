@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import com.example.inventorymanager.core.Constants.Companion.EMPTY_STRING
 import com.example.inventorymanager.domain.model.Customer
+import com.example.inventorymanager.domain.model.Delivery
 import com.example.inventorymanager.domain.repository.CustomerRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -75,8 +76,21 @@ class CustomersViewModel @Inject constructor(
     }
 
     val filteredCustomers: List<Customer>
-        get() = _customers.value.filter {
-            it.name.contains(searchQuery, ignoreCase = true)
+        get() {
+            val terms = searchQuery
+                .trim()
+                .lowercase()
+                .split(";")
+                .map { it.trim() }
+                .filter { it.isNotEmpty() }
+
+            return _customers.value.filter { customer ->
+                terms.any { term ->
+                    customer.customerId.toString().contains(term) ||
+                            customer.name.toString().lowercase().contains(term) ||
+                            customer.address.toString().contains(term)
+                }
+            }
         }
 
     // Optional: Triggered by Refresh FAB
