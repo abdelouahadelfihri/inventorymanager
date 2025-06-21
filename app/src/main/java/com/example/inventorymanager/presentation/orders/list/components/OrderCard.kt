@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.dp
 import com.example.inventorymanager.domain.model.Delivery
 
 @Composable
-fun DeliveryCard(delivery: Delivery, customerName: String) {
+fun OrderCard(delivery: Delivery, providerName: String) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -29,7 +29,7 @@ fun DeliveryCard(delivery: Delivery, customerName: String) {
                     modifier = Modifier.weight(0.8f)
                 )
                 Text(
-                    text = customerName,
+                    text = providerName,
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(1.2f),
                     maxLines = 1,
