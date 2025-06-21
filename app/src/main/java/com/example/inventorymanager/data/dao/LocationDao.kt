@@ -31,7 +31,4 @@ interface LocationDao {
     @Delete
     suspend fun deleteLocation(location: Location)
 
-    @Query("SELECT * FROM $LOCATION_TABLE WHERE name LIKE :searchQuery")
-    fun searchLocations(searchQuery: String): Flow<List<Location>>
-
 }
