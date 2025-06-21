@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.inventorymanager.domain.model.Delivery
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import com.example.inventorymanager.domain.model.Provider
@@ -74,8 +75,21 @@ class ProvidersViewModel @Inject constructor(
     }
 
     val filteredProviders: List<Provider>
-        get() = _providers.value.filter {
-            it.name.contains(searchQuery, ignoreCase = true)
+        get() {
+            val terms = searchQuery
+                .trim()
+                .lowercase()
+                .split(";")
+                .map { it.trim() }
+                .filter { it.isNotEmpty() }
+
+            return _providers.value.filter { provider ->
+                terms.any { term ->
+                    provider.providerId.toString().contains(term) ||
+                            provider.name.toString().lowercase().contains(term) ||
+                            provider.address.toString().contains(term)
+                }
+            }
         }
 
     // Optional: Triggered by Refresh FAB
