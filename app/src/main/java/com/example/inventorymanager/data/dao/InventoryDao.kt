@@ -30,6 +30,4 @@ interface InventoryDao {
     @Delete
     suspend fun deleteInventory(inventory: Inventory)
 
-    @Query("SELECT * FROM $INVENTORY_TABLE WHERE name LIKE :searchQuery")
-    fun searchInventories(searchQuery: String): Flow<List<Inventory>>
 }
