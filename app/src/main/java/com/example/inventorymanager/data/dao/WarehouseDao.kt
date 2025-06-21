@@ -31,7 +31,4 @@ interface WarehouseDao {
     @Delete
     suspend fun deleteWarehouse(warehouse: Warehouse)
 
-    @Query("SELECT * FROM $WAREHOUSE_TABLE WHERE name LIKE :searchQuery")
-    fun searchWarehouses(searchQuery: String): Flow<List<Warehouse>>
-
 }
