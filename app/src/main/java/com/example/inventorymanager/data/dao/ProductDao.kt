@@ -31,7 +31,4 @@ interface ProductDao {
     @Delete
     suspend fun deleteProduct(id: Int)
 
-    @Query("SELECT * FROM $PRODUCT_TABLE WHERE name LIKE :searchQuery")
-    fun searchProducts(searchQuery: String): Flow<List<Product>>
-
 }
