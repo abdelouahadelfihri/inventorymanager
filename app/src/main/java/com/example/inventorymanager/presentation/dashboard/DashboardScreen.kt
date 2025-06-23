@@ -1,5 +1,6 @@
 package com.example.inventorymanager.presentation.dashboard
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -37,16 +38,48 @@ fun DashboardScreen(navController: NavHostController) {
             )
         },
         drawerContent = {
-            Column(modifier = Modifier.padding(16.dp)) {
-                Text("Home", style = MaterialTheme.typography.h6)
-                Spacer(modifier = Modifier.height(8.dp))
-                Text("Settings", style = MaterialTheme.typography.h6)
-            }
+            DrawerMenu(
+                onItemSelected = { item ->
+                    scope.launch { scaffoldState.drawerState.close() }
+                    // Handle navigation here if needed
+                    when (item) {
+                        "Home" -> {} // Already on dashboard
+                        "Settings" -> {
+                            // navController.navigate("settings")
+                        }
+                    }
+                }
+            )
         },
         content = { paddingValues ->
             DashboardContent(modifier = Modifier.padding(paddingValues))
         }
     )
+}
+
+@Composable
+fun DrawerMenu(onItemSelected: (String) -> Unit) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .padding(16.dp)) {
+        Text(
+            text = "Home",
+            style = MaterialTheme.typography.h6,
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { onItemSelected("Home") }
+                .padding(vertical = 8.dp)
+        )
+        Divider()
+        Text(
+            text = "Settings",
+            style = MaterialTheme.typography.h6,
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { onItemSelected("Settings") }
+                .padding(vertical = 8.dp)
+        )
+    }
 }
 
 @Composable
