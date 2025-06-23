@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import com.example.inventorymanager.presentation.orders.OrdersViewModel
+import com.example.inventorymanager.presentation.orders.list.components.OrdersContent
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -40,7 +41,7 @@ fun OrdersListScreen(viewModel: OrdersViewModel = hiltViewModel()) {
                     Icon(Icons.Default.Add, contentDescription = "Add")
                 }
                 FloatingActionButton(onClick = {
-                    viewModel.onRefreshDeliveries()
+                    viewModel.onRefreshOrders()
                 }) {
                     Icon(Icons.Default.Refresh, contentDescription = "Refresh")
                 }
