@@ -9,7 +9,7 @@ import com.example.inventorymanager.presentation.customers.list.CustomerListScre
 import com.example.inventorymanager.presentation.orders.list.OrdersListScreen
 import com.example.inventorymanager.presentation.customers.details.UpdateCustomerScreen
 import com.example.inventorymanager.presentation.customers.add.AddCustomerScreen
-import com.example.inventorymanager.presentation.customers.list.OrdersListScreen
+import com.example.inventorymanager.presentation.orders.list.OrdersListScreen
 import com.example.inventorymanager.presentation.dashboard.DashboardScreen
 
 @ExperimentalMaterialApi
