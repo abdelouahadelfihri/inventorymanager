@@ -52,22 +52,10 @@ fun DashboardScreen(navController: NavHostController) {
             )
         },
         drawerContent = {
-            DrawerMenu(
-                onItemSelected = { item ->
-                    scope.launch { scaffoldState.drawerState.close() }
-                    "MainMenu" -> navController.navigate("main_menu")
-                    "Goods" -> navController.navigate("goods")
-                    "Documents" -> navController.navigate("documents")
-                    "Expenses" -> navController.navigate("expenses")
-                    "Reports" -> navController.navigate("reports")
-                    "Suppliers" -> navController.navigate("suppliers")
-                    "Customers" -> navController.navigate("customers")
-                    "Stores" -> navController.navigate("stores")
-                    "Settings" -> navController.navigate("settings")
-                    "Help" -> navController.navigate("help")
-                    "SelectStore" -> navController.navigate("select_store")
-                }
-            )
+            DrawerMenu(onSelectItem = { item ->
+                scope.launch { scaffoldState.drawerState.close() }
+                navController.navigate(item)
+            })
         },
         content = { paddingValues ->
             DashboardContent(modifier = Modifier.padding(paddingValues))
