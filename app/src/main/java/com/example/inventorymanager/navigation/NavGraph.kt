@@ -9,6 +9,7 @@ import com.example.inventorymanager.presentation.customers.list.CustomerListScre
 import com.example.inventorymanager.presentation.orders.list.OrdersListScreen
 import com.example.inventorymanager.presentation.customers.details.UpdateCustomerScreen
 import com.example.inventorymanager.presentation.customers.add.AddCustomerScreen
+import com.example.inventorymanager.presentation.customers.list.OrdersListScreen
 import com.example.inventorymanager.presentation.dashboard.DashboardScreen
 
 @ExperimentalMaterialApi
@@ -22,10 +23,10 @@ fun AppNavHost(navController: NavHostController) {
             DashboardScreen(navController = navController)
         }
         composable("customer_list") {
-            CustomerListScreen(navController = navController)
+            CustomerListScreen()
         }
         composable("orders_list") {
-            OrdersListScreen(navController = navController)
+            OrdersListScreen()
         }
         composable("add_customer") {
             AddCustomerScreen(
