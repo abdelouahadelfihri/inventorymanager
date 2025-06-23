@@ -2,16 +2,21 @@ package com.example.inventorymanager.presentation.dashboard
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Description
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Inventory
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import kotlinx.coroutines.launch
 
@@ -45,7 +50,7 @@ fun DashboardScreen(navController: NavHostController) {
                     when (item) {
                         "Home" -> {} // Already on dashboard
                         "Settings" -> {
-                            // navController.navigate("settings")
+                            navController.navigate("settings")
                         }
                     }
                 }
@@ -58,27 +63,83 @@ fun DashboardScreen(navController: NavHostController) {
 }
 
 @Composable
-fun DrawerMenu(onItemSelected: (String) -> Unit) {
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .padding(16.dp)) {
-        Text(
-            text = "Home",
-            style = MaterialTheme.typography.h6,
-            modifier = Modifier
-                .fillMaxWidth()
-                .clickable { onItemSelected("Home") }
-                .padding(vertical = 8.dp)
-        )
+fun DrawerMenu(onSelectItem: (String) -> Unit) {
+    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+        // Header Rectangle with app icon and version
+        Card(
+            shape = RoundedCornerShape(8.dp),
+            backgroundColor = Color.LightGray,
+            modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(12.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Inventory,
+                    contentDescription = null,
+                    modifier = Modifier.size(40.dp)
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Column {
+                    Text("Inventory Manager", fontWeight = FontWeight.Bold)
+                    Text("v1.0.0", fontSize = 12.sp, color = Color.DarkGray)
+                }
+            }
+        }
+
+        // Selected Store with button
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
+        ) {
+            Text("Store: Main Store", fontWeight = FontWeight.Medium, modifier = Modifier.weight(1f))
+            Button(onClick = { onSelectItem("SelectStore") }) {
+                Text("Change")
+            }
+        }
+
         Divider()
-        Text(
-            text = "Settings",
-            style = MaterialTheme.typography.h6,
-            modifier = Modifier
-                .fillMaxWidth()
-                .clickable { onItemSelected("Settings") }
-                .padding(vertical = 8.dp)
-        )
+
+        // Main Menu item
+        DrawerItem("Main Menu", Icons.Default.Home) { onSelectItem("MainMenu") }
+
+        Spacer(modifier = Modifier.height(8.dp))
+        Divider()
+
+        // Goods, Documents, Expenses, Reports
+        DrawerItem("Goods", Icons.Default.Inventory) { onSelectItem("Goods") }
+        DrawerItem("Documents", Icons.Default.Description) { onSelectItem("Documents") }
+        DrawerItem("Expenses", Icons.Default.Money) { onSelectItem("Expenses") }
+        DrawerItem("Reports", Icons.Default.BarChart) { onSelectItem("Reports") }
+
+        Divider(modifier = Modifier.padding(vertical = 8.dp))
+
+        // Suppliers, Customers, Stores
+        DrawerItem("Suppliers", Icons.Default.People) { onSelectItem("Suppliers") }
+        DrawerItem("Customers", Icons.Default.Person) { onSelectItem("Customers") }
+        DrawerItem("Stores", Icons.Default.Store) { onSelectItem("Stores") }
+
+        Divider(modifier = Modifier.padding(vertical = 8.dp))
+
+        // Settings and Help
+        DrawerItem("Settings", Icons.Default.Settings) { onSelectItem("Settings") }
+        DrawerItem("Help", Icons.Default.Info) { onSelectItem("Help") }
+    }
+}
+
+@Composable
+fun DrawerItem(text: String, icon: androidx.compose.ui.graphics.vector.ImageVector, onClick: () -> Unit) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onClick() }
+            .padding(vertical = 12.dp)
+    ) {
+        Icon(icon, contentDescription = null, modifier = Modifier.size(24.dp))
+        Spacer(modifier = Modifier.width(16.dp))
+        Text(text, fontSize = 16.sp)
     }
 }
 
