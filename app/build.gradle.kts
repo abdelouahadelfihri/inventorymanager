@@ -67,7 +67,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("com.android.tools.build:gradle:8.3.1") // or latest
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22")
-
+    implementation("androidx.compose.material:material-icons-extended:1.6.0")
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.compose.material:material:1.5.1")
     implementation(libs.androidx.core.ktx)
