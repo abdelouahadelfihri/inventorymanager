@@ -1,7 +1,6 @@
 package com.example.inventorymanager.domain.repository
 
-import com.example.inventorymanager.domain.model.Location
-import com.example.inventorymanager.domain.model.Order
+import com.example.inventorymanager.domain.model.ingoings.Order
 import kotlinx.coroutines.flow.Flow
 
 

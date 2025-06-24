@@ -1,8 +1,10 @@
-package com.example.inventorymanager.domain.model
+package com.example.inventorymanager.domain.model.ingoings
 
 import androidx.room.ForeignKey
 import androidx.room.Entity
 import androidx.room.Index
+import com.example.inventorymanager.domain.model.Product
+import com.example.inventorymanager.domain.model.Warehouse
 
 @Entity(
     tableName = "order_details",

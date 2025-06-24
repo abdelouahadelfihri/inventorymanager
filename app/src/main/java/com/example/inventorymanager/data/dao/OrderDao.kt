@@ -6,10 +6,8 @@ import androidx.room.Query
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.Companion.IGNORE
 import androidx.room.Update
-import com.example.inventorymanager.core.Constants.Companion.LOCATION_TABLE
-import com.example.inventorymanager.domain.model.Order
+import com.example.inventorymanager.domain.model.ingoings.Order
 import com.example.inventorymanager.core.Constants.Companion.ORDER_TABLE
-import com.example.inventorymanager.domain.model.Location
 import com.example.inventorymanager.domain.repository.Orders
 import kotlinx.coroutines.flow.Flow
 

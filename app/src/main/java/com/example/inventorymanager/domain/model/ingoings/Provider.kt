@@ -1,4 +1,4 @@
-package com.example.inventorymanager.domain.model
+package com.example.inventorymanager.domain.model.ingoings
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -5,8 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.inventorymanager.domain.model.Product
-import com.example.inventorymanager.domain.model.Order
-import com.example.inventorymanager.domain.model.OrderDetails
+import com.example.inventorymanager.domain.model.ingoings.Order
+import com.example.inventorymanager.domain.model.ingoings.OrderDetails
 import com.example.inventorymanager.data.dao.ProductDao
 import com.example.inventorymanager.data.dao.OrderDetailsDao
 import com.example.inventorymanager.data.dao.OrderDao

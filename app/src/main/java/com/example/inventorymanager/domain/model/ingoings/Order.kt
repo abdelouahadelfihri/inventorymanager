@@ -1,10 +1,9 @@
-package com.example.inventorymanager.domain.model
+package com.example.inventorymanager.domain.model.ingoings
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.example.inventorymanager.core.Constants.Companion.ORDER_TABLE
-import com.example.inventorymanager.domain.model.Provider
 import java.util.Date
 
 @Entity(

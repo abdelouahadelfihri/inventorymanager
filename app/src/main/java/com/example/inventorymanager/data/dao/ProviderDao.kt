@@ -6,7 +6,7 @@ import androidx.room.Query
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.Companion.IGNORE
 import androidx.room.Update
-import com.example.inventorymanager.domain.model.Provider
+import com.example.inventorymanager.domain.model.ingoings.Provider
 import com.example.inventorymanager.core.Constants.Companion.PROVIDER_TABLE
 import com.example.inventorymanager.domain.repository.Providers
 import kotlinx.coroutines.flow.Flow

@@ -2,9 +2,7 @@ package com.example.inventorymanager.data.dao
 
 import androidx.room.*
 import com.example.inventorymanager.core.Constants.Companion.ORDER_DETAILS_TABLE
-import com.example.inventorymanager.core.Constants.Companion.ORDER_TABLE
-import com.example.inventorymanager.domain.model.Order
-import com.example.inventorymanager.domain.model.OrderDetails
+import com.example.inventorymanager.domain.model.ingoings.OrderDetails
 
 import kotlinx.coroutines.flow.Flow
 
