@@ -5,7 +5,6 @@ import androidx.room.Entity
 import androidx.room.Index
 import com.example.inventorymanager.domain.model.Product
 import com.example.inventorymanager.core.Constants.Companion.DELIVERY_DETAILS_TABLE
-import com.example.inventorymanager.domain.model.Delivery
 import com.example.inventorymanager.domain.model.Warehouse
 
 @Entity(
