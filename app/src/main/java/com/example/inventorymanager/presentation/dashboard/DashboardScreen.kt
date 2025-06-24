@@ -102,20 +102,32 @@ fun DrawerMenu(onSelectItem: (String) -> Unit) {
         Divider(modifier = Modifier.padding(vertical = 8.dp))
 
         // INS group
-        DrawerItem("Ins", Icons.Default.ArrowDownward) { showIns = !showIns }
+        DrawerItem("Ingoings", Icons.Default.ArrowDownward) { showIns = !showIns }
         if (showIns) {
+            DrawerSubItem("Providers") { onSelectItem("Providers") }
             DrawerSubItem("Orders") { onSelectItem("Orders") }
         }
 
         // OUTS group
-        DrawerItem("Outs", Icons.Default.ArrowUpward) { showOuts = !showOuts }
+        DrawerItem("Outgoings", Icons.Default.ArrowUpward) { showOuts = !showOuts }
         if (showOuts) {
+            DrawerSubItem("Customers") { onSelectItem("Customers") }
+            DrawerSubItem("Deliveries") { onSelectItem("Deliveries") }
+        }
+
+        DrawerItem("Inventory", Icons.Default.ArrowUpward) { showOuts = !showOuts }
+        if (showOuts) {
+            DrawerSubItem("Customers") { onSelectItem("Customers") }
             DrawerSubItem("Deliveries") { onSelectItem("Deliveries") }
         }
 
         Divider(modifier = Modifier.padding(vertical = 8.dp))
 
-        DrawerItem("Goods", Icons.Default.Inventory) { onSelectItem("Goods") }
+        DrawerItem("Warehouses", Icons.Default.Inventory) { onSelectItem("Warehouses") }
+        DrawerItem("Transfers", Icons.Default.Inventory) { onSelectItem("Transfers") }
+        DrawerItem("Locations", Icons.Default.Inventory) { onSelectItem("Locations") }
+        DrawerItem("Inventories", Icons.Default.Inventory) { onSelectItem("Inventories") }
+        DrawerItem("Products", Icons.Default.Inventory) { onSelectItem("Products") }
         DrawerItem("Documents", Icons.Default.Description) { onSelectItem("Documents") }
         DrawerItem("Expenses", Icons.Default.Money) { onSelectItem("Expenses") }
         DrawerItem("Reports", Icons.Default.BarChart) { onSelectItem("Reports") }

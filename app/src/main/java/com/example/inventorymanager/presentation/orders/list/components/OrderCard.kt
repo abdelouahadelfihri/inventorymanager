@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.Delivery
+import com.example.inventorymanager.domain.model.outgoings.Delivery
 
 @Composable
 fun OrderCard(delivery: Delivery, providerName: String) {

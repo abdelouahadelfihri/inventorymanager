@@ -1,7 +1,6 @@
 package com.example.inventorymanager.domain.repository
 
 import com.example.inventory.domain.model.DeliveryDetails
-import com.example.inventorymanager.domain.model.Delivery
 import kotlinx.coroutines.flow.Flow
 
 typealias DeliveriesDetails = List<DeliveryDetails>

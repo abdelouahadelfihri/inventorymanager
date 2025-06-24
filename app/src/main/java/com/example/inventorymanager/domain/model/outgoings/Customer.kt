@@ -1,11 +1,10 @@
-package com.example.inventorymanager.domain.model
+package com.example.inventorymanager.domain.model.outgoings
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.inventorymanager.core.Constants.Companion.CUSTOMER_TABLE
+import com.example.inventorymanager.core.Constants
 
-
-@Entity(tableName = CUSTOMER_TABLE)
+@Entity(tableName = Constants.Companion.CUSTOMER_TABLE)
 data class Customer(
     @PrimaryKey(autoGenerate = true)
     val customerId: Int,

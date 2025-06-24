@@ -1,10 +1,9 @@
-package com.example.inventorymanager.domain.model
+package com.example.inventorymanager.domain.model.outgoings
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.ForeignKey
 import androidx.room.Index
-import com.example.inventorymanager.domain.model.Customer
 import com.example.inventorymanager.core.Constants.Companion.DELIVERY_TABLE
 import java.util.Date
 

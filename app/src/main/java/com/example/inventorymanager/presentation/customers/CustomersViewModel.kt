@@ -8,8 +8,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import com.example.inventorymanager.core.Constants.Companion.EMPTY_STRING
-import com.example.inventorymanager.domain.model.Customer
-import com.example.inventorymanager.domain.model.Delivery
+import com.example.inventorymanager.domain.model.outgoings.Customer
 import com.example.inventorymanager.domain.repository.CustomerRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
