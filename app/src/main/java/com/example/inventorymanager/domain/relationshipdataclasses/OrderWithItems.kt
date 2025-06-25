@@ -3,11 +3,11 @@ package com.example.inventorymanager.domain.relationshipdataclasses
 import androidx.room.Embedded
 import androidx.room.Relation
 import androidx.room.Junction
-import com.example.inventory.domain.model.Order
+import com.example.inventorymanager.domain.model.ingoings.Order
 import com.example.inventorymanager.domain.model.Item
-import com.example.inventory.domain.model.OrderDetails
+import com.example.inventorymanager.domain.model.ingoings.OrderDetails
 
-data class OrderWithProducts(
+data class OrderWithItems(
     @Embedded val order: Order,
     @Relation(
         parentColumn = "orderId",
