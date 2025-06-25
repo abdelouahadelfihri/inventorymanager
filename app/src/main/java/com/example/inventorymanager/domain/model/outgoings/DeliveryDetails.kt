@@ -3,7 +3,7 @@ package com.example.inventorymanager.domain.model.outgoings
 import androidx.room.ForeignKey
 import androidx.room.Entity
 import androidx.room.Index
-import com.example.inventorymanager.domain.model.Product
+import com.example.inventorymanager.domain.model.Item
 import com.example.inventorymanager.core.Constants.Companion.DELIVERY_DETAILS_TABLE
 import com.example.inventorymanager.domain.model.Warehouse
 
@@ -12,7 +12,7 @@ import com.example.inventorymanager.domain.model.Warehouse
     primaryKeys = ["deliveryId", "productId", "warehouseId"],
     foreignKeys = [
         ForeignKey(entity = Delivery::class, parentColumns = ["deliveryId"], childColumns = ["deliveryId"], onDelete = ForeignKey.CASCADE),
-        ForeignKey(entity = Product::class, parentColumns = ["productId"], childColumns = ["productId"], onDelete = ForeignKey.CASCADE),
+        ForeignKey(entity = Item::class, parentColumns = ["productId"], childColumns = ["productId"], onDelete = ForeignKey.CASCADE),
         ForeignKey(entity = Warehouse::class, parentColumns = ["warehouseId"], childColumns = ["warehouseId"], onDelete = ForeignKey.CASCADE)
     ],
     indices = [Index(value = ["deliveryId"]), Index(value = ["productId"]), Index(value = ["warehouseId"])]

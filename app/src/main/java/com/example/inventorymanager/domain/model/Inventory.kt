@@ -11,7 +11,7 @@ import com.example.inventorymanager.core.Constants.Companion.INVENTORY_TABLE
     tableName = INVENTORY_TABLE,
     foreignKeys = [
         ForeignKey(
-            entity = Product::class,
+            entity = Item::class,
             parentColumns = ["productId"],
             childColumns = ["product_id"],
             onDelete = ForeignKey.CASCADE

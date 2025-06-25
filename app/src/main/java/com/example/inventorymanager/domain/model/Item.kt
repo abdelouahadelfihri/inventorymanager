@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.example.inventorymanager.core.Constants.Companion.PRODUCT_TABLE
 
 @Entity(tableName = PRODUCT_TABLE)
-data class Product(
+data class Item(
     @PrimaryKey(autoGenerate = true)
     val productId: Int,
     val code: String,

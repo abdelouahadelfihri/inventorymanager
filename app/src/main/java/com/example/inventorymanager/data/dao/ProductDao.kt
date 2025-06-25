@@ -6,10 +6,8 @@ import androidx.room.Query
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.Companion.IGNORE
 import androidx.room.Update
-import com.example.inventorymanager.core.Constants.Companion.LOCATION_TABLE
-import com.example.inventorymanager.domain.model.Product
+import com.example.inventorymanager.domain.model.Item
 import com.example.inventorymanager.core.Constants.Companion.PRODUCT_TABLE
-import com.example.inventorymanager.domain.model.Location
 import com.example.inventorymanager.domain.repository.Products
 import kotlinx.coroutines.flow.Flow
 
@@ -20,13 +18,13 @@ interface ProductDao {
     fun getProducts(): Flow<Products>
 
     @Query("SELECT * FROM $PRODUCT_TABLE WHERE productId = :id")
-    suspend fun getProduct(id: Int): Product
+    suspend fun getProduct(id: Int): Item
 
     @Insert(onConflict = IGNORE)
-    suspend fun addProduct(product: Product)
+    suspend fun addProduct(item: Item)
 
     @Update
-    suspend fun updateProduct(product: Product)
+    suspend fun updateProduct(item: Item)
 
     @Delete
     suspend fun deleteProduct(id: Int)

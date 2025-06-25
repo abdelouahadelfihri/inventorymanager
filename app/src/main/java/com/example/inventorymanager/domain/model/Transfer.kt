@@ -5,8 +5,6 @@ import androidx.room.PrimaryKey
 import androidx.room.ForeignKey
 import androidx.room.Index
 import com.example.inventorymanager.core.Constants.Companion.TRANSFER_TABLE
-import com.example.inventorymanager.domain.model.Product
-import com.example.inventorymanager.domain.model.Warehouse
 import java.util.Date
 
 @Entity(
@@ -25,7 +23,7 @@ import java.util.Date
             onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
-            entity = Product::class,
+            entity = Item::class,
             parentColumns = ["productId"],
             childColumns = ["productId"],
             onDelete = ForeignKey.CASCADE

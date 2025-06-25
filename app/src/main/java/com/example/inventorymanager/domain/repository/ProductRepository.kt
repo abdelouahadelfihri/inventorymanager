@@ -1,23 +1,23 @@
 package com.example.inventorymanager.domain.repository
 
-import com.example.inventorymanager.domain.model.Product
+import com.example.inventorymanager.domain.model.Item
 import kotlinx.coroutines.flow.Flow
 
 
-typealias Products = List<Product>
+typealias Products = List<Item>
 
 interface ProductRepository {
 
     fun getProductsFromRoom(): Flow<Products>
 
-    suspend fun getProductFromRoom(id: Int): Product
+    suspend fun getProductFromRoom(id: Int): Item
 
-    suspend fun addProductToRoom(product: Product)
+    suspend fun addProductToRoom(item: Item)
 
-    suspend fun updateProductInRoom(product: Product)
+    suspend fun updateProductInRoom(item: Item)
 
     suspend fun deleteProductFromRoom(id: Int)
 
-    fun searchProducts(query: String): Flow<List<Product>>
+    fun searchProducts(query: String): Flow<List<Item>>
 
 }

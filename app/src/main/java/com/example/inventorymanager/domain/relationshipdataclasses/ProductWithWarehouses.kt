@@ -5,11 +5,11 @@ import androidx.room.Relation
 import androidx.room.Junction
 import com.example.inventory.domain.model.Inventory
 import com.example.inventory.domain.model.Warehouse
-import com.example.inventorymanager.domain.model.Product
+import com.example.inventorymanager.domain.model.Item
 
 
 data class ProductWithWarehouses(
-    @Embedded val product: Product,
+    @Embedded val item: Item,
     @Relation(
         parentColumn = "productId",
         entityColumn = "warehouseId",

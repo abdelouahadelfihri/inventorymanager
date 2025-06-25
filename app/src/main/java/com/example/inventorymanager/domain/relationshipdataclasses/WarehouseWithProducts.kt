@@ -5,7 +5,7 @@ import androidx.room.Relation
 import androidx.room.Junction
 import com.example.inventory.domain.model.Inventory
 import com.example.inventory.domain.model.Warehouse
-import com.example.inventorymanager.domain.model.Product
+import com.example.inventorymanager.domain.model.Item
 
 
 data class WarehouseWithProducts(
@@ -19,5 +19,5 @@ data class WarehouseWithProducts(
             entityColumn = "product_id"
         )
     )
-    val products: List<Product>
+    val items: List<Item>
 )
