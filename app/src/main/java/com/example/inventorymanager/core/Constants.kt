@@ -15,6 +15,7 @@ class Constants {
         const val DELIVERY_DETAILS_TABLE = "delivery_details"
         const val ORDER_DETAILS_TABLE = "order_details"
         const val UNIT_TABLE = "unit"
+        const val ITEM_TABLE = "item"
 
         //Screens
         const val ADD_DELIVERY_SCREEN = "Add Delivery"
