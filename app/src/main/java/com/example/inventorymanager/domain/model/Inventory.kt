@@ -32,6 +32,6 @@ data class Inventory(
     val minimumStockLevel: Int,
     val maximumStockLevel: Int,
     val reorderPoint: Int,
-    @ColumnInfo(name = "product_id") val productId: Int,
-    @ColumnInfo(name = "warehouse_id") val warehouseId: Int,
+    @ColumnInfo(name = "productId") val productId: Int,
+    @ColumnInfo(name = "warehouseId") val warehouseId: Int,
 )
