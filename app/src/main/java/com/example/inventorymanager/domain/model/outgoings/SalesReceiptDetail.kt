@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import com.example.inventorymanager.core.Constants.Companion.SALE_RECEIPT_DETAILS_TABLE
-import com.example.inventorymanager.domain.model.outgoings.SaleReceipts
+import com.example.inventorymanager.domain.model.Item
 import java.util.Date
 
 @Entity(
