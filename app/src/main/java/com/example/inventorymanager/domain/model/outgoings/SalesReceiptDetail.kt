@@ -3,13 +3,12 @@ package com.example.inventorymanager.domain.model.outgoings
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
-import com.example.inventorymanager.core.Constants.Companion.ITEM_TABLE
+import com.example.inventorymanager.core.Constants.Companion.SALE_RECEIPT_DETAILS_TABLE
 import com.example.inventorymanager.domain.model.outgoings.SaleReceipts
-Import com.example.inventorymanager.domain.model.Item
 import java.util.Date
 
 @Entity(
-    tableName = ITEM_TABLE,
+    tableName = SALE_RECEIPT_DETAILS_TABLE,
     foreignKeys = [
         ForeignKey(
             entity = SaleReceipts::class,
