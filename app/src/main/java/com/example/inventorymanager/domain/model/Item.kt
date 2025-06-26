@@ -13,17 +13,20 @@ import java.time.LocalDateTime
         ForeignKey(
             entity = Category::class,
             parentColumns = ["categoryId"],
-            childColumns = ["categoryid"],
+            childColumns = ["category"],
             onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
             entity = Unit::class,
             parentColumns = ["unitId"],
-            childColumns = ["unitId"],
+            childColumns = ["unit"],
             onDelete = ForeignKey.CASCADE
         )
     ],
-    indices = [Index(value = ["product_id"]), Index(value = ["warehouse_id"])]
+    indices = [
+        Index(value = ["category"]),
+        Index(value = ["unit"])
+    ]
 )
 data class Item(
     @PrimaryKey(autoGenerate = true)
@@ -43,5 +46,5 @@ data class Item(
     val packedDepth: Double,
     val refrigerated: Boolean,
     val isActive: Boolean,
-    val createdAt: LocalDateTime, // ✅ this is the DateTime field
+    val createdAt: LocalDateTime,
 )
