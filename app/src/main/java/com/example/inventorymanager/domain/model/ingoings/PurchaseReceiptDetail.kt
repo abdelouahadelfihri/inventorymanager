@@ -3,11 +3,10 @@ package com.example.inventorymanager.domain.model.ingoings
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
-
+import com.example.inventorymanager.core.Constants.Companion.ITEM_TABLE
 import com.example.inventorymanager.domain.model.Category
 import com.example.inventorymanager.domain.model.Unit
-import java.time.LocalDateTime
-
+import java.util.Date
 
 @Entity(
     tableName = ITEM_TABLE,
@@ -30,14 +29,15 @@ import java.time.LocalDateTime
         Index(value = ["unit"])
     ]
 )
+
 data class PurchaseReceiptDetail(
-    val id: Int, // Primary key
-    val purchaseReceiptId: Int, // FK to PurchaseReceipt
-    val productId: Int, // FK to Product
+    val id: Int,
+    val purchaseReceiptId: Int,
+    val productId: Int,
     val quantity: Double,
     val unitPrice: Double,
     val discount: Double = 0.0,
-    val total: Double, // Computed: quantity * unitPrice - discount
-    val warehouseLocation: String?, // Optional shelf/bin/etc.
-    val receivedDate: LocalDateTime
+    val total: Double,
+    val storageBin: String?, // Optional
+    val receivedDate: Date
 )
