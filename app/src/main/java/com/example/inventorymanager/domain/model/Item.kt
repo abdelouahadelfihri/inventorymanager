@@ -4,8 +4,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.example.inventorymanager.core.Constants.Companion.INVENTORY_TABLE
-import com.example.inventorymanager.core.Constants.Companion.PRODUCT_TABLE
+import com.example.inventorymanager.core.Constants.Companion.ITEM_TABLE
 import java.time.LocalDateTime
 
 @Entity(
