@@ -13,13 +13,13 @@ import com.example.inventorymanager.core.Constants.Companion.INVENTORY_TABLE
         ForeignKey(
             entity = Item::class,
             parentColumns = ["productId"],
-            childColumns = ["product_id"],
+            childColumns = ["productId"],
             onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
             entity = Warehouse::class,
             parentColumns = ["warehouseId"],
-            childColumns = ["warehouse_id"],
+            childColumns = ["warehouseId"],
             onDelete = ForeignKey.CASCADE
         )
     ],
