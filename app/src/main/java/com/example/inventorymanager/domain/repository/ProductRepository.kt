@@ -18,6 +18,4 @@ interface ProductRepository {
 
     suspend fun deleteProductFromRoom(id: Int)
 
-    fun searchProducts(query: String): Flow<List<Item>>
-
 }
