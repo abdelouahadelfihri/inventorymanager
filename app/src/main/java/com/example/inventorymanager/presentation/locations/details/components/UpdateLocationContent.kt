@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.Location
+import com.example.inventorymanager.domain.model.masterdata.Location
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 

@@ -1,11 +1,10 @@
-package com.example.inventorymanager.domain.model
+package com.example.inventorymanager.domain.model.masterdata
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.ForeignKey
 import androidx.room.ColumnInfo
 import com.example.inventorymanager.core.Constants.Companion.WAREHOUSE_TABLE
-import com.example.inventorymanager.domain.model.Location
 
 @Entity(
     tableName = WAREHOUSE_TABLE,

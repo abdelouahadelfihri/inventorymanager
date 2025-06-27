@@ -4,7 +4,7 @@ import androidx.room.Embedded
 import androidx.room.Relation
 import androidx.room.Junction
 import com.example.inventorymanager.domain.model.ingoings.Order
-import com.example.inventorymanager.domain.model.Item
+import com.example.inventorymanager.domain.model.masterdata.Item
 import com.example.inventorymanager.domain.model.ingoings.OrderDetails
 
 data class OrderWithItems(

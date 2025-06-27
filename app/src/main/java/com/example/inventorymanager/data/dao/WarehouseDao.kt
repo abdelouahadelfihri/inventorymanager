@@ -6,10 +6,8 @@ import androidx.room.Query
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.Companion.IGNORE
 import androidx.room.Update
-import com.example.inventorymanager.core.Constants.Companion.TRANSFER_TABLE
-import com.example.inventorymanager.domain.model.Warehouse
+import com.example.inventorymanager.domain.model.masterdata.Warehouse
 import com.example.inventorymanager.core.Constants.Companion.WAREHOUSE_TABLE
-import com.example.inventorymanager.domain.model.Transfer
 import com.example.inventorymanager.domain.repository.Warehouses
 import kotlinx.coroutines.flow.Flow
 

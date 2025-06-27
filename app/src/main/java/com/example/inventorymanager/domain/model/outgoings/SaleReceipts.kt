@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.example.inventorymanager.core.Constants.Companion.ORDER_TABLE
-import com.example.inventorymanager.domain.model.Warehouse
+import com.example.inventorymanager.domain.model.masterdata.Warehouse
 import com.example.inventorymanager.domain.model.ingoings.Order
 import java.util.Date
 

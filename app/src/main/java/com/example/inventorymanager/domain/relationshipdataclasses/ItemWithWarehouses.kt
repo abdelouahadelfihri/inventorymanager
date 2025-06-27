@@ -3,9 +3,9 @@ package com.example.inventorymanager.domain.relationshipdataclasses
 import androidx.room.Embedded
 import androidx.room.Relation
 import androidx.room.Junction
-import com.example.inventorymanager.domain.model.Inventory
-import com.example.inventorymanager.domain.model.Warehouse
-import com.example.inventorymanager.domain.model.Item
+import com.example.inventorymanager.domain.model.masterdata.Inventory
+import com.example.inventorymanager.domain.model.masterdata.Warehouse
+import com.example.inventorymanager.domain.model.masterdata.Item
 
 
 data class ItemWithWarehouses(

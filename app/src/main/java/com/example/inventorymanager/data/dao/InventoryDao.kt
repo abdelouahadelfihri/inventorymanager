@@ -6,10 +6,8 @@ import androidx.room.Query
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Update
-import com.example.inventorymanager.core.Constants.Companion.CUSTOMER_TABLE
-import com.example.inventorymanager.domain.model.Inventory
+import com.example.inventorymanager.domain.model.masterdata.Inventory
 import com.example.inventorymanager.core.Constants.Companion.INVENTORY_TABLE
-import com.example.inventorymanager.domain.model.outgoings.Customer
 import kotlinx.coroutines.flow.Flow
 
 @Dao

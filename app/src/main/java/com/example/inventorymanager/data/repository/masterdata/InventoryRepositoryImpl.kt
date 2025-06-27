@@ -1,9 +1,8 @@
 package com.example.inventorymanager.data.repository.masterdata
 
-import com.example.inventorymanager.domain.model.Inventory
+import com.example.inventorymanager.domain.model.masterdata.Inventory
 import com.example.inventorymanager.data.dao.InventoryDao
 import com.example.inventorymanager.domain.repository.InventoryRepository
-import kotlinx.coroutines.flow.Flow
 
 class InventoryRepositoryImpl(
     private val inventoryDao: InventoryDao

@@ -3,9 +3,9 @@ package com.example.inventorymanager.domain.model.outgoings
 import androidx.room.ForeignKey
 import androidx.room.Entity
 import androidx.room.Index
-import com.example.inventorymanager.domain.model.Item
+import com.example.inventorymanager.domain.model.masterdata.Item
 import com.example.inventorymanager.core.Constants.Companion.DELIVERY_DETAILS_TABLE
-import com.example.inventorymanager.domain.model.Warehouse
+import com.example.inventorymanager.domain.model.masterdata.Warehouse
 
 @Entity(
     tableName = DELIVERY_DETAILS_TABLE,

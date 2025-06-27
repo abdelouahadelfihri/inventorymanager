@@ -5,7 +5,7 @@ import androidx.room.Relation
 import androidx.room.Junction
 import com.example.inventorymanager.domain.model.ingoings.OrderDetails
 import com.example.inventorymanager.domain.model.ingoings.Order
-import com.example.inventorymanager.domain.model.Item
+import com.example.inventorymanager.domain.model.masterdata.Item
 
 data class ItemWithOrders(
     @Embedded val item: Item,

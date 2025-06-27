@@ -1,6 +1,6 @@
 package com.example.inventorymanager.domain.repository
 
-import com.example.inventorymanager.domain.model.Transfer
+import com.example.inventorymanager.domain.model.masterdata.Transfer
 import kotlinx.coroutines.flow.Flow
 
 

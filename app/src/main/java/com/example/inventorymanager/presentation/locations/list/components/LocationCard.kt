@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.Location
+import com.example.inventorymanager.domain.model.masterdata.Location
 
 @Composable
 fun LocationCard(location: Location) {

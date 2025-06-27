@@ -4,8 +4,8 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import com.example.inventorymanager.core.Constants.Companion.ITEM_TABLE
-import com.example.inventorymanager.domain.model.Category
-import com.example.inventorymanager.domain.model.Unit
+import com.example.inventorymanager.domain.model.masterdata.Category
+import com.example.inventorymanager.domain.model.masterdata.Unit
 import java.util.Date
 
 @Entity(
