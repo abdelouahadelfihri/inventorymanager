@@ -17,5 +17,4 @@ interface InventoryRepository {
 
     suspend fun deleteInventoryFromRoom(inventory: Inventory)
 
-    fun searchInventories(query: String): Flow<List<Inventory>>
 }
