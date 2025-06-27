@@ -1,4 +1,4 @@
-package com.example.inventorymanager.data.repository
+package com.example.inventorymanager.data.repository.ingoings
 
 import com.example.inventorymanager.domain.model.ingoings.Order
 import com.example.inventorymanager.data.dao.OrderDao
@@ -18,7 +18,4 @@ class OrderRepositoryImpl(
 
     override suspend fun deleteOrderFromRoom(order: Order) = orderDao.deleteOrder(order)
 
-    override fun searchOrders(query: String): Flow<List<Order>> {
-        return orderDao.searchOrders("%$query%")
-    }
 }
