@@ -1,8 +1,7 @@
-package com.example.inventorymanager.data.repository
+package com.example.inventorymanager.data.repository.masterdata
 
 import com.example.inventorymanager.domain.model.Location
 import com.example.inventorymanager.data.dao.LocationDao
-import com.example.inventorymanager.domain.model.Inventory
 import com.example.inventorymanager.domain.repository.LocationRepository
 import kotlinx.coroutines.flow.Flow
 

@@ -1,4 +1,4 @@
-package com.example.inventorymanager.data.repository
+package com.example.inventorymanager.data.repository.masterdata
 
 import com.example.inventorymanager.domain.model.Inventory
 import com.example.inventorymanager.data.dao.InventoryDao
@@ -18,7 +18,4 @@ class InventoryRepositoryImpl(
 
     override suspend fun deleteInventoryFromRoom(inventory: Inventory) = inventoryDao.deleteInventory(inventory)
 
-    override fun searchInventories(query: String): Flow<List<Inventory>> {
-        return inventoryDao.searchInventories("%$query%")
-    }
 }

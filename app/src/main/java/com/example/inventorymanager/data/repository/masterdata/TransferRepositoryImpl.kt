@@ -1,4 +1,4 @@
-package com.example.inventorymanager.data.repository
+package com.example.inventorymanager.data.repository.masterdata
 
 import com.example.inventorymanager.domain.model.Transfer
 import com.example.inventorymanager.data.dao.TransferDao
