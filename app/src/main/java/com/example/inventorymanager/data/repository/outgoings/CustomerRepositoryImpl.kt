@@ -1,4 +1,4 @@
-package com.example.inventorymanager.data.repository
+package com.example.inventorymanager.data.repository.outgoings
 
 import com.example.inventorymanager.data.dao.CustomerDao
 import com.example.inventorymanager.domain.model.outgoings.Customer
@@ -18,9 +18,5 @@ class CustomerRepositoryImpl(
     override suspend fun updateCustomerInRoom(customer: Customer) = customerDao.updateCustomer(customer)
 
     override suspend fun deleteCustomerFromRoom(id: Int) = customerDao.deleteCustomer(id)
-
-    override fun searchCustomers(query: String): Flow<List<Customer>> {
-        return customerDao.searchCustomers("%$query%")
-    }
 
 }
