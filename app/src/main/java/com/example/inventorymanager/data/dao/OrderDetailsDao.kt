@@ -15,8 +15,8 @@ interface OrderDetailsDao {
     @Update
     suspend fun update(orderDetails: OrderDetails)
 
-    @Delete
-    suspend fun delete(orderId: Int, productId: Int, warehouseId: Int)
+    @Query("DELETE FROM order_details WHERE orderId = :orderId AND productId = :productId AND warehouseId = :warehouseId")
+    suspend fun delete(orderId: Int, productId: Int, warehouseId: Int): Int
 
     @Query("SELECT * FROM $ORDER_DETAILS_TABLE WHERE orderId = :orderId AND productId = :productId AND warehouseId = :warehouseId LIMIT 1")
     suspend fun getByIds(orderId: Int, productId: Int, warehouseId: Int): OrderDetails?
