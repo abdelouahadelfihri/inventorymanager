@@ -16,6 +16,6 @@ class OrderRepositoryImpl(
 
     override suspend fun updateOrderInRoom(order: Order) = orderDao.updateOrder(order)
 
-    override suspend fun deleteOrderFromRoom(order: Order) = orderDao.deleteOrder(order)
+    override suspend fun deleteOrderFromRoom(id: Int) = orderDao.deleteOrder(id)
 
 }
