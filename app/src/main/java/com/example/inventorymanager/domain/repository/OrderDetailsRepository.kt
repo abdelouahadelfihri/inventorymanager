@@ -17,5 +17,4 @@ interface OrderDetailsRepository {
 
     suspend fun deleteOrderDetailsFromRoom(orderId: Int, productId: Int, warehouseId: Int)
 
-    fun searchOrdersDetails(query: String): Flow<List<OrderDetails>>
 }
