@@ -18,6 +18,4 @@ interface OrderRepository {
 
     suspend fun deleteOrderFromRoom(id: Int)
 
-    fun searchOrders(query: String): Flow<List<Order>>
-
 }
