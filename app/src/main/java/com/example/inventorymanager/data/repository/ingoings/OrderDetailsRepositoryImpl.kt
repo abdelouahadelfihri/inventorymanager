@@ -31,7 +31,4 @@ class OrderDetailsRepositoryImpl(
         orderDetailsDao.delete(orderDetails)
     }
 
-    override fun searchOrdersDetails(query: String): Flow<List<OrderDetails>> {
-        return orderDetailsDao.searchOrdersDetails("%$query%")
-    }
 }
