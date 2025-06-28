@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.Flow
 interface CategoryDao {
 
     @Query("SELECT * FROM $CATEGORY_TABLE ORDER BY cateogryId ASC")
-    fun getCategories(): Flow<Customers>
+    fun getCategories(): Flow<Categories>
 
     @Query("SELECT * FROM $CATEGORY_TABLE WHERE categoryId = :id")
     suspend fun getCategory(id: Int): Category
