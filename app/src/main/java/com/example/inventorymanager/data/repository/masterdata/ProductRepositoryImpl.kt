@@ -1,11 +1,11 @@
 package com.example.inventorymanager.data.repository.masterdata
 
-import com.example.inventorymanager.data.dao.ProductDao
+import com.example.inventorymanager.data.dao.masterdata.ItemDao
 import com.example.inventorymanager.domain.model.masterdata.Item
 import com.example.inventorymanager.domain.repository.ProductRepository
 
 class ProductRepositoryImpl(
-    private val productDao: ProductDao
+    private val productDao: ItemDao
 ) : ProductRepository {
     override fun getProductsFromRoom() = productDao.getProducts()
 
