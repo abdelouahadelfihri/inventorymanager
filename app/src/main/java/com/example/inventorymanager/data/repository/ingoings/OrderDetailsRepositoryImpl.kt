@@ -2,7 +2,7 @@ package com.example.inventorymanager.data.repository.ingoings
 
 import com.example.inventorymanager.domain.model.ingoings.OrderDetails
 import com.example.inventorymanager.domain.repository.OrderDetailsRepository
-import com.example.inventorymanager.data.dao.OrderDetailsDao
+import com.example.inventorymanager.data.dao.ingoings.OrderDetailsDao
 import kotlinx.coroutines.flow.Flow
 
 class OrderDetailsRepositoryImpl(

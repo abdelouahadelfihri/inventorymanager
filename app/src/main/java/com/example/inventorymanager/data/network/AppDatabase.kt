@@ -8,7 +8,7 @@ import com.example.inventorymanager.domain.model.masterdata.Item
 import com.example.inventorymanager.domain.model.ingoings.Order
 import com.example.inventorymanager.domain.model.ingoings.OrderDetails
 import com.example.inventorymanager.data.dao.ProductDao
-import com.example.inventorymanager.data.dao.OrderDetailsDao
+import com.example.inventorymanager.data.dao.ingoings.OrderDetailsDao
 import com.example.inventorymanager.data.dao.ingoings.OrderDao
 
 
