@@ -18,7 +18,4 @@ class WarehouseRepositoryImpl(
 
     override suspend fun deleteWarehouseFromRoom(warehouse: Warehouse) = warehouseDao.deleteWarehouse(warehouse)
 
-    override fun searchWarehouses(query: String): Flow<List<Warehouse>> {
-        return warehouseDao.searchWarehouses("%$query%")
-    }
 }
