@@ -16,6 +16,6 @@ interface WarehouseRepository {
 
     suspend fun updateWarehouseInRoom(warehouse: Warehouse)
 
-    suspend fun deleteWarehouseFromRoom(warehouse: Warehouse)
+    suspend fun deleteWarehouseFromRoom(id: Int)
 
 }
