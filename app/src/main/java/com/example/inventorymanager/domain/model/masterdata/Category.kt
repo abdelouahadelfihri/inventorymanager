@@ -7,7 +7,7 @@ import com.example.inventorymanager.core.Constants.Companion.CATEGORY_TABLE
 @Entity(tableName = CATEGORY_TABLE)
 data class Category (
     @PrimaryKey(autoGenerate = true)
-    val Id: Int,
+    val id: Int,
     val name: String,
     val description: String
 )
