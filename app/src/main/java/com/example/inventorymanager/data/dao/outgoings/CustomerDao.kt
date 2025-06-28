@@ -1,26 +1,26 @@
-package com.example.inventorymanager.data.dao
+package com.example.inventorymanager.data.dao.outgoings
 
 import androidx.room.Dao
 import androidx.room.Delete
-import androidx.room.Query
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy.Companion.IGNORE
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import androidx.room.Update
-import com.example.inventorymanager.domain.model.outgoings.Customer
-import com.example.inventorymanager.core.Constants.Companion.CUSTOMER_TABLE
+import com.example.inventorymanager.core.Constants
 import com.example.inventorymanager.domain.common.Customers
+import com.example.inventorymanager.domain.model.outgoings.Customer
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CustomerDao {
 
-    @Query("SELECT * FROM $CUSTOMER_TABLE ORDER BY customerId ASC")
+    @Query("SELECT * FROM ${Constants.Companion.CUSTOMER_TABLE} ORDER BY customerId ASC")
     fun getCustomers(): Flow<Customers>
 
-    @Query("SELECT * FROM $CUSTOMER_TABLE WHERE customerId = :id")
+    @Query("SELECT * FROM ${Constants.Companion.CUSTOMER_TABLE} WHERE customerId = :id")
     suspend fun getCustomer(id: Int): Customer
 
-    @Insert(onConflict = IGNORE)
+    @Insert(onConflict = OnConflictStrategy.Companion.IGNORE)
     suspend fun addCustomer(order: Customer)
 
     @Update
