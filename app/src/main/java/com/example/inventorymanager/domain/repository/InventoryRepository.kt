@@ -15,6 +15,6 @@ interface InventoryRepository {
 
     suspend fun updateInventoryInRoom(inventory: Inventory)
 
-    suspend fun deleteInventoryFromRoom(inventory: Inventory)
+    suspend fun deleteInventoryFromRoom(id: Int)
 
 }
