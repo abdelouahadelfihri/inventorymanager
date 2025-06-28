@@ -18,7 +18,4 @@ class LocationRepositoryImpl(
 
     override suspend fun deleteLocationFromRoom(location: Location) = locationDao.deleteLocation(location)
 
-    override fun searchLocations(query: String): Flow<List<Location>> {
-        return locationDao.searchLocations("%$query%")
-    }
 }
