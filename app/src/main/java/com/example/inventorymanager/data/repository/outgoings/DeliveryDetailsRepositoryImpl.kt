@@ -1,6 +1,5 @@
-package com.example.inventorymanager.data.repository
+package com.example.inventorymanager.data.repository.outgoings
 
-import com.example.inventory.domain.model.DeliveryDetails
 import com.example.inventorymanager.data.dao.DeliveryDetailsDao
 import com.example.inventorymanager.domain.repository.DeliveryDetailsRepository
 import kotlinx.coroutines.flow.Flow
@@ -31,7 +30,4 @@ class DeliveryDetailsRepositoryImpl(
         deliveryDetailsDao.delete(deliveryDetails)
     }
 
-    override fun searchDeliveriesDetails(query: String): Flow<List<DeliveryDetails>> {
-        return deliveryDetailsDao.searchDeliveriesDetails("%$query%")
-    }
 }
