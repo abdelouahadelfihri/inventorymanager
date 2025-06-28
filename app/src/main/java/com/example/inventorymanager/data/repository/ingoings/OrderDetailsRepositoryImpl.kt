@@ -26,10 +26,7 @@ class OrderDetailsRepositoryImpl(
     }
 
     override suspend fun deleteOrderDetailsFromRoom(orderId: Int, productId: Int, warehouseId: Int) {
-        val rowsDeleted = orderDetailsDao.delete(orderId, productId, warehouseId)
-        if (rowsDeleted == 0) {
-            throw Exception("Order not found")
-        }
+        orderDetailsDao.delete(orderId, productId, warehouseId)
     }
 
 }
