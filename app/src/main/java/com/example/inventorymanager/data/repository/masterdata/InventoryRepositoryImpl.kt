@@ -15,6 +15,6 @@ class InventoryRepositoryImpl(
 
     override suspend fun updateInventoryInRoom(inventory: Inventory) = inventoryDao.updateInventory(inventory)
 
-    override suspend fun deleteInventoryFromRoom(inventory: Inventory) = inventoryDao.deleteInventory(inventory)
+    override suspend fun deleteInventoryFromRoom(id: Int) = inventoryDao.deleteInventory(id)
 
 }
