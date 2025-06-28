@@ -1,7 +1,7 @@
 package com.example.inventorymanager.data.dao
 
 import androidx.room.*
-import com.example.inventory.domain.model.DeliveryDetails
+import com.example.inventorymanager.domain.model.outgoings.DeliveryDetails
 import com.example.inventorymanager.core.Constants.Companion.DELIVERY_DETAILS_TABLE
 
 import kotlinx.coroutines.flow.Flow
@@ -16,7 +16,7 @@ interface DeliveryDetailsDao {
     suspend fun update(deliveryDetails: DeliveryDetails)
 
     @Delete
-    suspend fun delete(deliveryId: Int, productId: Int, warehouseId: Int)
+    suspend fun delete(deliveryId: Int, productId: Int, warehouseId: Int): Int
 
     @Query("SELECT * FROM $DELIVERY_DETAILS_TABLE WHERE deliveryId = :deliveryId AND productId = :productId AND warehouseId = :warehouseId LIMIT 1")
     suspend fun getByIds(deliveryId: Int, productId: Int, warehouseId: Int): DeliveryDetails?
