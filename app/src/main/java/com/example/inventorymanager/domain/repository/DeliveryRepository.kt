@@ -1,6 +1,6 @@
 package com.example.inventorymanager.domain.repository
 
-import com.example.inventorymanager.domain.model.Delivery
+import com.example.inventorymanager.domain.model.outgoings.Delivery
 import kotlinx.coroutines.flow.Flow
 import com.example.inventorymanager.domain.common.Customers
 import com.example.inventorymanager.domain.common.Deliveries
@@ -18,7 +18,5 @@ interface DeliveryRepository {
     suspend fun updateDeliveryInRoom(delivery: Delivery)
 
     suspend fun deleteDeliveryFromRoom(id: Int)
-
-    fun searchDeliveries(query: String): Flow<List<Delivery>>
 
 }
