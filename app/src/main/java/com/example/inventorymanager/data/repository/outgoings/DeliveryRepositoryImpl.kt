@@ -1,7 +1,7 @@
-package com.example.inventorymanager.data.repository
+package com.example.inventorymanager.data.repository.outgoings
 
-import com.example.inventorymanager.domain.model.Delivery
 import com.example.inventorymanager.data.dao.outgoings.DeliveryDao
+import com.example.inventorymanager.domain.model.outgoings.Delivery
 import com.example.inventorymanager.domain.repository.DeliveryRepository
 import kotlinx.coroutines.flow.Flow
 
@@ -19,7 +19,4 @@ class DeliveryRepositoryImpl(
 
     override suspend fun deleteDeliveryFromRoom(id: Int) = deliveryDao.deleteDelivery(id)
 
-    override fun searchDeliveries(query: String): Flow<List<Delivery>> {
-        return deliveryDao.searchDeliveries("%$query%")
-    }
 }
