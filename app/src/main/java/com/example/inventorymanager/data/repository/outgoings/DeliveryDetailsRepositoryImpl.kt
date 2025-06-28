@@ -1,6 +1,7 @@
 package com.example.inventorymanager.data.repository.outgoings
 
 import com.example.inventorymanager.data.dao.DeliveryDetailsDao
+import com.example.inventorymanager.domain.model.outgoings.DeliveryDetails
 import com.example.inventorymanager.domain.repository.DeliveryDetailsRepository
 import kotlinx.coroutines.flow.Flow
 
@@ -25,9 +26,10 @@ class DeliveryDetailsRepositoryImpl(
     }
 
     override suspend fun deleteDeliveryDetailsFromRoom(deliveryId: Int, productId: Int, warehouseId: Int) {
-        val deliveryDetails = deliveryDetailsDao.getByIds(deliveryId, productId, warehouseId)
-            ?: throw Exception("Order not found")
-        deliveryDetailsDao.delete(deliveryDetails)
+        val rowsDeleted = deliveryDetailsDao.delete(deliveryId, productId, warehouseId)
+        if (rowsDeleted == 0) {
+            throw Exception("Order not found")
+        }
     }
 
 }
