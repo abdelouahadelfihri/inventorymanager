@@ -18,6 +18,4 @@ interface WarehouseRepository {
 
     suspend fun deleteWarehouseFromRoom(warehouse: Warehouse)
 
-    fun searchWarehouses(query: String): Flow<List<Warehouse>>
-
 }
