@@ -18,6 +18,4 @@ interface LocationRepository {
 
     suspend fun deleteLocationFromRoom(id: Int)
 
-    fun searchLocations(query: String): Flow<List<Location>>
-
 }
