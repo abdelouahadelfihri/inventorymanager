@@ -1,30 +1,29 @@
-package com.example.inventorymanager.data.dao
+package com.example.inventorymanager.data.dao.outgoings
 
 import androidx.room.Dao
 import androidx.room.Delete
-import androidx.room.Query
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy.Companion.IGNORE
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import androidx.room.Update
-import com.example.inventorymanager.domain.model.Delivery
-import com.example.inventorymanager.core.Constants.Companion.DELIVERY_TABLE
-import com.example.inventorymanager.core.Constants.Companion.CUSTOMER_TABLE
+import com.example.inventorymanager.core.Constants
 import com.example.inventorymanager.domain.common.Customers
 import com.example.inventorymanager.domain.common.Deliveries
+import com.example.inventorymanager.domain.model.outgoings.Delivery
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface DeliveryDao {
 
-    @Query("SELECT * FROM $DELIVERY_TABLE ORDER BY deliveryId ASC")
+    @Query("SELECT * FROM ${Constants.Companion.DELIVERY_TABLE} ORDER BY deliveryId ASC")
     fun getDeliveries(): Flow<Deliveries>
-    @Query("SELECT * FROM $CUSTOMER_TABLE ORDER BY customerId ASC")
+    @Query("SELECT * FROM ${Constants.Companion.CUSTOMER_TABLE} ORDER BY customerId ASC")
     fun getCustomers(): Flow<Customers>
 
-    @Query("SELECT * FROM $DELIVERY_TABLE WHERE deliveryId = :id")
+    @Query("SELECT * FROM ${Constants.Companion.DELIVERY_TABLE} WHERE deliveryId = :id")
     suspend fun getDelivery(id: Int): Delivery
 
-    @Insert(onConflict = IGNORE)
+    @Insert(onConflict = OnConflictStrategy.Companion.IGNORE)
     suspend fun addDelivery(delivery: Delivery)
 
     @Update

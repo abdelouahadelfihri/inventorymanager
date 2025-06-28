@@ -1,7 +1,7 @@
 package com.example.inventorymanager.data.repository
 
 import com.example.inventorymanager.domain.model.Delivery
-import com.example.inventorymanager.data.dao.DeliveryDao
+import com.example.inventorymanager.data.dao.outgoings.DeliveryDao
 import com.example.inventorymanager.domain.repository.DeliveryRepository
 import kotlinx.coroutines.flow.Flow
 
