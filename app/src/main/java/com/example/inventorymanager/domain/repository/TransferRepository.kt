@@ -18,6 +18,4 @@ interface TransferRepository {
 
     suspend fun deleteTransferFromRoom(transfer: Transfer)
 
-    fun searchTransfers(query: String): Flow<List<Transfer>>
-
 }
