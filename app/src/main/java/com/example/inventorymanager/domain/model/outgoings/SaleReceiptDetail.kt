@@ -3,13 +3,13 @@ package com.example.inventorymanager.domain.model.outgoings
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
-import androidx.room.PrimaryKey
 import com.example.inventorymanager.core.Constants.Companion.SALE_RECEIPT_DETAIL_TABLE
 import com.example.inventorymanager.domain.model.masterdata.Item
 import java.util.Date
 
 @Entity(
     tableName = SALE_RECEIPT_DETAIL_TABLE,
+    primaryKeys = ["saleReceiptId", "productId"],
     foreignKeys = [
         ForeignKey(
             entity = SaleReceipt::class,
@@ -29,9 +29,8 @@ import java.util.Date
         Index(value = ["productId"])
     ]
 )
+
 data class SaleReceiptDetail(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int,
     val saleReceiptId: Int,
     val productId: Int,
     val quantity: Double,
