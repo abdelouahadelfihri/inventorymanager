@@ -30,6 +30,7 @@ import com.example.inventorymanager.core.Constants.Companion.PURCHASE_RECEIPT_DE
         Index(value = ["productId"])
     ]
 )
+
 data class PurchaseReceiptDetail(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
