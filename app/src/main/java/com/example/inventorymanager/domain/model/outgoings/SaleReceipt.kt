@@ -12,10 +12,10 @@ import java.util.Date
     tableName = SALE_RECEIPT_TABLE,
     foreignKeys = [
         ForeignKey(
-        entity = Order::class,
-        parentColumns = ["orderId"],
-        childColumns = ["orderId"],
-        onDelete = ForeignKey.CASCADE
+            entity = Order::class,
+            parentColumns = ["orderId"],
+            childColumns = ["orderId"],
+            onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
             entity = Warehouse::class,
@@ -36,7 +36,7 @@ data class SaleReceipt(
     val saleReceiptId: Int,
     var orderId: Int,
     val customerId: Int,
-    val wareHouseId: Int,
+    val warehouseId: Int, // fixed spelling
     val receiptDate: Date,
     val deliveredBy: String,
     val totalAmount: Double,
