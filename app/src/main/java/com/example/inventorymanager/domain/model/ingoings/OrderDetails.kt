@@ -3,11 +3,13 @@ package com.example.inventorymanager.domain.model.ingoings
 import androidx.room.ForeignKey
 import androidx.room.Entity
 import androidx.room.Index
+import androidx.room.PrimaryKey
+import com.example.inventorymanager.core.Constants.Companion.ORDER_DETAIL_TABLE
 import com.example.inventorymanager.domain.model.masterdata.Item
 import com.example.inventorymanager.domain.model.masterdata.Warehouse
 
 @Entity(
-    tableName = "order_details",
+    tableName = ORDER_DETAIL_TABLE,
     primaryKeys = ["orderId", "productId","warehouseId"],
     foreignKeys = [
         ForeignKey(entity = Order::class, parentColumns = ["orderId"], childColumns = ["orderId"], onDelete = ForeignKey.CASCADE),
@@ -17,6 +19,7 @@ import com.example.inventorymanager.domain.model.masterdata.Warehouse
     indices = [Index(value = ["orderId"]), Index(value = ["productId"]), Index(value = ["warehouseId"])]
 )
 data class OrderDetails(
+    @PrimaryKey(autoGenerate = true)
     val orderId: Int,
     val productId: Int,
     val warehouseId: Int,
