@@ -9,12 +9,12 @@ interface OrderDetailRepository {
 
     fun getOrdersDetailsFromRoom(): Flow<OrdersDetails>
 
-    suspend fun getOrderDetailsFromRoom(orderId: Int, productId: Int, warehouseId: Int): OrderDetail
+    suspend fun getOrderDetailFromRoom(orderId: Int, productId: Int, warehouseId: Int): OrderDetail
 
-    suspend fun addOrderDetailsToRoom(orderDetails: OrderDetail)
+    suspend fun addOrderDetailToRoom(orderDetails: OrderDetail)
 
-    suspend fun updateOrderDetailsInRoom(orderDetails: OrderDetail)
+    suspend fun updateOrderDetailInRoom(orderDetails: OrderDetail)
 
-    suspend fun deleteOrderDetailsFromRoom(orderId: Int, productId: Int, warehouseId: Int)
+    suspend fun deleteOrderDetailFromRoom(orderId: Int, productId: Int, warehouseId: Int)
 
 }
