@@ -1,36 +1,33 @@
-package com.example.inventorymanager.domain.model.ingoings
-
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import androidx.room.ForeignKey
 import androidx.room.Index
-import com.example.inventorymanager.core.Constants.Companion.ITEM_TABLE
-import com.example.inventorymanager.domain.model.masterdata.Category
-import com.example.inventorymanager.domain.model.masterdata.Unit
 import java.util.Date
-
+import com.example.inventorymanager.domain.model.ingoings.PurchaseReceipts
+import com.example.inventorymanager.domain.model.masterdata.Item
 @Entity(
-    tableName = ITEM_TABLE,
+    tableName = PURCHASE_RECEIPT_DETAILS_TABLE,
     foreignKeys = [
         ForeignKey(
-            entity = Category::class,
-            parentColumns = ["categoryId"],
-            childColumns = ["category"],
+            entity = PurchaseReceipts::class,
+            parentColumns = ["purchaseReceiptId"],
+            childColumns = ["purchaseReceiptId"],
             onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
-            entity = Unit::class,
-            parentColumns = ["unitId"],
-            childColumns = ["unit"],
+            entity = Item::class,
+            parentColumns = ["productId"],
+            childColumns = ["productId"],
             onDelete = ForeignKey.CASCADE
         )
     ],
     indices = [
-        Index(value = ["category"]),
-        Index(value = ["unit"])
+        Index(value = ["purchaseReceiptId"]),
+        Index(value = ["productId"])
     ]
 )
-
 data class PurchaseReceiptDetail(
+    @PrimaryKey(autoGenerate = true)
     val id: Int,
     val purchaseReceiptId: Int,
     val productId: Int,
@@ -38,6 +35,6 @@ data class PurchaseReceiptDetail(
     val unitPrice: Double,
     val discount: Double = 0.0,
     val total: Double,
-    val storageBin: String?, // Optional
+    val storageBin: String?,
     val receivedDate: Date
 )
