@@ -1,16 +1,15 @@
 package com.example.inventorymanager.domain.model.ingoings
 
 import androidx.room.Entity
-import androidx.room.PrimaryKey
 import androidx.room.ForeignKey
 import androidx.room.Index
-import java.util.Date
-import com.example.inventorymanager.domain.model.ingoings.PurchaseReceipt
-import com.example.inventorymanager.domain.model.masterdata.Item
 import com.example.inventorymanager.core.Constants.Companion.PURCHASE_RECEIPT_DETAIL_TABLE
+import com.example.inventorymanager.domain.model.masterdata.Item
+import java.util.Date
 
 @Entity(
     tableName = PURCHASE_RECEIPT_DETAIL_TABLE,
+    primaryKeys = ["purchaseReceiptId", "productId"],
     foreignKeys = [
         ForeignKey(
             entity = PurchaseReceipt::class,
@@ -20,7 +19,7 @@ import com.example.inventorymanager.core.Constants.Companion.PURCHASE_RECEIPT_DE
         ),
         ForeignKey(
             entity = Item::class,
-            parentColumns = ["productId"],
+            parentColumns = ["itemId"],
             childColumns = ["productId"],
             onDelete = ForeignKey.CASCADE
         )
@@ -30,10 +29,7 @@ import com.example.inventorymanager.core.Constants.Companion.PURCHASE_RECEIPT_DE
         Index(value = ["productId"])
     ]
 )
-
 data class PurchaseReceiptDetail(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int,
     val purchaseReceiptId: Int,
     val productId: Int,
     val quantity: Double,
