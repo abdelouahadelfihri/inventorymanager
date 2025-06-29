@@ -11,7 +11,7 @@ import java.util.Date
     tableName = SALE_RECEIPT_DETAILS_TABLE,
     foreignKeys = [
         ForeignKey(
-            entity = SaleReceipts::class,
+            entity = SaleReceipt::class,
             parentColumns = ["categoryId"],
             childColumns = ["category"],
             onDelete = ForeignKey.CASCADE
