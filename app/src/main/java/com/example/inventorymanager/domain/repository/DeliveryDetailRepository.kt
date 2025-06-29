@@ -1,20 +1,20 @@
 package com.example.inventorymanager.domain.repository
 
-import com.example.inventorymanager.domain.model.outgoings.DeliveryDetails
+import com.example.inventorymanager.domain.model.outgoings.DeliveryDetail
 import kotlinx.coroutines.flow.Flow
 
-typealias DeliveriesDetails = List<DeliveryDetails>
+typealias DeliveriesDetails = List<DeliveryDetail>
 
 interface DeliveryDetailRepository {
 
     fun getDeliveriesDetailsFromRoom(): Flow<DeliveriesDetails>
 
-    suspend fun getDeliveryDetailsFromRoom(deliveryId: Int, productId: Int, warehouseId: Int): DeliveryDetails
+    suspend fun getDeliveryDetailFromRoom(deliveryId: Int, productId: Int, warehouseId: Int): DeliveryDetail
 
-    suspend fun addDeliveryDetailsToRoom(deliveryDetails: DeliveryDetails)
+    suspend fun addDeliveryDetailToRoom(deliveryDetails: DeliveryDetail)
 
-    suspend fun updateDeliveryDetailsInRoom(deliveryDetails: DeliveryDetails)
+    suspend fun updateDeliveryDetailInRoom(deliveryDetails: DeliveryDetail)
 
-    suspend fun deleteDeliveryDetailsFromRoom(deliveryId: Int, productId: Int, warehouseId: Int)
+    suspend fun deleteDeliveryDetailFromRoom(deliveryId: Int, productId: Int, warehouseId: Int)
 
 }
