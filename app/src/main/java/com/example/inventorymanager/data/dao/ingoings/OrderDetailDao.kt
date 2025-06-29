@@ -10,7 +10,7 @@ import com.example.inventorymanager.domain.model.ingoings.OrderDetail
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface OrderDetailsDao {
+interface OrderDetailDao {
 
     @Insert(onConflict = OnConflictStrategy.Companion.REPLACE)
     suspend fun insert(orderDetails: OrderDetail)

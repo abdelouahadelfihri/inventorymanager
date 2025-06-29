@@ -8,7 +8,7 @@ import com.example.inventorymanager.domain.model.masterdata.Item
 import com.example.inventorymanager.domain.model.ingoings.Order
 import com.example.inventorymanager.domain.model.ingoings.OrderDetail
 import com.example.inventorymanager.data.dao.masterdata.ItemDao
-import com.example.inventorymanager.data.dao.ingoings.OrderDetailsDao
+import com.example.inventorymanager.data.dao.ingoings.OrderDetailDao
 import com.example.inventorymanager.data.dao.ingoings.OrderDao
 
 
@@ -16,7 +16,7 @@ import com.example.inventorymanager.data.dao.ingoings.OrderDao
 abstract class AppDatabase : RoomDatabase() {
     abstract fun productDao(): ItemDao
     abstract fun orderDao(): OrderDao
-    abstract fun orderDetailsDao(): OrderDetailsDao
+    abstract fun orderDetailsDao(): OrderDetailDao
 
     companion object {
         @Volatile

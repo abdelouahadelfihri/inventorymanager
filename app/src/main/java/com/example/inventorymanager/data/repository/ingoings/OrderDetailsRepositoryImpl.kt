@@ -2,11 +2,11 @@ package com.example.inventorymanager.data.repository.ingoings
 
 import com.example.inventorymanager.domain.model.ingoings.OrderDetail
 import com.example.inventorymanager.domain.repository.OrderDetailsRepository
-import com.example.inventorymanager.data.dao.ingoings.OrderDetailsDao
+import com.example.inventorymanager.data.dao.ingoings.OrderDetailDao
 import kotlinx.coroutines.flow.Flow
 
 class OrderDetailsRepositoryImpl(
-    private val orderDetailsDao: OrderDetailsDao
+    private val orderDetailsDao: OrderDetailDao
 ) : OrderDetailsRepository {
 
     override fun getOrdersDetailsFromRoom(): Flow<List<OrderDetail>> {
