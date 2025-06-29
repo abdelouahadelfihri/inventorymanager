@@ -24,7 +24,7 @@ import java.util.Date
         )
     ]
 )
-data class PurchaseReceipts(
+data class PurchaseReceipt(
     @PrimaryKey(autoGenerate = true)
     val purchaseReceiptId: Int,
     var orderId: Int,

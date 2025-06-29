@@ -3,7 +3,7 @@ import androidx.room.PrimaryKey
 import androidx.room.ForeignKey
 import androidx.room.Index
 import java.util.Date
-import com.example.inventorymanager.domain.model.ingoings.PurchaseReceipts
+import com.example.inventorymanager.domain.model.ingoings.PurchaseReceipt
 import com.example.inventorymanager.domain.model.masterdata.Item
 import com.example.inventorymanager.core.Constants.Companion.PURCHASE_RECEIPT_DETAILS_TABLE
 
@@ -11,7 +11,7 @@ import com.example.inventorymanager.core.Constants.Companion.PURCHASE_RECEIPT_DE
     tableName = PURCHASE_RECEIPT_DETAILS_TABLE,
     foreignKeys = [
         ForeignKey(
-            entity = PurchaseReceipts::class,
+            entity = PurchaseReceipt::class,
             parentColumns = ["purchaseReceiptId"],
             childColumns = ["purchaseReceiptId"],
             onDelete = ForeignKey.CASCADE
