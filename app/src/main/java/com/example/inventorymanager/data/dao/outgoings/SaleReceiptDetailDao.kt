@@ -1,30 +1,25 @@
 package com.example.inventorymanager.data.dao.outgoings
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Update
-import com.example.inventorymanager.core.Constants
-import com.example.inventorymanager.domain.common.Customers
-import com.example.inventorymanager.domain.model.outgoings.Customer
+import androidx.room.*
+import com.example.inventorymanager.core.Constants.Companion.SALE_RECEIPT_DETAIL_TABLE
+import com.example.inventorymanager.domain.model.outgoings.SaleReceiptDetail
 import kotlinx.coroutines.flow.Flow
 
+@Dao
 interface SaleReceiptDetailDao {
 
-    @Query("SELECT * FROM ${Constants.Companion.CUSTOMER_TABLE} ORDER BY customerId ASC")
-    fun getCustomers(): Flow<Customers>
+    @Query("SELECT * FROM $SALE_RECEIPT_DETAIL_TABLE WHERE saleReceiptId = :receiptId")
+    fun getDetailsForReceipt(receiptId: Int): Flow<List<SaleReceiptDetail>>
 
-    @Query("SELECT * FROM ${Constants.Companion.CUSTOMER_TABLE} WHERE customerId = :id")
-    suspend fun getCustomer(id: Int): Customer
-
-    @Insert(onConflict = OnConflictStrategy.Companion.IGNORE)
-    suspend fun addCustomer(order: Customer)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertDetail(detail: SaleReceiptDetail)
 
     @Update
-    suspend fun updateCustomer(order: Customer)
+    suspend fun updateDetail(detail: SaleReceiptDetail)
 
     @Delete
-    suspend fun deleteCustomer(id: Int)
+    suspend fun deleteDetail(detail: SaleReceiptDetail)
 
+    @Query("DELETE FROM $SALE_RECEIPT_DETAIL_TABLE WHERE saleReceiptId = :receiptId")
+    suspend fun deleteAllDetailsForReceipt(receiptId: Int)
 }
