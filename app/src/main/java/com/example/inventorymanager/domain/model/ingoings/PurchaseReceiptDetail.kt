@@ -5,10 +5,10 @@ import androidx.room.Index
 import java.util.Date
 import com.example.inventorymanager.domain.model.ingoings.PurchaseReceipt
 import com.example.inventorymanager.domain.model.masterdata.Item
-import com.example.inventorymanager.core.Constants.Companion.PURCHASE_RECEIPT_DETAILS_TABLE
+import com.example.inventorymanager.core.Constants.Companion.PURCHASE_RECEIPT_DETAIL_TABLE
 
 @Entity(
-    tableName = PURCHASE_RECEIPT_DETAILS_TABLE,
+    tableName = PURCHASE_RECEIPT_DETAIL_TABLE,
     foreignKeys = [
         ForeignKey(
             entity = PurchaseReceipt::class,
