@@ -18,7 +18,7 @@ class Constants {
         const val ITEM_TABLE = "item"
         const val SALE_RECEIPT_TABLE = "sale_receipt"
         const val SALE_RECEIPT_DETAILS_TABLE = "sale_receipt_details"
-        const val PURCHASE_RECEIPT_TABLE = "purchase_receipt"
+        const val PURCHASE_ORDER_TABLE = "purchase_order"
         const val PURCHASE_RECEIPT_DETAILS_TABLE = "purchase_receipt_details"
         const val CATEGORY_TABLE = "category"
         //Screens
