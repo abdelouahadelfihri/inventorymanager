@@ -1,3 +1,4 @@
+package com.example.inventorymanager.data.local.entity.ingoings
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.ForeignKey
