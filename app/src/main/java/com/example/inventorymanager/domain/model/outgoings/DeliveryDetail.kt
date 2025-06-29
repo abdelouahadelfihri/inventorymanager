@@ -17,7 +17,7 @@ import com.example.inventorymanager.domain.model.masterdata.Warehouse
     ],
     indices = [Index(value = ["deliveryId"]), Index(value = ["productId"]), Index(value = ["warehouseId"])]
 )
-data class DeliveryDetails(
+data class DeliveryDetail(
     val deliveryId: Int,
     val productId: Int,
     val warehouseId: Int,

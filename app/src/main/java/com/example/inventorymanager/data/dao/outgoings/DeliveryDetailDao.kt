@@ -7,25 +7,25 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.inventorymanager.core.Constants
-import com.example.inventorymanager.domain.model.outgoings.DeliveryDetails
+import com.example.inventorymanager.domain.model.outgoings.DeliveryDetail
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface DeliveryDetailDao {
 
     @Insert(onConflict = OnConflictStrategy.Companion.REPLACE)
-    suspend fun insert(deliveryDetails: DeliveryDetails)
+    suspend fun insert(deliveryDetails: DeliveryDetail)
 
     @Update
-    suspend fun update(deliveryDetails: DeliveryDetails)
+    suspend fun update(deliveryDetails: DeliveryDetail)
 
     @Delete
     suspend fun delete(deliveryId: Int, productId: Int, warehouseId: Int)
 
     @Query("SELECT * FROM ${Constants.Companion.DELIVERY_DETAILS_TABLE} WHERE deliveryId = :deliveryId AND productId = :productId AND warehouseId = :warehouseId LIMIT 1")
-    suspend fun getByIds(deliveryId: Int, productId: Int, warehouseId: Int): DeliveryDetails?
+    suspend fun getByIds(deliveryId: Int, productId: Int, warehouseId: Int): DeliveryDetail?
 
     @Query("SELECT * FROM ${Constants.Companion.DELIVERY_DETAILS_TABLE}")
-    fun getAll(): Flow<List<DeliveryDetails>>
+    fun getAll(): Flow<List<DeliveryDetail>>
 
 }
