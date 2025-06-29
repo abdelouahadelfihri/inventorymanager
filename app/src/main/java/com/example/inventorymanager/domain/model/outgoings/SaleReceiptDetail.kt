@@ -3,6 +3,7 @@ package com.example.inventorymanager.domain.model.outgoings
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
+import androidx.room.PrimaryKey
 import com.example.inventorymanager.core.Constants.Companion.SALE_RECEIPT_DETAIL_TABLE
 import com.example.inventorymanager.domain.model.masterdata.Item
 import java.util.Date
@@ -12,32 +13,32 @@ import java.util.Date
     foreignKeys = [
         ForeignKey(
             entity = SaleReceipt::class,
-            parentColumns = ["categoryId"],
-            childColumns = ["category"],
+            parentColumns = ["saleReceiptId"],
+            childColumns = ["saleReceiptId"],
             onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
             entity = Item::class,
             parentColumns = ["itemId"],
-            childColumns = ["itemId"],
+            childColumns = ["productId"],
             onDelete = ForeignKey.CASCADE
         )
     ],
     indices = [
-        Index(value = ["category"]),
-        Index(value = ["unit"])
+        Index(value = ["saleReceiptId"]),
+        Index(value = ["productId"])
     ]
 )
-
 data class SaleReceiptDetail(
+    @PrimaryKey(autoGenerate = true)
     val id: Int,
-    val salesReceiptId: Int,   // Foreign key to SalesReceipt
-    val productId: Int,        // Foreign key to Product
+    val saleReceiptId: Int,
+    val productId: Int,
     val quantity: Double,
     val unitPrice: Double,
     val discount: Double = 0.0,
-    val taxRate: Double = 0.0, // Optional if your app uses taxes
-    val total: Double,         // Usually: (unitPrice * quantity - discount) + tax
-    val deliveredDate: Date?,  // Optional: when the product was actually delivered
-    val storageBin: String?    // Optional: bin in warehouse where it was picked
+    val taxRate: Double = 0.0,
+    val total: Double,
+    val deliveredDate: Date?,
+    val storageBin: String?
 )
