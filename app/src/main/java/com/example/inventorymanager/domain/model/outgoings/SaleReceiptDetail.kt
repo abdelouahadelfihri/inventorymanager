@@ -29,7 +29,7 @@ import java.util.Date
     ]
 )
 
-data class SalesReceiptDetail(
+data class SaleReceiptDetail(
     val id: Int,
     val salesReceiptId: Int,   // Foreign key to SalesReceipt
     val productId: Int,        // Foreign key to Product
