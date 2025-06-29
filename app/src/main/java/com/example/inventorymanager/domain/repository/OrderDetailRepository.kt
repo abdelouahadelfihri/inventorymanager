@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 typealias OrdersDetails = List<OrderDetail>
 
-interface OrderDetailsRepository {
+interface OrderDetailRepository {
 
     fun getOrdersDetailsFromRoom(): Flow<OrdersDetails>
 
