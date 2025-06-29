@@ -1,6 +1,6 @@
 package com.example.inventorymanager.data.repository.ingoings
 
-import com.example.inventorymanager.domain.model.ingoings.OrderDetails
+import com.example.inventorymanager.domain.model.ingoings.OrderDetail
 import com.example.inventorymanager.domain.repository.OrderDetailsRepository
 import com.example.inventorymanager.data.dao.ingoings.OrderDetailsDao
 import kotlinx.coroutines.flow.Flow
@@ -9,19 +9,19 @@ class OrderDetailsRepositoryImpl(
     private val orderDetailsDao: OrderDetailsDao
 ) : OrderDetailsRepository {
 
-    override fun getOrdersDetailsFromRoom(): Flow<List<OrderDetails>> {
+    override fun getOrdersDetailsFromRoom(): Flow<List<OrderDetail>> {
         return orderDetailsDao.getAll() // Assuming you have a method that returns all orders as a Flow
     }
 
-    override suspend fun getOrderDetailsFromRoom(orderId: Int, productId: Int, warehouseId: Int): OrderDetails {
+    override suspend fun getOrderDetailsFromRoom(orderId: Int, productId: Int, warehouseId: Int): OrderDetail {
         return orderDetailsDao.getByIds(orderId, productId, warehouseId) ?: throw Exception("Order not found")
     }
 
-    override suspend fun addOrderDetailsToRoom(orderDetails: OrderDetails) {
+    override suspend fun addOrderDetailsToRoom(orderDetails: OrderDetail) {
         orderDetailsDao.insert(orderDetails)
     }
 
-    override suspend fun updateOrderDetailsInRoom(orderDetails: OrderDetails) {
+    override suspend fun updateOrderDetailsInRoom(orderDetails: OrderDetail) {
         orderDetailsDao.update(orderDetails)
     }
 

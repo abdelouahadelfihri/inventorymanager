@@ -5,14 +5,14 @@ import androidx.room.Relation
 import androidx.room.Junction
 import com.example.inventorymanager.domain.model.ingoings.Order
 import com.example.inventorymanager.domain.model.masterdata.Item
-import com.example.inventorymanager.domain.model.ingoings.OrderDetails
+import com.example.inventorymanager.domain.model.ingoings.OrderDetail
 
 data class OrderWithItems(
     @Embedded val order: Order,
     @Relation(
         parentColumn = "orderId",
         entityColumn = "productId",
-        associateBy = Junction(OrderDetails::class)
+        associateBy = Junction(OrderDetail::class)
     )
     val items: List<Item>
 )
