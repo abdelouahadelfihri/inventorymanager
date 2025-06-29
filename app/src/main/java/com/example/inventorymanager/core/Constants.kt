@@ -20,6 +20,7 @@ class Constants {
         const val SALE_RECEIPT_DETAILS_TABLE = "sale_receipt_details"
         const val PURCHASE_RECEIPT_TABLE = "purchase_receipt"
         const val PURCHASE_RECEIPT_DETAILS_TABLE = "purchase_receipt_details"
+        const val RETURNS_FROM_CUSTOMER_TABLE = "returns_from_customer"
         const val CATEGORY_TABLE = "category"
         //Screens
         const val ADD_DELIVERY_SCREEN = "Add Delivery"
