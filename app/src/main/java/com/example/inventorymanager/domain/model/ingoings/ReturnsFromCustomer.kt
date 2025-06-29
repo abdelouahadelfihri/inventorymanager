@@ -36,6 +36,7 @@ data class ReturnsFromCustomer(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     var customerId: Int,
+    var warehouseId: Int,
     val itemId: Int,
     val quantity: Int,
     val returnDate: Date,
