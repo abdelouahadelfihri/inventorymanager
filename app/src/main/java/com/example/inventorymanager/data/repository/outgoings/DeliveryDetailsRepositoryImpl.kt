@@ -1,12 +1,12 @@
 package com.example.inventorymanager.data.repository.outgoings
 
-import com.example.inventorymanager.data.dao.outgoings.DeliveryDetailsDao
+import com.example.inventorymanager.data.dao.outgoings.DeliveryDetailDao
 import com.example.inventorymanager.domain.model.outgoings.DeliveryDetails
 import com.example.inventorymanager.domain.repository.DeliveryDetailsRepository
 import kotlinx.coroutines.flow.Flow
 
 class DeliveryDetailsRepositoryImpl(
-    private val deliveryDetailsDao: DeliveryDetailsDao
+    private val deliveryDetailsDao: DeliveryDetailDao
 ) : DeliveryDetailsRepository {
 
     override fun getDeliveriesDetailsFromRoom(): Flow<List<DeliveryDetails>> {
