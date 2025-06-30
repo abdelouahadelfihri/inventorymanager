@@ -1,12 +1,12 @@
-package com.example.inventorymanager.presentation.customers.details
+package com.example.inventorymanager.presentation.outgoings.customers.details
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.inventorymanager.presentation.customers.CustomersViewModel
-import com.example.inventorymanager.presentation.customers.details.components.UpdateCustomerContent
-import com.example.inventorymanager.presentation.customers.details.components.UpdateCustomerTopBar
+import com.example.inventorymanager.presentation.outgoings.customers.CustomersViewModel
+import com.example.inventorymanager.presentation.outgoings.customers.details.components.UpdateCustomerContent
+import com.example.inventorymanager.presentation.outgoings.customers.details.components.UpdateCustomerTopBar
 
 @Composable
 fun UpdateCustomerScreen(

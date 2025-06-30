@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.customers.list.components
+package com.example.inventorymanager.presentation.outgoings.customers.list.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -8,7 +8,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.presentation.customers.CustomersViewModel
+import com.example.inventorymanager.presentation.outgoings.customers.CustomersViewModel
 
 @Composable
 fun CustomersContent(

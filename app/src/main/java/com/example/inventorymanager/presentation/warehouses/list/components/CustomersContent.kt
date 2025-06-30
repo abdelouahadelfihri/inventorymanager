@@ -8,7 +8,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.presentation.customers.CustomersViewModel
+import com.example.inventorymanager.presentation.outgoings.customers.CustomersViewModel
 
 @Composable
 fun CustomersContent(

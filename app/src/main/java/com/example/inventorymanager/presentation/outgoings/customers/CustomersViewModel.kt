@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.customers
+package com.example.inventorymanager.presentation.outgoings.customers
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

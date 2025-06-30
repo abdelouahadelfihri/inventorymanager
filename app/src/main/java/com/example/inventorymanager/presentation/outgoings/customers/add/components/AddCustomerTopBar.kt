@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.customers.details.components
+package com.example.inventorymanager.presentation.outgoings.customers.add.components
 
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -7,16 +7,16 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.runtime.Composable
-import com.example.inventorymanager.core.Constants.Companion.UPDATE_CUSTOMER_SCREEN
+import com.example.inventorymanager.core.Constants.Companion.ADD_CUSTOMER
 
 @Composable
-fun UpdateCustomerTopBar(
+fun AddCustomerTopBar(
     navigateBack: () -> Unit
 ) {
     TopAppBar (
         title = {
             Text(
-                text = UPDATE_CUSTOMER_SCREEN
+                text = ADD_CUSTOMER
             )
         },
         navigationIcon = {
