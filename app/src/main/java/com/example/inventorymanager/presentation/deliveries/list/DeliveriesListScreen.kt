@@ -51,7 +51,7 @@ fun DeliveriesListScreen(viewModel: DeliveriesViewModel = hiltViewModel()) {
             }
         }
     ) { innerPadding ->
-        DeliveriesContent(
+        DeliveryContent(
             viewModel = viewModel,
             modifier = Modifier
                 .fillMaxSize()
