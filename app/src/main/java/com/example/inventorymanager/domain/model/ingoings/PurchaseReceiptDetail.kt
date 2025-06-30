@@ -29,6 +29,7 @@ import java.util.Date
         Index(value = ["productId"])
     ]
 )
+
 data class PurchaseReceiptDetail(
     val purchaseReceiptId: Int,
     val productId: Int,
