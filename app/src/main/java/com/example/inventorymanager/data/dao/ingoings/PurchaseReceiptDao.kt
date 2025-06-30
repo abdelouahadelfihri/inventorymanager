@@ -8,7 +8,7 @@ import androidx.room.Query
 import androidx.room.Update
 import com.example.inventorymanager.core.Constants.Companion.PURCHASE_RECEIPT_TABLE
 import com.example.inventorymanager.domain.model.ingoings.Order
-import com.example.inventorymanager.domain.repository.Orders
+import com.example.inventorymanager.domain.repository.ingoings.Orders
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -1,4 +1,4 @@
-package com.example.inventorymanager.domain.repository
+package com.example.inventorymanager.domain.repository.ingoings
 
 import com.example.inventorymanager.domain.model.ingoings.Order
 import kotlinx.coroutines.flow.Flow
