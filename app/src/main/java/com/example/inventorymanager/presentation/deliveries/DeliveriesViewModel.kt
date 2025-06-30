@@ -9,7 +9,7 @@ import com.example.inventorymanager.domain.model.outgoings.Customer
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import com.example.inventorymanager.domain.model.outgoings.Delivery
-import com.example.inventorymanager.domain.repository.DeliveryRepository
+import com.example.inventorymanager.domain.repository.outgoings.DeliveryRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import java.util.Date

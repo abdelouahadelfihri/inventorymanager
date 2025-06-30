@@ -1,9 +1,9 @@
-package com.example.inventorymanager.domain.repository
+package com.example.inventorymanager.domain.repository.outgoings
 
-import com.example.inventorymanager.domain.model.outgoings.Delivery
-import kotlinx.coroutines.flow.Flow
 import com.example.inventorymanager.domain.common.Customers
 import com.example.inventorymanager.domain.common.Deliveries
+import com.example.inventorymanager.domain.model.outgoings.Delivery
+import kotlinx.coroutines.flow.Flow
 
 interface DeliveryRepository {
 

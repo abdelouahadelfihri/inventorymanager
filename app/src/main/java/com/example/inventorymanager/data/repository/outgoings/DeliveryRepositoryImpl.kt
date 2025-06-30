@@ -2,7 +2,7 @@ package com.example.inventorymanager.data.repository.outgoings
 
 import com.example.inventorymanager.data.dao.outgoings.DeliveryDao
 import com.example.inventorymanager.domain.model.outgoings.Delivery
-import com.example.inventorymanager.domain.repository.DeliveryRepository
+import com.example.inventorymanager.domain.repository.outgoings.DeliveryRepository
 import kotlinx.coroutines.flow.Flow
 
 class DeliveryRepositoryImpl(
