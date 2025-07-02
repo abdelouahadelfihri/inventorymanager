@@ -19,5 +19,5 @@ data class Order(
     @PrimaryKey(autoGenerate = true)
     val orderId: Int,
     val providerId: Int,
-    val orderDate: Date
+    val orderDate: Date?
 )
