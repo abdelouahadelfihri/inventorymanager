@@ -3,13 +3,13 @@ package com.example.inventorymanager.presentation.ingoings.orders.add
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.inventorymanager.presentation.deliveries.DeliveriesViewModel
+import com.example.inventorymanager.presentation.ingoings.orders.OrdersViewModel
 import com.example.inventorymanager.presentation.ingoings.orders.add.components.AddOrderContent
 import com.example.inventorymanager.presentation.ingoings.orders.add.components.AddOrderTopBar
 
 @Composable
 fun AddOrderScreen(
-    viewModel: DeliveriesViewModel = hiltViewModel(),
+    viewModel: OrdersViewModel = hiltViewModel(),
     navigateBack: () -> Unit
 ) {
     Scaffold(
