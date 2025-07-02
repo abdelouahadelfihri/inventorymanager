@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.outgoings.Delivery
+import com.example.inventorymanager.domain.model.ingoings.Order
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
@@ -31,13 +31,13 @@ import androidx.compose.material.icons.filled.Search
 @Composable
 fun AddOrderContent(
     padding: PaddingValues,
-    delivery: Delivery,
-    addDelivery: (Delivery) -> Unit,
+    order: Order,
+    addOrder: (Order) -> Unit,
     navigateBack: () -> Unit
 ) {
 
-    var saleDate by remember { mutableStateOf<Date?>(delivery.saleDate) }
-    var customerId by remember { mutableStateOf(delivery.customerId.toString()) }
+    var orderDate by remember { mutableStateOf<Date?>(order.orderDate) }
+    var providerId by remember { mutableStateOf(order.providerId.toString()) }
 
     val scrollState = rememberScrollState()
 
@@ -59,8 +59,8 @@ fun AddOrderContent(
             ) {
                 DatePickerField(
                     label = "Sale Date",
-                    selectedDate = saleDate,
-                    onDateSelected = { saleDate = it }
+                    selectedDate = orderDate,
+                    onDateSelected = { orderDate = it }
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -71,8 +71,8 @@ fun AddOrderContent(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     OutlinedTextField(
-                        value = customerId.toString(),
-                        onValueChange = { customerId = it },
+                        value = providerId.toString(),
+                        onValueChange = { providerId = it },
                         label = { Text("Customer ID") },
                         modifier = Modifier
                             .weight(1f)
@@ -103,7 +103,7 @@ fun AddOrderContent(
             ) {
                 Button(
                     onClick = {
-                        addDelivery(delivery)
+                        addOrder(order)
                         navigateBack()
                     }
                 ) {
@@ -112,8 +112,8 @@ fun AddOrderContent(
 
                 Button(
                     onClick = {
-                        customerId = ""
-                        saleDate = null
+                        providerId = ""
+                        orderDate = null
                     }
                 ) {
                     Text("Clear")
