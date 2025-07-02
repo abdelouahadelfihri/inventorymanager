@@ -10,11 +10,13 @@ import androidx.compose.ui.unit.dp
 import com.example.inventorymanager.presentation.providers.ProvidersViewModel
 import com.example.inventorymanager.presentation.providers.list.components.ProviderCard
 import androidx.compose.foundation.lazy.items
+import com.example.inventorymanager.domain.model.ingoings.Provider
 
 @Composable
 fun ProvidersContent(
     viewModel: ProvidersViewModel,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onProviderClick: ((Provider) -> Unit)? = null
 ) {
     Column(modifier = modifier) {
         // 🔍 Search Bar
@@ -65,7 +67,7 @@ fun ProvidersContent(
             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
         ) {
             items(viewModel.filteredProviders, key = { it.providerId }) { provider ->
-                ProviderCard(provider = provider)
+                ProviderCard(provider = provider, onClick = { onProviderClick?.invoke(provider) })
             }
         }
     }
