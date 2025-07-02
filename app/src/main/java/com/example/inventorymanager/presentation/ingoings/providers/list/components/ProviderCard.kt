@@ -1,5 +1,6 @@
 package com.example.inventorymanager.presentation.providers.list.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -9,11 +10,12 @@ import androidx.compose.ui.unit.dp
 import com.example.inventorymanager.domain.model.ingoings.Provider
 
 @Composable
-fun ProviderCard(provider: Provider) {
+fun ProviderCard(provider: Provider, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 8.dp),
+            .padding(horizontal = 8.dp)
+            .clickable { onClick() },
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
