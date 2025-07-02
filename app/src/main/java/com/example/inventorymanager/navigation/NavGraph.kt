@@ -5,10 +5,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.inventorymanager.presentation.outgoings.customers.list.CustomerListScreen
+import com.example.inventorymanager.presentation.outs.customers.list.CustomerListScreen
 import com.example.inventorymanager.presentation.orders.list.OrdersListScreen
-import com.example.inventorymanager.presentation.outgoings.customers.details.UpdateCustomerScreen
-import com.example.inventorymanager.presentation.outgoings.customers.add.AddCustomerScreen
+import com.example.inventorymanager.presentation.outs.customers.details.UpdateCustomerScreen
+import com.example.inventorymanager.presentation.outs.customers.add.AddCustomerScreen
 import com.example.inventorymanager.presentation.dashboard.DashboardScreen
 import com.example.inventorymanager.presentation.locations.list.LocationsListScreen
 
