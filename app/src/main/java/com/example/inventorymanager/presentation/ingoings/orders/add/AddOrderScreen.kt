@@ -21,9 +21,9 @@ fun AddOrderScreen(
         content = { padding ->
             AddOrderContent(
                 padding = padding,
-                delivery = viewModel.delivery,
-                addDelivery = { delivery ->
-                    viewModel.addDelivery(delivery)
+                order = viewModel.order,
+                addOrder = { order ->
+                    viewModel.addOrder(order)
                 },
                 navigateBack = navigateBack
             )
