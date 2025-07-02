@@ -27,12 +27,15 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import androidx.compose.material.icons.filled.Search
+import com.example.inventorymanager.domain.model.ingoings.Provider
 
 @Composable
 fun AddOrderContent(
     padding: PaddingValues,
     order: Order,
+    selectedProvider: Provider?,
     addOrder: (Order) -> Unit,
+    onSelectProviderClick: () -> Unit,
     navigateBack: () -> Unit
 ) {
 
