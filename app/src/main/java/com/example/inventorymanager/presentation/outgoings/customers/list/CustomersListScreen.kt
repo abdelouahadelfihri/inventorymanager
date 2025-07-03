@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.outs.customers.list
+package com.example.inventorymanager.presentation.outgoings.customers.list
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
-import com.example.inventorymanager.presentation.outs.customers.CustomersViewModel
+import com.example.inventorymanager.presentation.outgoings.customers.CustomersViewModel
 import com.example.inventorymanager.presentation.outs.customers.list.components.CustomersContent
 
 @OptIn(ExperimentalMaterial3Api::class)
