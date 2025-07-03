@@ -10,21 +10,18 @@ import com.example.inventorymanager.presentation.ingoings.orders.add.components.
 @Composable
 fun AddOrderScreen(
     viewModel: OrdersViewModel = hiltViewModel(),
-    navigateBack: () -> Unit
+    navigateBack: () -> Unit,
+    navigateToProvidersList: () -> Unit
 ) {
     Scaffold(
-        topBar = {
-            AddOrderTopBar(
-                navigateBack = navigateBack
-            )
-        },
+        topBar = { AddOrderTopBar(navigateBack = navigateBack) },
         content = { padding ->
             AddOrderContent(
                 padding = padding,
                 order = viewModel.order,
-                addOrder = { order ->
-                    viewModel.addOrder(order)
-                },
+                selectedProvider = viewModel.selectedProvider,
+                addOrder = { order -> viewModel.addOrder(order) },
+                onSelectProviderClick = navigateToProvidersList,
                 navigateBack = navigateBack
             )
         }
