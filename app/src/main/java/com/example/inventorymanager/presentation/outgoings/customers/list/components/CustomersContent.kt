@@ -9,7 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.inventorymanager.presentation.outgoings.customers.CustomersViewModel
-import com.example.inventorymanager.presentation.outs.customers.list.components.CustomerCard
+import com.example.inventorymanager.presentation.outgoings.customers.list.components.CustomerCard
 
 @Composable
 fun CustomersContent(
