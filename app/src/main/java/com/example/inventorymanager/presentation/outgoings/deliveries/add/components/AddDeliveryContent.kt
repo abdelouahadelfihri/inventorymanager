@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.deliveries.add.components
+package com.example.inventorymanager.presentation.outgoings.deliveries.add.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
