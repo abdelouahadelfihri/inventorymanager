@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.deliveries.update.components
+package com.example.inventorymanager.presentation.ingoings.orders.details.components
 
 import android.app.DatePickerDialog
 import androidx.compose.foundation.clickable
@@ -14,21 +14,24 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.Delivery
+import com.example.inventorymanager.domain.model.ingoings.Order
+import com.example.inventorymanager.domain.model.ingoings.Provider
 import java.text.SimpleDateFormat
 import java.util.*
 
 @Composable
 fun UpdateDeliveryContent(
     padding: PaddingValues,
-    delivery: Delivery,
-    updateDelivery: (Delivery) -> Unit,
-    navigateBack: () -> Unit,
-    onSelectCustomerClick: () -> Unit // You can hook up navigation or dialog here
+    order: Order,
+    selectedProvider: Provider?,
+    updateOrder: (Order) -> Unit,
+    onSelectProviderClick: () -> Unit,
+    navigateBack: () -> Unit
 ) {
-    var saleDate by remember { mutableStateOf<Date?>(delivery.saleDate) }
-    val deliveryId = delivery.deliveryId.toString()
-    var customerId by remember { mutableStateOf(delivery.customerId.toString()) }
+    var orderDate by remember { mutableStateOf<Date?>(order.orderDate) }
+    val orderId = order.orderId.toString()
+    val providerId = selectedProvider?.providerId?.toString() ?: order.providerId.toString()
+    val providerName = selectedProvider?.name ?: ""
 
 
     val scrollState = rememberScrollState()
@@ -49,18 +52,18 @@ fun UpdateDeliveryContent(
             ) {
                 // Delivery ID
                 OutlinedTextField(
-                    value = deliveryId,
+                    value = orderId,
                     onValueChange = {},
-                    label = { Text("Delivery ID") },
+                    label = { Text("Order ID") },
                     enabled = false,
                     modifier = Modifier.fillMaxWidth()
                 )
 
                 // Sale Date
                 DatePickerField(
-                    label = "Sale Date",
-                    selectedDate = saleDate,
-                    onDateSelected = { saleDate = it }
+                    label = "Order Date",
+                    selectedDate = orderDate,
+                    onDateSelected = { orderDate = it }
                 )
 
                 // Customer ID + Select Button
@@ -69,20 +72,20 @@ fun UpdateDeliveryContent(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     OutlinedTextField(
-                        value = customerId,
+                        value = "$providerId - $providerName",
                         onValueChange = {},
-                        label = { Text("Customer ID") },
-                        enabled = false,
+                        readOnly = true,
+                        label = { Text("Provider") },
                         modifier = Modifier.weight(1f)
                     )
 
                     Spacer(modifier = Modifier.width(8.dp))
 
                     Button(
-                        onClick = onSelectCustomerClick,
-                        modifier = Modifier.height(56.dp) // Match TextField height
+                        onClick = { onSelectProviderClick() },
+                        modifier = Modifier.height(56.dp)
                     ) {
-                        Icon(Icons.Default.Search, contentDescription = "Select")
+                        Icon(Icons.Default.Search, contentDescription = "Select Provider")
                         Spacer(modifier = Modifier.width(4.dp))
                         Text("Select")
                     }
@@ -92,6 +95,9 @@ fun UpdateDeliveryContent(
             Spacer(modifier = Modifier.height(16.dp))
 
             // Bottom buttons
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // 💾 Save & Clear
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -99,23 +105,22 @@ fun UpdateDeliveryContent(
             ) {
                 Button(
                     onClick = {
-                        saleDate?.let { date ->
-                            val updatedDelivery = delivery.copy(
-                                saleDate = date,
-                                customerId = customerId.toIntOrNull() ?: delivery.customerId
-                            )
-                            updateDelivery(updatedDelivery)
-                            navigateBack()
-                        }
-                    },
-                    enabled = saleDate != null
+                        val finalProviderId = selectedProvider?.providerId ?: order.providerId
+                        val finalOrder = order.copy(
+                            providerId = finalProviderId,
+                            orderDate = orderDate
+                        )
+                        updateOrder(finalOrder)
+                        navigateBack()
+                    }
                 ) {
-                    Text("Update Delivery")
+                    Text("Save Order")
                 }
 
                 Button(
                     onClick = {
-                        saleDate = null
+                        orderDate = null
+                        // You can optionally reset selectedProvider from parent
                     }
                 ) {
                     Text("Clear")
