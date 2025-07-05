@@ -16,7 +16,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 
 @Composable
-fun UpdateCustomerContent(
+fun UpdateProviderContent(
     padding: PaddingValues,
     customer: Customer,
     updateCustomer: (Customer) -> Unit,
