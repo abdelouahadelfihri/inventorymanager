@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 @Composable
-fun UpdateDeliveryContent(
+fun UpdateOrderContent(
     padding: PaddingValues,
     order: Order,
     selectedProvider: Provider?,
