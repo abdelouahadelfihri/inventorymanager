@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.providers.add.components
+package com.example.inventorymanager.presentation.ingoings.providers.add.components
 
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -7,7 +7,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.runtime.Composable
-import com.example.inventorymanager.core.Constants.Companion.ADD_CUSTOMER
+import com.example.inventorymanager.core.Constants.Companion.ADD_PROVIDER
 
 @Composable
 fun AddProviderTopBar(
@@ -16,7 +16,7 @@ fun AddProviderTopBar(
     TopAppBar (
         title = {
             Text(
-                text = ADD_CUSTOMER
+                text = ADD_PROVIDER
             )
         },
         navigationIcon = {
