@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import com.example.inventorymanager.core.Constants.Companion.UPDATE_CUSTOMER_SCREEN
 
 @Composable
-fun UpdateCustomerTopBar(
+fun UpdateOrderTopBar(
     navigateBack: () -> Unit
 ) {
     TopAppBar (
