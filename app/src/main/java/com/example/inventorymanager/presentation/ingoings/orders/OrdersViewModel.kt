@@ -45,10 +45,6 @@ class OrdersViewModel @Inject constructor(
     var selectedProvider by mutableStateOf<Provider?>(null)
         private set
 
-    fun onSelectProviderClick() {
-        // Trigger a provider selection dialog or navigate to selection screen
-    }
-
     var selectedFilter by mutableStateOf("All")
     var filters = listOf("All", "Category 1", "Category 2")
     var order by mutableStateOf(
