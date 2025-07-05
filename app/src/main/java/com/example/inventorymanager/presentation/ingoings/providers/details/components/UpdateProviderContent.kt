@@ -14,17 +14,18 @@ import androidx.compose.ui.unit.dp
 import com.example.inventorymanager.domain.model.outgoings.Customer
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import com.example.inventorymanager.domain.model.ingoings.Provider
 
 @Composable
 fun UpdateProviderContent(
     padding: PaddingValues,
-    customer: Customer,
-    updateCustomer: (Customer) -> Unit,
-    deleteCustomer: (Int) -> Unit,
+    provider: Provider,
+    updateProvider: (Provider) -> Unit,
+    deleteProvider: (Int) -> Unit,
     navigateBack: () -> Unit
 ) {
-    var name by remember { mutableStateOf(customer.name) }
-    var address by remember { mutableStateOf(customer.address) }
+    var name by remember { mutableStateOf(provider.name) }
+    var address by remember { mutableStateOf(provider.address) }
 
     val scrollState = rememberScrollState()
 
@@ -46,7 +47,7 @@ fun UpdateProviderContent(
             ) {
 
                 OutlinedTextField(
-                    value = customer.customerId.toString(),
+                    value = provider.providerId.toString(),
                     onValueChange = {},
                     label = { Text("Customer ID") },
                     modifier = Modifier.fillMaxWidth(),
@@ -92,7 +93,7 @@ fun UpdateProviderContent(
             ) {
                 Button(
                     onClick = {
-                        updateCustomer(customer)
+                        updateProvider(provider)
                         navigateBack()
                     }
                 ) {
@@ -101,7 +102,7 @@ fun UpdateProviderContent(
 
                 Button(
                     onClick = {
-                        deleteCustomer(customer.customerId)
+                        deleteProvider(provider.providerId)
                         navigateBack()
                     }
                 ) {
