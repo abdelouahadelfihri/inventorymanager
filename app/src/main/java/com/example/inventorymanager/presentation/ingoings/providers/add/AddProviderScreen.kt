@@ -1,12 +1,11 @@
-package com.example.inventorymanager.presentation.providers.add
+package com.example.inventorymanager.presentation.ingoings.providers.add
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.inventorymanager.presentation.providers.ProvidersViewModel
-import com.example.inventorymanager.presentation.providers.add.components.AddProviderContent
-import com.example.inventorymanager.presentation.providers.add.components.AddProviderTopBar
+import com.example.inventorymanager.presentation.ingoings.providers.add.components.AddProviderContent
+import com.example.inventorymanager.presentation.ingoings.providers.add.components.AddProviderTopBar
 
 
 @Composable
