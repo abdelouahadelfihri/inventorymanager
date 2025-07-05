@@ -1,30 +1,25 @@
-package com.example.inventorymanager.presentation.orders.details
+package com.example.inventorymanager.presentation.ingoings.orders.details
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.inventorymanager.presentation.outs.customers.CustomersViewModel
-import com.example.inventorymanager.presentation.outs.customers.details.components.UpdateCustomerContent
-import com.example.inventorymanager.presentation.outs.customers.details.components.UpdateCustomerTopBar
+import com.example.inventorymanager.presentation.ingoings.orders.OrdersViewModel
+import com.example.inventorymanager.presentation.ingoings.orders.details.components.UpdateOrderContent
+import com.example.inventorymanager.presentation.ingoings.orders.details.components.UpdateOrderTopBar
 
 @Composable
-fun UpdateCustomerScreen(
-    viewModel: CustomersViewModel = hiltViewModel(),
-    customerId: Int,
+fun UpdateOrderScreen(
+    viewModel: OrdersViewModel = hiltViewModel(),
     navigateBack: () -> Unit
 ) {
-    LaunchedEffect(Unit) {
-        viewModel.getCustomer(customerId)
-    }
     Scaffold(
         topBar = {
-            UpdateCustomerTopBar(
+            UpdateOrderTopBar(
                 navigateBack = navigateBack
             )
         },
         content = { padding ->
-            UpdateCustomerContent(
+            UpdateOrderContent(
                 padding = padding,
                 customer = viewModel.customer,
                 updateCustomer = { customer ->
