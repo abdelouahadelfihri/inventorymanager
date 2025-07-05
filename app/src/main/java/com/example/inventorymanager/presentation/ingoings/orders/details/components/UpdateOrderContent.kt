@@ -9,6 +9,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Button
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,6 +26,7 @@ fun UpdateOrderContent(
     order: Order,
     selectedProvider: Provider?,
     updateOrder: (Order) -> Unit,
+    deleteOrder: (Int) -> Unit,
     onSelectProviderClick: () -> Unit,
     navigateBack: () -> Unit
 ) {
@@ -119,11 +121,11 @@ fun UpdateOrderContent(
 
                 Button(
                     onClick = {
-                        orderDate = null
-                        // You can optionally reset selectedProvider from parent
+                        deleteOrder(order.orderId)
+                        navigateBack()
                     }
                 ) {
-                    Text("Clear")
+                    Text("Delete")
                 }
             }
         }

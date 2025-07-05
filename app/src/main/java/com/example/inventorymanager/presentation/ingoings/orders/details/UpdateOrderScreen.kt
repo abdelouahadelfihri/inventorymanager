@@ -10,7 +10,6 @@ import com.example.inventorymanager.presentation.ingoings.orders.details.compone
 @Composable
 fun UpdateOrderScreen(
     viewModel: OrdersViewModel = hiltViewModel(),
-    orderId: Int,
     navigateBack: () -> Unit
 ) {
     Scaffold(
@@ -23,11 +22,12 @@ fun UpdateOrderScreen(
             UpdateOrderContent(
                 padding = padding,
                 order = viewModel.order,
-                updateOrder = { order ->
-                    viewModel.updateOrder(order)
-                },
-                deleteOrder = { orderId ->
-                    viewModel.deleteOrder(orderId)
+                selectedProvider = viewModel.selectedProvider,
+                updateOrder = { order -> viewModel.updateOrder(order) },
+                deleteOrder = { id -> viewModel.deleteOrder(id) },
+                onSelectProviderClick = {
+                    // Navigate to the provider selection screen
+                    // You may call: navController.navigate("select_provider")
                 },
                 navigateBack = navigateBack
             )
