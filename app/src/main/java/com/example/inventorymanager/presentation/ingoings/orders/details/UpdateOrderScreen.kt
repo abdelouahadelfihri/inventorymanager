@@ -3,6 +3,7 @@ package com.example.inventorymanager.presentation.ingoings.orders.details
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.example.inventorymanager.presentation.ingoings.orders.OrdersViewModel
 import com.example.inventorymanager.presentation.ingoings.orders.details.components.UpdateOrderContent
 import com.example.inventorymanager.presentation.ingoings.orders.details.components.UpdateOrderTopBar
@@ -10,6 +11,7 @@ import com.example.inventorymanager.presentation.ingoings.orders.details.compone
 @Composable
 fun UpdateOrderScreen(
     viewModel: OrdersViewModel = hiltViewModel(),
+    navController: NavController,
     navigateBack: () -> Unit
 ) {
     Scaffold(
@@ -26,8 +28,7 @@ fun UpdateOrderScreen(
                 updateOrder = { order -> viewModel.updateOrder(order) },
                 deleteOrder = { id -> viewModel.deleteOrder(id) },
                 onSelectProviderClick = {
-                    // Navigate to the provider selection screen
-                    // You may call: navController.navigate("select_provider")
+                    navController.navigate("select_provider")
                 },
                 navigateBack = navigateBack
             )
