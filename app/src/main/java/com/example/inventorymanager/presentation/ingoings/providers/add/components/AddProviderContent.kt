@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.providers.add.components
+package com.example.inventorymanager.presentation.ingoings.providers.add.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
