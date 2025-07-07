@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.providers.details.components
+package com.example.inventorymanager.presentation.ingoings.providers.details.components
 
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import com.example.inventorymanager.core.Constants.Companion.UPDATE_CUSTOMER_SCREEN
 
 @Composable
-fun UpdateCustomerTopBar(
+fun UpdateProviderTopBar(
     navigateBack: () -> Unit
 ) {
     TopAppBar (
