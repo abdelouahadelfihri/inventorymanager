@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.providers.list.components
+package com.example.inventorymanager.presentation.ingoings.providers.list.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
