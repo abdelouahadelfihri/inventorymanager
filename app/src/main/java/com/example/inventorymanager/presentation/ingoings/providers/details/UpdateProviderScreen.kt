@@ -10,13 +10,9 @@ import com.example.inventorymanager.presentation.outs.customers.details.componen
 
 @Composable
 fun UpdateProviderScreen(
-    viewModel: CustomersViewModel = hiltViewModel(),
-    customerId: Int,
+    viewModel: ProvidersViewModel = hiltViewModel(),
     navigateBack: () -> Unit
 ) {
-    LaunchedEffect(Unit) {
-        viewModel.getCustomer(customerId)
-    }
     Scaffold(
         topBar = {
             UpdateCustomerTopBar(
