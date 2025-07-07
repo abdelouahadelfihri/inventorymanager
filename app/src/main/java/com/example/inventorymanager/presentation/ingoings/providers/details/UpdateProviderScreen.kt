@@ -1,15 +1,15 @@
-package com.example.inventorymanager.presentation.providers.details
+package com.example.inventorymanager.presentation.ingoings.providers.details
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.inventorymanager.presentation.outs.customers.CustomersViewModel
+import com.example.inventorymanager.presentation.ingoings.providers.ProvidersViewModel
 import com.example.inventorymanager.presentation.outs.customers.details.components.UpdateCustomerContent
 import com.example.inventorymanager.presentation.outs.customers.details.components.UpdateCustomerTopBar
 
 @Composable
-fun UpdateCustomerScreen(
+fun UpdateProviderScreen(
     viewModel: CustomersViewModel = hiltViewModel(),
     customerId: Int,
     navigateBack: () -> Unit
