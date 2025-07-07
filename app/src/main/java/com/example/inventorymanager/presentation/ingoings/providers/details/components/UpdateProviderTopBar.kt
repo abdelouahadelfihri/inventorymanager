@@ -7,7 +7,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.runtime.Composable
-import com.example.inventorymanager.core.Constants.Companion.UPDATE_CUSTOMER_SCREEN
+import com.example.inventorymanager.core.Constants.Companion.UPDATE_PROVIDER_SCREEN
 
 @Composable
 fun UpdateProviderTopBar(
@@ -16,7 +16,7 @@ fun UpdateProviderTopBar(
     TopAppBar (
         title = {
             Text(
-                text = UPDATE_CUSTOMER_SCREEN
+                text = UPDATE_PROVIDER_SCREEN
             )
         },
         navigationIcon = {
