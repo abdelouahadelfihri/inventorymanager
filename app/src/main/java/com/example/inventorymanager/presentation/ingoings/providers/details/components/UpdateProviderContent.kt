@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.providers.details.components
+package com.example.inventorymanager.presentation.ingoings.providers.details.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
