@@ -4,8 +4,9 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.inventorymanager.presentation.ingoings.providers.ProvidersViewModel
+import com.example.inventorymanager.presentation.ingoings.providers.details.components.UpdateProviderContent
 import com.example.inventorymanager.presentation.ingoings.providers.details.components.UpdateProviderTopBar
-import com.example.inventorymanager.presentation.providers.details.components.UpdateProviderContent
+
 
 @Composable
 fun UpdateProviderScreen(
