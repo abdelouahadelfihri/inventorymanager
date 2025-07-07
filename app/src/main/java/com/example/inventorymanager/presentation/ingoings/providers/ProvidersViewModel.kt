@@ -23,7 +23,7 @@ class ProvidersViewModel @Inject constructor(
 
     var selectedFilter by mutableStateOf("All")
     var filters = listOf("All", "Category 1", "Category 2")
-    var provider = mutableStateOf(
+    var provider by mutableStateOf(
         Provider(
             0,
             name = "",
@@ -37,7 +37,7 @@ class ProvidersViewModel @Inject constructor(
     var searchQuery by mutableStateOf("")
 
     fun getProvider(id: Int) = viewModelScope.launch {
-        provider.value = repo.getProviderFromRoom(id)
+        provider = repo.getProviderFromRoom(id)
     }
 
     init {
