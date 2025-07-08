@@ -51,19 +51,20 @@ fun AppNavHost(navController: NavHostController) {
             }
         }
 
-        composable(ADD_ORDER_SCREEN) {
+        composable("add_order") {
             AddOrderScreen(
                 navigateBack = { navController.popBackStack() },
-                navigateToProvidersList = { navController.navigate(PROVIDERS_LIST_PICK_SCREEN) }
+                navigateToProvidersList = { navController.navigate("providers_list") }
             )
         }
 
-        composable(PROVIDERS_LIST_PICK_SCREEN) {
+        composable("providers_list") {
+            val orderViewModel: OrdersViewModel = hiltViewModel() // ✅ Safe here inside a @Composable scope
+
             ProvidersListScreen(
                 onProviderSelected = { provider ->
-                    val orderViewModel: OrdersViewModel = hiltViewModel()
                     orderViewModel.onProviderSelected(provider)
-                    navController.popBackStack() // Go back to AddOrderScreen
+                    navController.popBackStack() // Navigate back to AddOrderScreen
                 }
             )
         }
