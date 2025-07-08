@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.locations.add
+package com.example.inventorymanager.presentation.masterdata.locations.add
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
