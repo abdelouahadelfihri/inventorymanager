@@ -6,6 +6,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.inventorymanager.core.Constants.Companion.ADD_ORDER_SCREEN
 import com.example.inventorymanager.presentation.orders.list.OrdersListScreen
 import com.example.inventorymanager.presentation.outs.customers.details.UpdateCustomerScreen
 import com.example.inventorymanager.presentation.outs.customers.add.AddCustomerScreen
