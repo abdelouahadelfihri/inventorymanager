@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.providers.list
+package com.example.inventorymanager.presentation.ingoings.providers.list
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
@@ -14,8 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import com.example.inventorymanager.domain.model.ingoings.Provider
-import com.example.inventorymanager.presentation.providers.ProvidersViewModel
-import com.example.inventorymanager.presentation.providers.list.components.ProvidersContent
+import com.example.inventorymanager.presentation.ingoings.providers.ProvidersViewModel
+import com.example.inventorymanager.presentation.ingoings.providers.list.components.ProvidersContent
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
