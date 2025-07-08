@@ -14,7 +14,7 @@ import com.example.inventorymanager.presentation.ingoings.orders.OrdersViewModel
 import com.example.inventorymanager.presentation.ingoings.orders.add.AddOrderScreen
 import com.example.inventorymanager.presentation.locations.list.LocationsListScreen
 import com.example.inventorymanager.presentation.providers.list.ProvidersListScreen
-import com.example.inventorymanager.presentation.outgoings.customers.list.CustomerListScreen
+import com.example.inventorymanager.presentation.outgoings.customers.list.CustomersListScreen
 
 @ExperimentalMaterialApi
 @Composable
