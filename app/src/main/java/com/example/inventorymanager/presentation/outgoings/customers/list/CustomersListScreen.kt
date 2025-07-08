@@ -18,7 +18,7 @@ import com.example.inventorymanager.presentation.outgoings.customers.list.compon
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CustomerListScreen(viewModel: CustomersViewModel = hiltViewModel()) {
+fun CustomersListScreen(viewModel: CustomersViewModel = hiltViewModel()) {
     val navController = rememberNavController()
 
     Scaffold(
