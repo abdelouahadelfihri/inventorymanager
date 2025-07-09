@@ -2,6 +2,7 @@ package com.example.inventorymanager.presentation.ingoings.orders.details
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.inventorymanager.presentation.ingoings.orders.OrdersViewModel
@@ -12,8 +13,12 @@ import com.example.inventorymanager.presentation.ingoings.orders.details.compone
 fun UpdateOrderScreen(
     viewModel: OrdersViewModel = hiltViewModel(),
     navController: NavController,
+    orderId: Int,
     navigateBack: () -> Unit
 ) {
+    LaunchedEffect(Unit) {
+        viewModel.getOrder(orderId)
+    }
     Scaffold(
         topBar = {
             UpdateOrderTopBar(
