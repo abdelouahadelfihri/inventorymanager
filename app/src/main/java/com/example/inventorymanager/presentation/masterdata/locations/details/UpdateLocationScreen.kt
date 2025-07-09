@@ -4,7 +4,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.inventorymanager.presentation.locations.LocationsViewModel
+import com.example.inventorymanager.presentation.masterdata.locations.LocationsViewModel
 import com.example.inventorymanager.presentation.masterdata.locations.details.components.UpdateLocationContent
 import com.example.inventorymanager.presentation.masterdata.locations.details.components.UpdateLocationTopBar
 
