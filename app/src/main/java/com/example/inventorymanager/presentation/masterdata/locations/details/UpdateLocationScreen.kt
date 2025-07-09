@@ -1,12 +1,12 @@
-package com.example.inventorymanager.presentation.locations.details
+package com.example.inventorymanager.presentation.masterdata.locations.details
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.inventorymanager.presentation.locations.LocationsViewModel
-import com.example.inventorymanager.presentation.locations.details.components.UpdateLocationContent
-import com.example.inventorymanager.presentation.locations.details.components.UpdateLocationTopBar
+import com.example.inventorymanager.presentation.masterdata.locations.details.components.UpdateLocationContent
+import com.example.inventorymanager.presentation.masterdata.locations.details.components.UpdateLocationTopBar
 
 @Composable
 fun UpdateLocationScreen(
