@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.locations.list
+package com.example.inventorymanager.presentation.masterdata.locations.list
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
@@ -13,7 +13,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
-import com.example.inventorymanager.presentation.locations.LocationsViewModel
+import com.example.inventorymanager.presentation.masterdata.locations.LocationsViewModel
+import com.example.inventorymanager.presentation.masterdata.locations.list.components.LocationsContent
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
