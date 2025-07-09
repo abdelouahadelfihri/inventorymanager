@@ -4,8 +4,8 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.inventorymanager.presentation.locations.LocationsViewModel
-import com.example.inventorymanager.presentation.locations.add.components.AddLocationContent
-import com.example.inventorymanager.presentation.locations.add.components.AddLocationTopBar
+import com.example.inventorymanager.presentation.masterdata.locations.add.components.AddLocationContent
+import com.example.inventorymanager.presentation.masterdata.locations.add.components.AddLocationTopBar
 
 @Composable
 fun AddLocationScreen(
