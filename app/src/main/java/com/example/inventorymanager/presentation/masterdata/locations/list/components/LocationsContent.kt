@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.customers.list.components
+package com.example.inventorymanager.presentation.masterdata.locations.list.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -8,8 +8,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.presentation.locations.LocationsViewModel
-import com.example.inventorymanager.presentation.locations.list.components.LocationCard
+import com.example.inventorymanager.presentation.masterdata.locations.LocationsViewModel
+import com.example.inventorymanager.presentation.masterdata.locations.list.components.LocationCard
 
 @Composable
 fun LocationsContent(
