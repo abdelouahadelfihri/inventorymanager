@@ -9,7 +9,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.inventorymanager.presentation.masterdata.locations.LocationsViewModel
-import com.example.inventorymanager.presentation.masterdata.locations.list.components.LocationCard
 
 @Composable
 fun LocationsContent(
