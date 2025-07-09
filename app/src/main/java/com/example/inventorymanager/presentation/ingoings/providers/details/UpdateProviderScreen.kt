@@ -2,6 +2,7 @@ package com.example.inventorymanager.presentation.ingoings.providers.details
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.inventorymanager.presentation.ingoings.providers.ProvidersViewModel
 import com.example.inventorymanager.presentation.ingoings.providers.details.components.UpdateProviderContent
@@ -11,8 +12,12 @@ import com.example.inventorymanager.presentation.ingoings.providers.details.comp
 @Composable
 fun UpdateProviderScreen(
     viewModel: ProvidersViewModel = hiltViewModel(),
+    providerId: Int,
     navigateBack: () -> Unit
 ) {
+    LaunchedEffect(Unit) {
+        viewModel.getProvider(providerId)
+    }
     Scaffold(
         topBar = {
             UpdateProviderTopBar(
