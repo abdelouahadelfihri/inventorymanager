@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.locations.details.components
+package com.example.inventorymanager.presentation.masterdata.locations.details.components
 
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
