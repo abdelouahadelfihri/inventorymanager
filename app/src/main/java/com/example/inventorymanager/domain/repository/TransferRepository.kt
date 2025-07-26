@@ -16,6 +16,6 @@ interface TransferRepository {
 
     suspend fun updateTransferInRoom(transfer: Transfer)
 
-    suspend fun deleteTransferFromRoom(transfer: Transfer)
+    suspend fun deleteTransferFromRoom(id: Int)
 
 }
