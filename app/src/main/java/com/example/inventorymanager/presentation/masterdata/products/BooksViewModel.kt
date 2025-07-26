@@ -1,4 +1,4 @@
-package ro.alexmamo.roomjetpackcompose.presentation.books
+package com.example.inventorymanager.presentation.masterdata.locations
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -7,47 +7,53 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import ro.alexmamo.roomjetpackcompose.core.Constants.Companion.EMPTY_STRING
-import ro.alexmamo.roomjetpackcompose.domain.model.Book
-import ro.alexmamo.roomjetpackcompose.domain.repository.BookRepository
+import com.example.inventorymanager.domain.model.masterdata.Location
+import com.example.inventorymanager.domain.repository.LocationRepository
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class BooksViewModel @Inject constructor(
-    private val repo: BookRepository
+class ProductsViewModel @Inject constructor(
+    private val repo: LocationRepository
 ) : ViewModel() {
-    var book by mutableStateOf(Book(0, EMPTY_STRING, EMPTY_STRING))
+
+    private val _locations = MutableStateFlow<List<Location>>(emptyList())
+    val locations: StateFlow<List<Location>> = _locations
+
+    var selectedFilter by mutableStateOf("All")
+    var filters = listOf("All", "Category 1", "Category 2")
+    var location by mutableStateOf(
+        Location(
+            locationId = 0,
+            name = "", // or any default Date, like SimpleDateFormat().parse("1970-01-01")
+            address = ""
+        )
+    )
         private set
+
     var openDialog by mutableStateOf(false)
 
-    val books = repo.getBooksFromRoom()
+    var searchQuery by mutableStateOf("")
 
-    fun getBook(id: Int) = viewModelScope.launch {
-        book = repo.getBookFromRoom(id)
+    fun getLocation(id: Int) = viewModelScope.launch {
+        location = repo.getLocationFromRoom(id)
     }
 
-    fun addBook(book: Book) = viewModelScope.launch {
-        repo.addBookToRoom(book)
+    init {
+        observeLocationsFromRoom()
     }
 
-    fun updateBook(book: Book) = viewModelScope.launch {
-        repo.updateBookInRoom(book)
+    fun addLocation(location: Location) = viewModelScope.launch {
+        repo.addLocationToRoom(location)
     }
 
-    fun deleteBook(book: Book) = viewModelScope.launch {
-        repo.deleteBookFromRoom(book)
+    fun updateLocation(location: Location) = viewModelScope.launch {
+        repo.updateLocationInRoom(location)
     }
 
-    fun updateTitle(title: String) {
-        book = book.copy(
-            title = title
-        )
-    }
-
-    fun updateAuthor(author: String) {
-        book = book.copy(
-            author = author
-        )
+    fun deleteLocation(id: Int) = viewModelScope.launch {
+        repo.deleteLocationFromRoom(id)
     }
 
     fun openDialog() {
@@ -56,5 +62,49 @@ class BooksViewModel @Inject constructor(
 
     fun closeDialog() {
         openDialog = false
+    }
+
+    private fun observeLocationsFromRoom() {
+        viewModelScope.launch {
+            repo.getLocationsFromRoom()
+                .collect { list ->
+                    _locations.value = list
+                }
+        }
+    }
+
+    val filteredLocations: List<Location>
+        get() {
+            val terms = searchQuery
+                .trim()
+                .lowercase()
+                .split(";")
+                .map { it.trim() }
+                .filter { it.isNotEmpty() }
+
+            return _locations.value.filter { location ->
+                terms.any { term ->
+                    location.locationId.toString().contains(term) ||
+                            location.name.toString().lowercase().contains(term) ||
+                            location.address.toString().contains(term)
+                }
+            }
+        }
+
+    // Optional: Triggered by Refresh FAB
+    fun onRefreshLocations() {
+        // This is optional if Room is live. But you can re-collect:
+        observeLocationsFromRoom()
+    }
+
+    fun onClearSearch() {
+        searchQuery = ""
+    }
+    fun onFilterSelected(filter: String) {
+        selectedFilter = filter
+    }
+
+    fun onSearchChange(query: String) {
+        searchQuery = query
     }
 }
