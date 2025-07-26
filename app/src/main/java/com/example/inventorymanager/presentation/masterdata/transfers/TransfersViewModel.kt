@@ -7,27 +7,31 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import com.example.inventorymanager.domain.model.masterdata.Location
-import com.example.inventorymanager.domain.repository.LocationRepository
+import com.example.inventorymanager.domain.model.masterdata.Transfer
+import com.example.inventorymanager.domain.repository.TransferRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import java.util.Date
 import javax.inject.Inject
 
 @HiltViewModel
 class TransfersViewModel @Inject constructor(
-    private val repo: LocationRepository
+    private val repo: TransferRepository
 ) : ViewModel() {
 
-    private val _locations = MutableStateFlow<List<Location>>(emptyList())
-    val locations: StateFlow<List<Location>> = _locations
+    private val _transfers = MutableStateFlow<List<Transfer>>(emptyList())
+    val transfers: StateFlow<List<Transfer>> = _transfers
 
     var selectedFilter by mutableStateOf("All")
     var filters = listOf("All", "Category 1", "Category 2")
-    var location by mutableStateOf(
-        Location(
-            locationId = 0,
-            name = "", // or any default Date, like SimpleDateFormat().parse("1970-01-01")
-            address = ""
+    var transfer by mutableStateOf(
+        Transfer(
+            transferId = 0,
+            date = Date(),
+            quantity = 0,
+            originWarehouseId = 0,
+            destinationWarehouseId = 0,
+            productId = 0
         )
     )
         private set
@@ -36,24 +40,24 @@ class TransfersViewModel @Inject constructor(
 
     var searchQuery by mutableStateOf("")
 
-    fun getLocation(id: Int) = viewModelScope.launch {
-        location = repo.getLocationFromRoom(id)
+    fun getTransfer(id: Int) = viewModelScope.launch {
+        transfer = repo.getTransferFromRoom(id)
     }
 
     init {
-        observeLocationsFromRoom()
+        observeTransfersFromRoom()
     }
 
-    fun addLocation(location: Location) = viewModelScope.launch {
-        repo.addLocationToRoom(location)
+    fun addTransfer(location: Transfer) = viewModelScope.launch {
+        repo.addTransferToRoom(location)
     }
 
-    fun updateLocation(location: Location) = viewModelScope.launch {
-        repo.updateLocationInRoom(location)
+    fun updateTransfer(location: Transfer) = viewModelScope.launch {
+        repo.updateTransferInRoom(location)
     }
 
-    fun deleteLocation(id: Int) = viewModelScope.launch {
-        repo.deleteLocationFromRoom(id)
+    fun deleteTransfer(id: Int) = viewModelScope.launch {
+        repo.deleteTransferFromRoom(id)
     }
 
     fun openDialog() {
@@ -64,16 +68,16 @@ class TransfersViewModel @Inject constructor(
         openDialog = false
     }
 
-    private fun observeLocationsFromRoom() {
+    private fun observeTransfersFromRoom() {
         viewModelScope.launch {
-            repo.getLocationsFromRoom()
+            repo.getTransfersFromRoom()
                 .collect { list ->
-                    _locations.value = list
+                    _transfers.value = list
                 }
         }
     }
 
-    val filteredLocations: List<Location>
+    val filteredTransfers: List<Transfer>
         get() {
             val terms = searchQuery
                 .trim()
@@ -82,19 +86,22 @@ class TransfersViewModel @Inject constructor(
                 .map { it.trim() }
                 .filter { it.isNotEmpty() }
 
-            return _locations.value.filter { location ->
+            return _transfers.value.filter { transfer ->
                 terms.any { term ->
-                    location.locationId.toString().contains(term) ||
-                            location.name.toString().lowercase().contains(term) ||
-                            location.address.toString().contains(term)
+                    transfer.transferId.toString().contains(term) ||
+                            transfer.date.toString().contains(term) ||
+                            transfer.quantity.toString().contains(term) ||
+                            transfer.originWarehouseId.toString().contains(term) ||
+                            transfer.destinationWarehouseId.toString().contains(term) ||
+                            transfer.productId.toString().contains(term)
                 }
             }
         }
 
     // Optional: Triggered by Refresh FAB
-    fun onRefreshLocations() {
+    fun onRefreshTransfers() {
         // This is optional if Room is live. But you can re-collect:
-        observeLocationsFromRoom()
+        observeTransfersFromRoom()
     }
 
     fun onClearSearch() {
