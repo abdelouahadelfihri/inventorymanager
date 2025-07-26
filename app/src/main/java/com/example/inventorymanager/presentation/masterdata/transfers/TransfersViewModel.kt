@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.masterdata.locations
+package com.example.inventorymanager.presentation.masterdata.transfers
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
