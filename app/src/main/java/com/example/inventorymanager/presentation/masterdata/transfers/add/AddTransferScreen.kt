@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.transfers.add
+package com.example.inventorymanager.presentation.masterdata.transfers.add
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
