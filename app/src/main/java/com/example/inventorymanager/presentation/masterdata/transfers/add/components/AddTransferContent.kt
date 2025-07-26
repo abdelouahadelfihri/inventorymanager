@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.masterdata.transfers.add.components
+package com.example.inventorymanager.presentation.transfers.add.components
 
 import android.app.DatePickerDialog
 import androidx.compose.foundation.clickable
@@ -14,24 +14,27 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.ingoings.Order
-import com.example.inventorymanager.domain.model.ingoings.Provider
+import com.example.inventorymanager.domain.model.Transfer
+import com.example.inventorymanager.domain.model.Product
+import com.example.inventorymanager.domain.model.Warehouse
 import java.text.SimpleDateFormat
 import java.util.*
 
 @Composable
-fun AddOrderContent(
+fun AddTransferContent(
     padding: PaddingValues,
-    order: Order,
-    selectedProvider: Provider?,
-    addOrder: (Order) -> Unit,
-    onSelectProviderClick: () -> Unit,
+    transfer: Transfer,
+    selectedOriginWarehouse: Warehouse?,
+    selectedDestinationWarehouse: Warehouse?,
+    selectedProduct: Product?,
+    addTransfer: (Transfer) -> Unit,
+    onSelectOriginWarehouseClick: () -> Unit,
+    onSelectDestinationWarehouseClick: () -> Unit,
+    onSelectProductClick: () -> Unit,
     navigateBack: () -> Unit
 ) {
-    val providerId = selectedProvider?.providerId?.toString() ?: order.providerId.toString()
-    val providerName = selectedProvider?.name ?: ""
-
-    var orderDate by remember { mutableStateOf<Date?>(order.orderDate) }
+    var date by remember { mutableStateOf<Date?>(transfer.date) }
+    var quantity by remember { mutableStateOf(transfer.quantity.toString()) }
 
     val scrollState = rememberScrollState()
 
@@ -42,77 +45,69 @@ fun AddOrderContent(
             .padding(16.dp)
     ) {
         Column(modifier = Modifier.fillMaxSize()) {
-
             Column(
                 modifier = Modifier
                     .weight(1f)
                     .verticalScroll(scrollState),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-
-                // 📅 Date Picker
                 DatePickerField(
-                    label = "Order Date",
-                    selectedDate = orderDate,
-                    onDateSelected = { orderDate = it }
+                    label = "Transfer Date",
+                    selectedDate = date,
+                    onDateSelected = { date = it }
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
-
-                // 👤 Provider Info and Select
-                Row(
+                OutlinedTextField(
+                    value = quantity,
+                    onValueChange = { quantity = it.filter { c -> c.isDigit() } },
+                    label = { Text("Quantity") },
                     modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    OutlinedTextField(
-                        value = "$providerId - $providerName",
-                        onValueChange = {},
-                        readOnly = true,
-                        label = { Text("Provider") },
-                        modifier = Modifier.weight(1f)
-                    )
+                    singleLine = true
+                )
 
-                    Spacer(modifier = Modifier.width(8.dp))
+                WarehouseField(
+                    label = "Origin Warehouse",
+                    warehouse = selectedOriginWarehouse,
+                    onClick = onSelectOriginWarehouseClick
+                )
 
-                    Button(
-                        onClick = { onSelectProviderClick() },
-                        modifier = Modifier.height(56.dp)
-                    ) {
-                        Icon(Icons.Default.Search, contentDescription = "Select Provider")
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text("Select")
-                    }
-                }
+                WarehouseField(
+                    label = "Destination Warehouse",
+                    warehouse = selectedDestinationWarehouse,
+                    onClick = onSelectDestinationWarehouseClick
+                )
+
+                ProductField(
+                    product = selectedProduct,
+                    onClick = onSelectProductClick
+                )
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // 💾 Save & Clear
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Button(
-                    onClick = {
-                        val finalProviderId = selectedProvider?.providerId ?: order.providerId
-                        val finalOrder = order.copy(
-                            providerId = finalProviderId,
-                            orderDate = orderDate
-                        )
-                        addOrder(finalOrder)
-                        navigateBack()
-                    }
-                ) {
-                    Text("Save Order")
+                Button(onClick = {
+                    val finalTransfer = transfer.copy(
+                        date = date ?: Date(),
+                        quantity = quantity.toIntOrNull() ?: 0,
+                        originWarehouseId = selectedOriginWarehouse?.warehouseId ?: transfer.originWarehouseId,
+                        destinationWarehouseId = selectedDestinationWarehouse?.warehouseId ?: transfer.destinationWarehouseId,
+                        productId = selectedProduct?.productId ?: transfer.productId
+                    )
+                    addTransfer(finalTransfer)
+                    navigateBack()
+                }) {
+                    Text("Save")
                 }
 
-                Button(
-                    onClick = {
-                        orderDate = null
-                        // You can optionally reset selectedProvider from parent
-                    }
-                ) {
+                Button(onClick = {
+                    date = null
+                    quantity = ""
+                }) {
                     Text("Clear")
                 }
             }
@@ -121,29 +116,58 @@ fun AddOrderContent(
 }
 
 @Composable
-fun DatePickerField(
-    label: String,
-    selectedDate: Date?,
-    onDateSelected: (Date) -> Unit
-) {
+fun WarehouseField(label: String, warehouse: Warehouse?, onClick: () -> Unit) {
+    Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+        OutlinedTextField(
+            value = warehouse?.let { "${it.warehouseId} - ${it.name}" } ?: "",
+            onValueChange = {},
+            readOnly = true,
+            label = { Text(label) },
+            modifier = Modifier.weight(1f)
+        )
+        Spacer(modifier = Modifier.width(8.dp))
+        Button(onClick = onClick, modifier = Modifier.height(56.dp)) {
+            Icon(Icons.Default.Search, contentDescription = "Select $label")
+            Spacer(modifier = Modifier.width(4.dp))
+            Text("Select")
+        }
+    }
+}
+
+@Composable
+fun ProductField(product: Product?, onClick: () -> Unit) {
+    Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+        OutlinedTextField(
+            value = product?.let { "${it.productId} - ${it.name}" } ?: "",
+            onValueChange = {},
+            readOnly = true,
+            label = { Text("Product") },
+            modifier = Modifier.weight(1f)
+        )
+        Spacer(modifier = Modifier.width(8.dp))
+        Button(onClick = onClick, modifier = Modifier.height(56.dp)) {
+            Icon(Icons.Default.Search, contentDescription = "Select Product")
+            Spacer(modifier = Modifier.width(4.dp))
+            Text("Select")
+        }
+    }
+}
+
+@Composable
+fun DatePickerField(label: String, selectedDate: Date?, onDateSelected: (Date) -> Unit) {
     val context = LocalContext.current
     val calendar = Calendar.getInstance().apply {
         time = selectedDate ?: Date()
     }
-
-    val year = calendar.get(Calendar.YEAR)
-    val month = calendar.get(Calendar.MONTH)
-    val day = calendar.get(Calendar.DAY_OF_MONTH)
-
     val datePickerDialog = remember {
         DatePickerDialog(context, { _, y, m, d ->
-            val pickedCalendar = Calendar.getInstance().apply {
+            val pickedDate = Calendar.getInstance().apply {
                 set(Calendar.YEAR, y)
                 set(Calendar.MONTH, m)
                 set(Calendar.DAY_OF_MONTH, d)
-            }
-            onDateSelected(pickedCalendar.time)
-        }, year, month, day)
+            }.time
+            onDateSelected(pickedDate)
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
     }
 
     OutlinedTextField(
@@ -155,15 +179,12 @@ fun DatePickerField(
             .fillMaxWidth()
             .clickable { datePickerDialog.show() },
         trailingIcon = {
-            Icon(
-                imageVector = Icons.Default.DateRange,
-                contentDescription = "Select Date"
-            )
+            Icon(imageVector = Icons.Default.DateRange, contentDescription = "Pick date")
         }
     )
 }
 
 fun Date.toFormattedString(): String {
-    val format = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-    return format.format(this)
+    val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+    return formatter.format(this)
 }
