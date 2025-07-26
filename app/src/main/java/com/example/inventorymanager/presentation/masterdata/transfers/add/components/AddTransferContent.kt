@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.example.inventorymanager.domain.model.masterdata.Product
 import com.example.inventorymanager.domain.model.masterdata.Transfer
 import com.example.inventorymanager.domain.model.masterdata.Warehouse
 import java.text.SimpleDateFormat
