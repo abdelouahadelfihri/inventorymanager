@@ -28,7 +28,7 @@ import java.time.LocalDateTime
         Index(value = ["unit"])
     ]
 )
-data class Item(
+data class Product(
     @PrimaryKey(autoGenerate = true)
     val productId: Int,
     val code: String,
