@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.transfers.add.components
+package com.example.inventorymanager.presentation.masterdata.transfers.details.components
 
 import android.app.DatePickerDialog
 import androidx.compose.foundation.clickable
@@ -21,7 +21,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 @Composable
-fun AddTransferContent(
+fun UpdateTransferContent(
     padding: PaddingValues,
     transfer: Transfer,
     selectedOriginWarehouse: Warehouse?,
