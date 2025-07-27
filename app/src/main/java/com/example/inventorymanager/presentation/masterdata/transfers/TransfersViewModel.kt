@@ -13,6 +13,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import java.util.Date
 import javax.inject.Inject
+import com.example.inventorymanager.domain.model.masterdata.Product
+import com.example.inventorymanager.domain.model.masterdata.Warehouse
 
 @HiltViewModel
 class TransfersViewModel @Inject constructor(
@@ -35,6 +37,41 @@ class TransfersViewModel @Inject constructor(
         )
     )
         private set
+
+    var selectedOriginWarehouse by mutableStateOf<Warehouse?>(null)
+        private set
+
+    var selectedDestinationWarehouse by mutableStateOf<Warehouse?>(null)
+        private set
+
+    var selectedProduct by mutableStateOf<Product?>(null)
+        private set
+
+    fun selectOriginWarehouse(warehouse: Warehouse) {
+        selectedOriginWarehouse = warehouse
+    }
+
+    fun selectDestinationWarehouse(warehouse: Warehouse) {
+        selectedDestinationWarehouse = warehouse
+    }
+
+    fun selectProduct(product: Product) {
+        selectedProduct = product
+    }
+
+    fun clearTransferForm() {
+        transfer = Transfer(
+            transferId = 0,
+            date = Date(),
+            quantity = 0,
+            originWarehouseId = 0,
+            destinationWarehouseId = 0,
+            productId = 0
+        )
+        selectedOriginWarehouse = null
+        selectedDestinationWarehouse = null
+        selectedProduct = null
+    }
 
     var openDialog by mutableStateOf(false)
 
