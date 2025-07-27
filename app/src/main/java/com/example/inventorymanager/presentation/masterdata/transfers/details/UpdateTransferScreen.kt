@@ -2,6 +2,7 @@ package com.example.inventorymanager.presentation.masterdata.transfers.details
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.inventorymanager.presentation.masterdata.transfers.TransfersViewModel
 import com.example.inventorymanager.presentation.transfers.add.components.AddTransferTopBar
@@ -13,8 +14,12 @@ fun UpdateTransferScreen(
     navigateBack: () -> Unit,
     navigateToSelectWarehouseOrigin: () -> Unit,
     navigateToSelectWarehouseDestination: () -> Unit,
-    navigateToSelectProduct: () -> Unit
+    navigateToSelectProduct: () -> Unit,
+    transferId: Int,
 ) {
+    LaunchedEffect(Unit) {
+        viewModel.getTransfer(transferId)
+    }
     Scaffold(
         topBar = { AddTransferTopBar(navigateBack = navigateBack) },
         content = { padding ->
