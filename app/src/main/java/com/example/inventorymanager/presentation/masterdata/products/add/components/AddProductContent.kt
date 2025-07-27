@@ -20,7 +20,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 
 @Composable
-fun AddLocationContent(
+fun AddProductContent(
     padding: PaddingValues,
     location: Location,
     addLocation: (Location) -> Unit,
