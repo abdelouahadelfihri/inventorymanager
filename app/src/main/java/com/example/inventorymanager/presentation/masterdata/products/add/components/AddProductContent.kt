@@ -88,11 +88,6 @@ fun AddProductContent(
                     label = { Text("Reorder Level") },
                     modifier = Modifier.fillMaxWidth()
                 )
-
-
-
-
-
                 OutlinedTextField(
                     value = isActive.toString(),
                     onValueChange = { isActive = it.toBooleanStrictOrNull() ?: false },
