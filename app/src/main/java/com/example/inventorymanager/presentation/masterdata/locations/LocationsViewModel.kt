@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import com.example.inventorymanager.domain.model.masterdata.Location
-import com.example.inventorymanager.domain.repository.LocationRepository
+import com.example.inventorymanager.domain.repository.masterdata.LocationRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject

@@ -8,7 +8,7 @@ import androidx.room.Query
 import androidx.room.Update
 import com.example.inventorymanager.core.Constants
 import com.example.inventorymanager.domain.model.masterdata.Transfer
-import com.example.inventorymanager.domain.repository.Transfers
+import com.example.inventorymanager.domain.repository.masterdata.Transfers
 import kotlinx.coroutines.flow.Flow
 
 @Dao

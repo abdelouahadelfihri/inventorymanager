@@ -2,7 +2,7 @@ package com.example.inventorymanager.data.repository.masterdata
 
 import com.example.inventorymanager.domain.model.masterdata.Inventory
 import com.example.inventorymanager.data.dao.masterdata.InventoryDao
-import com.example.inventorymanager.domain.repository.InventoryRepository
+import com.example.inventorymanager.domain.repository.masterdata.InventoryRepository
 
 class InventoryRepositoryImpl(
     private val inventoryDao: InventoryDao

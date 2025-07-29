@@ -1,6 +1,5 @@
-package com.example.inventorymanager.domain.repository
+package com.example.inventorymanager.domain.repository.masterdata
 
-import com.example.inventorymanager.domain.model.ingoings.Provider
 import kotlinx.coroutines.flow.Flow
 
 

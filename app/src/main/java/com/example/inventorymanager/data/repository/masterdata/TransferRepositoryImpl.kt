@@ -2,7 +2,7 @@ package com.example.inventorymanager.data.repository.masterdata
 
 import com.example.inventorymanager.domain.model.masterdata.Transfer
 import com.example.inventorymanager.data.dao.masterdata.TransferDao
-import com.example.inventorymanager.domain.repository.TransferRepository
+import com.example.inventorymanager.domain.repository.masterdata.TransferRepository
 import kotlinx.coroutines.flow.Flow
 
 class TransferRepositoryImpl(
