@@ -14,8 +14,8 @@ interface UnitRepository {
 
     suspend fun addUnitToRoom(unit: Unit)
 
-    suspend fun updateProviderInRoom(provider: Provider)
+    suspend fun updateUnitInRoom(unit: Unit)
 
-    suspend fun deleteProviderFromRoom(id: Int)
+    suspend fun deleteUnitFromRoom(id: Int)
 
 }
