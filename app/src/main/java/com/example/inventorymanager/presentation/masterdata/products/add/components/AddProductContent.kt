@@ -14,6 +14,9 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Icon
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -22,7 +25,9 @@ fun AddProductContent(
     padding: PaddingValues,
     product: Product,
     addProduct: (Product) -> Unit,
-    navigateBack: () -> Unit
+    navigateBack: () -> Unit,
+    onSelectCategoryClick: () -> Unit,
+    onSelectUnitClick: () -> Unit
 ) {
     var name by remember { mutableStateOf(product.name) }
     var code by remember { mutableStateOf(product.code) }
@@ -68,12 +73,52 @@ fun AddProductContent(
                     label = { Text("Bar Code") },
                     modifier = Modifier.fillMaxWidth()
                 )
-                OutlinedTextField(
-                    value = category.toString(),
-                    onValueChange = { category = it.toIntOrNull() ?: 0 },
-                    label = { Text("Category") },
-                    modifier = Modifier.fillMaxWidth()
-                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    OutlinedTextField(
+                        value = category.toString(),
+                        onValueChange = { category = it.toIntOrNull() ?: 0 },
+                        label = { Text("Category") },
+                        modifier = Modifier.fillMaxWidth()
+                    )
+
+                    Spacer(modifier = Modifier.width(8.dp))
+
+                    Button(
+                        onClick = { onSelectCategoryClick() },
+                        modifier = Modifier.height(56.dp)
+                    ) {
+                        Icon(Icons.Default.Search, contentDescription = "Select Category")
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text("Select")
+                    }
+                }
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    OutlinedTextField(
+                        value = unit.toString(),
+                        onValueChange = { unit = it.toIntOrNull() ?: 0 },
+                        label = { Text("Unit") },
+                        modifier = Modifier.fillMaxWidth()
+                    )
+
+                    Spacer(modifier = Modifier.width(8.dp))
+
+                    Button(
+                        onClick = { onSelectUnitClick() },
+                        modifier = Modifier.height(56.dp)
+                    ) {
+                        Icon(Icons.Default.Search, contentDescription = "Select Unit")
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text("Select")
+                    }
+                }
+
                 OutlinedTextField(
                     value = unit.toString(),
                     onValueChange = { unit = it.toIntOrNull() ?: 0 },
