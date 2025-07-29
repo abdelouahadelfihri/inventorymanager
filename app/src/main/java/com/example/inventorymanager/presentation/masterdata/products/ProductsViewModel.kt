@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.ingoings.orders
+package com.example.inventorymanager.presentation.masterdata.products
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -10,7 +10,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import com.example.inventorymanager.domain.model.ingoings.Order
 import com.example.inventorymanager.domain.model.ingoings.Provider
-import com.example.inventorymanager.domain.repository.ingoings.ProductRepository
+import com.example.inventorymanager.domain.model.masterdata.Category
+import com.example.inventorymanager.domain.repository.masterdata.ProductRepository
+import com.example.inventorymanager.domain.model.masterdata.Product
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import java.util.Date
@@ -21,22 +23,23 @@ class ProductsViewModel @Inject constructor(
     private val repo: ProductRepository
 ) : ViewModel() {
 
-    private val _orders = MutableStateFlow<List<Order>>(emptyList())
-    val orders: StateFlow<List<Order>> = _orders
+    private val _products = MutableStateFlow<List<Product>>(emptyList())
+    val products: StateFlow<List<Product>> = _products
 
-    private val _customers = MutableStateFlow<List<Customer>>(emptyList())
-    val customers: StateFlow<List<Customer>> = _customers
+    private val _units = MutableStateFlow<List<Unit>>(emptyList())
+    val units: StateFlow<List<Unit>> = _units
+
+    private val _categories = MutableStateFlow<List<Category>>(emptyList())
+    val categories: StateFlow<List<Category>> = _categories
 
     // You would typically populate it from a repository
     init {
         viewModelScope.launch {
-            repo.getOrdersFromRoom().collect { orderList ->
-                _orders.value = orderList
+            repo.getProductsFromRoom().collect { orderList ->
+                _products.value = orderList
             }
         }
     }
-
-
 
     fun onProviderSelected(provider: Provider) {
         selectedProvider = provider
