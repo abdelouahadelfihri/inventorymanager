@@ -3,29 +3,31 @@ package com.example.inventorymanager.presentation.masterdata.products.add
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.inventorymanager.presentation.masterdata.locations.LocationsViewModel
-import com.example.inventorymanager.presentation.masterdata.locations.add.components.AddLocationContent
-import com.example.inventorymanager.presentation.masterdata.locations.add.components.AddLocationTopBar
+import com.example.inventorymanager.presentation.masterdata.products.add.components.AddProductContent
+import com.example.inventorymanager.presentation.masterdata.products.add.components.AddProductTopBar
+import com.example.inventorymanager.presentation.masterdata.products.ProductsViewModel
 
 @Composable
-fun AddLocationScreen(
-    viewModel: LocationsViewModel = hiltViewModel(),
-    navigateBack: () -> Unit
+fun AddProductScreen(
+    viewModel: ProductsViewModel = hiltViewModel(),
+    navigateBack: () -> Unit,
+    onSelectCategoryClick: () -> Unit,
+    onSelectUnitClick: () -> Unit
 ) {
     Scaffold(
         topBar = {
-            AddLocationTopBar(
-                navigateBack = navigateBack
-            )
+            AddProductTopBar(navigateBack = navigateBack)
         },
         content = { padding ->
-            AddLocationContent(
+            AddProductContent(
                 padding = padding,
-                location = viewModel.location,
-                addLocation = { location ->
-                    viewModel.addLocation(location)
+                product = viewModel.product,
+                addProduct = { product ->
+                    viewModel.addProduct(product)
                 },
-                navigateBack = navigateBack
+                navigateBack = navigateBack,
+                onSelectCategoryClick = onSelectCategoryClick,
+                onSelectUnitClick = onSelectUnitClick
             )
         }
     )
