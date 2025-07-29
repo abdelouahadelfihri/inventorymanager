@@ -31,10 +31,8 @@ fun AddProductContent(
     var unit by remember { mutableStateOf(product.unit) }
     var reorderLevel by remember { mutableStateOf(product.reorderLevel) }
     var isActive by remember { mutableStateOf(product.isActive) }
-    var createdAt by remember { mutableStateOf(product.createdAt) }
 
     val scrollState = rememberScrollState()
-    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 
     Box(
         modifier = Modifier
@@ -94,18 +92,6 @@ fun AddProductContent(
                     label = { Text("Is Active (true/false)") },
                     modifier = Modifier.fillMaxWidth()
                 )
-                OutlinedTextField(
-                    value = createdAt.format(formatter),
-                    onValueChange = {
-                        createdAt = try {
-                            LocalDateTime.parse(it, formatter)
-                        } catch (e: Exception) {
-                            createdAt // Don't update if parsing fails
-                        }
-                    },
-                    label = { Text("Created At (yyyy-MM-dd HH:mm:ss)") },
-                    modifier = Modifier.fillMaxWidth()
-                )
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -127,8 +113,7 @@ fun AddProductContent(
                                 category = category,
                                 unit = unit,
                                 reorderLevel = reorderLevel,
-                                isActive = isActive,
-                                createdAt = createdAt
+                                isActive = isActive
                             )
                         )
                         navigateBack()
@@ -143,7 +128,6 @@ fun AddProductContent(
                         barCode = ""
                         reorderLevel = 0
                         isActive = false
-                        createdAt = LocalDateTime.now()
                         category = 0
                         unit = 0
                         name = ""
