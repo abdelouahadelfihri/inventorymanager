@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 typealias Units = List<Unit>
 
-interface ProductUnitRepository {
+interface UnitRepository {
 
     fun getUnitsFromRoom(): Flow<Units>
 
