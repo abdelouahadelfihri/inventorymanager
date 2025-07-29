@@ -38,6 +38,5 @@ data class Product(
     val category: Int,
     val unit: Int,
     val reorderLevel: Int,
-    val isActive: Boolean,
-    val createdAt: LocalDateTime,
+    val isActive: Boolean
 )
