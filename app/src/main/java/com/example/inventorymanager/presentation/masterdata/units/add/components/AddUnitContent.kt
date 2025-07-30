@@ -13,21 +13,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.ingoings.Provider
+import com.example.inventorymanager.domain.model.masterdata.Unit
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 
 @Composable
-fun AddProviderContent(
+fun AddUnitContent(
     padding: PaddingValues,
-    provider: Provider,
-    addProvider: (Provider) -> Unit,
+    unit: Unit,
+    addUnit: (Unit) -> Unit,
     navigateBack: () -> Unit
 ) {
-    var name by remember { mutableStateOf(provider.name) }
-    var address by remember { mutableStateOf(provider.address) }
+    var name by remember { mutableStateOf(unit.name) }
+    var abbreviation by remember { mutableStateOf(unit.abbreviation) }
 
     val scrollState = rememberScrollState()
 
@@ -55,10 +55,10 @@ fun AddProviderContent(
                 )
 
                 OutlinedTextField(
-                    value = address,
-                    onValueChange = { address = it },
-                    label = { Text("Provider Address") },
-                    placeholder = { Text("Enter provider address") },
+                    value = abbreviation,
+                    onValueChange = { abbreviation = it },
+                    label = { Text("Unit Abbreviation") },
+                    placeholder = { Text("Enter unit abbreviation") },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(120.dp),
@@ -82,17 +82,17 @@ fun AddProviderContent(
             ) {
                 Button(
                     onClick = {
-                        addProvider(provider)
+                        addUnit(unit)
                         navigateBack()
                     }
                 ) {
-                    Text("Save Provider")
+                    Text("Save Unit")
                 }
 
                 Button(
                     onClick = {
                         name = ""
-                        address = ""
+                        abbreviation = ""
                     }
                 ) {
                     Text("Clear")
