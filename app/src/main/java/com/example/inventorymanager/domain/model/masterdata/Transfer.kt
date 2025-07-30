@@ -23,7 +23,7 @@ import java.util.Date
             onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
-            entity = Item::class,
+            entity = Product::class,
             parentColumns = ["productId"],
             childColumns = ["productId"],
             onDelete = ForeignKey.CASCADE
