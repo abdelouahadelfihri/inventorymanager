@@ -5,11 +5,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.inventorymanager.domain.model.outgoings.Customer
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import com.example.inventorymanager.domain.model.ingoings.Order
-import com.example.inventorymanager.domain.model.ingoings.Provider
+import com.example.inventorymanager.domain.model.masterdata.Unit
 import com.example.inventorymanager.domain.model.masterdata.Category
 import com.example.inventorymanager.domain.repository.masterdata.ProductRepository
 import com.example.inventorymanager.domain.model.masterdata.Product
@@ -41,46 +39,59 @@ class ProductsViewModel @Inject constructor(
         }
     }
 
-    fun onProviderSelected(provider: Provider) {
-        selectedProvider = provider
+    fun onUnitSelected(unit: Unit) {
+        selectedUnit = unit
     }
 
-    var selectedProvider by mutableStateOf<Provider?>(null)
+    var selectedUnit by mutableStateOf<Unit?>(null)
+        private set
+
+    fun onCategorySelected(category: Category) {
+        selectedCategory = category
+    }
+
+    var selectedCategory by mutableStateOf<Category?>(null)
         private set
 
     var selectedFilter by mutableStateOf("All")
     var filters = listOf("All", "Category 1", "Category 2")
-    var order by mutableStateOf(
-        Order(
-            orderId = 0,
-            providerId = 0,
-            orderDate = Date()
+    var product by mutableStateOf(
+        Product(
+            productId = 0,
+            name = "",
+            code = "",
+            barCode = "",
+            category = 0,
+            unit = 0,
+            reorderLevel = 0,
+            isActive = true
         )
     )
+
         private set
 
     var openDialog by mutableStateOf(false)
 
     var searchQuery by mutableStateOf("")
 
-    fun getOrder(id: Int) = viewModelScope.launch {
-        order = repo.getOrderFromRoom(id)
+    fun getProduct(id: Int) = viewModelScope.launch {
+        product = repo.getProductFromRoom(id)
     }
 
     init {
-        observeOrdersFromRoom()
+        observeProductsFromRoom()
     }
 
-    fun addOrder(customer: Order) = viewModelScope.launch {
-        repo.addOrderToRoom(customer)
+    fun addProduct(customer: Product) = viewModelScope.launch {
+        repo.addProductToRoom(customer)
     }
 
-    fun updateOrder(customer: Order) = viewModelScope.launch {
-        repo.updateOrderInRoom(customer)
+    fun updateProduct(customer: Product) = viewModelScope.launch {
+        repo.updateProductInRoom(customer)
     }
 
-    fun deleteOrder(id: Int) = viewModelScope.launch {
-        repo.deleteOrderFromRoom(id)
+    fun deleteProduct(id: Int) = viewModelScope.launch {
+        repo.deleteProductFromRoom(id)
     }
 
     fun openDialog() {
@@ -91,16 +102,16 @@ class ProductsViewModel @Inject constructor(
         openDialog = false
     }
 
-    private fun observeOrdersFromRoom() {
+    private fun observeProductsFromRoom() {
         viewModelScope.launch {
-            repo.getOrdersFromRoom()
+            repo.getProductsFromRoom()
                 .collect { list ->
-                    _orders.value = list
+                    _products.value = list
                 }
         }
     }
 
-    val filteredOrders: List<Order>
+    val filteredProducts: List<Product>
         get() {
             val terms = searchQuery
                 .trim()
@@ -109,19 +120,24 @@ class ProductsViewModel @Inject constructor(
                 .map { it.trim() }
                 .filter { it.isNotEmpty() }
 
-            return _orders.value.filter { order ->
+            return _products.value.filter { product ->
                 terms.any { term ->
-                    order.orderId.toString().contains(term) ||
-                            order.orderDate.toString().contains(term) ||
-                            order.providerId.toString().contains(term)
+                    product.productId.toString().contains(term) ||
+                            product.name.contains(term) ||
+                            product.code.contains(term) ||
+                            product.barCode.contains(term) ||
+                            product.category.toString().contains(term) ||
+                            product.unit.toString().contains(term) ||
+                            product.reorderLevel.toString().contains(term) ||
+                            product.isActive.toString().contains(term)
                 }
             }
         }
 
     // Optional: Triggered by Refresh FAB
-    fun onRefreshOrders() {
+    fun onRefreshProducts() {
         // This is optional if Room is live. But you can re-collect:
-        observeOrdersFromRoom()
+        observeProductsFromRoom()
     }
 
     fun onClearSearch() {
