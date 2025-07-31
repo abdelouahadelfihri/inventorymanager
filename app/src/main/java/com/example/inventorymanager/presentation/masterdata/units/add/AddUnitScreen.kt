@@ -9,7 +9,7 @@ import com.example.inventorymanager.presentation.ingoings.providers.add.componen
 
 
 @Composable
-fun AddProviderScreen(
+fun AddUnitScreen(
     viewModel: ProvidersViewModel = hiltViewModel(),
     navigateBack: () -> Unit
 ) {
