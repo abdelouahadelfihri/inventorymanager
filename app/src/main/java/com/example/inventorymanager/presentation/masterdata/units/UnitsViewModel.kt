@@ -7,27 +7,27 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import com.example.inventorymanager.domain.model.ingoings.Provider
-import com.example.inventorymanager.domain.repository.ingoings.ProviderRepository
+import com.example.inventorymanager.domain.model.masterdata.Unit
+import com.example.inventorymanager.domain.repository.masterdata.UnitRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class ProvidersViewModel @Inject constructor(
-    private val repo: ProviderRepository
+class UnitsViewModel @Inject constructor(
+    private val repo: UnitRepository
 ) : ViewModel() {
 
-    private val _providers = MutableStateFlow<List<Provider>>(emptyList())
-    val providers: StateFlow<List<Provider>> = _providers
+    private val _units = MutableStateFlow<List<Unit>>(emptyList())
+    val units: StateFlow<List<Unit>> = _units
 
     var selectedFilter by mutableStateOf("All")
     var filters = listOf("All", "Category 1", "Category 2")
-    var provider by mutableStateOf(
-        Provider(
-            0,
+    var unit by mutableStateOf(
+        Unit (
+            unitId = 0,
             name = "",
-            address = ""
+            abbreviation = ""
         )
     )
         private set
@@ -36,16 +36,16 @@ class ProvidersViewModel @Inject constructor(
 
     var searchQuery by mutableStateOf("")
 
-    fun getProvider(id: Int) = viewModelScope.launch {
-        provider = repo.getProviderFromRoom(id)
+    fun getUnitFromRoom(id: Int) = viewModelScope.launch {
+        unit = repo.getUnitFromRoom(id)
     }
 
     init {
         observeProvidersFromRoom()
     }
 
-    fun addProvider(customer: Provider) = viewModelScope.launch {
-        repo.addProviderToRoom(customer)
+    fun addUnit(unit: Unit) = viewModelScope.launch {
+        repo.addUnitToRoom(unit)
     }
 
     fun updateProvider(customer: Provider) = viewModelScope.launch {
