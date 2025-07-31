@@ -41,19 +41,19 @@ class UnitsViewModel @Inject constructor(
     }
 
     init {
-        observeProvidersFromRoom()
+        observeUnitsFromRoom()
     }
 
     fun addUnit(unit: Unit) = viewModelScope.launch {
         repo.addUnitToRoom(unit)
     }
 
-    fun updateProvider(customer: Provider) = viewModelScope.launch {
-        repo.updateProviderInRoom(customer)
+    fun updateUnit(unit: Unit) = viewModelScope.launch {
+        repo.updateUnitInRoom(unit)
     }
 
-    fun deleteProvider(id: Int) = viewModelScope.launch {
-        repo.deleteProviderFromRoom(id)
+    fun deleteUnit(id: Int) = viewModelScope.launch {
+        repo.deleteUnitFromRoom(id)
     }
 
     fun openDialog() {
@@ -64,16 +64,16 @@ class UnitsViewModel @Inject constructor(
         openDialog = false
     }
 
-    private fun observeProvidersFromRoom() {
+    private fun observeUnitsFromRoom() {
         viewModelScope.launch {
-            repo.getProvidersFromRoom()
+            repo.getUnitsFromRoom()
                 .collect { list ->
-                    _providers.value = list
+                    _units.value = list
                 }
         }
     }
 
-    val filteredProviders: List<Provider>
+    val filteredUnits: List<Unit>
         get() {
             val terms = searchQuery
                 .trim()
@@ -82,19 +82,19 @@ class UnitsViewModel @Inject constructor(
                 .map { it.trim() }
                 .filter { it.isNotEmpty() }
 
-            return _providers.value.filter { provider ->
+            return _units.value.filter { unit ->
                 terms.any { term ->
-                    provider.providerId.toString().contains(term) ||
-                            provider.name.toString().lowercase().contains(term) ||
-                            provider.address.toString().contains(term)
+                    unit.unitId.toString().contains(term) ||
+                    unit.name.lowercase().contains(term) ||
+                            unit.abbreviation.lowercase().contains(term)
                 }
             }
         }
 
     // Optional: Triggered by Refresh FAB
-    fun onRefreshProviders() {
+    fun onRefreshUnits() {
         // This is optional if Room is live. But you can re-collect:
-        observeProvidersFromRoom()
+        observeUnitsFromRoom()
     }
 
     fun onClearSearch() {
