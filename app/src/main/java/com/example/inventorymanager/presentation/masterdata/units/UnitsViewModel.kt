@@ -44,8 +44,10 @@ class UnitsViewModel @Inject constructor(
         observeUnitsFromRoom()
     }
 
-    fun addUnit(unit: Unit) = viewModelScope.launch {
-        repo.addUnitToRoom(unit)
+    fun addUnit(unit: Unit) {
+        viewModelScope.launch {
+            repo.addUnitToRoom(unit)
+        }
     }
 
     fun updateUnit(unit: Unit) = viewModelScope.launch {
