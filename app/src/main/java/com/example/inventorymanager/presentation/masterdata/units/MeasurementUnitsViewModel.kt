@@ -8,18 +8,18 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import com.example.inventorymanager.domain.model.masterdata.MeasurementUnit
-import com.example.inventorymanager.domain.repository.masterdata.UnitRepository
+import com.example.inventorymanager.domain.repository.masterdata.MeasurementUnitRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class UnitsViewModel @Inject constructor(
-    private val repo: UnitRepository
+class MeasurementUnitsViewModel @Inject constructor(
+    private val repo: MeasurementUnitRepository
 ) : ViewModel() {
 
-    private val _units = MutableStateFlow<List<MeasurementUnit>>(emptyList())
-    val units: StateFlow<List<MeasurementUnit>> = _units
+    private val _measurementUnits = MutableStateFlow<List<MeasurementUnit>>(emptyList())
+    val measurementUnits: StateFlow<List<MeasurementUnit>> = _measurementUnits
 
     var selectedFilter by mutableStateOf("All")
     var filters = listOf("All", "Category 1", "Category 2")
@@ -36,24 +36,24 @@ class UnitsViewModel @Inject constructor(
 
     var searchQuery by mutableStateOf("")
 
-    fun getUnitFromRoom(id: Int) = viewModelScope.launch {
-        unit = repo.getUnitFromRoom(id)
+    fun getMeasurementUnitFromRoom(id: Int) = viewModelScope.launch {
+        unit = repo.getMeasurementUnitFromRoom(id)
     }
 
     init {
         observeUnitsFromRoom()
     }
 
-    fun addUnit(unit: MeasurementUnit) = viewModelScope.launch {
-        repo.addUnitToRoom(unit)
+    fun addMeasurementUnit(unit: MeasurementUnit) = viewModelScope.launch {
+        repo.addMeasurementUnitToRoom(unit)
     }
 
-    fun updateUnit(unit: MeasurementUnit) = viewModelScope.launch {
-        repo.updateUnitInRoom(unit)
+    fun updateMeasurementUnit(unit: MeasurementUnit) = viewModelScope.launch {
+        repo.updateMeasurementUnitInRoom(unit)
     }
 
-    fun deleteUnit(id: Int) = viewModelScope.launch {
-        repo.deleteUnitFromRoom(id)
+    fun deleteMeasurementUnit(id: Int) = viewModelScope.launch {
+        repo.deleteMeasurementUnitFromRoom(id)
     }
 
     fun openDialog() {
@@ -66,9 +66,9 @@ class UnitsViewModel @Inject constructor(
 
     private fun observeUnitsFromRoom() {
         viewModelScope.launch {
-            repo.getUnitsFromRoom()
+            repo.getMeasurementUnitsFromRoom()
                 .collect { list ->
-                    _units.value = list
+                    _measurementUnits.value = list
                 }
         }
     }
@@ -82,7 +82,7 @@ class UnitsViewModel @Inject constructor(
                 .map { it.trim() }
                 .filter { it.isNotEmpty() }
 
-            return _units.value.filter { unit ->
+            return _measurementUnits.value.filter { unit ->
                 terms.any { term ->
                     unit.unitId.toString().contains(term) ||
                     unit.name.lowercase().contains(term) ||
