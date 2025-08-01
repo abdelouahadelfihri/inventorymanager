@@ -7,16 +7,16 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.runtime.Composable
-import com.example.inventorymanager.core.Constants.Companion.ADD_PROVIDER
+import com.example.inventorymanager.core.Constants.Companion.ADD_UNIT
 
 @Composable
-fun AddProviderTopBar(
+fun AddUnitTopBar(
     navigateBack: () -> Unit
 ) {
     TopAppBar (
         title = {
             Text(
-                text = ADD_PROVIDER
+                text = ADD_UNIT
             )
         },
         navigationIcon = {

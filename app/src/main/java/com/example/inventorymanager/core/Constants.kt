@@ -108,7 +108,7 @@ class Constants {
         const val DELETE_CUSTOMER_PRODUCT = "Delete customer product."
         const val ADD_CUSTOMER_WAREHOUSE = "Add customer warehouse."
         const val DELETE_CUSTOMER = "Delete a customer."
-
+        const val ADD_UNIT = "Add a unit."
         //Buttons
         const val ADD_BUTTON = "Add"
         const val DISMISS_BUTTON = "Dismiss"
