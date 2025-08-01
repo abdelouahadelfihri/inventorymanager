@@ -24,9 +24,7 @@ fun AddUnitScreen(
                 padding = padding,
                 unit = viewModel.unit,
                 addUnit = { unit ->
-                    viewModelScope.launch {
-                        viewModel.addUnit(unit)
-                    }
+                    viewModel.addUnit(unit) // Call it, but make sure this function itself returns Unit
                 },
                 navigateBack = navigateBack
             )

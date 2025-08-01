@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.masterdata.Unit
+import com.example.inventorymanager.domain.model.masterdata.MeasurementUnit
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.foundation.rememberScrollState
@@ -22,9 +22,9 @@ import androidx.compose.foundation.verticalScroll
 @Composable
 fun AddUnitContent(
     padding: PaddingValues,
-    unit: Unit,
-    addUnit: (Unit) -> Unit,
-    navigateBack: () -> Unit
+    unit: MeasurementUnit,
+    addUnit: (MeasurementUnit) -> MeasurementUnit,
+    navigateBack: () -> MeasurementUnit
 ) {
     var name by remember { mutableStateOf(unit.name) }
     var abbreviation by remember { mutableStateOf(unit.abbreviation) }
@@ -82,7 +82,7 @@ fun AddUnitContent(
             ) {
                 Button(
                     onClick = {
-                        val newUnit = Unit(
+                        val newUnit = MeasurementUnit(
                             unitId = 0, // ✅ Room will auto-generate a new ID when inserting
                             name = name,
                             abbreviation = abbreviation

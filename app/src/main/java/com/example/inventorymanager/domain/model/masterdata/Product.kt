@@ -5,7 +5,6 @@ import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.example.inventorymanager.core.Constants.Companion.ITEM_TABLE
-import java.time.LocalDateTime
 
 @Entity(
     tableName = ITEM_TABLE,
@@ -17,7 +16,7 @@ import java.time.LocalDateTime
             onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
-            entity = Unit::class,
+            entity = MeasurementUnit::class,
             parentColumns = ["unitId"],
             childColumns = ["unit"],
             onDelete = ForeignKey.CASCADE

@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.example.inventorymanager.core.Constants.Companion.UNIT_TABLE
 
 @Entity(tableName = UNIT_TABLE)
-data class Unit(
+data class MeasurementUnit(
     @PrimaryKey(autoGenerate = true)
     val unitId: Int,
     val name: String,

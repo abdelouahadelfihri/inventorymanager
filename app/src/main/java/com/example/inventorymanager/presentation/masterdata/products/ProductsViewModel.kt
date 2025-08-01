@@ -7,13 +7,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import com.example.inventorymanager.domain.model.masterdata.Unit
+import com.example.inventorymanager.domain.model.masterdata.MeasurementUnit
 import com.example.inventorymanager.domain.model.masterdata.Category
 import com.example.inventorymanager.domain.repository.masterdata.ProductRepository
 import com.example.inventorymanager.domain.model.masterdata.Product
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import java.util.Date
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,8 +23,8 @@ class ProductsViewModel @Inject constructor(
     private val _products = MutableStateFlow<List<Product>>(emptyList())
     val products: StateFlow<List<Product>> = _products
 
-    private val _units = MutableStateFlow<List<Unit>>(emptyList())
-    val units: StateFlow<List<Unit>> = _units
+    private val _units = MutableStateFlow<List<MeasurementUnit>>(emptyList())
+    val units: StateFlow<List<MeasurementUnit>> = _units
 
     private val _categories = MutableStateFlow<List<Category>>(emptyList())
     val categories: StateFlow<List<Category>> = _categories
@@ -39,11 +38,11 @@ class ProductsViewModel @Inject constructor(
         }
     }
 
-    fun onUnitSelected(unit: Unit) {
+    fun onUnitSelected(unit: MeasurementUnit) {
         selectedUnit = unit
     }
 
-    var selectedUnit by mutableStateOf<Unit?>(null)
+    var selectedUnit by mutableStateOf<MeasurementUnit?>(null)
         private set
 
     fun onCategorySelected(category: Category) {

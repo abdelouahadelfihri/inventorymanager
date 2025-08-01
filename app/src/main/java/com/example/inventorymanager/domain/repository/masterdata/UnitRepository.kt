@@ -1,19 +1,19 @@
 package com.example.inventorymanager.domain.repository.masterdata
 
-import com.example.inventorymanager.domain.model.masterdata.Unit
+import com.example.inventorymanager.domain.model.masterdata.MeasurementUnit
 import kotlinx.coroutines.flow.Flow
 
-typealias Units = List<Unit>
+typealias Units = List<MeasurementUnit>
 
 interface UnitRepository {
 
     fun getUnitsFromRoom(): Flow<Units>
 
-    suspend fun getUnitFromRoom(id: Int): Unit
+    suspend fun getUnitFromRoom(id: Int): MeasurementUnit
 
-    suspend fun addUnitToRoom(unit: Unit)
+    suspend fun addUnitToRoom(unit: MeasurementUnit)
 
-    suspend fun updateUnitInRoom(unit: Unit)
+    suspend fun updateUnitInRoom(unit: MeasurementUnit)
 
     suspend fun deleteUnitFromRoom(id: Int)
 

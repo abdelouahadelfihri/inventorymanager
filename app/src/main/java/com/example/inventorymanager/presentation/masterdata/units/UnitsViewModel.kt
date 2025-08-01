@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import com.example.inventorymanager.domain.model.masterdata.Unit
+import com.example.inventorymanager.domain.model.masterdata.MeasurementUnit
 import com.example.inventorymanager.domain.repository.masterdata.UnitRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,13 +18,13 @@ class UnitsViewModel @Inject constructor(
     private val repo: UnitRepository
 ) : ViewModel() {
 
-    private val _units = MutableStateFlow<List<Unit>>(emptyList())
-    val units: StateFlow<List<Unit>> = _units
+    private val _units = MutableStateFlow<List<MeasurementUnit>>(emptyList())
+    val units: StateFlow<List<MeasurementUnit>> = _units
 
     var selectedFilter by mutableStateOf("All")
     var filters = listOf("All", "Category 1", "Category 2")
     var unit by mutableStateOf(
-        Unit (
+        MeasurementUnit (
             unitId = 0,
             name = "",
             abbreviation = ""
@@ -44,13 +44,13 @@ class UnitsViewModel @Inject constructor(
         observeUnitsFromRoom()
     }
 
-    fun addUnit(unit: Unit) {
+    fun addUnit(unit: MeasurementUnit) {
         viewModelScope.launch {
             repo.addUnitToRoom(unit)
         }
     }
 
-    fun updateUnit(unit: Unit) = viewModelScope.launch {
+    fun updateUnit(unit: MeasurementUnit) = viewModelScope.launch {
         repo.updateUnitInRoom(unit)
     }
 
@@ -75,7 +75,7 @@ class UnitsViewModel @Inject constructor(
         }
     }
 
-    val filteredUnits: List<Unit>
+    val filteredUnits: List<MeasurementUnit>
         get() {
             val terms = searchQuery
                 .trim()
