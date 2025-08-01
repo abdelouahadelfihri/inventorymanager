@@ -83,7 +83,7 @@ fun AddUnitContent(
                 Button(
                     onClick = {
                         val newUnit = Unit(
-                            unitId = unit.unitId, // keep 0 for new, or use actual id when editing
+                            unitId = 0, // ✅ Room will auto-generate a new ID when inserting
                             name = name,
                             abbreviation = abbreviation
                         )
