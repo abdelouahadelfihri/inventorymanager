@@ -82,12 +82,18 @@ fun AddUnitContent(
             ) {
                 Button(
                     onClick = {
-                        addUnit(unit)
+                        val newUnit = Unit(
+                            unitId = unit.unitId, // keep 0 for new, or use actual id when editing
+                            name = name,
+                            abbreviation = abbreviation
+                        )
+                        addUnit(newUnit)
                         navigateBack()
                     }
                 ) {
                     Text("Save Unit")
                 }
+
 
                 Button(
                     onClick = {
