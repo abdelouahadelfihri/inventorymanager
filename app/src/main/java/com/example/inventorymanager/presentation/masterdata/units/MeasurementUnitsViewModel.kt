@@ -36,7 +36,7 @@ class MeasurementUnitsViewModel @Inject constructor(
 
     var searchQuery by mutableStateOf("")
 
-    fun getMeasurementUnitFromRoom(id: Int) = viewModelScope.launch {
+    fun getMeasurementUnit(id: Int) = viewModelScope.launch {
         unit = repo.getMeasurementUnitFromRoom(id)
     }
 
