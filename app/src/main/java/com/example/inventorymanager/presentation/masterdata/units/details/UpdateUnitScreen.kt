@@ -10,7 +10,7 @@ import com.example.inventorymanager.presentation.ingoings.providers.details.comp
 
 
 @Composable
-fun UpdateProviderScreen(
+fun UpdateUnitScreen(
     viewModel: ProvidersViewModel = hiltViewModel(),
     providerId: Int,
     navigateBack: () -> Unit
