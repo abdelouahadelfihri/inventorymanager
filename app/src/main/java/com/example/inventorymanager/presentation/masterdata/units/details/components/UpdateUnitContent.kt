@@ -13,18 +13,18 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import com.example.inventorymanager.domain.model.ingoings.Provider
+import com.example.inventorymanager.domain.model.masterdata.MeasurementUnit
 
 @Composable
 fun UpdateUnitContent(
     padding: PaddingValues,
-    provider: Provider,
-    updateProvider: (Provider) -> Unit,
-    deleteProvider: (Int) -> Unit,
+    unit: MeasurementUnit,
+    updateUnit: (MeasurementUnit) -> Unit,
+    deleteUnit: (Int) -> Unit,
     navigateBack: () -> Unit
 ) {
-    var name by remember { mutableStateOf(provider.name) }
-    var address by remember { mutableStateOf(provider.address) }
+    var name by remember { mutableStateOf(unit.name) }
+    var abbreviation by remember { mutableStateOf(unit.abbreviation) }
 
     val scrollState = rememberScrollState()
 
@@ -46,7 +46,7 @@ fun UpdateUnitContent(
             ) {
 
                 OutlinedTextField(
-                    value = provider.providerId.toString(),
+                    value = unit.unitId.toString(),
                     onValueChange = {},
                     label = { Text("Customer ID") },
                     modifier = Modifier.fillMaxWidth(),
@@ -64,10 +64,12 @@ fun UpdateUnitContent(
                 )
 
                 OutlinedTextField(
-                    value = address,
-                    onValueChange = { address = it },
-                    label = { Text("Customer Address") },
-                    placeholder = { Text("Enter customer address") },
+                    value = abbreviation,
+                    onValueChange = {
+                        abbreviation = it
+                    },
+                    label = { Text("Unit Abbreviation") },
+                    placeholder = { Text("Enter unit abbreviation") },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(120.dp),
@@ -78,7 +80,6 @@ fun UpdateUnitContent(
                         imeAction = ImeAction.Default
                     )
                 )
-
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -92,7 +93,7 @@ fun UpdateUnitContent(
             ) {
                 Button(
                     onClick = {
-                        updateProvider(provider)
+                        updateUnit(unit)
                         navigateBack()
                     }
                 ) {
@@ -101,7 +102,7 @@ fun UpdateUnitContent(
 
                 Button(
                     onClick = {
-                        deleteProvider(provider.providerId)
+                        deleteUnit(unit.unitId)
                         navigateBack()
                     }
                 ) {
