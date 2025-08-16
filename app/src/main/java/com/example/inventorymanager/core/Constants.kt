@@ -42,6 +42,7 @@ class Constants {
         const val DELIVERY_LIST_SCREEN = "Delivery List"
         const val LOCATION_LIST_SCREEN = "Location List"
         const val ORDER_LIST_SCREEN = "Order List"
+        const val UPDATE_UNIT_SCREEN = "Update Unit"
         const val PRODUCT_LIST_SCREEN = "Product List"
         const val PROVIDER_LIST_SCREEN = "Provider List"
         const val TRANSFER_LIST_SCREEN = "Transfer List"
