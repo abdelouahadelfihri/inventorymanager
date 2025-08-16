@@ -16,7 +16,7 @@ import androidx.compose.material3.Text
 import com.example.inventorymanager.domain.model.ingoings.Provider
 
 @Composable
-fun UpdateProviderContent(
+fun UpdateUnitContent(
     padding: PaddingValues,
     provider: Provider,
     updateProvider: (Provider) -> Unit,
