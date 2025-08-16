@@ -16,7 +16,7 @@ fun UpdateUnitScreen(
     navigateBack: () -> Unit
 ) {
     LaunchedEffect(Unit) {
-        viewModel.getUnit(providerId)
+        viewModel.getUnit(unitId)
     }
     Scaffold(
         topBar = {
@@ -27,12 +27,12 @@ fun UpdateUnitScreen(
         content = { padding ->
             UpdateUnitContent(
                 padding = padding,
-                provider = viewModel.provider,
-                updateProvider = { provider ->
-                    viewModel.updateProvider(provider)
+                unit = viewModel.unit,
+                updateUnit = { unit ->
+                    viewModel.updateUnit(unit)
                 },
-                deleteProvider = { providerId ->
-                    viewModel.deleteProvider(providerId)
+                deleteUnit = { unitId ->
+                    viewModel.deleteUnit(unitId)
                 },
                 navigateBack = navigateBack
             )
