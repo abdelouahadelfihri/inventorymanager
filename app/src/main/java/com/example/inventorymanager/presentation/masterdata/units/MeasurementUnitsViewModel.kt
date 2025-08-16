@@ -36,7 +36,7 @@ class MeasurementUnitsViewModel @Inject constructor(
 
     var searchQuery by mutableStateOf("")
 
-    fun getMeasurementUnit(id: Int) = viewModelScope.launch {
+    fun getUnit(id: Int) = viewModelScope.launch {
         unit = repo.getMeasurementUnitFromRoom(id)
     }
 
@@ -44,15 +44,15 @@ class MeasurementUnitsViewModel @Inject constructor(
         observeUnitsFromRoom()
     }
 
-    fun addMeasurementUnit(unit: MeasurementUnit) = viewModelScope.launch {
+    fun addUnit(unit: MeasurementUnit) = viewModelScope.launch {
         repo.addMeasurementUnitToRoom(unit)
     }
 
-    fun updateMeasurementUnit(unit: MeasurementUnit) = viewModelScope.launch {
+    fun updateUnit(unit: MeasurementUnit) = viewModelScope.launch {
         repo.updateMeasurementUnitInRoom(unit)
     }
 
-    fun deleteMeasurementUnit(id: Int) = viewModelScope.launch {
+    fun deleteUnit(id: Int) = viewModelScope.launch {
         repo.deleteMeasurementUnitFromRoom(id)
     }
 
