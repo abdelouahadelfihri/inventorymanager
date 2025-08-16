@@ -4,14 +4,14 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.inventorymanager.presentation.masterdata.units.MeasurementUnitsViewModel
+import com.example.inventorymanager.presentation.masterdata.units.UnitsViewModel
 import com.example.inventorymanager.presentation.masterdata.units.details.components.UpdateUnitContent
 import com.example.inventorymanager.presentation.masterdata.units.details.components.UpdateUnitTopBar
 
 
 @Composable
 fun UpdateUnitScreen(
-    viewModel: MeasurementUnitsViewModel = hiltViewModel(),
+    viewModel: UnitsViewModel = hiltViewModel(),
     unitId: Int,
     navigateBack: () -> Unit
 ) {

@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class MeasurementUnitsViewModel @Inject constructor(
+class UnitsViewModel @Inject constructor(
     private val repo: MeasurementUnitRepository
 ) : ViewModel() {
 
