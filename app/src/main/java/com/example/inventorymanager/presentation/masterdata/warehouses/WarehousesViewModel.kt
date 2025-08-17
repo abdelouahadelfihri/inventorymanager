@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.inventorymanager.domain.model.masterdata.Location
 import com.example.inventorymanager.domain.model.masterdata.Warehouse
 import com.example.inventorymanager.domain.repository.masterdata.WarehouseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -44,6 +45,13 @@ class WarehousesViewModel @Inject constructor(
     init {
         observeWarehousesFromRoom()
     }
+
+    fun onLocationSelected(location: Location) {
+        selectedLocation = location
+    }
+
+    var selectedLocation by mutableStateOf<Location?>(null)
+        private set
 
     fun addWarehouse(warehouse: Warehouse) = viewModelScope.launch {
         repo.addWarehouseToRoom(warehouse)
