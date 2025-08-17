@@ -99,10 +99,11 @@ fun AddWarehouseContent(
             ) {
                 Button(
                     onClick = {
+                        val finalOwnerId = selectedLocation?.locationId ?: warehouse.locationOwnerId
                         val finalWarehouse = warehouse.copy(
                             name = name,
-                            isRefrigerated = if (isRefrigerated) 1 else 0
-                            // locationOwnerId can be updated by parent when owner is selected
+                            isRefrigerated = if (isRefrigerated) 1 else 0,
+                            locationOwnerId = finalOwnerId
                         )
                         addWarehouse(finalWarehouse)
                         navigateBack()
