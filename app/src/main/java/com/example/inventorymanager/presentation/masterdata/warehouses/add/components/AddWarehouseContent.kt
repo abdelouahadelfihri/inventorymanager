@@ -82,7 +82,7 @@ fun AddWarehouseContent(
                         onClick = { onSelectLocationClick() },
                         modifier = Modifier.height(56.dp)
                     ) {
-                        Icon(Icons.Default.Search, contentDescription = "Select Owner")
+                        Icon(Icons.Default.Search, contentDescription = "Select Location")
                         Spacer(modifier = Modifier.width(4.dp))
                         Text("Select")
                     }
