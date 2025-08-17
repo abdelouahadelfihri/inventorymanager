@@ -3,25 +3,30 @@ package com.example.inventorymanager.presentation.masterdata.warehouses.add
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.inventorymanager.presentation.ingoings.providers.add.components.AddProviderContent
+import com.example.inventorymanager.presentation.ingoings.providers.add.components.AddProviderTopBar
+import com.example.inventorymanager.presentation.masterdata.warehouses.WarehousesViewModel
+import com.example.inventorymanager.presentation.masterdata.warehouses.add.components.AddWarehouseTopBar
+import com.example.inventorymanager.presentation.warehouses.add.components.AddWarehouseContent
 
 
 @Composable
 fun AddWarehouseScreen(
-    viewModel: ProvidersViewModel = hiltViewModel(),
+    viewModel: WarehousesViewModel = hiltViewModel(),
     navigateBack: () -> Unit
 ) {
     Scaffold(
         topBar = {
-            AddProviderTopBar(
+            AddWarehouseTopBar(
                 navigateBack = navigateBack
             )
         },
         content = { padding ->
-            AddProviderContent(
+            AddWarehouseContent(
                 padding = padding,
-                provider = viewModel.provider.value,
-                addProvider = { provider ->
-                    viewModel.addProvider(provider)
+                warehouse = viewModel.warehouse.value,
+                addWarehouse = { warehouse ->
+                    viewModel.addWarehouse(warehouse)
                 },
                 navigateBack = navigateBack
             )
