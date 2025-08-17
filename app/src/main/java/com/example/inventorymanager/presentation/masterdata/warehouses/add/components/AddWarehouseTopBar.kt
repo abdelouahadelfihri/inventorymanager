@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.warehouses.add.components
+package com.example.inventorymanager.presentation.masterdata.warehouses.add.components
 
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import com.example.inventorymanager.core.Constants.Companion.ADD_CUSTOMER
 
 @Composable
-fun AddProviderTopBar(
+fun AddWarehouseTopBar(
     navigateBack: () -> Unit
 ) {
     TopAppBar (
