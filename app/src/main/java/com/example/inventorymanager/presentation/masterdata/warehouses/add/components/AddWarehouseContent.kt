@@ -69,7 +69,7 @@ fun AddWarehouseContent(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     OutlinedTextField(
-                        value = "${warehouse.locationOwnerId} - ${selectedLocation?.name ?: ""}",
+                        value = "$locationId - $locationName",
                         onValueChange = {},
                         readOnly = true,
                         label = { Text("Location Owner") },
