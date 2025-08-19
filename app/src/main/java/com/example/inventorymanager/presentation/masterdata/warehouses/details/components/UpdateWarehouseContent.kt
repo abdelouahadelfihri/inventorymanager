@@ -1,10 +1,14 @@
-package com.example.inventorymanager.presentation.warehouses.details.components
+package com.example.inventorymanager.presentation.masterdata.warehouses.details.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -14,17 +18,24 @@ import androidx.compose.ui.unit.dp
 import com.example.inventorymanager.domain.model.outgoings.Customer
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.runtime.setValue
+import com.example.inventorymanager.domain.model.masterdata.Location
+import com.example.inventorymanager.domain.model.masterdata.Warehouse
 
 @Composable
-fun UpdateCustomerContent(
+fun UpdateWarehouseContent(
     padding: PaddingValues,
-    customer: Customer,
-    updateCustomer: (Customer) -> Unit,
-    deleteCustomer: (Int) -> Unit,
+    warehouse: Warehouse,
+    selectedLocation: Location?,
+    updateWarehouse: (Warehouse) -> Unit,
+    deleteWarehouse: (Int) -> Unit,
+    onSelectLocationClick: () -> Unit,
     navigateBack: () -> Unit
 ) {
-    var name by remember { mutableStateOf(customer.name) }
-    var address by remember { mutableStateOf(customer.address) }
+    val locationId = selectedLocation?.locationId?.toString() ?: warehouse.locationOwnerId.toString()
+    val locationName = selectedLocation?.name ?: ""
+    var name by remember { mutableStateOf(warehouse.name) }
+    var isRefrigerated by remember { mutableStateOf(warehouse.isRefrigerated == 1) }
 
     val scrollState = rememberScrollState()
 
@@ -34,78 +45,90 @@ fun UpdateCustomerContent(
             .padding(padding)
             .padding(16.dp)
     ) {
-        Column(
-            modifier = Modifier.fillMaxSize()
-        ) {
-            // Scrollable form
+        Column(modifier = Modifier.fillMaxSize()) {
+
             Column(
                 modifier = Modifier
                     .weight(1f)
                     .verticalScroll(scrollState),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-
-                OutlinedTextField(
-                    value = customer.customerId.toString(),
-                    onValueChange = {},
-                    label = { Text("Customer ID") },
-                    modifier = Modifier.fillMaxWidth(),
-                    enabled = false
-                )
-
-
-                OutlinedTextField(
+                // 🏷️ Warehouse Name
+                androidx.compose.material.OutlinedTextField(
                     value = name,
-                    onValueChange = {
-                        name = it
-                    },
-                    label = { Text("Customer Name") },
+                    onValueChange = { name = it },
+                    label = { Text("Warehouse Name") },
                     modifier = Modifier.fillMaxWidth()
                 )
 
-                OutlinedTextField(
-                    value = address,
-                    onValueChange = { address = it },
-                    label = { Text("Customer Address") },
-                    placeholder = { Text("Enter customer address") },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(120.dp),
-                    singleLine = false,
-                    maxLines = 5,
-                    keyboardOptions = KeyboardOptions.Default.copy(
-                        keyboardType = KeyboardType.Text,
-                        imeAction = ImeAction.Default
+                // ❄️ Refrigerated Checkbox
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Checkbox(
+                        checked = isRefrigerated,
+                        onCheckedChange = { isRefrigerated = it }
                     )
-                )
+                    Text("Refrigerated")
+                }
 
+                // 📍 Location Owner
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    OutlinedTextField(
+                        value = "$locationId - $locationName",
+                        onValueChange = {},
+                        readOnly = true,
+                        label = { Text("Location Owner") },
+                        modifier = Modifier.weight(1f)
+                    )
+
+                    Spacer(modifier = Modifier.width(8.dp))
+
+                    Button(
+                        onClick = { onSelectLocationClick() },
+                        modifier = Modifier.height(56.dp)
+                    ) {
+                        Icon(Icons.Default.Search, contentDescription = "Select Location")
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text("Select")
+                    }
+                }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Bottom fixed buttons
+            // 💾 Save & Clear
             Row(
-                modifier = Modifier
-                    .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Button(
                     onClick = {
-                        updateCustomer(customer)
+                        val finalOwnerId = selectedLocation?.locationId ?: warehouse.locationOwnerId
+                        val finalWarehouse = warehouse.copy(
+                            name = name,
+                            isRefrigerated = if (isRefrigerated) 1 else 0,
+                            locationOwnerId = finalOwnerId
+                        )
+                        updateWarehouse(finalWarehouse)
                         navigateBack()
                     }
                 ) {
-                    Text("Update")
+                    Text("Save Warehouse")
                 }
 
                 Button(
                     onClick = {
-                        deleteCustomer(customer.customerId)
+                        deleteWarehouse(warehouse.warehouseId)
                         navigateBack()
                     }
                 ) {
-                    Text("Delete")
+                    androidx.compose.material.Text("Delete")
                 }
             }
         }
