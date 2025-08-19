@@ -34,6 +34,7 @@ fun UpdateWarehouseContent(
 ) {
     val locationId = selectedLocation?.locationId?.toString() ?: warehouse.locationOwnerId.toString()
     val locationName = selectedLocation?.name ?: ""
+    val warehouseId = warehouse.warehouseId.toString()
     var name by remember { mutableStateOf(warehouse.name) }
     var isRefrigerated by remember { mutableStateOf(warehouse.isRefrigerated == 1) }
 
@@ -53,6 +54,13 @@ fun UpdateWarehouseContent(
                     .verticalScroll(scrollState),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
+                androidx.compose.material.OutlinedTextField(
+                    value = warehouseId,
+                    onValueChange = {},
+                    label = { Text("Warehouse ID") },
+                    enabled = false,
+                    modifier = Modifier.fillMaxWidth()
+                )
                 // 🏷️ Warehouse Name
                 androidx.compose.material.OutlinedTextField(
                     value = name,
