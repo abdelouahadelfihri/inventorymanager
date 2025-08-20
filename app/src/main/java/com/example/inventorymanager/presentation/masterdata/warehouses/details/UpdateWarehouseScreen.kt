@@ -37,7 +37,7 @@ fun UpdateCustomerScreen(
                     viewModel.deleteWarehouse(warehouseId)
                 },
                 onSelectLocationClick = {
-                    navController.navigate("")
+                    navController.navigate("locations_list")
                 },
                 navigateBack = navigateBack
             )
