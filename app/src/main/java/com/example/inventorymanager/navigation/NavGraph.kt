@@ -13,8 +13,9 @@ import com.example.inventorymanager.presentation.dashboard.DashboardScreen
 import com.example.inventorymanager.presentation.ingoings.orders.OrdersViewModel
 import com.example.inventorymanager.presentation.ingoings.orders.add.AddOrderScreen
 import com.example.inventorymanager.presentation.ingoings.providers.list.ProvidersListScreen
-import com.example.inventorymanager.presentation.locations.list.LocationsListScreen
+import com.example.inventorymanager.presentation.masterdata.locations.list.LocationsListScreen
 import com.example.inventorymanager.presentation.outgoings.customers.list.CustomersListScreen
+import com.example.inventorymanager.presentation.masterdata.warehouses.WarehousesViewModel
 
 @ExperimentalMaterialApi
 @Composable
@@ -63,6 +64,17 @@ fun AppNavHost(navController: NavHostController) {
             ProvidersListScreen(
                 onProviderSelected = { provider ->
                     orderViewModel.onProviderSelected(provider)
+                    navController.popBackStack() // Navigate back to AddOrderScreen
+                }
+            )
+        }
+
+        composable("locations_list") {
+            val warehouseViewModel : WarehousesViewModel = hiltViewModel() // ✅ Safe here inside a @Composable scope
+
+            LocationsListScreen(
+                onLocationSelected = { location ->
+                    warehouseViewModel.onLocationSelected(location)
                     navController.popBackStack() // Navigate back to AddOrderScreen
                 }
             )
