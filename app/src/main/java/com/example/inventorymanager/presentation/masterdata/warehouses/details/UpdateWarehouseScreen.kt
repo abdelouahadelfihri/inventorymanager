@@ -5,6 +5,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.inventorymanager.presentation.masterdata.warehouses.WarehousesViewModel
+import com.example.inventorymanager.presentation.masterdata.warehouses.details.components.UpdateWarehouseContent
+import com.example.inventorymanager.presentation.masterdata.warehouses.details.components.UpdateWarehouseTopBar
 
 @Composable
 fun UpdateCustomerScreen(
