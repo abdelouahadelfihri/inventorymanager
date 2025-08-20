@@ -24,7 +24,7 @@ class WarehousesViewModel @Inject constructor(
 
     var selectedFilter by mutableStateOf("All")
     var filters = listOf("All", "Category 1", "Category 2")
-    var warehouse = mutableStateOf(
+    var warehouse by mutableStateOf(
         Warehouse(
             warehouseId = 0,
             name = "",
@@ -39,7 +39,7 @@ class WarehousesViewModel @Inject constructor(
     var searchQuery by mutableStateOf("")
 
     fun getWarehouse(id: Int) = viewModelScope.launch {
-        warehouse.value = repo.getWarehouseFromRoom(id)
+        warehouse = repo.getWarehouseFromRoom(id)
     }
 
     init {
