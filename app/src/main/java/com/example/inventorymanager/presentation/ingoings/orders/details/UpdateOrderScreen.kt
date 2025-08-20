@@ -33,7 +33,7 @@ fun UpdateOrderScreen(
                 updateOrder = { order -> viewModel.updateOrder(order) },
                 deleteOrder = { id -> viewModel.deleteOrder(id) },
                 onSelectProviderClick = {
-                    navController.navigate("select_provider")
+                    navController.navigate("providers_list")
                 },
                 navigateBack = navigateBack
             )
