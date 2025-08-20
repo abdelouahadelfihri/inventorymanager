@@ -4,27 +4,25 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.inventorymanager.presentation.outs.customers.CustomersViewModel
-import com.example.inventorymanager.presentation.outs.customers.details.components.UpdateCustomerContent
-import com.example.inventorymanager.presentation.outs.customers.details.components.UpdateCustomerTopBar
+import com.example.inventorymanager.presentation.masterdata.warehouses.WarehousesViewModel
 
 @Composable
 fun UpdateCustomerScreen(
-    viewModel: CustomersViewModel = hiltViewModel(),
-    customerId: Int,
+    viewModel: WarehousesViewModel = hiltViewModel(),
+    warehouseId: Int,
     navigateBack: () -> Unit
 ) {
     LaunchedEffect(Unit) {
-        viewModel.getCustomer(customerId)
+        viewModel.getWarehouse(warehouseId)
     }
     Scaffold(
         topBar = {
-            UpdateCustomerTopBar(
+            UpdateWarehouseTopBar(
                 navigateBack = navigateBack
             )
         },
         content = { padding ->
-            UpdateCustomerContent(
+            UpdateWarehouseContent(
                 padding = padding,
                 customer = viewModel.customer,
                 updateCustomer = { customer ->
