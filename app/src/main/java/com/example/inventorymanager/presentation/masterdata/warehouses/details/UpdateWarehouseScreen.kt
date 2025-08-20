@@ -4,6 +4,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.example.inventorymanager.presentation.masterdata.warehouses.WarehousesViewModel
 import com.example.inventorymanager.presentation.masterdata.warehouses.details.components.UpdateWarehouseContent
 import com.example.inventorymanager.presentation.masterdata.warehouses.details.components.UpdateWarehouseTopBar
@@ -12,6 +13,7 @@ import com.example.inventorymanager.presentation.masterdata.warehouses.details.c
 fun UpdateCustomerScreen(
     viewModel: WarehousesViewModel = hiltViewModel(),
     warehouseId: Int,
+    navController: NavController,
     navigateBack: () -> Unit
 ) {
     LaunchedEffect(Unit) {
@@ -26,12 +28,16 @@ fun UpdateCustomerScreen(
         content = { padding ->
             UpdateWarehouseContent(
                 padding = padding,
-                customer = viewModel.customer,
-                updateCustomer = { customer ->
-                    viewModel.updateCustomer(customer)
+                warehouse = viewModel.warehouse,
+                selectedLocation = viewModel.selectedLocation,
+                updateWarehouse = { warehouse ->
+                    viewModel.updateWarehouse(warehouse)
                 },
-                deleteCustomer = { customerId ->
-                    viewModel.deleteCustomer(customerId)
+                deleteWarehouse = { warehouseId ->
+                    viewModel.deleteWarehouse(warehouseId)
+                },
+                onSelectLocationClick = {
+                    navController.navigate("")
                 },
                 navigateBack = navigateBack
             )
