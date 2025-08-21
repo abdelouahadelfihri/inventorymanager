@@ -60,7 +60,10 @@ fun LocationsListScreen(viewModel: LocationsViewModel = hiltViewModel(),
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(8.dp)
+                .padding(8.dp),
+            onLocationClick = { location ->
+                onLocationSelected?.invoke(location)
+            }
         )
     }
 }
