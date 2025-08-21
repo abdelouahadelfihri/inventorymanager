@@ -27,7 +27,7 @@ fun LocationsListScreen(viewModel: LocationsViewModel = hiltViewModel(),
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Deliveries") },
+                title = { Text("Locations") },
                 modifier = Modifier.fillMaxWidth()
             )
         },
