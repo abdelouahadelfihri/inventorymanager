@@ -8,12 +8,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.inventorymanager.domain.model.masterdata.Location
 import com.example.inventorymanager.presentation.masterdata.locations.LocationsViewModel
 
 @Composable
 fun LocationsContent(
     viewModel: LocationsViewModel,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onLocationClick: ((Location) -> Unit)? = null
 ) {
     Column(modifier = modifier) {
         // 🔍 Search Bar
@@ -65,7 +67,7 @@ fun LocationsContent(
             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
         ) {
             items(viewModel.filteredLocations, key = { it.locationId }) { location ->
-                LocationCard(location = location)
+                LocationCard(location = location, onClick = { onLocationClick?.invoke(location) })
             }
         }
     }
