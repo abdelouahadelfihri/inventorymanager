@@ -83,8 +83,20 @@ class WarehousesViewModel @Inject constructor(
     }
 
     val filteredWarehouses: List<Warehouse>
-        get() = _warehouses.value.filter {
-            it.name.contains(searchQuery, ignoreCase = true)
+        get() {
+            val terms = searchQuery
+                .trim()
+                .lowercase()
+                .split(";")
+                .map { it.trim() }
+                .filter { it.isNotEmpty() }
+            return _warehouses.value.filter { warehouse ->
+                terms.any { term ->
+                    warehouse.warehouseId.toString().contains(term) ||
+                            warehouse.name.toString().lowercase().contains(term) ||
+                            warehouse.locationOwnerId.toString().contains(term)
+                }
+            }
         }
 
     // Optional: Triggered by Refresh FAB
