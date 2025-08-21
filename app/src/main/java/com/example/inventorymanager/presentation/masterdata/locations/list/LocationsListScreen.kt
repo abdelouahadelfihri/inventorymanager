@@ -13,13 +13,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
+import com.example.inventorymanager.domain.model.masterdata.Location
 import com.example.inventorymanager.presentation.masterdata.locations.LocationsViewModel
 import com.example.inventorymanager.presentation.masterdata.locations.list.components.LocationsContent
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LocationsListScreen(viewModel: LocationsViewModel = hiltViewModel()) {
+fun LocationsListScreen(viewModel: LocationsViewModel = hiltViewModel(),
+                        onLocationSelected: ((Location) -> Unit)? = null) {
     val navController = rememberNavController()
 
     Scaffold(
