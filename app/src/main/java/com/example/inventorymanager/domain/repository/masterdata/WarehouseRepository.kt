@@ -12,7 +12,7 @@ interface WarehouseRepository {
 
     fun getWarehousesFromRoom(): Flow<Warehouses>
 
-    fun getWarehousesWithLocation(): Flow<WarehousesWithLocation>
+    fun getWarehousesWithLocationFromRoom(): Flow<WarehousesWithLocation>
 
     suspend fun getWarehouseFromRoom(id: Int): Warehouse
 
