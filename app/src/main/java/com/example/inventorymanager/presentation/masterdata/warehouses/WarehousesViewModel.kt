@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.inventorymanager.domain.model.masterdata.Location
 import com.example.inventorymanager.domain.model.masterdata.Warehouse
+import com.example.inventorymanager.domain.relationshipdataclasses.WarehouseWithLocation
 import com.example.inventorymanager.domain.repository.masterdata.WarehouseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -21,8 +22,8 @@ class WarehousesViewModel @Inject constructor(
     private val repo: WarehouseRepository
 ) : ViewModel() {
 
-    private val _warehouses = MutableStateFlow<List<Warehouse>>(emptyList())
-    val warehouses: StateFlow<List<Warehouse>> = _warehouses
+    private val _warehouses = MutableStateFlow<List<WarehouseWithLocation>>(emptyList())
+    val warehouses: StateFlow<List<WarehouseWithLocation>> = _warehouses
 
     val warehousesWithLocation = repo.getWarehousesWithLocation()
         .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
@@ -87,7 +88,7 @@ class WarehousesViewModel @Inject constructor(
         }
     }
 
-    val filteredWarehouses: List<Warehouse>
+    val filteredWarehouses: List<WarehouseWithLocation>
         get() {
             val terms = searchQuery
                 .trim()
@@ -97,9 +98,11 @@ class WarehousesViewModel @Inject constructor(
                 .filter { it.isNotEmpty() }
             return _warehouses.value.filter { warehouse ->
                 terms.any { term ->
-                    warehouse.warehouseId.toString().contains(term) ||
-                            warehouse.name.toString().lowercase().contains(term) ||
-                            warehouse.locationOwnerId.toString().contains(term)
+                    warehouse.warehouse.warehouseId.toString().contains(term) ||
+                            warehouse.warehouse.name.toString().lowercase().contains(term) ||
+                            warehouse.warehouse.isRefrigerated.toString().contains(term) ||
+                            warehouse.location.locationId.toString().contains(term)
+
                 }
             }
         }
