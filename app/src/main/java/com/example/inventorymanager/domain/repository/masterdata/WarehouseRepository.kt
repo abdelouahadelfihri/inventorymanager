@@ -6,12 +6,13 @@ import kotlinx.coroutines.flow.Flow
 
 
 typealias Warehouses = List<Warehouse>
+typealias WarehousesWithLocation = List<Warehouse>
 
 interface WarehouseRepository {
 
     fun getWarehousesFromRoom(): Flow<Warehouses>
 
-    fun getWarehousesWithLocation(): Flow<List<WarehouseWithLocation>>
+    fun getWarehousesWithLocation(): Flow<WarehousesWithLocation>
 
     suspend fun getWarehouseFromRoom(id: Int): Warehouse
 
