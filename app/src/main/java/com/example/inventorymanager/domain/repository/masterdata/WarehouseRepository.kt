@@ -5,7 +5,7 @@ import com.example.inventorymanager.domain.relationshipdataclasses.WarehouseWith
 import kotlinx.coroutines.flow.Flow
 
 
-typealias Warehouses = List<Warehouse>
+typealias Warehouses = List<WarehouseWithLocation>
 typealias WarehousesWithLocation = List<WarehouseWithLocation>
 
 interface WarehouseRepository {
