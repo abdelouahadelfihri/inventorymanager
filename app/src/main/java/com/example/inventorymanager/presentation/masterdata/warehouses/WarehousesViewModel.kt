@@ -25,7 +25,7 @@ class WarehousesViewModel @Inject constructor(
     private val _warehouses = MutableStateFlow<List<WarehouseWithLocation>>(emptyList())
     val warehouses: StateFlow<List<WarehouseWithLocation>> = _warehouses
 
-    val warehousesWithLocation = repo.getWarehousesWithLocation()
+    val warehousesWithLocation = repo.getWarehousesWithLocationFromRoom()
         .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
     var selectedFilter by mutableStateOf("All")
