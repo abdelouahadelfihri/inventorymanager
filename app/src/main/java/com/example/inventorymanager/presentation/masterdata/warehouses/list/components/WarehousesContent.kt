@@ -1,18 +1,17 @@
-package com.example.inventorymanager.presentation.warehouses.list.components
+package com.example.inventorymanager.presentation.masterdata.warehouses.list.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.presentation.outs.customers.CustomersViewModel
+import com.example.inventorymanager.presentation.masterdata.warehouses.WarehousesViewModel
 
 @Composable
-fun CustomersContent(
-    viewModel: CustomersViewModel,
+fun WarehousesContent(
+    viewModel: WarehousesViewModel,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
@@ -57,14 +56,16 @@ fun CustomersContent(
             }
         }
 
+        val warehouses = viewModel.warehousesWithLocation.collectAsState()
+
         // 📄 Customer List
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(6.dp),
             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
         ) {
-            items(viewModel.filteredCustomers, key = { it.customerId }) { customer ->
-                CustomerCard(customer = customer)
+            items(viewModel.filteredWarehouses, key = { it.warehouseId }) { customer ->
+                WarehouseCard(customer = customer)
             }
         }
     }
