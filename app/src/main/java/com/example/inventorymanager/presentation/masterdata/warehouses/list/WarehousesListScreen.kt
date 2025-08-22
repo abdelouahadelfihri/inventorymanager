@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.warehouses.list
+package com.example.inventorymanager.presentation.masterdata.warehouses.list
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
@@ -13,12 +13,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
+import com.example.inventorymanager.presentation.masterdata.warehouses.WarehousesViewModel
 import com.example.inventorymanager.presentation.outs.customers.CustomersViewModel
 import com.example.inventorymanager.presentation.outs.customers.list.components.CustomersContent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CustomerListScreen(viewModel: CustomersViewModel = hiltViewModel()) {
+fun WarehousesListScreen(viewModel: WarehousesViewModel = hiltViewModel()) {
     val navController = rememberNavController()
 
     Scaffold(
@@ -52,7 +53,7 @@ fun CustomerListScreen(viewModel: CustomersViewModel = hiltViewModel()) {
             }
         }
     ) { innerPadding ->
-        CustomersContent(
+        WarehousesContent(
             viewModel = viewModel,
             modifier = Modifier
                 .fillMaxSize()
