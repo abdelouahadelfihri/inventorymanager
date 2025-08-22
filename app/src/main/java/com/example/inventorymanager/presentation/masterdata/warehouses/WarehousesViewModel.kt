@@ -11,6 +11,7 @@ import com.example.inventorymanager.domain.repository.masterdata.WarehouseReposi
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
@@ -21,6 +22,9 @@ class WarehousesViewModel @Inject constructor(
 
     private val _warehouses = MutableStateFlow<List<Warehouse>>(emptyList())
     val warehouses: StateFlow<List<Warehouse>> = _warehouses
+
+    val warehousesWithLocation = repo.getWarehousesWithLocation()
+        .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
     var selectedFilter by mutableStateOf("All")
     var filters = listOf("All", "Category 1", "Category 2")
