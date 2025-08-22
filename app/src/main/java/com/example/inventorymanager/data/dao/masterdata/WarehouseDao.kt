@@ -5,9 +5,11 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
 import com.example.inventorymanager.core.Constants
 import com.example.inventorymanager.domain.model.masterdata.Warehouse
+import com.example.inventorymanager.domain.relationshipdataclasses.WarehouseWithLocation
 import com.example.inventorymanager.domain.repository.masterdata.Warehouses
 import kotlinx.coroutines.flow.Flow
 
@@ -28,5 +30,9 @@ interface WarehouseDao {
 
     @Delete
     suspend fun deleteWarehouse(id: Int)
+
+    @Transaction
+    @Query("SELECT * FROM Warehouse")
+    fun getWarehousesWithLocation(): Flow<List<WarehouseWithLocation>>
 
 }
