@@ -7,14 +7,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.example.inventorymanager.domain.model.masterdata.Warehouse
 import com.example.inventorymanager.domain.relationshipdataclasses.WarehouseWithLocation
-import com.example.inventorymanager.presentation.masterdata.locations.LocationViewModel
+import com.example.inventorymanager.presentation.masterdata.locations.LocationsViewModel
 @Composable
-fun WarehouseCard(warehouseWithLocation: WarehouseWithLocation,
-                  locationViewModel: LocationViewModel,
+fun WarehouseCard(warehouse: Warehouse,
+                  locationsViewModel: LocationsViewModel,
                   onClick: () -> Unit) {
 
-    val location by locationViewModel.getLocationById(warehouse.locationId)
+    val location by locationsViewModel.getLocation(warehouse.locationId)
         .collectAsState(initial = null)
 
     Card(
