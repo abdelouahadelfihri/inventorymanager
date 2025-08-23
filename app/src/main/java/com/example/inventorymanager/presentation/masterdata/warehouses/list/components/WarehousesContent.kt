@@ -9,6 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.inventorymanager.domain.model.masterdata.Warehouse
+import com.example.inventorymanager.domain.relationshipdataclasses.WarehouseWithLocation
 import com.example.inventorymanager.domain.repository.masterdata.WarehousesWithLocation
 import com.example.inventorymanager.presentation.masterdata.warehouses.WarehousesViewModel
 
@@ -66,8 +67,8 @@ fun WarehousesContent(
             verticalArrangement = Arrangement.spacedBy(6.dp),
             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
         ) {
-            items(viewModel.filteredWarehouses, key = { it.warehouse.warehouseId }) { warehouse ->
-                WarehouseCard(warehouse = warehouse, onClick = { onWarehouseClick?.invoke(warehouse) })
+            items(viewModel.filteredWarehouses, key = { it.warehouse.warehouseId }) { warehouseWithLocation ->
+                WarehouseCard(warehouse = warehouseWithLocation, onClick = { onWarehouseClick?.invoke(warehouseWithLocation)})
             }
         }
     }
