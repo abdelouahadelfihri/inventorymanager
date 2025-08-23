@@ -9,13 +9,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.inventorymanager.domain.model.masterdata.Warehouse
+import com.example.inventorymanager.domain.repository.masterdata.WarehousesWithLocation
 import com.example.inventorymanager.presentation.masterdata.warehouses.WarehousesViewModel
 
 @Composable
 fun WarehousesContent(
     viewModel: WarehousesViewModel,
     modifier: Modifier = Modifier,
-    onWarehouseClick: ((Warehouse) -> Unit)? = null
+    onWarehouseClick: ((WarehousesWithLocation) -> Unit)? = null
 ) {
     Column(modifier = modifier) {
         // 🔍 Search Bar
@@ -58,8 +59,6 @@ fun WarehousesContent(
                 }
             }
         }
-
-        val warehouses = viewModel.warehousesWithLocation.collectAsState()
 
         // 📄 Customer List
         LazyColumn(
