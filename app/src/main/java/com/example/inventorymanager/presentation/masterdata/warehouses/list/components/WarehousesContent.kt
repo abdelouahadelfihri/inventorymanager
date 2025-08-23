@@ -67,7 +67,7 @@ fun WarehousesContent(
             verticalArrangement = Arrangement.spacedBy(6.dp),
             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
         ) {
-            items(viewModel.filteredWarehouses, key = { it.warehouseId }) { warehouse ->
+            items(viewModel.filteredWarehouses, key = { it.warehouse.warehouseId }) { warehouse ->
                 WarehouseCard(warehouse = warehouse, onClick = { onWarehouseClick?.invoke(warehouse) })
             }
         }
