@@ -9,15 +9,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.inventorymanager.domain.model.masterdata.Warehouse
-import com.example.inventorymanager.domain.relationshipdataclasses.WarehouseWithLocation
-import com.example.inventorymanager.domain.repository.masterdata.WarehousesWithLocation
+import com.example.inventorymanager.presentation.masterdata.locations.LocationsViewModel
 import com.example.inventorymanager.presentation.masterdata.warehouses.WarehousesViewModel
 
 @Composable
 fun WarehousesContent(
     viewModel: WarehousesViewModel,
     modifier: Modifier = Modifier,
-    onWarehouseClick: ((WarehousesWithLocation) -> Unit)? = null
+    locationViewModel: LocationsViewModel,
+    onWarehouseClick: ((Warehouse) -> Unit)? = null
 ) {
     Column(modifier = modifier) {
         // 🔍 Search Bar
@@ -69,7 +69,9 @@ fun WarehousesContent(
         ) {
             items(viewModel.filteredWarehouses, key = { it.warehouse.warehouseId }) { warehouseWithLocation ->
                 WarehouseCard(
-                    warehouseWithLocation = warehouseWithLocation, onClick = { onWarehouseClick?.invoke(warehouseWithLocation) }
+                    warehouseWithLocation = warehouseWithLocation,
+                    locationViewModel = locationViewModel,
+                    onClick = { onWarehouseClick?.invoke(warehouseWithLocation) }
                 )
             }
         }
