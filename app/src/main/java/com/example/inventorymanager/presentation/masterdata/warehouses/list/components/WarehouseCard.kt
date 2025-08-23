@@ -28,19 +28,19 @@ fun WarehouseCard(warehouseWithLocation: WarehouseWithLocation,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
-                    text = "ID: ${warehouse.warehouse.warehouseId}",
+                    text = "ID: ${warehouseWithLocation.warehouse.warehouseId}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(0.8f)
                 )
                 Text(
-                    text = warehouse.warehouse.name,
+                    text = warehouseWithLocation.warehouse.name,
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(1.2f),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = "Mobile: ${warehouse.location.name}",
+                    text = "Mobile: ${warehouseWithLocation.location.name}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(1.2f),
                     maxLines = 1,
