@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.dp
 import com.example.inventorymanager.domain.relationshipdataclasses.WarehouseWithLocation
 
 @Composable
-fun WarehouseCard(warehouseWithLocation: WarehouseWithLocation, onClick: () -> Unit) {
+fun WarehouseCard(warehouseWithLocation: WarehouseWithLocation, onClick: (WarehouseWithLocation) -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
