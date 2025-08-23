@@ -13,13 +13,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
+import com.example.inventorymanager.domain.model.masterdata.Warehouse
 import com.example.inventorymanager.presentation.masterdata.warehouses.WarehousesViewModel
-import com.example.inventorymanager.presentation.outs.customers.CustomersViewModel
-import com.example.inventorymanager.presentation.outs.customers.list.components.CustomersContent
+import com.example.inventorymanager.presentation.masterdata.warehouses.list.components.WarehousesContent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun WarehousesListScreen(viewModel: WarehousesViewModel = hiltViewModel()) {
+fun WarehousesListScreen(viewModel: WarehousesViewModel = hiltViewModel(),
+                         onWarehouseSelected: ((Warehouse) -> Unit)? = null) {
     val navController = rememberNavController()
 
     Scaffold(
