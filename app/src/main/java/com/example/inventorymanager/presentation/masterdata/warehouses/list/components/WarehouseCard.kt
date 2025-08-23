@@ -7,10 +7,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.masterdata.Warehouse
+import com.example.inventorymanager.domain.relationshipdataclasses.WarehouseWithLocation
 
 @Composable
-fun WarehouseCard(warehouse: Warehouse, onClick: () -> Unit) {
+fun WarehouseCard(warehouse: WarehouseWithLocation, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -27,19 +27,19 @@ fun WarehouseCard(warehouse: Warehouse, onClick: () -> Unit) {
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
-                    text = "ID: ${warehouse.warehouseId}",
+                    text = "ID: ${warehouse.warehouse.warehouseId}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(0.8f)
                 )
                 Text(
-                    text = warehouse.name,
+                    text = warehouse.warehouse.name,
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(1.2f),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = "Mobile: ${warehouse.locationOwnerId}",
+                    text = "Mobile: ${warehouse.location.name}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(1.2f),
                     maxLines = 1,
