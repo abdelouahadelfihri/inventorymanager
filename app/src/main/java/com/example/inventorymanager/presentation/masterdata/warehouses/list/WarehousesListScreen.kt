@@ -59,7 +59,10 @@ fun WarehousesListScreen(viewModel: WarehousesViewModel = hiltViewModel(),
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(8.dp)
+                .padding(8.dp),
+            onWarehouseClick = { warehouse ->
+                onWarehouseSelected?.invoke(warehouse)
+            }
         )
     }
 }
