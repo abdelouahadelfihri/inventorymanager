@@ -2,17 +2,20 @@ package com.example.inventorymanager.presentation.masterdata.warehouses.list.com
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.inventorymanager.domain.model.masterdata.Warehouse
 import com.example.inventorymanager.presentation.masterdata.warehouses.WarehousesViewModel
 
 @Composable
 fun WarehousesContent(
     viewModel: WarehousesViewModel,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onWarehouseClick: ((Warehouse) -> Unit)? = null
 ) {
     Column(modifier = modifier) {
         // 🔍 Search Bar
@@ -64,8 +67,8 @@ fun WarehousesContent(
             verticalArrangement = Arrangement.spacedBy(6.dp),
             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
         ) {
-            items(viewModel.filteredWarehouses, key = { it.warehouseId }) { customer ->
-                WarehouseCard(customer = customer)
+            items(viewModel.filteredWarehouses, key = { it.warehouseId }) { warehouse ->
+                WarehouseCard(warehouse = warehouse, onClick = { onWarehouseClick?.invoke(warehouse) })
             }
         }
     }
