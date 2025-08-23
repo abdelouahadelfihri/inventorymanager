@@ -14,6 +14,9 @@ fun WarehouseCard(warehouseWithLocation: WarehouseWithLocation,
                   locationViewModel: LocationViewModel,
                   onClick: () -> Unit) {
 
+    val location by locationViewModel.getLocationById(warehouse.locationId)
+        .collectAsState(initial = null)
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
