@@ -106,6 +106,8 @@ fun DrawerMenu(onSelectItem: (String) -> Unit) {
         if (showIns) {
             DrawerSubItem("Providers") { onSelectItem("Providers") }
             DrawerSubItem("Orders") { onSelectItem("Orders") }
+            DrawerSubItem("Purchases Receipts") { onSelectItem("Purchases Receipts") }
+
         }
 
         // OUTS group
@@ -115,7 +117,7 @@ fun DrawerMenu(onSelectItem: (String) -> Unit) {
             DrawerSubItem("Deliveries") { onSelectItem("Deliveries") }
         }
 
-        DrawerItem("Inventory", Icons.Default.ArrowUpward) { showOuts = !showOuts }
+        DrawerItem("Master Data", Icons.Default.ArrowUpward) { showOuts = !showOuts }
         if (showOuts) {
             DrawerSubItem("Customers") { onSelectItem("Customers") }
             DrawerSubItem("Deliveries") { onSelectItem("Deliveries") }

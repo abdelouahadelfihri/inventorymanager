@@ -28,5 +28,5 @@ androidx-compose-ui = { group = "androidx.compose.ui", name = "ui", version = "1
 [plugins]
 kotlin-kapt = "org.jetbrains.kotlin.kapt:1.8.10"
 hilt = "com.google.dagger.hilt.android:2.46.1"
-android-application = { id = "com.android.application", version = "8.12.1" }
+android-application = { id = "com.android.application", version = "8.13.0" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version = "1.9.22" }
