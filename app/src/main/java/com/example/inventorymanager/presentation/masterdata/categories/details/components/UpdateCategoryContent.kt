@@ -14,17 +14,18 @@ import androidx.compose.ui.unit.dp
 import com.example.inventorymanager.domain.model.masterdata.Location
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import com.example.inventorymanager.domain.model.masterdata.Category
 
 @Composable
-fun UpdateLocationContent(
+fun UpdateCategoryContent(
     padding: PaddingValues,
-    location: Location,
-    updateLocation: (Location) -> Unit,
-    deleteLocation: (Int) -> Unit,
+    category: Category,
+    updateCategory: (Category) -> Unit,
+    deleteCategory: (Int) -> Unit,
     navigateBack: () -> Unit
 ) {
-    var name by remember { mutableStateOf(location.name) }
-    var address by remember { mutableStateOf(location.address) }
+    var name by remember { mutableStateOf(category.name) }
+    var description by remember { mutableStateOf(category.description) }
 
     val scrollState = rememberScrollState()
 
@@ -46,7 +47,7 @@ fun UpdateLocationContent(
             ) {
 
                 OutlinedTextField(
-                    value = location.locationId.toString(),
+                    value = category.id.toString(),
                     onValueChange = {},
                     label = { Text("Location ID") },
                     modifier = Modifier.fillMaxWidth(),
@@ -59,15 +60,15 @@ fun UpdateLocationContent(
                     onValueChange = {
                         name = it
                     },
-                    label = { Text("Location Name") },
+                    label = { Text("Category Name") },
                     modifier = Modifier.fillMaxWidth()
                 )
 
                 OutlinedTextField(
-                    value = address,
-                    onValueChange = { address = it },
-                    label = { Text("Location Address") },
-                    placeholder = { Text("Enter location address") },
+                    value = description,
+                    onValueChange = { description = it },
+                    label = { Text("Category Description") },
+                    placeholder = { Text("Enter category description") },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(120.dp),
@@ -92,7 +93,7 @@ fun UpdateLocationContent(
             ) {
                 Button(
                     onClick = {
-                        updateLocation(location)
+                        updateCategory(category)
                         navigateBack()
                     }
                 ) {
@@ -101,7 +102,7 @@ fun UpdateLocationContent(
 
                 Button(
                     onClick = {
-                        deleteLocation(location.locationId)
+                        deleteCategory(category.id)
                         navigateBack()
                     }
                 ) {
