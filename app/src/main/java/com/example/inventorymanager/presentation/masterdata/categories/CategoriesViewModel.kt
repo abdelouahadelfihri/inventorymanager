@@ -92,7 +92,7 @@ class CategoriesViewModel @Inject constructor(
         }
 
     // Optional: Triggered by Refresh FAB
-    fun onRefreshLocations() {
+    fun onRefreshCategories() {
         // This is optional if Room is live. But you can re-collect:
         observeCategoriesFromRoom()
     }
