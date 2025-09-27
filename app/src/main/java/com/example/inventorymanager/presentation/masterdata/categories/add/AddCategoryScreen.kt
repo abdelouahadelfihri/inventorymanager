@@ -3,27 +3,27 @@ package com.example.inventorymanager.presentation.masterdata.categories.add
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.inventorymanager.presentation.masterdata.locations.LocationsViewModel
-import com.example.inventorymanager.presentation.masterdata.locations.add.components.AddLocationContent
-import com.example.inventorymanager.presentation.masterdata.locations.add.components.AddLocationTopBar
+import com.example.inventorymanager.presentation.masterdata.categories.CategoriesViewModel
+import com.example.inventorymanager.presentation.masterdata.categories.add.components.AddCategoryContent
+import com.example.inventorymanager.presentation.masterdata.categories.add.components.AddCategoryTopBar
 
 @Composable
-fun AddLocationScreen(
-    viewModel: LocationsViewModel = hiltViewModel(),
+fun AddCategoryScreen(
+    viewModel: CategoriesViewModel = hiltViewModel(),
     navigateBack: () -> Unit
 ) {
     Scaffold(
         topBar = {
-            AddLocationTopBar(
+            AddCategoryTopBar(
                 navigateBack = navigateBack
             )
         },
         content = { padding ->
-            AddLocationContent(
+            AddCategoryContent(
                 padding = padding,
-                location = viewModel.location,
-                addLocation = { location ->
-                    viewModel.addLocation(location)
+                category = viewModel.category,
+                addCategory = { category ->
+                    viewModel.addCategory(category)
                 },
                 navigateBack = navigateBack
             )
