@@ -83,6 +83,7 @@ class Constants {
         const val UPDATE_LOCATION = "Update a location."
         const val DELETE_LOCATION = "Delete a location."
         const val ADD_CATEGORY = "Add a category."
+        const val UPDATE_CATEGORY = "Update a category."
         const val ADD_ORDER = "Add an order."
         const val UPDATE_ORDER = "Update an order."
         const val DELETE_ORDER = "Delete an order."
