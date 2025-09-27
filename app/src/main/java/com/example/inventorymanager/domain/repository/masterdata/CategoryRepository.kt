@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 typealias Categories = List<Category>
 
-interface InventoryRepository {
+interface CategoryRepository {
 
     fun getCategoriesFromRoom(): Flow<Categories>
 
