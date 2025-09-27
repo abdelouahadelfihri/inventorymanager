@@ -7,16 +7,16 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.runtime.Composable
-import com.example.inventorymanager.core.Constants.Companion.UPDATE_LOCATION_SCREEN
+import com.example.inventorymanager.core.Constants.Companion.UPDATE_CATEGORY_SCREEN
 
 @Composable
-fun UpdateLocationTopBar(
+fun UpdateCategoryTopBar(
     navigateBack: () -> Unit
 ) {
     TopAppBar (
         title = {
             Text(
-                text = UPDATE_LOCATION_SCREEN
+                text = UPDATE_CATEGORY_SCREEN
             )
         },
         navigationIcon = {
