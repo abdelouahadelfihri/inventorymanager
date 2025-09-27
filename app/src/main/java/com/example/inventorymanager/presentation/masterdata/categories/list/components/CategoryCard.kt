@@ -7,10 +7,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.masterdata.Location
+import com.example.inventorymanager.domain.model.masterdata.Category
 
 @Composable
-fun LocationCard(location: Location, onClick: () -> Unit) {
+fun LocationCard(category: Category, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -27,19 +27,19 @@ fun LocationCard(location: Location, onClick: () -> Unit) {
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
-                    text = "ID: ${location.locationId}",
+                    text = "ID: ${category.id}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(0.8f)
                 )
                 Text(
-                    text = "Name: ${location.name}",
+                    text = "Name: ${category.name}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(1.2f),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = "Mobile: ${location.address}",
+                    text = "Mobile: ${category.description}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(1.2f),
                     maxLines = 1,
