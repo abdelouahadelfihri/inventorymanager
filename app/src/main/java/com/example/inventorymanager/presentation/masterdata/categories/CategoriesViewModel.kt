@@ -7,27 +7,27 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import com.example.inventorymanager.domain.model.masterdata.Location
-import com.example.inventorymanager.domain.repository.masterdata.LocationRepository
+import com.example.inventorymanager.domain.model.masterdata.Category
+import com.example.inventorymanager.domain.repository.masterdata.CategoryRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 @HiltViewModel
 class CategoriesViewModel @Inject constructor(
-    private val repo: LocationRepository
+    private val repo: CategoryRepository
 ) : ViewModel() {
 
-    private val _locations = MutableStateFlow<List<Location>>(emptyList())
-    val locations: StateFlow<List<Location>> = _locations
+    private val _categories = MutableStateFlow<List<Category>>(emptyList())
+    val categories: StateFlow<List<Category>> = _categories
 
     var selectedFilter by mutableStateOf("All")
     var filters = listOf("All", "Category 1", "Category 2")
-    var location by mutableStateOf(
-        Location(
-            locationId = 0,
+    var category by mutableStateOf(
+        Category(
+            id = 0,
             name = "", // or any default Date, like SimpleDateFormat().parse("1970-01-01")
-            address = ""
+            description = ""
         )
     )
         private set
@@ -36,24 +36,24 @@ class CategoriesViewModel @Inject constructor(
 
     var searchQuery by mutableStateOf("")
 
-    fun getLocation(id: Int) = viewModelScope.launch {
-        location = repo.getLocationFromRoom(id)
+    fun getCategory(id: Int) = viewModelScope.launch {
+        category = repo.getCategoryFromRoom(id)
     }
 
     init {
-        observeLocationsFromRoom()
+        observeCategoriesFromRoom()
     }
 
-    fun addLocation(location: Location) = viewModelScope.launch {
-        repo.addLocationToRoom(location)
+    fun addCategory(category: Category) = viewModelScope.launch {
+        repo.addCategoryToRoom(category)
     }
 
-    fun updateLocation(location: Location) = viewModelScope.launch {
-        repo.updateLocationInRoom(location)
+    fun updateCategory(category: Category) = viewModelScope.launch {
+        repo.updateCategoryInRoom(category)
     }
 
-    fun deleteLocation(id: Int) = viewModelScope.launch {
-        repo.deleteLocationFromRoom(id)
+    fun deleteCategory(id: Int) = viewModelScope.launch {
+        repo.deleteCategoryFromRoom(id)
     }
 
     fun openDialog() {
@@ -64,16 +64,16 @@ class CategoriesViewModel @Inject constructor(
         openDialog = false
     }
 
-    private fun observeLocationsFromRoom() {
+    private fun observeCategoriesFromRoom() {
         viewModelScope.launch {
-            repo.getLocationsFromRoom()
+            repo.getCategoriesFromRoom()
                 .collect { list ->
-                    _locations.value = list
+                    _categories.value = list
                 }
         }
     }
 
-    val filteredLocations: List<Location>
+    val filteredCategories: List<Category>
         get() {
             val terms = searchQuery
                 .trim()
@@ -82,11 +82,11 @@ class CategoriesViewModel @Inject constructor(
                 .map { it.trim() }
                 .filter { it.isNotEmpty() }
 
-            return _locations.value.filter { location ->
+            return _categories.value.filter { category ->
                 terms.any { term ->
-                    location.locationId.toString().contains(term) ||
-                            location.name.toString().lowercase().contains(term) ||
-                            location.address.toString().contains(term)
+                    category.id.toString().contains(term) ||
+                            category.name.toString().lowercase().contains(term) ||
+                            category.description.toString().contains(term)
                 }
             }
         }
@@ -94,7 +94,7 @@ class CategoriesViewModel @Inject constructor(
     // Optional: Triggered by Refresh FAB
     fun onRefreshLocations() {
         // This is optional if Room is live. But you can re-collect:
-        observeLocationsFromRoom()
+        observeCategoriesFromRoom()
     }
 
     fun onClearSearch() {
