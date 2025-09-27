@@ -4,34 +4,37 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.inventorymanager.presentation.masterdata.categories.CategoriesViewModel
+import com.example.inventorymanager.presentation.masterdata.categories.details.components.UpdateCategoryContent
+import com.example.inventorymanager.presentation.masterdata.categories.details.components.UpdateCategoryTopBar
 import com.example.inventorymanager.presentation.masterdata.locations.LocationsViewModel
 import com.example.inventorymanager.presentation.masterdata.locations.details.components.UpdateLocationContent
 import com.example.inventorymanager.presentation.masterdata.locations.details.components.UpdateLocationTopBar
 
 @Composable
-fun UpdateLocationScreen(
-    viewModel: LocationsViewModel = hiltViewModel(),
-    locationId: Int,
+fun UpdateCategoryScreen(
+    viewModel: CategoriesViewModel = hiltViewModel(),
+    categoryId: Int,
     navigateBack: () -> Unit
 ) {
     LaunchedEffect(Unit) {
-        viewModel.getLocation(locationId)
+        viewModel.getCategory(categoryId)
     }
     Scaffold(
         topBar = {
-            UpdateLocationTopBar(
+            UpdateCategoryTopBar(
                 navigateBack = navigateBack
             )
         },
         content = { padding ->
-            UpdateLocationContent(
+            UpdateCategoryContent(
                 padding = padding,
-                location = viewModel.location,
-                updateLocation = { location ->
-                    viewModel.updateLocation(location)
+                category = viewModel.category,
+                updateCategory = { category ->
+                    viewModel.updateCategory(category)
                 },
-                deleteLocation = { locationId ->
-                    viewModel.deleteLocation(locationId)
+                deleteCategory = { categoryId ->
+                    viewModel.deleteCategory(categoryId)
                 },
                 navigateBack = navigateBack
             )
