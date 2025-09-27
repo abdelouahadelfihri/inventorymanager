@@ -7,7 +7,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.runtime.Composable
-import com.example.inventorymanager.core.Constants.Companion.UPDATE_CATEGORY_SCREEN
+import com.example.inventorymanager.core.Constants.Companion.UPDATE_CATEGORY
 
 @Composable
 fun UpdateCategoryTopBar(
@@ -16,7 +16,7 @@ fun UpdateCategoryTopBar(
     TopAppBar (
         title = {
             Text(
-                text = UPDATE_CATEGORY_SCREEN
+                text = UPDATE_CATEGORY
             )
         },
         navigationIcon = {
