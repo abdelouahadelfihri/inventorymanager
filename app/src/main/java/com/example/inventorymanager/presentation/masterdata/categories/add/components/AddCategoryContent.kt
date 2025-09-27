@@ -13,21 +13,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.masterdata.Location
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import com.example.inventorymanager.domain.model.masterdata.Category
 
 @Composable
-fun AddLocationContent(
+fun AddCategoryContent(
     padding: PaddingValues,
-    location: Location,
-    addLocation: (Location) -> Unit,
+    category: Category,
+    addCategory: (Category) -> Unit,
     navigateBack: () -> Unit
 ) {
-    var name by remember { mutableStateOf(location.name) }
-    var address by remember { mutableStateOf(location.address) }
+    var name by remember { mutableStateOf(category.name) }
+    var description by remember { mutableStateOf(category.description) }
 
     val scrollState = rememberScrollState()
 
@@ -55,10 +55,10 @@ fun AddLocationContent(
                 )
 
                 OutlinedTextField(
-                    value = address,
-                    onValueChange = { address = it },
-                    label = { Text("Customer Address") },
-                    placeholder = { Text("Enter customer address") },
+                    value = description,
+                    onValueChange = { description = it },
+                    label = { Text("Category Description") },
+                    placeholder = { Text("Enter category description") },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(120.dp),
@@ -82,7 +82,7 @@ fun AddLocationContent(
             ) {
                 Button(
                     onClick = {
-                        addLocation(location)
+                        addCategory(category)
                         navigateBack()
                     }
                 ) {
@@ -92,7 +92,7 @@ fun AddLocationContent(
                 Button(
                     onClick = {
                         name = ""
-                        address = ""
+                        description = ""
                     }
                 ) {
                     Text("Clear")
