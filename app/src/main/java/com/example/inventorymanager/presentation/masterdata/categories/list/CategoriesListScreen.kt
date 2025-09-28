@@ -37,7 +37,7 @@ fun CategoriesListScreen(viewModel: CategoriesViewModel = hiltViewModel(),
                 modifier = Modifier.padding(end = 16.dp, bottom = 16.dp)
             ) {
                 FloatingActionButton(onClick = {
-                    navController.navigate("add_customer")
+                    navController.navigate("add_category")
                 }) {
                     Icon(Icons.Default.Add, contentDescription = "Add")
                 }
