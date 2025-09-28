@@ -10,22 +10,29 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.masterdata.Location
+import com.example.inventorymanager.domain.model.masterdata.Inventory
+import com.example.inventorymanager.domain.model.masterdata.Product
 import com.example.inventorymanager.domain.model.masterdata.Warehouse
 
 @Composable
-fun AddWarehouseContent(
+fun AddInventoryContent(
     padding: PaddingValues,
-    warehouse: Warehouse,
-    selectedLocation: Location?, // your Owner model
-    addWarehouse: (Warehouse) -> Unit,
-    onSelectLocationClick: () -> Unit,
+    inventory: Inventory,
+    selectedWarehouse: Warehouse?,
+    selectedProduct: Product?,// your Owner model
+    addInventory: (Inventory) -> Unit,
+    onSelectWarehouseClick: () -> Unit,
+    onSelectProductClick: () -> Unit,
     navigateBack: () -> Unit
 ) {
-    val locationId = selectedLocation?.locationId?.toString() ?: warehouse.locationOwnerId.toString()
-    val locationName = selectedLocation?.name ?: ""
-    var name by remember { mutableStateOf(warehouse.name) }
-    var isRefrigerated by remember { mutableStateOf(warehouse.isRefrigerated == 1) }
+    val warehouseId = selectedWarehouse?.warehouseId?.toString() ?: inventory.warehouseId.toString()
+    val warehouseName = selectedWarehouse?.name ?: ""
+    val productId = selectedProduct?.productId?.toString() ?: inventory.productId.toString()
+    val productName = selectedWarehouse?.name ?: ""
+    var quantityAvailable by remember { mutableStateOf(inventory.quantityAvailable) }
+    var minimumStockLevel by remember { mutableStateOf(inventory.minimumStockLevel) }
+    var maximumStockLevel by remember { mutableStateOf(inventory.maximumStockLevel) }
+    var reorderPoint by remember { mutableStateOf(inventory.reorderPoint) }
 
     val scrollState = rememberScrollState()
 
