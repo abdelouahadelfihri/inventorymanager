@@ -9,13 +9,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.inventorymanager.domain.model.masterdata.Location
-import com.example.inventorymanager.presentation.masterdata.locations.LocationsViewModel
+import com.example.inventorymanager.presentation.masterdata.categories.CategoriesViewModel
+import com.example.inventorymanager.presentation.masterdata.categories.list.components.CategoryCard
 
 @Composable
 fun LocationsContent(
-    viewModel: LocationsViewModel,
+    viewModel: CategoriesViewModel,
     modifier: Modifier = Modifier,
-    onLocationClick: ((Location) -> Unit)? = null
+    onCategoryClick: ((Location) -> Unit)? = null
 ) {
     Column(modifier = modifier) {
         // 🔍 Search Bar
@@ -59,15 +60,15 @@ fun LocationsContent(
             }
         }
 
-        val locations by viewModel.locations.collectAsState()
+        val categories by viewModel.categories.collectAsState()
 
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(6.dp),
             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
         ) {
-            items(viewModel.filteredLocations, key = { it.locationId }) { location ->
-                LocationCard(location = location, onClick = { onLocationClick?.invoke(location) })
+            items(viewModel.filteredCategories, key = { it.id }) { category ->
+                CategoryCard(location = location, onClick = { onCategoryClick?.invoke(category) })
             }
         }
     }
