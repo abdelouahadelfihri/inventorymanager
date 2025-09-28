@@ -8,14 +8,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.masterdata.Location
+import com.example.inventorymanager.domain.model.masterdata.Category
 import com.example.inventorymanager.presentation.masterdata.categories.CategoriesViewModel
 
 @Composable
 fun CategoriesContent(
     viewModel: CategoriesViewModel,
     modifier: Modifier = Modifier,
-    onCategoryClick: ((Location) -> Unit)? = null
+    onCategoryClick: ((Category) -> Unit)? = null
 ) {
     Column(modifier = modifier) {
         // 🔍 Search Bar
