@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.dp
 import com.example.inventorymanager.domain.model.masterdata.Category
 
 @Composable
-fun LocationCard(category: Category, onClick: () -> Unit) {
+fun CategoryCard(category: Category, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
