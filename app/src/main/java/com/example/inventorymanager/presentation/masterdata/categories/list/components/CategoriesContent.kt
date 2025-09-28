@@ -10,10 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.inventorymanager.domain.model.masterdata.Location
 import com.example.inventorymanager.presentation.masterdata.categories.CategoriesViewModel
-import com.example.inventorymanager.presentation.masterdata.categories.list.components.CategoryCard
 
 @Composable
-fun LocationsContent(
+fun CategoriesContent(
     viewModel: CategoriesViewModel,
     modifier: Modifier = Modifier,
     onCategoryClick: ((Location) -> Unit)? = null
@@ -68,7 +67,7 @@ fun LocationsContent(
             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
         ) {
             items(viewModel.filteredCategories, key = { it.id }) { category ->
-                CategoryCard(location = location, onClick = { onCategoryClick?.invoke(category) })
+                CategoryCard(category = category, onClick = { onCategoryClick?.invoke(category) })
             }
         }
     }
