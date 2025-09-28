@@ -16,9 +16,6 @@ class TransferRepositoryImpl(
 
     override suspend fun updateTransferInRoom(transfer: Transfer) = transferDao.updateTransfer(transfer)
 
-    override suspend fun deleteTransferFromRoom(transfer: Transfer) = transferDao.deleteTransfer(transfer)
+    override suspend fun deleteTransferFromRoom(id: Int) = transferDao.deleteTransfer(id)
 
-    override fun searchTransfers(query: String): Flow<List<Transfer>> {
-        return transferDao.searchTransfers("%$query%")
-    }
 }
