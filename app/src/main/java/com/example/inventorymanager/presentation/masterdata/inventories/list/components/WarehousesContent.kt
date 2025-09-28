@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.orders.list.components
+package com.example.inventorymanager.presentation.masterdata.inventories.list.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -8,13 +8,16 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.presentation.orders.OrdersViewModel
-import com.example.inventorymanager.presentation.orders.list.components.OrderCard
+import com.example.inventorymanager.domain.model.masterdata.Warehouse
+import com.example.inventorymanager.presentation.masterdata.locations.LocationsViewModel
+import com.example.inventorymanager.presentation.masterdata.warehouses.WarehousesViewModel
 
 @Composable
-fun OrdersContent(
-    viewModel: OrdersViewModel,
-    modifier: Modifier = Modifier
+fun WarehousesContent(
+    viewModel: WarehousesViewModel,
+    modifier: Modifier = Modifier,
+    locationViewModel: LocationsViewModel,
+    onWarehouseClick: ((Warehouse) -> Unit)? = null
 ) {
     Column(modifier = modifier) {
         // 🔍 Search Bar
@@ -58,16 +61,18 @@ fun OrdersContent(
             }
         }
 
-        val orders by viewModel.orders.collectAsState()
-
+        // 📄 Customer List
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(6.dp),
             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
         ) {
-            items(viewModel.filteredDeliveries, key = { it.deliveryId }) { delivery ->
-                val customerName = customers.find { it.customerId == delivery.customerId }?.name ?: "Unknown"
-                DeliveryCard(delivery = delivery, customerName = customerName)
+            items(viewModel.filteredWarehouses, key = { it.warehouse.warehouseId }) { warehouseWithLocation ->
+                WarehouseCard(
+                    warehouseWithLocation = warehouseWithLocation,
+                    locationViewModel = locationViewModel,
+                    onClick = { onWarehouseClick?.invoke(warehouseWithLocation) }
+                )
             }
         }
     }

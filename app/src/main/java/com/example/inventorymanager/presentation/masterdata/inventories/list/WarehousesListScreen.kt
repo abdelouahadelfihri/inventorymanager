@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.orders.list
+package com.example.inventorymanager.presentation.masterdata.inventories.list
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
@@ -13,19 +13,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
-import com.example.inventorymanager.presentation.orders.OrdersViewModel
-import com.example.inventorymanager.presentation.orders.list.components.OrdersContent
-
+import com.example.inventorymanager.domain.model.masterdata.Warehouse
+import com.example.inventorymanager.presentation.masterdata.warehouses.WarehousesViewModel
+import com.example.inventorymanager.presentation.masterdata.warehouses.list.components.WarehousesContent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun OrdersListScreen(viewModel: OrdersViewModel = hiltViewModel()) {
+fun WarehousesListScreen(viewModel: WarehousesViewModel = hiltViewModel(),
+                         onWarehouseSelected: ((Warehouse) -> Unit)? = null) {
     val navController = rememberNavController()
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Deliveries") },
+                title = { Text("Customers") },
                 modifier = Modifier.fillMaxWidth()
             )
         },
@@ -41,7 +42,7 @@ fun OrdersListScreen(viewModel: OrdersViewModel = hiltViewModel()) {
                     Icon(Icons.Default.Add, contentDescription = "Add")
                 }
                 FloatingActionButton(onClick = {
-                    viewModel.onRefreshOrders()
+                    viewModel.onRefreshCustomers()
                 }) {
                     Icon(Icons.Default.Refresh, contentDescription = "Refresh")
                 }
@@ -53,12 +54,15 @@ fun OrdersListScreen(viewModel: OrdersViewModel = hiltViewModel()) {
             }
         }
     ) { innerPadding ->
-        OrdersContent(
+        WarehousesContent(
             viewModel = viewModel,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(8.dp)
+                .padding(8.dp),
+            onWarehouseClick = { warehouse ->
+                onWarehouseSelected?.invoke(warehouse)
+            }
         )
     }
 }

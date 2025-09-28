@@ -1,22 +1,32 @@
-package com.example.inventorymanager.presentation.orders.list.components
+package com.example.inventorymanager.presentation.masterdata.inventories.list.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.Delivery
-
+import com.example.inventorymanager.domain.model.masterdata.Warehouse
+import com.example.inventorymanager.domain.relationshipdataclasses.WarehouseWithLocation
+import com.example.inventorymanager.presentation.masterdata.locations.LocationsViewModel
 @Composable
-fun OrderCard(delivery: Delivery, providerName: String) {
+fun WarehouseCard(warehouse: Warehouse,
+                  locationsViewModel: LocationsViewModel,
+                  onClick: () -> Unit) {
+
+    val location by locationsViewModel.getLocation(warehouse.locationId)
+        .collectAsState(initial = null)
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 8.dp),
+            .padding(horizontal = 8.dp)
+            .clickable { onClick() },
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
+            // 🔹 Row 1: ID and Name
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -24,19 +34,19 @@ fun OrderCard(delivery: Delivery, providerName: String) {
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
-                    text = "ID: ${delivery.deliveryId}",
+                    text = "ID: ${warehouseWithLocation.warehouse.warehouseId}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(0.8f)
                 )
                 Text(
-                    text = providerName,
+                    text = warehouseWithLocation.warehouse.name,
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(1.2f),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = "Sale Date: ${delivery.saleDate}",
+                    text = "Mobile: ${warehouseWithLocation.location.name}",
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.weight(1.2f),
                     maxLines = 1,
