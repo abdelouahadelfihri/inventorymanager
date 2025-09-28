@@ -1,0 +1,40 @@
+package com.example.inventorymanager.presentation.masterdata.inventories.details
+
+import androidx.compose.material.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.inventorymanager.presentation.masterdata.transfers.TransfersViewModel
+import com.example.inventorymanager.presentation.transfers.add.components.AddTransferTopBar
+import com.example.inventorymanager.presentation.transfers.add.components.AddTransferContent
+
+@Composable
+fun UpdateTransferScreen(
+    viewModel: TransfersViewModel = hiltViewModel(),
+    navigateBack: () -> Unit,
+    navigateToSelectWarehouseOrigin: () -> Unit,
+    navigateToSelectWarehouseDestination: () -> Unit,
+    navigateToSelectProduct: () -> Unit,
+    transferId: Int,
+) {
+    LaunchedEffect(Unit) {
+        viewModel.getTransfer(transferId)
+    }
+    Scaffold(
+        topBar = { AddTransferTopBar(navigateBack = navigateBack) },
+        content = { padding ->
+            AddTransferContent(
+                padding = padding,
+                transfer = viewModel.transfer,
+                selectedOriginWarehouse = viewModel.selectedOriginWarehouse,
+                selectedDestinationWarehouse = viewModel.selectedDestinationWarehouse,
+                selectedProduct = viewModel.selectedProduct,
+                addTransfer = { viewModel.addTransfer(it) },
+                onSelectOriginWarehouseClick = navigateToSelectWarehouseOrigin,
+                onSelectDestinationWarehouseClick = navigateToSelectWarehouseDestination,
+                onSelectProductClick = navigateToSelectProduct,
+                navigateBack = navigateBack
+            )
+        }
+    )
+}
