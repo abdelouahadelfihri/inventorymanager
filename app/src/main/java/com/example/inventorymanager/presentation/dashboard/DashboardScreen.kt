@@ -102,7 +102,7 @@ fun DrawerMenu(onSelectItem: (String) -> Unit) {
         DrawerItem("Providers", Icons.Default.ArrowDownward) { onSelectItem("Providers") }
         DrawerItem("Orders", Icons.Default.ArrowDownward) { onSelectItem("Orders") }
         DrawerItem("Purchases Receipts", Icons.Default.ArrowDownward) { onSelectItem("Purchases Receipts") }
-        DrawerItem("Returns", Icons.Default.ArrowDownward) { onSelectItem("Returns") }
+        DrawerItem("Provider Returns", Icons.Default.ArrowDownward) { onSelectItem("Returns") }
 
         Divider(modifier = Modifier.padding(vertical = 8.dp))
 
@@ -110,7 +110,7 @@ fun DrawerMenu(onSelectItem: (String) -> Unit) {
         DrawerItem("Customers", Icons.Default.ArrowUpward) { onSelectItem("Customers") }
         DrawerItem("Deliveries", Icons.Default.ArrowUpward) { onSelectItem("Deliveries") }
         DrawerItem("Sales Receipts", Icons.Default.ArrowUpward) { onSelectItem("Sales Receipts") }
-        DrawerItem("Returns", Icons.Default.ArrowUpward) { onSelectItem("Returns") }
+        DrawerItem("Customer Returns", Icons.Default.ArrowUpward) { onSelectItem("Returns") }
 
         Divider(modifier = Modifier.padding(vertical = 8.dp))
 
