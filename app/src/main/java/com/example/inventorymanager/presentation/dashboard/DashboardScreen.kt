@@ -5,19 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDownward
-import androidx.compose.material.icons.filled.ArrowUpward
-import androidx.compose.material.icons.filled.BarChart
-import androidx.compose.material.icons.filled.Description
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Inventory
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Money
-import androidx.compose.material.icons.filled.People
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.Store
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -65,14 +53,17 @@ fun DashboardScreen(navController: NavHostController) {
 
 @Composable
 fun DrawerMenu(onSelectItem: (String) -> Unit) {
-    var showIns by remember { mutableStateOf(false) }
-    var showOuts by remember { mutableStateOf(false) }
-
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .padding(16.dp)
+    ) {
+        // Header Card
         Card(
             shape = RoundedCornerShape(8.dp),
             backgroundColor = Color.LightGray,
-            modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 16.dp)
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -87,9 +78,12 @@ fun DrawerMenu(onSelectItem: (String) -> Unit) {
             }
         }
 
+        // Store section
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 16.dp)
         ) {
             Text("Store: Main Store", fontWeight = FontWeight.Medium, modifier = Modifier.weight(1f))
             Button(onClick = { onSelectItem("SelectStore") }) {
@@ -98,33 +92,26 @@ fun DrawerMenu(onSelectItem: (String) -> Unit) {
         }
 
         Divider()
+
+        // Main Menu
         DrawerItem("Main Menu", Icons.Default.Home) { onSelectItem("MainMenu") }
-        Divider(modifier = Modifier.padding(vertical = 8.dp))
-
-        // INS group
-        DrawerItem("Ingoings", Icons.Default.ArrowDownward) { showIns = !showIns }
-        if (showIns) {
-            DrawerSubItem("Providers") { onSelectItem("Providers") }
-            DrawerSubItem("Orders") { onSelectItem("Orders") }
-            DrawerSubItem("Purchases Receipts") { onSelectItem("Purchases Receipts") }
-
-        }
-
-        // OUTS group
-        DrawerItem("Outgoings", Icons.Default.ArrowUpward) { showOuts = !showOuts }
-        if (showOuts) {
-            DrawerSubItem("Customers") { onSelectItem("Customers") }
-            DrawerSubItem("Deliveries") { onSelectItem("Deliveries") }
-        }
-
-        DrawerItem("Master Data", Icons.Default.ArrowUpward) { showOuts = !showOuts }
-        if (showOuts) {
-            DrawerSubItem("Customers") { onSelectItem("Customers") }
-            DrawerSubItem("Deliveries") { onSelectItem("Deliveries") }
-        }
 
         Divider(modifier = Modifier.padding(vertical = 8.dp))
 
+        // Ingoings
+        DrawerItem("Providers", Icons.Default.ArrowDownward) { onSelectItem("Providers") }
+        DrawerItem("Orders", Icons.Default.ArrowDownward) { onSelectItem("Orders") }
+        DrawerItem("Purchases Receipts", Icons.Default.ArrowDownward) { onSelectItem("Purchases Receipts") }
+
+        Divider(modifier = Modifier.padding(vertical = 8.dp))
+
+        // Outgoings
+        DrawerItem("Customers", Icons.Default.ArrowUpward) { onSelectItem("Customers") }
+        DrawerItem("Deliveries", Icons.Default.ArrowUpward) { onSelectItem("Deliveries") }
+
+        Divider(modifier = Modifier.padding(vertical = 8.dp))
+
+        // Master Data
         DrawerItem("Warehouses", Icons.Default.Inventory) { onSelectItem("Warehouses") }
         DrawerItem("Transfers", Icons.Default.Inventory) { onSelectItem("Transfers") }
         DrawerItem("Locations", Icons.Default.Inventory) { onSelectItem("Locations") }
@@ -136,6 +123,7 @@ fun DrawerMenu(onSelectItem: (String) -> Unit) {
 
         Divider(modifier = Modifier.padding(vertical = 8.dp))
 
+        // Other
         DrawerItem("Suppliers", Icons.Default.People) { onSelectItem("Suppliers") }
         DrawerItem("Customers", Icons.Default.Person) { onSelectItem("Customers") }
         DrawerItem("Stores", Icons.Default.Store) { onSelectItem("Stores") }
@@ -159,19 +147,6 @@ fun DrawerItem(text: String, icon: androidx.compose.ui.graphics.vector.ImageVect
         Icon(icon, contentDescription = null, modifier = Modifier.size(24.dp))
         Spacer(modifier = Modifier.width(16.dp))
         Text(text, fontSize = 16.sp)
-    }
-}
-
-@Composable
-fun DrawerSubItem(text: String, onClick: () -> Unit) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onClick() }
-            .padding(start = 48.dp, top = 8.dp, bottom = 8.dp)
-    ) {
-        Text(text, fontSize = 15.sp)
     }
 }
 
