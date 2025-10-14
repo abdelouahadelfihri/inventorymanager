@@ -3,7 +3,7 @@ package com.example.inventorymanager.presentation.outgoings.customers.add
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.inventorymanager.presentation.outs.customers.CustomersViewModel
+import com.example.inventorymanager.presentation.outgoings.customers.CustomersViewModel
 import com.example.inventorymanager.presentation.outs.customers.add.components.AddCustomerContent
 import com.example.inventorymanager.presentation.outs.customers.add.components.AddCustomerTopBar
 
