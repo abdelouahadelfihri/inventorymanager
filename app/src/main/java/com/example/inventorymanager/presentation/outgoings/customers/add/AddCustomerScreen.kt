@@ -1,4 +1,4 @@
-package com.example.inventorymanager.presentation.outs.customers.add
+package com.example.inventorymanager.presentation.outgoings.customers.add
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
