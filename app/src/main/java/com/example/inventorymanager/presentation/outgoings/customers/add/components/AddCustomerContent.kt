@@ -18,6 +18,10 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
 
 @Composable
 fun AddCustomerContent(
@@ -47,55 +51,199 @@ fun AddCustomerContent(
                     .verticalScroll(scrollState),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    // TextField takes the remaining space
+                    OutlinedTextField(
+                        value = name,
+                        onValueChange = { name = it },
+                        label = { Text("Name") },
+                        modifier = Modifier
+                            .weight(1f) // 👈 this makes it expand horizontally
+                    )
+
+                    // Small icon button
+                    IconButton(
+                        onClick = {
+                            name = ""
+                            address = ""
+                        },
+                        modifier = Modifier.size(48.dp) // you can adjust this size
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Clear,
+                            contentDescription = "Clear text"
+                        )
+                    }
+                }
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    // TextField takes the remaining space
+                    OutlinedTextField(
+                        value = address,
+                        onValueChange = { address = it },
+                        label = { Text("Address") },
+                        modifier = Modifier
+                            .weight(1f) // 👈 this makes it expand horizontally
+                    )
+
+                    // Small icon button
+                    IconButton(
+                        onClick = {
+                            name = ""
+                            address = ""
+                        },
+                        modifier = Modifier.size(48.dp) // you can adjust this size
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Clear,
+                            contentDescription = "Clear text"
+                        )
+                    }
+                }
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    // TextField takes the remaining space
+                    OutlinedTextField(
+                        value = name,
+                        onValueChange = { name = it },
+                        label = { Text("Customer Name") },
+                        modifier = Modifier
+                            .weight(1f) // 👈 this makes it expand horizontally
+                    )
+
+                    // Small icon button
+                    IconButton(
+                        onClick = {
+                            name = ""
+                            address = ""
+                        },
+                        modifier = Modifier.size(48.dp) // you can adjust this size
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Clear,
+                            contentDescription = "Clear text"
+                        )
+                    }
+                }
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    // TextField takes all available horizontal space
+                    OutlinedTextField(
+                        value = name,
+                        onValueChange = { name = it },
+                        label = { Text("Customer Name") },
+                        modifier = Modifier.weight(1f)
+                    )
+
+                    // First icon button (Search)
+                    IconButton(
+                        onClick = { /* Do Search */ },
+                        modifier = Modifier.size(40.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Search,
+                            contentDescription = "Search"
+                        )
+                    }
+
+                    // Second icon button (Edit)
+                    IconButton(
+                        onClick = { /* Do Edit */ },
+                        modifier = Modifier.size(40.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Edit,
+                            contentDescription = "Edit"
+                        )
+                    }
+
+                    // Third icon button (Clear)
+                    IconButton(
+                        onClick = { name = "" },
+                        modifier = Modifier.size(40.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Clear,
+                            contentDescription = "Clear"
+                        )
+                    }
+                }
+
                 OutlinedTextField(
                     value = name,
                     onValueChange = { name = it },
                     label = { Text("Customer Name") },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .weight(1f) // 👈 this makes it expand horizontally
                 )
 
                 OutlinedTextField(
-                    value = address,
-                    onValueChange = { address = it },
-                    label = { Text("Customer Address") },
-                    placeholder = { Text("Enter customer address") },
+                    value = name,
+                    onValueChange = { name = it },
+                    label = { Text("Customer Name") },
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .height(120.dp),
-                    singleLine = false,
-                    maxLines = 5,
-                    keyboardOptions = KeyboardOptions.Default.copy(
-                        keyboardType = KeyboardType.Text,
-                        imeAction = ImeAction.Default
-                    )
+                        .weight(1f) // 👈 this makes it expand horizontally
                 )
-            }
 
-            Spacer(modifier = Modifier.height(16.dp))
+                OutlinedTextField(
+                    value = name,
+                    onValueChange = { name = it },
+                    label = { Text("Customer Name") },
+                    modifier = Modifier
+                        .weight(1f) // 👈 this makes it expand horizontally
+                )
 
-            // Bottom fixed buttons
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Button(
-                    onClick = {
-                        addCustomer(customer)
-                        navigateBack()
-                    }
+                OutlinedTextField(
+                    value = name,
+                    onValueChange = { name = it },
+                    label = { Text("Customer Name") },
+                    modifier = Modifier
+                        .weight(1f) // 👈 this makes it expand horizontally
+                )
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text("Save Customer")
-                }
-
-                Button(
-                    onClick = {
-                        name = ""
-                        address = ""
+                    Button(
+                        onClick = {
+                            addCustomer(customer)
+                            navigateBack()
+                        }
+                    ) {
+                        Text("Save Customer")
                     }
-                ) {
-                    Text("Clear")
+
+                    Button(
+                        onClick = {
+                            name = ""
+                            address = ""
+                        }
+                    ) {
+                        Text("Clear")
+                    }
                 }
             }
         }
