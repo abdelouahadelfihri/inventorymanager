@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 import com.example.inventorymanager.core.Constants.Companion.ORDER_DETAIL_TABLE
 import com.example.inventorymanager.domain.model.masterdata.Warehouse
 import com.example.inventorymanager.domain.model.masterdata.Product
-import com.example.inventorymanager.domain.model.masterdata.Order
+import com.example.inventorymanager.domain.model.ingoings.Order
 
 
 @Entity(
