@@ -9,5 +9,10 @@ data class Provider(
     @PrimaryKey(autoGenerate = true)
     val providerId: Int,
     val name: String,
-    val address: String
+    val address: String,
+    val email: String,
+    val phone: String,
+    val taxId: String,
+    val bankDetails: String,
+    val notes: String
 )
