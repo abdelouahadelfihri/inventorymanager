@@ -1,11 +1,11 @@
 package com.example.inventorymanager.data.repository.ingoings
 
-import com.example.inventorymanager.data.dao.ingoings.ProviderDao
+import com.example.inventorymanager.data.dao.ingoings.SupplierDao
 import com.example.inventorymanager.domain.model.ingoings.Supplier
 import com.example.inventorymanager.domain.repository.ingoings.ProviderRepository
 
 class ProviderRepositoryImpl(
-    private val providerDao: ProviderDao
+    private val providerDao: SupplierDao
 ) : ProviderRepository {
 
     override fun getProvidersFromRoom() = providerDao.getProviders()

@@ -12,21 +12,21 @@ import com.example.inventorymanager.domain.repository.ingoings.Providers
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface ProviderDao {
+interface SupplierDao {
 
-    @Query("SELECT * FROM ${Constants.Companion.PROVIDER_TABLE} ORDER BY providerId ASC")
-    fun getProviders(): Flow<Providers>
+    @Query("SELECT * FROM ${Constants.Companion.PROVIDER_TABLE} ORDER BY supplierId ASC")
+    fun getSuppliers(): Flow<Providers>
 
-    @Query("SELECT * FROM ${Constants.Companion.PROVIDER_TABLE} WHERE providerId = :id")
-    suspend fun getProvider(id: Int): Supplier
+    @Query("SELECT * FROM ${Constants.Companion.PROVIDER_TABLE} WHERE supplierId = :id")
+    suspend fun getSupplier(id: Int): Supplier
 
     @Insert(onConflict = OnConflictStrategy.Companion.IGNORE)
-    suspend fun addProvider(product: Supplier)
+    suspend fun addSupplier(product: Supplier)
 
     @Update
-    suspend fun updateProvider(product: Supplier)
+    suspend fun updateSupplier(product: Supplier)
 
     @Delete
-    suspend fun deleteProvider(id: Int)
+    suspend fun deleteSupplier(id: Int)
 
 }
