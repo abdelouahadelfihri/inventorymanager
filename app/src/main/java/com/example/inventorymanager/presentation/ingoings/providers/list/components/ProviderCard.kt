@@ -7,10 +7,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.ingoings.Provider
+import com.example.inventorymanager.domain.model.ingoings.Supplier
 
 @Composable
-fun ProviderCard(provider: Provider, onClick: () -> Unit) {
+fun ProviderCard(provider: Supplier, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()

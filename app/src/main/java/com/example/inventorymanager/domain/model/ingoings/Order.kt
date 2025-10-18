@@ -9,7 +9,7 @@ import java.util.Date
 @Entity(
     tableName = ORDER_TABLE,
     foreignKeys = [ForeignKey(
-        entity = Provider::class,
+        entity = Supplier::class,
         parentColumns = ["providerId"],
         childColumns = ["providerId"],
         onDelete = ForeignKey.CASCADE

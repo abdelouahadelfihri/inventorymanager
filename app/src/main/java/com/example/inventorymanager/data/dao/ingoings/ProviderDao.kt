@@ -7,7 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.inventorymanager.core.Constants
-import com.example.inventorymanager.domain.model.ingoings.Provider
+import com.example.inventorymanager.domain.model.ingoings.Supplier
 import com.example.inventorymanager.domain.repository.ingoings.Providers
 import kotlinx.coroutines.flow.Flow
 
@@ -18,13 +18,13 @@ interface ProviderDao {
     fun getProviders(): Flow<Providers>
 
     @Query("SELECT * FROM ${Constants.Companion.PROVIDER_TABLE} WHERE providerId = :id")
-    suspend fun getProvider(id: Int): Provider
+    suspend fun getProvider(id: Int): Supplier
 
     @Insert(onConflict = OnConflictStrategy.Companion.IGNORE)
-    suspend fun addProvider(product: Provider)
+    suspend fun addProvider(product: Supplier)
 
     @Update
-    suspend fun updateProvider(product: Provider)
+    suspend fun updateProvider(product: Supplier)
 
     @Delete
     suspend fun deleteProvider(id: Int)

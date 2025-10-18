@@ -13,13 +13,13 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import com.example.inventorymanager.domain.model.ingoings.Provider
+import com.example.inventorymanager.domain.model.ingoings.Supplier
 
 @Composable
 fun UpdateProviderContent(
     padding: PaddingValues,
-    provider: Provider,
-    updateProvider: (Provider) -> Unit,
+    provider: Supplier,
+    updateProvider: (Supplier) -> Unit,
     deleteProvider: (Int) -> Unit,
     navigateBack: () -> Unit
 ) {

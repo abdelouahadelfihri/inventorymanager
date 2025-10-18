@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
-import com.example.inventorymanager.domain.model.ingoings.Provider
+import com.example.inventorymanager.domain.model.ingoings.Supplier
 import com.example.inventorymanager.presentation.ingoings.providers.ProvidersViewModel
 import com.example.inventorymanager.presentation.ingoings.providers.list.components.ProvidersContent
 
@@ -21,7 +21,7 @@ import com.example.inventorymanager.presentation.ingoings.providers.list.compone
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProvidersListScreen(viewModel: ProvidersViewModel = hiltViewModel(),
-                        onProviderSelected: ((Provider) -> Unit)? = null) {
+                        onProviderSelected: ((Supplier) -> Unit)? = null) {
     val navController = rememberNavController()
 
     Scaffold(

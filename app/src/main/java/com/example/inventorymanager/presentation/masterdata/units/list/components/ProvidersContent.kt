@@ -8,14 +8,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.ingoings.Provider
+import com.example.inventorymanager.domain.model.ingoings.Supplier
 import com.example.inventorymanager.presentation.ingoings.providers.ProvidersViewModel
 
 @Composable
 fun ProvidersContent(
     viewModel: ProvidersViewModel,
     modifier: Modifier = Modifier,
-    onProviderClick: ((Provider) -> Unit)? = null
+    onProviderClick: ((Supplier) -> Unit)? = null
 ) {
     Column(modifier = modifier) {
         // 🔍 Search Bar

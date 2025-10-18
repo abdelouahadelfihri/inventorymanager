@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import com.example.inventorymanager.domain.model.ingoings.Provider
+import com.example.inventorymanager.domain.model.ingoings.Supplier
 import com.example.inventorymanager.domain.repository.ingoings.ProviderRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,13 +18,13 @@ class ProvidersViewModel @Inject constructor(
     private val repo: ProviderRepository
 ) : ViewModel() {
 
-    private val _providers = MutableStateFlow<List<Provider>>(emptyList())
-    val providers: StateFlow<List<Provider>> = _providers
+    private val _providers = MutableStateFlow<List<Supplier>>(emptyList())
+    val providers: StateFlow<List<Supplier>> = _providers
 
     var selectedFilter by mutableStateOf("All")
     var filters = listOf("All", "Category 1", "Category 2")
     var provider by mutableStateOf(
-        Provider(
+        Supplier(
             0,
             name = "",
             address = ""
@@ -44,11 +44,11 @@ class ProvidersViewModel @Inject constructor(
         observeProvidersFromRoom()
     }
 
-    fun addProvider(customer: Provider) = viewModelScope.launch {
+    fun addProvider(customer: Supplier) = viewModelScope.launch {
         repo.addProviderToRoom(customer)
     }
 
-    fun updateProvider(customer: Provider) = viewModelScope.launch {
+    fun updateProvider(customer: Supplier) = viewModelScope.launch {
         repo.updateProviderInRoom(customer)
     }
 
@@ -73,7 +73,7 @@ class ProvidersViewModel @Inject constructor(
         }
     }
 
-    val filteredProviders: List<Provider>
+    val filteredProviders: List<Supplier>
         get() {
             val terms = searchQuery
                 .trim()

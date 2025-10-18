@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.ingoings.Provider
+import com.example.inventorymanager.domain.model.ingoings.Supplier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.foundation.rememberScrollState
@@ -22,8 +22,8 @@ import androidx.compose.foundation.verticalScroll
 @Composable
 fun AddProviderContent(
     padding: PaddingValues,
-    provider: Provider,
-    addProvider: (Provider) -> Unit,
+    provider: Supplier,
+    addProvider: (Supplier) -> Unit,
     navigateBack: () -> Unit
 ) {
     var name by remember { mutableStateOf(provider.name) }

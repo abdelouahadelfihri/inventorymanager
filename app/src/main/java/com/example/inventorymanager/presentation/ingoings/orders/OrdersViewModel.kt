@@ -9,7 +9,7 @@ import com.example.inventorymanager.domain.model.outgoings.Customer
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import com.example.inventorymanager.domain.model.ingoings.Order
-import com.example.inventorymanager.domain.model.ingoings.Provider
+import com.example.inventorymanager.domain.model.ingoings.Supplier
 import com.example.inventorymanager.domain.repository.ingoings.OrderRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -38,11 +38,11 @@ class OrdersViewModel @Inject constructor(
 
 
 
-    fun onProviderSelected(provider: Provider) {
+    fun onProviderSelected(provider: Supplier) {
         selectedProvider = provider
     }
 
-    var selectedProvider by mutableStateOf<Provider?>(null)
+    var selectedProvider by mutableStateOf<Supplier?>(null)
         private set
 
     var selectedFilter by mutableStateOf("All")

@@ -1,20 +1,20 @@
 package com.example.inventorymanager.domain.repository.ingoings
 
-import com.example.inventorymanager.domain.model.ingoings.Provider
+import com.example.inventorymanager.domain.model.ingoings.Supplier
 import kotlinx.coroutines.flow.Flow
 
 
-typealias Providers = List<Provider>
+typealias Providers = List<Supplier>
 
 interface ProviderRepository {
 
     fun getProvidersFromRoom(): Flow<Providers>
 
-    suspend fun getProviderFromRoom(id: Int): Provider
+    suspend fun getProviderFromRoom(id: Int): Supplier
 
-    suspend fun addProviderToRoom(provider: Provider)
+    suspend fun addProviderToRoom(provider: Supplier)
 
-    suspend fun updateProviderInRoom(provider: Provider)
+    suspend fun updateProviderInRoom(provider: Supplier)
 
     suspend fun deleteProviderFromRoom(id: Int)
 
