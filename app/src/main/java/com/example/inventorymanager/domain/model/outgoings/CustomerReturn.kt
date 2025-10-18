@@ -5,7 +5,6 @@ import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.example.inventorymanager.core.Constants.Companion.RETURNS_FROM_CUSTOMER_TABLE
 import com.example.inventorymanager.domain.model.masterdata.Warehouse
-import com.example.inventorymanager.domain.model.masterdata.Item
 import com.example.inventorymanager.domain.model.outgoings.Customer
 import java.util.Date
 
@@ -13,9 +12,9 @@ import java.util.Date
     tableName = RETURNS_FROM_CUSTOMER_TABLE,
     foreignKeys = [
         ForeignKey(
-            entity = Item::class,
-            parentColumns = ["itemId"],
-            childColumns = ["itemId"],
+            entity = Customer::class,
+            parentColumns = ["customerId"],
+            childColumns = ["customerId"],
             onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
@@ -23,22 +22,14 @@ import java.util.Date
             parentColumns = ["warehouseId"],
             childColumns = ["warehouseId"],
             onDelete = ForeignKey.CASCADE
-        ),
-        ForeignKey(
-            entity = Customer::class,
-            parentColumns = ["customerId"],
-            childColumns = ["customerId"],
-            onDelete = ForeignKey.CASCADE
         )
     ]
 )
-data class ReturnsFromCustomer(
+data class CustomerReturn(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
-    var customerId: Int,
-    var warehouseId: Int,
-    val itemId: Int,
-    val quantity: Int,
+    val returnId: Int = 0,
+    val customerId: Int,
+    val warehouseId: Int,
     val returnDate: Date,
-    val reason: String
+    val reason: String?
 )
