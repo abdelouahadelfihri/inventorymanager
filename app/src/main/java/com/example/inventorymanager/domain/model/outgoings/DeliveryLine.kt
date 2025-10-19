@@ -25,7 +25,7 @@ import com.example.inventorymanager.domain.model.masterdata.Warehouse
         ),
         ForeignKey(
             entity = Warehouse::class,
-            parentColumns = ["warehouseId"],
+            parentColumns = ["id"],
             childColumns = ["warehouseId"],
             onDelete = ForeignKey.CASCADE
         )
