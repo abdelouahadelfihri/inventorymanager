@@ -2,7 +2,7 @@ package com.example.inventorymanager.domain.repository.outgoings
 
 import com.example.inventorymanager.domain.common.Customers
 import com.example.inventorymanager.domain.common.Deliveries
-import com.example.inventorymanager.domain.model.outgoings.Delivery
+import com.example.inventorymanager.domain.model.outgoings.SalesOrder
 import kotlinx.coroutines.flow.Flow
 
 interface DeliveryRepository {
@@ -11,11 +11,11 @@ interface DeliveryRepository {
 
     fun getCustomersFromRoom(): Flow<Customers>
 
-    suspend fun getDeliveryFromRoom(id: Int): Delivery
+    suspend fun getDeliveryFromRoom(id: Int): SalesOrder
 
-    suspend fun addDeliveryToRoom(delivery: Delivery)
+    suspend fun addDeliveryToRoom(delivery: SalesOrder)
 
-    suspend fun updateDeliveryInRoom(delivery: Delivery)
+    suspend fun updateDeliveryInRoom(delivery: SalesOrder)
 
     suspend fun deleteDeliveryFromRoom(id: Int)
 

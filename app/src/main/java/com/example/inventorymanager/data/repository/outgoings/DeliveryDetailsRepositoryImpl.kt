@@ -1,7 +1,7 @@
 package com.example.inventorymanager.data.repository.outgoings
 
 import com.example.inventorymanager.data.dao.outgoings.DeliveryDetailDao
-import com.example.inventorymanager.domain.model.outgoings.DeliveryDetail
+import com.example.inventorymanager.domain.model.outgoings.SalesOrderLine
 import com.example.inventorymanager.domain.repository.DeliveryDetailsRepository
 import kotlinx.coroutines.flow.Flow
 
@@ -9,19 +9,19 @@ class DeliveryDetailsRepositoryImpl(
     private val deliveryDetailsDao: DeliveryDetailDao
 ) : DeliveryDetailsRepository {
 
-    override fun getDeliveriesDetailsFromRoom(): Flow<List<DeliveryDetail>> {
+    override fun getDeliveriesDetailsFromRoom(): Flow<List<SalesOrderLine>> {
         return deliveryDetailsDao.getAll() // Assuming you have a method that returns all orders as a Flow
     }
 
-    override suspend fun getDeliveryDetailsFromRoom(deliveryId: Int, productId: Int, warehouseId: Int): DeliveryDetail {
+    override suspend fun getDeliveryDetailsFromRoom(deliveryId: Int, productId: Int, warehouseId: Int): SalesOrderLine {
         return deliveryDetailsDao.getByIds(deliveryId, productId, warehouseId) ?: throw Exception("Delivery Details not found")
     }
 
-    override suspend fun addDeliveryDetailsToRoom(deliveryDetails: DeliveryDetail) {
+    override suspend fun addDeliveryDetailsToRoom(deliveryDetails: SalesOrderLine) {
         deliveryDetailsDao.insert(deliveryDetails)
     }
 
-    override suspend fun updateDeliveryDetailsInRoom(deliveryDetails: DeliveryDetail) {
+    override suspend fun updateDeliveryDetailsInRoom(deliveryDetails: SalesOrderLine) {
         deliveryDetailsDao.update(deliveryDetails)
     }
 

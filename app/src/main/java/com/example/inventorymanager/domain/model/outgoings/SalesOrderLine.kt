@@ -11,13 +11,13 @@ import com.example.inventorymanager.domain.model.masterdata.Warehouse
     tableName = DELIVERY_DETAILS_TABLE,
     primaryKeys = ["deliveryId", "productId", "warehouseId"],
     foreignKeys = [
-        ForeignKey(entity = Delivery::class, parentColumns = ["deliveryId"], childColumns = ["deliveryId"], onDelete = ForeignKey.CASCADE),
+        ForeignKey(entity = SalesOrder::class, parentColumns = ["deliveryId"], childColumns = ["deliveryId"], onDelete = ForeignKey.CASCADE),
         ForeignKey(entity = Item::class, parentColumns = ["productId"], childColumns = ["productId"], onDelete = ForeignKey.CASCADE),
         ForeignKey(entity = Warehouse::class, parentColumns = ["warehouseId"], childColumns = ["warehouseId"], onDelete = ForeignKey.CASCADE)
     ],
     indices = [Index(value = ["deliveryId"]), Index(value = ["productId"]), Index(value = ["warehouseId"])]
 )
-data class DeliveryDetail(
+data class SalesOrderLine(
     val deliveryId: Int,
     val productId: Int,
     val warehouseId: Int,

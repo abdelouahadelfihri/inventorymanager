@@ -1,9 +1,8 @@
 package com.example.inventorymanager.data.repository.outgoings
 
 import com.example.inventorymanager.data.dao.outgoings.DeliveryDao
-import com.example.inventorymanager.domain.model.outgoings.Delivery
+import com.example.inventorymanager.domain.model.outgoings.SalesOrder
 import com.example.inventorymanager.domain.repository.outgoings.DeliveryRepository
-import kotlinx.coroutines.flow.Flow
 
 class DeliveryRepositoryImpl(
     private val deliveryDao: DeliveryDao
@@ -13,9 +12,9 @@ class DeliveryRepositoryImpl(
 
     override suspend fun getDeliveryFromRoom(id: Int) = deliveryDao.getDelivery(id)
 
-    override suspend fun addDeliveryToRoom(delivery: Delivery) = deliveryDao.addDelivery(delivery)
+    override suspend fun addDeliveryToRoom(delivery: SalesOrder) = deliveryDao.addDelivery(delivery)
 
-    override suspend fun updateDeliveryInRoom(delivery: Delivery) = deliveryDao.updateDelivery(delivery)
+    override suspend fun updateDeliveryInRoom(delivery: SalesOrder) = deliveryDao.updateDelivery(delivery)
 
     override suspend fun deleteDeliveryFromRoom(id: Int) = deliveryDao.deleteDelivery(id)
 

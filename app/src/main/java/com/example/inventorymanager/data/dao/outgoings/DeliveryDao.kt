@@ -9,7 +9,7 @@ import androidx.room.Update
 import com.example.inventorymanager.core.Constants
 import com.example.inventorymanager.domain.common.Customers
 import com.example.inventorymanager.domain.common.Deliveries
-import com.example.inventorymanager.domain.model.outgoings.Delivery
+import com.example.inventorymanager.domain.model.outgoings.SalesOrder
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -21,13 +21,13 @@ interface DeliveryDao {
     fun getCustomers(): Flow<Customers>
 
     @Query("SELECT * FROM ${Constants.Companion.DELIVERY_TABLE} WHERE deliveryId = :id")
-    suspend fun getDelivery(id: Int): Delivery
+    suspend fun getDelivery(id: Int): SalesOrder
 
     @Insert(onConflict = OnConflictStrategy.Companion.IGNORE)
-    suspend fun addDelivery(delivery: Delivery)
+    suspend fun addDelivery(delivery: SalesOrder)
 
     @Update
-    suspend fun updateDelivery(delivery: Delivery)
+    suspend fun updateDelivery(delivery: SalesOrder)
 
     @Delete
     suspend fun deleteDelivery(id: Int)

@@ -19,7 +19,7 @@ import java.util.Date
     ],
     indices = [Index(value = ["customerId"])]
 )
-data class Delivery(
+data class SalesOrder(
     @PrimaryKey(autoGenerate = true)
     val deliveryId: Int,
     val customerId: Int,

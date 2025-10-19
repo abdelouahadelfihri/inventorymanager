@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.inventorymanager.domain.model.outgoings.Customer
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import com.example.inventorymanager.domain.model.outgoings.Delivery
+import com.example.inventorymanager.domain.model.outgoings.SalesOrder
 import com.example.inventorymanager.domain.repository.outgoings.DeliveryRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,8 +20,8 @@ class DeliveriesViewModel @Inject constructor(
     private val repo: DeliveryRepository
 ) : ViewModel() {
 
-    private val _deliveries = MutableStateFlow<List<Delivery>>(emptyList())
-    val deliveries: StateFlow<List<Delivery>> = _deliveries
+    private val _deliveries = MutableStateFlow<List<SalesOrder>>(emptyList())
+    val deliveries: StateFlow<List<SalesOrder>> = _deliveries
 
     private val _customers = MutableStateFlow<List<Customer>>(emptyList())
     val customers: StateFlow<List<Customer>> = _customers
@@ -38,7 +38,7 @@ class DeliveriesViewModel @Inject constructor(
     var selectedFilter by mutableStateOf("All")
     var filters = listOf("All", "Category 1", "Category 2")
     var delivery by mutableStateOf(
-        Delivery(
+        SalesOrder(
             deliveryId = 0,
             saleDate = Date(), // or any default Date, like SimpleDateFormat().parse("1970-01-01")
             customerId = 0
@@ -58,11 +58,11 @@ class DeliveriesViewModel @Inject constructor(
         observeDeliveriesFromRoom()
     }
 
-    fun addDelivery(customer: Delivery) = viewModelScope.launch {
+    fun addDelivery(customer: SalesOrder) = viewModelScope.launch {
         repo.addDeliveryToRoom(customer)
     }
 
-    fun updateDelivery(customer: Delivery) = viewModelScope.launch {
+    fun updateDelivery(customer: SalesOrder) = viewModelScope.launch {
         repo.updateDeliveryInRoom(customer)
     }
 
@@ -87,7 +87,7 @@ class DeliveriesViewModel @Inject constructor(
         }
     }
 
-    val filteredDeliveries: List<Delivery>
+    val filteredDeliveries: List<SalesOrder>
         get() {
             val terms = searchQuery
                 .trim()
