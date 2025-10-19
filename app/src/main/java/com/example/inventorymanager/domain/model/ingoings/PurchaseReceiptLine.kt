@@ -3,12 +3,13 @@ package com.example.inventorymanager.domain.model.ingoings
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
+import androidx.room.PrimaryKey
 import com.example.inventorymanager.core.Constants.Companion.PURCHASE_RECEIPT_DETAIL_TABLE
 import com.example.inventorymanager.domain.model.masterdata.Item
 import java.util.Date
 
 @Entity(
-    tableName = PURCHASE_RECEIPT_DETAIL_TABLE,
+    tableName = PURCHASE_RECEIPT_LINE_TABLE,
     primaryKeys = ["purchaseReceiptId", "productId"],
     foreignKeys = [
         ForeignKey(
@@ -18,7 +19,13 @@ import java.util.Date
             onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
-            entity = Item::class,
+            entity = Product::class,
+            parentColumns = ["itemId"],
+            childColumns = ["productId"],
+            onDelete = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = Warehouse::class,
             parentColumns = ["itemId"],
             childColumns = ["productId"],
             onDelete = ForeignKey.CASCADE
@@ -29,14 +36,10 @@ import java.util.Date
         Index(value = ["productId"])
     ]
 )
-
 data class PurchaseReceiptLine(
-    val purchaseReceiptId: Int,
-    val productId: Int,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    val purchaseReceiptId: Long,
+    val productId: Long,
     val quantity: Double,
-    val unitPrice: Double,
-    val discount: Double = 0.0,
-    val total: Double,
-    val storageBin: String?,
-    val receivedDate: Date
+    val warehouseId: Long
 )
