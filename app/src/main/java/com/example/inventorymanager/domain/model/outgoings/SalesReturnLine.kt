@@ -10,7 +10,7 @@ import com.example.inventorymanager.domain.model.masterdata.Product
     tableName = RETURNS_FROM_CUSTOMER_LINES_TABLE,
     foreignKeys = [
         ForeignKey(
-            entity = CustomerReturn::class,
+            entity = SalesReturn::class,
             parentColumns = ["returnId"],
             childColumns = ["returnId"],
             onDelete = ForeignKey.CASCADE
@@ -23,7 +23,7 @@ import com.example.inventorymanager.domain.model.masterdata.Product
         )
     ]
 )
-data class CustomerReturnLine(
+data class SalesReturnLine(
     @PrimaryKey(autoGenerate = true)
     val lineId: Int = 0,
     val returnId: Int,

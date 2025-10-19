@@ -25,7 +25,7 @@ import java.util.Date
         )
     ]
 )
-data class CustomerReturn(
+data class SalesReturn(
     @PrimaryKey(autoGenerate = true)
     val returnId: Int = 0,
     val customerId: Int,
