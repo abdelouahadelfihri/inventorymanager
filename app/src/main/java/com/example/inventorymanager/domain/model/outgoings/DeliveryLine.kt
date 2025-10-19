@@ -5,6 +5,8 @@ import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.example.inventorymanager.core.Constants.Companion.DELIVERY_LINE_TABLE
+import com.example.inventorymanager.domain.model.masterdata.Product
+import com.example.inventorymanager.domain.model.masterdata.Warehouse
 
 @Entity(
     tableName = DELIVERY_LINE_TABLE,
