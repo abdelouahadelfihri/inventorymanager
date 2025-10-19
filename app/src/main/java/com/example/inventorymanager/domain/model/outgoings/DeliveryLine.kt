@@ -13,7 +13,7 @@ import com.example.inventorymanager.domain.model.masterdata.Warehouse
     foreignKeys = [
         ForeignKey(
             entity = Delivery::class,
-            parentColumns = ["deliveryId"],
+            parentColumns = ["id"],
             childColumns = ["deliveryId"],
             onDelete = ForeignKey.CASCADE
         ),
