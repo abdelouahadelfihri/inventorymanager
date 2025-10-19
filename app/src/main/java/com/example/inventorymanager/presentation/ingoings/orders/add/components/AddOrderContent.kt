@@ -14,7 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.ingoings.Order
+import com.example.inventorymanager.domain.model.ingoings.PurchaseOrder
 import com.example.inventorymanager.domain.model.ingoings.Supplier
 import java.text.SimpleDateFormat
 import java.util.*
@@ -22,9 +22,9 @@ import java.util.*
 @Composable
 fun AddOrderContent(
     padding: PaddingValues,
-    order: Order,
+    order: PurchaseOrder,
     selectedProvider: Supplier?,
-    addOrder: (Order) -> Unit,
+    addOrder: (PurchaseOrder) -> Unit,
     onSelectProviderClick: () -> Unit,
     navigateBack: () -> Unit
 ) {

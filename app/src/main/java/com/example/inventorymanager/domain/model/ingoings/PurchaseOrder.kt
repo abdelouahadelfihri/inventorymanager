@@ -4,20 +4,20 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.example.inventorymanager.core.Constants.Companion.ORDER_TABLE
-import java.util.Date
 
 @Entity(
     tableName = ORDER_TABLE,
     foreignKeys = [ForeignKey(
         entity = Supplier::class,
-        parentColumns = ["providerId"],
+        parentColumns = ["supplierId"],
         childColumns = ["providerId"],
         onDelete = ForeignKey.CASCADE
     )]
 )
-data class Order(
-    @PrimaryKey(autoGenerate = true)
-    val orderId: Int,
-    val providerId: Int,
-    val orderDate: Date?
+data class PurchaseOrder(
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    val supplierId: Long,
+    val orderDate: Long,
+    val status: String, // draft, confirmed, received
+    val totalAmount: Double
 )

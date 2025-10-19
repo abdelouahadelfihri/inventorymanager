@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.inventorymanager.domain.model.outgoings.Customer
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import com.example.inventorymanager.domain.model.ingoings.Order
+import com.example.inventorymanager.domain.model.ingoings.PurchaseOrder
 import com.example.inventorymanager.domain.model.ingoings.Supplier
 import com.example.inventorymanager.domain.repository.ingoings.OrderRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,8 +21,8 @@ class OrdersViewModel @Inject constructor(
     private val repo: OrderRepository
 ) : ViewModel() {
 
-    private val _orders = MutableStateFlow<List<Order>>(emptyList())
-    val orders: StateFlow<List<Order>> = _orders
+    private val _orders = MutableStateFlow<List<PurchaseOrder>>(emptyList())
+    val orders: StateFlow<List<PurchaseOrder>> = _orders
 
     private val _customers = MutableStateFlow<List<Customer>>(emptyList())
     val customers: StateFlow<List<Customer>> = _customers
@@ -48,7 +48,7 @@ class OrdersViewModel @Inject constructor(
     var selectedFilter by mutableStateOf("All")
     var filters = listOf("All", "Category 1", "Category 2")
     var order by mutableStateOf(
-        Order(
+        PurchaseOrder(
             orderId = 0,
             providerId = 0,
             orderDate = Date()
@@ -68,11 +68,11 @@ class OrdersViewModel @Inject constructor(
         observeOrdersFromRoom()
     }
 
-    fun addOrder(customer: Order) = viewModelScope.launch {
+    fun addOrder(customer: PurchaseOrder) = viewModelScope.launch {
         repo.addOrderToRoom(customer)
     }
 
-    fun updateOrder(customer: Order) = viewModelScope.launch {
+    fun updateOrder(customer: PurchaseOrder) = viewModelScope.launch {
         repo.updateOrderInRoom(customer)
     }
 
@@ -97,7 +97,7 @@ class OrdersViewModel @Inject constructor(
         }
     }
 
-    val filteredOrders: List<Order>
+    val filteredOrders: List<PurchaseOrder>
         get() {
             val terms = searchQuery
                 .trim()

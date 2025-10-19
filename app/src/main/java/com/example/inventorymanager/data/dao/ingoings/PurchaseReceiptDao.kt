@@ -7,7 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.inventorymanager.core.Constants.Companion.PURCHASE_RECEIPT_TABLE
-import com.example.inventorymanager.domain.model.ingoings.Order
+import com.example.inventorymanager.domain.model.ingoings.PurchaseOrder
 import com.example.inventorymanager.domain.repository.ingoings.Orders
 import kotlinx.coroutines.flow.Flow
 
@@ -18,13 +18,13 @@ interface PurchaseReceiptDao {
     fun getPurchaseReceipts(): Flow<Orders>
 
     @Query("SELECT * FROM ${PURCHASE_RECEIPT_TABLE} WHERE orderId = :id")
-    suspend fun getPurchaseReceipt(id: Int): Order
+    suspend fun getPurchaseReceipt(id: Int): PurchaseOrder
 
     @Insert(onConflict = OnConflictStrategy.Companion.IGNORE)
-    suspend fun addPurchaseReceipt(order: Order)
+    suspend fun addPurchaseReceipt(order: PurchaseOrder)
 
     @Update
-    suspend fun updatePurchaseReceipt(order: Order)
+    suspend fun updatePurchaseReceipt(order: PurchaseOrder)
 
     @Delete
     suspend fun deletePurchaseReceipt(id: Int)
