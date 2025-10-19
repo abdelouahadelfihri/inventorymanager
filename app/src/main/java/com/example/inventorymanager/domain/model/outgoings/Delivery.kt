@@ -26,8 +26,8 @@ import com.example.inventorymanager.domain.model.masterdata.Customer
 )
 data class Delivery(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
-    val salesOrderId: Long?,   // optional link to sales order
+    val salesOrderId: Long?, // optional link to order
     val deliveryDate: Long,
     val customerId: Long,
-    val status: String // draft, validated
+    val status: String // e.g., "draft", "validated"
 )
