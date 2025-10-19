@@ -6,7 +6,8 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.example.inventorymanager.domain.model.masterdata.Product
 import com.example.inventorymanager.domain.model.masterdata.Warehouse
-import com.example.inventorymanager.domain.model.ingoings.PurchaseReceipt
+import com.example.inventorymanager.core.Constants.Companion.PURCHASE_RECEIPT_LINE_TABLE
+
 
 
 @Entity(
