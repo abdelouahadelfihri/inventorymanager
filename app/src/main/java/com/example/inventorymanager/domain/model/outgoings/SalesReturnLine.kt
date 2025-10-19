@@ -3,6 +3,9 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import androidx.room.Entity
 import com.example.inventorymanager.core.Constants.Companion.SALES_RETURN_LINE_TABLE
+import com.example.inventorymanager.domain.model.outgoings.SalesReturn
+import com.example.inventorymanager.domain.model.masterdata.Product
+import com.example.inventorymanager.domain.model.masterdata.Warehouse
 
 @Entity(
     tableName = SALES_RETURN_LINE_TABLE,
