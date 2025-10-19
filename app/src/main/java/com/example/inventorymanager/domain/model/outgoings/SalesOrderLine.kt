@@ -28,6 +28,5 @@ data class SalesOrderLine(
     val productId: Long,
     val quantity: Double,
     val unitPrice: Double,
-    val discount: Double? = 0.0,
-    val taxRate: Double? = 0.0
+    val totalPrice: Double
 )
