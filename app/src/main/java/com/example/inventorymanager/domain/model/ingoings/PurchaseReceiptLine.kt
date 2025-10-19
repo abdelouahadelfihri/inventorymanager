@@ -8,8 +8,6 @@ import com.example.inventorymanager.domain.model.masterdata.Product
 import com.example.inventorymanager.domain.model.masterdata.Warehouse
 import com.example.inventorymanager.core.Constants.Companion.PURCHASE_RECEIPT_LINE_TABLE
 
-
-
 @Entity(
     tableName = PURCHASE_RECEIPT_LINE_TABLE,
     primaryKeys = ["purchaseReceiptId", "productId"],
