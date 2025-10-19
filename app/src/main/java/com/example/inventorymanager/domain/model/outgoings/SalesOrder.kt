@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.ForeignKey
 import androidx.room.Index
-import com.example.inventorymanager.core.Constants.Companion.DELIVERY_TABLE
+import com.example.inventorymanager.core.Constants.Companion.SALES_ORDER_TABLE
 import java.util.Date
 
 @Entity(
