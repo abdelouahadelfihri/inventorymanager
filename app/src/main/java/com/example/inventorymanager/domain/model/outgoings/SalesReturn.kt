@@ -1,4 +1,4 @@
-package com.example.inventorymanager.domain.model.ingoings
+package com.example.inventorymanager.domain.model.outgoings
 
 import androidx.room.Entity
 import androidx.room.ForeignKey

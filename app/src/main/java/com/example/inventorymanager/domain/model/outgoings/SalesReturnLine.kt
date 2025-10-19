@@ -1,32 +1,41 @@
-package com.example.inventorymanager.domain.model.ingoings
-
-import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.example.inventorymanager.core.Constants.Companion.RETURNS_FROM_CUSTOMER_LINES_TABLE
-import com.example.inventorymanager.domain.model.masterdata.Product
+import androidx.room.Entity
+import com.example.inventorymanager.core.Constants.Companion.SALES_RETURN_LINE_TABLE
 
 @Entity(
-    tableName = RETURNS_FROM_CUSTOMER_LINES_TABLE,
+    tableName = SALES_RETURN_LINE_TABLE,
     foreignKeys = [
         ForeignKey(
             entity = SalesReturn::class,
-            parentColumns = ["returnId"],
-            childColumns = ["returnId"],
+            parentColumns = ["salesReturnId"],
+            childColumns = ["salesReturnId"],
             onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
             entity = Product::class,
-            parentColumns = ["itemId"],
+            parentColumns = ["productId"],
             childColumns = ["itemId"],
             onDelete = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = Warehouse::class,
+            parentColumns = ["warehouseId"],
+            childColumns = ["warehouseId"],
+            onDelete = ForeignKey.CASCADE
         )
+    ],
+    indices = [
+        Index(value = ["salesReturnId"]),
+        Index(value = ["itemId"]),
+        Index(value = ["warehouseId"])
     ]
 )
 data class SalesReturnLine(
-    @PrimaryKey(autoGenerate = true)
-    val lineId: Int = 0,
-    val returnId: Int,
-    val itemId: Int,
-    val quantity: Int
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    val salesReturnId: Long,
+    val itemId: Long,
+    val quantity: Double,
+    val warehouseId: Long
 )
