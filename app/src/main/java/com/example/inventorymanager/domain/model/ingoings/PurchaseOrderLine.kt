@@ -4,11 +4,11 @@ import androidx.room.ForeignKey
 import androidx.room.Entity
 import androidx.room.Index
 import com.example.inventorymanager.domain.model.masterdata.Product
-import com.example.inventorymanager.core.Constants.Companion.SALES_ORDER_LINE_TABLE
+import com.example.inventorymanager.core.Constants.Companion.PURCHASE_ORDER_LINE_TABLE
 import com.example.inventorymanager.domain.model.masterdata.Warehouse
 
 @Entity(
-    tableName = SALES_ORDER_LINE_TABLE,
+    tableName = PURCHASE_ORDER_LINE_TABLE,
     primaryKeys = ["purchaseOrderId", "productId", "warehouseId"],
     foreignKeys = [
         ForeignKey(
