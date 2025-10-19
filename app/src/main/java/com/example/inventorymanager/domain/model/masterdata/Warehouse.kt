@@ -17,7 +17,7 @@ import com.example.inventorymanager.core.Constants.Companion.WAREHOUSE_TABLE
 )
 data class Warehouse(
     @PrimaryKey(autoGenerate = true)
-    val warehouseId: Int,
+    val id: Int,
     val name: String,
     val isRefrigerated: Int,
     @ColumnInfo(index = true)
