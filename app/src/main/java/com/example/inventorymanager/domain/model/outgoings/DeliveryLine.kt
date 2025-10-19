@@ -12,7 +12,7 @@ import java.util.Date
     primaryKeys = ["saleReceiptId", "productId"],
     foreignKeys = [
         ForeignKey(
-            entity = SaleReceipt::class,
+            entity = Delivery::class,
             parentColumns = ["saleReceiptId"],
             childColumns = ["saleReceiptId"],
             onDelete = ForeignKey.CASCADE
@@ -30,7 +30,7 @@ import java.util.Date
     ]
 )
 
-data class SaleReceiptDetail(
+data class DeliveryLine(
     val saleReceiptId: Int,
     val productId: Int,
     val quantity: Double,
