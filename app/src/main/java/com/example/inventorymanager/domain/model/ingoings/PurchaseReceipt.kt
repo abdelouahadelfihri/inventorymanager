@@ -17,19 +17,17 @@ import java.util.Date
         onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
-            entity = Warehouse::class,
-            parentColumns = ["warehouseId"],
-            childColumns = ["warehouseId"],
+            entity = Supplier::class,
+            parentColumns = ["supplierId"],
+            childColumns = ["supplierId"],
             onDelete = ForeignKey.CASCADE
         )
     ]
 )
 data class PurchaseReceipt(
-    @PrimaryKey(autoGenerate = true)
-    val purchaseReceiptId: Int,
-    var orderId: Int,
-    val receiptDate: Date,
-    val warehouseId: Int,
-    val receivedBy: String,
-    val notes: String
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    val purchaseOrderId: Long?,
+    val receiptDate: Long,
+    val supplierId: Long,
+    val status: String // e.g., "draft", "validated"
 )
