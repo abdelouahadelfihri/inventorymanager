@@ -3,41 +3,41 @@ package com.example.inventorymanager.domain.model.outgoings
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
-import com.example.inventorymanager.core.Constants.Companion.SALE_RECEIPT_DETAIL_TABLE
-import com.example.inventorymanager.domain.model.masterdata.Item
-import java.util.Date
+import androidx.room.PrimaryKey
+import com.example.inventorymanager.core.Constants.Companion.DELIVERY_LINE_TABLE
 
 @Entity(
-    tableName = SALE_RECEIPT_DETAIL_TABLE,
-    primaryKeys = ["saleReceiptId", "productId"],
+    tableName = DELIVERY_LINE_TABLE,
     foreignKeys = [
         ForeignKey(
             entity = Delivery::class,
-            parentColumns = ["saleReceiptId"],
-            childColumns = ["saleReceiptId"],
+            parentColumns = ["deliveryId"],
+            childColumns = ["deliveryId"],
             onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
-            entity = Item::class,
-            parentColumns = ["itemId"],
+            entity = Product::class,
+            parentColumns = ["productId"],
             childColumns = ["productId"],
+            onDelete = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = Warehouse::class,
+            parentColumns = ["warehouseId"],
+            childColumns = ["warehouseId"],
             onDelete = ForeignKey.CASCADE
         )
     ],
     indices = [
-        Index(value = ["saleReceiptId"]),
-        Index(value = ["productId"])
+        Index(value = ["deliveryId"]),
+        Index(value = ["productId"]),
+        Index(value = ["warehouseId"])
     ]
 )
-
 data class DeliveryLine(
-    val saleReceiptId: Int,
-    val productId: Int,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    val deliveryId: Long,
+    val productId: Long,
     val quantity: Double,
-    val unitPrice: Double,
-    val discount: Double = 0.0,
-    val taxRate: Double = 0.0,
-    val total: Double,
-    val deliveredDate: Date?,
-    val storageBin: String?
+    val warehouseId: Long
 )
