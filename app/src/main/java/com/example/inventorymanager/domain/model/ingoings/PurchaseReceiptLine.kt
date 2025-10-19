@@ -30,7 +30,7 @@ import java.util.Date
     ]
 )
 
-data class PurchaseReceiptDetail(
+data class PurchaseReceiptLine(
     val purchaseReceiptId: Int,
     val productId: Int,
     val quantity: Double,
