@@ -4,6 +4,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.example.inventorymanager.core.Constants.Companion.DELIVERY_TABLE
+import com.example.inventorymanager.domain.model.masterdata.Customer
 
 
 @Entity(

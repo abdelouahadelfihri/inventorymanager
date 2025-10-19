@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.example.inventorymanager.domain.model.ingoings.Supplier
+import com.example.inventorymanager.domain.model.masterdata.Supplier
 
 @Composable
 fun ProviderCard(provider: Supplier, onClick: () -> Unit) {

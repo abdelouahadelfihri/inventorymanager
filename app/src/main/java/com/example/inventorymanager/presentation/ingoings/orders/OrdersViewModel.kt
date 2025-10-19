@@ -5,11 +5,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.inventorymanager.domain.model.outgoings.Customer
+import com.example.inventorymanager.domain.model.masterdata.Customer
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import com.example.inventorymanager.domain.model.ingoings.PurchaseOrder
-import com.example.inventorymanager.domain.model.ingoings.Supplier
+import com.example.inventorymanager.domain.model.masterdata.Supplier
 import com.example.inventorymanager.domain.repository.ingoings.OrderRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

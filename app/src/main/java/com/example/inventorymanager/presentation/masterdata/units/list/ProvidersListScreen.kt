@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
-import com.example.inventorymanager.domain.model.ingoings.Supplier
+import com.example.inventorymanager.domain.model.masterdata.Supplier
 import com.example.inventorymanager.presentation.ingoings.providers.ProvidersViewModel
 import com.example.inventorymanager.presentation.ingoings.providers.list.components.ProvidersContent
 

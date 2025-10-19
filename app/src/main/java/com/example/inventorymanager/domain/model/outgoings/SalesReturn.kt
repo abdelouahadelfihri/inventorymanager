@@ -5,7 +5,7 @@ import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.example.inventorymanager.core.Constants.Companion.RETURNS_FROM_CUSTOMER_TABLE
 import com.example.inventorymanager.domain.model.masterdata.Warehouse
-import com.example.inventorymanager.domain.model.outgoings.Customer
+import com.example.inventorymanager.domain.model.masterdata.Customer
 import java.util.Date
 
 @Entity(

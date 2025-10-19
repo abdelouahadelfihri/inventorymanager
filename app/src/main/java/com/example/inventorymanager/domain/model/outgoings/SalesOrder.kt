@@ -5,6 +5,7 @@ import androidx.room.PrimaryKey
 import androidx.room.ForeignKey
 import androidx.room.Index
 import com.example.inventorymanager.core.Constants.Companion.SALES_ORDER_TABLE
+import com.example.inventorymanager.domain.model.masterdata.Customer
 import java.util.Date
 
 @Entity(

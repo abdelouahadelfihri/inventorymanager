@@ -3,7 +3,7 @@ package com.example.inventorymanager.domain.relationshipdataclasses
 import androidx.room.Embedded
 import androidx.room.Relation
 import com.example.inventory.domain.model.Order
-import com.example.inventorymanager.domain.model.ingoings.Supplier
+import com.example.inventorymanager.domain.model.masterdata.Supplier
 
 
 data class ProviderWithOrders(

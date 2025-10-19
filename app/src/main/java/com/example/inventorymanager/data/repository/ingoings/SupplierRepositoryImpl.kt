@@ -1,7 +1,7 @@
 package com.example.inventorymanager.data.repository.ingoings
 
 import com.example.inventorymanager.data.dao.ingoings.SupplierDao
-import com.example.inventorymanager.domain.model.ingoings.Supplier
+import com.example.inventorymanager.domain.model.masterdata.Supplier
 import com.example.inventorymanager.domain.repository.ingoings.ProviderRepository
 
 class SupplierRepositoryImpl(

@@ -4,6 +4,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.example.inventorymanager.core.Constants.Companion.PURCHASE_RECEIPT_TABLE
+import com.example.inventorymanager.domain.model.masterdata.Supplier
 import com.example.inventorymanager.domain.model.masterdata.Warehouse
 import java.util.Date
 

@@ -8,7 +8,7 @@ import androidx.room.Query
 import androidx.room.Update
 import com.example.inventorymanager.core.Constants
 import com.example.inventorymanager.domain.common.Customers
-import com.example.inventorymanager.domain.model.outgoings.Customer
+import com.example.inventorymanager.domain.model.masterdata.Customer
 import kotlinx.coroutines.flow.Flow
 
 @Dao
