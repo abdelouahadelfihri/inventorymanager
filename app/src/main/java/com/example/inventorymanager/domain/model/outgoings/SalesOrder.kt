@@ -8,7 +8,7 @@ import com.example.inventorymanager.core.Constants.Companion.DELIVERY_TABLE
 import java.util.Date
 
 @Entity(
-    tableName = DELIVERY_TABLE,
+    tableName = SALES_ORDER_TABLE,
     foreignKeys = [
         ForeignKey(
             entity = Customer::class,
@@ -20,8 +20,9 @@ import java.util.Date
     indices = [Index(value = ["customerId"])]
 )
 data class SalesOrder(
-    @PrimaryKey(autoGenerate = true)
-    val deliveryId: Int,
-    val customerId: Int,
-    val saleDate: Date?
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    val customerId: Long,
+    val orderDate: Long,
+    val status: String, // draft, confirmed, delivered
+    val totalAmount: Double
 )
