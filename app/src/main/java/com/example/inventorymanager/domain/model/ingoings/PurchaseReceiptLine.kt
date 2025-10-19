@@ -4,9 +4,10 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.example.inventorymanager.core.Constants.Companion.PURCHASE_RECEIPT_DETAIL_TABLE
-import com.example.inventorymanager.domain.model.masterdata.Item
-import java.util.Date
+import com.example.inventorymanager.domain.model.masterdata.Product
+import com.example.inventorymanager.domain.model.masterdata.Warehouse
+import com.example.inventorymanager.domain.model.ingoings.PurchaseReceipt
+
 
 @Entity(
     tableName = PURCHASE_RECEIPT_LINE_TABLE,
