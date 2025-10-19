@@ -31,7 +31,7 @@ import com.example.inventorymanager.domain.model.masterdata.Warehouse
         )
     ],
     indices = [
-        Index(value = ["salesOrderId"]),
+        Index(value = ["purchaseOrderId"]),
         Index(value = ["productId"]),
         Index(value = ["warehouseId"])
     ]
