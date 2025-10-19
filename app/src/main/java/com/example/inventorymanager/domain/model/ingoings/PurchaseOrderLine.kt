@@ -3,6 +3,7 @@ package com.example.inventorymanager.domain.model.outgoings
 import androidx.room.ForeignKey
 import androidx.room.Entity
 import androidx.room.Index
+import androidx.room.PrimaryKey
 import com.example.inventorymanager.domain.model.masterdata.Product
 import com.example.inventorymanager.core.Constants.Companion.PURCHASE_ORDER_LINE_TABLE
 import com.example.inventorymanager.domain.model.masterdata.Warehouse
@@ -37,9 +38,11 @@ import com.example.inventorymanager.domain.model.masterdata.Warehouse
     ]
 )
 data class PurchaseOrderLine(
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val purchaseOrderId: Long,
-    val productId: Long,
-    val warehouseId: Long,
+    val itemId: Long,
     val quantity: Double,
-    val unitPrice: Double
+    val unitPrice: Double,
+    val discount: Double? = 0.0,
+    val taxRate: Double? = 0.0
 )
