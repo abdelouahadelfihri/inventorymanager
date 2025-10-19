@@ -4,10 +4,10 @@ import androidx.room.ForeignKey
 import androidx.room.Entity
 import androidx.room.Index
 import com.example.inventorymanager.domain.model.masterdata.Product
-import com.example.inventorymanager.core.Constants.Companion.DELIVERY_DETAILS_TABLE
+import com.example.inventorymanager.core.Constants.Companion.SALES_ORDER_LINE_TABLE
 
 @Entity(
-    tableName = DELIVERY_DETAILS_TABLE,
+    tableName = SALES_ORDER_LINE_TABLE,
     primaryKeys = ["salesOrderId", "productId", "warehouseId"],
     foreignKeys = [
         ForeignKey(entity = SalesOrder::class, parentColumns = ["deliveryId"], childColumns = ["deliveryId"], onDelete = ForeignKey.CASCADE),
