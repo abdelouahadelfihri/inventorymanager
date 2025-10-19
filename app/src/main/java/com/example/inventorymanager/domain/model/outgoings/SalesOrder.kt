@@ -6,7 +6,6 @@ import androidx.room.ForeignKey
 import androidx.room.Index
 import com.example.inventorymanager.core.Constants.Companion.SALES_ORDER_TABLE
 import com.example.inventorymanager.domain.model.masterdata.Customer
-import java.util.Date
 
 @Entity(
     tableName = SALES_ORDER_TABLE,
@@ -24,6 +23,6 @@ data class SalesOrder(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val customerId: Long,
     val orderDate: Long,
-    val status: String, // draft, confirmed, delivered
+    val status: String, // e.g., "draft", "confirmed", "delivered"
     val totalAmount: Double
 )
