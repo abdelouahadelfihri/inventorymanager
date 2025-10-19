@@ -30,7 +30,7 @@ import com.example.inventorymanager.core.Constants.Companion.ITEM_TABLE
 
 data class Product(
     @PrimaryKey(autoGenerate = true)
-    val productId: Int,
+    val id: Int,
     val name: String,
     val code: String,
     val barCode: String,
