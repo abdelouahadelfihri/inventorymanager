@@ -1,22 +1,108 @@
-package com.example.inventorymanager
+package com.example.inventorymanager.presentation
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.ExperimentalMaterialApi
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.inventorymanager.navigation.AppNavHost
 import com.example.inventorymanager.ui.theme.InventoryManagerTheme
+import androidx.activity.ComponentActivity
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.compose.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Search
 
-@ExperimentalMaterialApi
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             InventoryManagerTheme {
-                val navController = rememberNavController()
-                AppNavHost(navController = navController)
+                App()
             }
         }
+    }
+}
+
+@Composable
+fun App() {
+    val navController = rememberNavController()
+
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        bottomBar = { BottomNavigationBar(navController) }
+    ) { innerPadding ->
+        NavHost(
+            navController = navController,
+            startDestination = BottomNavItem.Home.route,
+            modifier = Modifier.padding(innerPadding)
+        ) {
+            composable(BottomNavItem.Home.route) { InsScreen() }
+            composable(BottomNavItem.Search.route) { OutsScreen() }
+            composable(BottomNavItem.Profile.route) { CatalogScreen() }
+        }
+    }
+}
+
+sealed class BottomNavItem(val route: String, val label: String, val icon: @Composable () -> Unit) {
+    object Home : BottomNavItem("home", "Home", { Icon(Icons.Filled.Home, contentDescription = "Home") })
+    object Search : BottomNavItem("search", "Search", { Icon(Icons.Filled.Search, contentDescription = "Search") })
+    object Profile : BottomNavItem("profile", "Profile", { Icon(Icons.Filled.Person, contentDescription = "Profile") })
+}
+
+@Composable
+fun BottomNavigationBar(navController: NavHostController) {
+    val items = listOf(
+        BottomNavItem.Home,
+        BottomNavItem.Search,
+        BottomNavItem.Profile
+    )
+
+    NavigationBar {
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentDestination = navBackStackEntry?.destination
+
+        items.forEach { item ->
+            val selected = currentDestination?.route == item.route
+            NavigationBarItem(
+                icon = { item.icon() },
+                label = { Text(item.label) },
+                selected = selected,
+                onClick = {
+                    navController.navigate(item.route) {
+                        popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                }
+            )
+        }
+    }
+}
+
+@Composable
+fun InsScreen() {
+    Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+        Text(text = "🏠 Home Screen", style = MaterialTheme.typography.headlineMedium)
+    }
+}
+
+@Composable
+fun OutsScreen() {
+    Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+        Text(text = "🔍 Search Screen", style = MaterialTheme.typography.headlineMedium)
+    }
+}
+
+@Composable
+fun CatalogScreen() {
+    Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+        Text(text = "👤 Profile Screen", style = MaterialTheme.typography.headlineMedium)
     }
 }
