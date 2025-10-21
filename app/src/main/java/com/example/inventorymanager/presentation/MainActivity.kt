@@ -18,6 +18,20 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.grid.*
+import androidx.compose.material.icons.filled.Category
+import androidx.compose.material.icons.filled.Inventory
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.People
+import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.filled.Store
+import androidx.compose.material.icons.filled.SwapHoriz
+import androidx.compose.material.icons.filled.ViewList
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -102,7 +116,68 @@ fun OutsScreen() {
 
 @Composable
 fun CatalogScreen() {
-    Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-        Text(text = "👤 Profile Screen", style = MaterialTheme.typography.headlineMedium)
+    val catalogItems = listOf(
+        CatalogItem("Category", Icons.Default.Category),
+        CatalogItem("Customer", Icons.Default.People),
+        CatalogItem("Document", Icons.Default.ViewList),
+        CatalogItem("Inventory", Icons.Default.Inventory),
+        CatalogItem("Location", Icons.Default.LocationOn),
+        CatalogItem("Units", Icons.Default.SwapHoriz),
+        CatalogItem("Product", Icons.Default.ShoppingCart),
+        CatalogItem("Supplier", Icons.Default.Store),
+        CatalogItem("Warehouse", Icons.Default.Inventory)
+    )
+
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
+    ) {
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            items(catalogItems) { item ->
+                CatalogCard(item)
+            }
+        }
     }
 }
+
+@Composable
+fun CatalogCard(item: CatalogItem) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .aspectRatio(1.2f), // Keeps card square-like
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Icon(
+                imageVector = item.icon,
+                contentDescription = item.label,
+                tint = MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(48.dp)
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = item.label,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Medium
+            )
+        }
+    }
+}
+
+data class CatalogItem(
+    val label: String,
+    val icon: androidx.compose.ui.graphics.vector.ImageVector
+)
