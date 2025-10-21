@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.inventorymanager.ui.theme.InventoryManagerTheme
 import androidx.activity.ComponentActivity
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
@@ -30,8 +31,7 @@ import androidx.compose.material.icons.filled.SwapHoriz
 import androidx.compose.material.icons.filled.ViewList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.res.painterResource
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -102,30 +102,26 @@ fun BottomNavigationBar(navController: NavHostController) {
 
 @Composable
 fun InsScreen() {
-    val menuItems = listOf(
-        MenuItem("Category", Icons.Default.Category),
-        MenuItem("Customer", Icons.Default.People),
-        MenuItem("Document", Icons.Default.ViewList),
-        MenuItem("Inventory", Icons.Default.Inventory),
-        MenuItem("Location", Icons.Default.LocationOn),
-        MenuItem("Units", Icons.Default.SwapHoriz),
-        MenuItem("Product", Icons.Default.ShoppingCart),
-        MenuItem("Supplier", Icons.Default.Store),
-        MenuItem("Warehouse", Icons.Default.Inventory)
+    val items = listOf(
+        MenuItem("Category", R.drawable.ic_category),
+        MenuItem("Customer", R.drawable.ic_customer),
+        MenuItem("Product", R.drawable.ic_product),
+        MenuItem("Supplier", R.drawable.ic_supplier),
+        MenuItem("Units", R.drawable.ic_units),
+        MenuItem("Warehouse", R.drawable.ic_warehouse),
+        MenuItem("Location", R.drawable.ic_location),
+        MenuItem("Document", R.drawable.ic_document)
     )
 
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            items(menuItems) { item ->
-                MenuCard(item)
+        items(items) { item ->
+            MenuCard(label = item.label, iconRes = item.iconRes) {
+                // handle click
             }
         }
     }
@@ -133,30 +129,26 @@ fun InsScreen() {
 
 @Composable
 fun OutsScreen() {
-    val menuItems = listOf(
-        MenuItem("Category", Icons.Default.Category),
-        MenuItem("Customer", Icons.Default.People),
-        MenuItem("Document", Icons.Default.ViewList),
-        MenuItem("Inventory", Icons.Default.Inventory),
-        MenuItem("Location", Icons.Default.LocationOn),
-        MenuItem("Units", Icons.Default.SwapHoriz),
-        MenuItem("Product", Icons.Default.ShoppingCart),
-        MenuItem("Supplier", Icons.Default.Store),
-        MenuItem("Warehouse", Icons.Default.Inventory)
+    val items = listOf(
+        MenuItem("Category", R.drawable.ic_category),
+        MenuItem("Customer", R.drawable.ic_customer),
+        MenuItem("Product", R.drawable.ic_product),
+        MenuItem("Supplier", R.drawable.ic_supplier),
+        MenuItem("Units", R.drawable.ic_units),
+        MenuItem("Warehouse", R.drawable.ic_warehouse),
+        MenuItem("Location", R.drawable.ic_location),
+        MenuItem("Document", R.drawable.ic_document)
     )
 
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            items(menuItems) { item ->
-                MenuCard(item)
+        items(items) { item ->
+            MenuCard(label = item.label, iconRes = item.iconRes) {
+                // handle click
             }
         }
     }
@@ -164,41 +156,42 @@ fun OutsScreen() {
 
 @Composable
 fun CatalogScreen() {
-    val menuItems = listOf(
-        MenuItem("Category", Icons.Default.Category),
-        MenuItem("Customer", Icons.Default.People),
-        MenuItem("Document", Icons.Default.ViewList),
-        MenuItem("Inventory", Icons.Default.Inventory),
-        MenuItem("Location", Icons.Default.LocationOn),
-        MenuItem("Units", Icons.Default.SwapHoriz),
-        MenuItem("Product", Icons.Default.ShoppingCart),
-        MenuItem("Supplier", Icons.Default.Store),
-        MenuItem("Warehouse", Icons.Default.Inventory)
+    val items = listOf(
+        MenuItem("Category", R.drawable.ic_category),
+        MenuItem("Customer", R.drawable.ic_customer),
+        MenuItem("Product", R.drawable.ic_product),
+        MenuItem("Supplier", R.drawable.ic_supplier),
+        MenuItem("Units", R.drawable.ic_units),
+        MenuItem("Warehouse", R.drawable.ic_warehouse),
+        MenuItem("Location", R.drawable.ic_location),
+        MenuItem("Document", R.drawable.ic_document)
     )
 
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            items(menuItems) { item ->
-                MenuCard(item)
+        items(items) { item ->
+            MenuCard(label = item.label, iconRes = item.iconRes) {
+                // handle click
             }
         }
     }
 }
 
 @Composable
-fun MenuCard(item: MenuItem) {
+fun MenuCard(
+    label: String,
+    iconRes: Int,
+    onClick: () -> Unit
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .aspectRatio(1.2f), // Keeps card square-like
+            .aspectRatio(1.2f)
+            .clickable { onClick() },
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
@@ -210,22 +203,18 @@ fun MenuCard(item: MenuItem) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Icon(
-                imageVector = item.icon,
-                contentDescription = item.label,
+                painter = painterResource(id = iconRes),
+                contentDescription = label,
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(48.dp)
             )
             Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = item.label,
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Medium
-            )
+            Text(text = label, style = MaterialTheme.typography.titleMedium)
         }
     }
 }
 
 data class MenuItem(
     val label: String,
-    val icon: androidx.compose.ui.graphics.vector.ImageVector
+    val iconRes: Int  // resource ID of the drawable (R.drawable.ic_product)
 )
