@@ -102,16 +102,16 @@ fun BottomNavigationBar(navController: NavHostController) {
 
 @Composable
 fun InsScreen() {
-    val catalogItems = listOf(
-        CatalogItem("Category", Icons.Default.Category),
-        CatalogItem("Customer", Icons.Default.People),
-        CatalogItem("Document", Icons.Default.ViewList),
-        CatalogItem("Inventory", Icons.Default.Inventory),
-        CatalogItem("Location", Icons.Default.LocationOn),
-        CatalogItem("Units", Icons.Default.SwapHoriz),
-        CatalogItem("Product", Icons.Default.ShoppingCart),
-        CatalogItem("Supplier", Icons.Default.Store),
-        CatalogItem("Warehouse", Icons.Default.Inventory)
+    val menuItems = listOf(
+        MenuItem("Category", Icons.Default.Category),
+        MenuItem("Customer", Icons.Default.People),
+        MenuItem("Document", Icons.Default.ViewList),
+        MenuItem("Inventory", Icons.Default.Inventory),
+        MenuItem("Location", Icons.Default.LocationOn),
+        MenuItem("Units", Icons.Default.SwapHoriz),
+        MenuItem("Product", Icons.Default.ShoppingCart),
+        MenuItem("Supplier", Icons.Default.Store),
+        MenuItem("Warehouse", Icons.Default.Inventory)
     )
 
     Surface(
@@ -124,8 +124,8 @@ fun InsScreen() {
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            items(catalogItems) { item ->
-                CatalogCard(item)
+            items(menuItems) { item ->
+                MenuCard(item)
             }
         }
     }
@@ -133,16 +133,16 @@ fun InsScreen() {
 
 @Composable
 fun OutsScreen() {
-    val catalogItems = listOf(
-        CatalogItem("Category", Icons.Default.Category),
-        CatalogItem("Customer", Icons.Default.People),
-        CatalogItem("Document", Icons.Default.ViewList),
-        CatalogItem("Inventory", Icons.Default.Inventory),
-        CatalogItem("Location", Icons.Default.LocationOn),
-        CatalogItem("Units", Icons.Default.SwapHoriz),
-        CatalogItem("Product", Icons.Default.ShoppingCart),
-        CatalogItem("Supplier", Icons.Default.Store),
-        CatalogItem("Warehouse", Icons.Default.Inventory)
+    val menuItems = listOf(
+        MenuItem("Category", Icons.Default.Category),
+        MenuItem("Customer", Icons.Default.People),
+        MenuItem("Document", Icons.Default.ViewList),
+        MenuItem("Inventory", Icons.Default.Inventory),
+        MenuItem("Location", Icons.Default.LocationOn),
+        MenuItem("Units", Icons.Default.SwapHoriz),
+        MenuItem("Product", Icons.Default.ShoppingCart),
+        MenuItem("Supplier", Icons.Default.Store),
+        MenuItem("Warehouse", Icons.Default.Inventory)
     )
 
     Surface(
@@ -155,8 +155,8 @@ fun OutsScreen() {
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            items(catalogItems) { item ->
-                CatalogCard(item)
+            items(menuItems) { item ->
+                MenuCard(item)
             }
         }
     }
@@ -164,16 +164,16 @@ fun OutsScreen() {
 
 @Composable
 fun CatalogScreen() {
-    val catalogItems = listOf(
-        CatalogItem("Category", Icons.Default.Category),
-        CatalogItem("Customer", Icons.Default.People),
-        CatalogItem("Document", Icons.Default.ViewList),
-        CatalogItem("Inventory", Icons.Default.Inventory),
-        CatalogItem("Location", Icons.Default.LocationOn),
-        CatalogItem("Units", Icons.Default.SwapHoriz),
-        CatalogItem("Product", Icons.Default.ShoppingCart),
-        CatalogItem("Supplier", Icons.Default.Store),
-        CatalogItem("Warehouse", Icons.Default.Inventory)
+    val menuItems = listOf(
+        MenuItem("Category", Icons.Default.Category),
+        MenuItem("Customer", Icons.Default.People),
+        MenuItem("Document", Icons.Default.ViewList),
+        MenuItem("Inventory", Icons.Default.Inventory),
+        MenuItem("Location", Icons.Default.LocationOn),
+        MenuItem("Units", Icons.Default.SwapHoriz),
+        MenuItem("Product", Icons.Default.ShoppingCart),
+        MenuItem("Supplier", Icons.Default.Store),
+        MenuItem("Warehouse", Icons.Default.Inventory)
     )
 
     Surface(
@@ -186,15 +186,15 @@ fun CatalogScreen() {
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            items(catalogItems) { item ->
-                CatalogCard(item)
+            items(menuItems) { item ->
+                MenuCard(item)
             }
         }
     }
 }
 
 @Composable
-fun CatalogCard(item: CatalogItem) {
+fun MenuCard(item: MenuItem) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -225,7 +225,7 @@ fun CatalogCard(item: CatalogItem) {
     }
 }
 
-data class CatalogItem(
+data class MenuItem(
     val label: String,
     val icon: androidx.compose.ui.graphics.vector.ImageVector
 )
