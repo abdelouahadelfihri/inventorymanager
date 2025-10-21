@@ -21,14 +21,7 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.*
-import androidx.compose.material.icons.filled.Category
-import androidx.compose.material.icons.filled.Inventory
-import androidx.compose.material.icons.filled.LocationOn
-import androidx.compose.material.icons.filled.People
-import androidx.compose.material.icons.filled.ShoppingCart
-import androidx.compose.material.icons.filled.Store
-import androidx.compose.material.icons.filled.SwapHoriz
-import androidx.compose.material.icons.filled.ViewList
+import com.example.inventorymanager.R
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.res.painterResource
