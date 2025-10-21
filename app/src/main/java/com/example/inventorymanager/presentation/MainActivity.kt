@@ -102,15 +102,63 @@ fun BottomNavigationBar(navController: NavHostController) {
 
 @Composable
 fun InsScreen() {
-    Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-        Text(text = "🏠 Home Screen", style = MaterialTheme.typography.headlineMedium)
+    val catalogItems = listOf(
+        CatalogItem("Category", Icons.Default.Category),
+        CatalogItem("Customer", Icons.Default.People),
+        CatalogItem("Document", Icons.Default.ViewList),
+        CatalogItem("Inventory", Icons.Default.Inventory),
+        CatalogItem("Location", Icons.Default.LocationOn),
+        CatalogItem("Units", Icons.Default.SwapHoriz),
+        CatalogItem("Product", Icons.Default.ShoppingCart),
+        CatalogItem("Supplier", Icons.Default.Store),
+        CatalogItem("Warehouse", Icons.Default.Inventory)
+    )
+
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
+    ) {
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            items(catalogItems) { item ->
+                CatalogCard(item)
+            }
+        }
     }
 }
 
 @Composable
 fun OutsScreen() {
-    Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-        Text(text = "🔍 Search Screen", style = MaterialTheme.typography.headlineMedium)
+    val catalogItems = listOf(
+        CatalogItem("Category", Icons.Default.Category),
+        CatalogItem("Customer", Icons.Default.People),
+        CatalogItem("Document", Icons.Default.ViewList),
+        CatalogItem("Inventory", Icons.Default.Inventory),
+        CatalogItem("Location", Icons.Default.LocationOn),
+        CatalogItem("Units", Icons.Default.SwapHoriz),
+        CatalogItem("Product", Icons.Default.ShoppingCart),
+        CatalogItem("Supplier", Icons.Default.Store),
+        CatalogItem("Warehouse", Icons.Default.Inventory)
+    )
+
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
+    ) {
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            items(catalogItems) { item ->
+                CatalogCard(item)
+            }
+        }
     }
 }
 
