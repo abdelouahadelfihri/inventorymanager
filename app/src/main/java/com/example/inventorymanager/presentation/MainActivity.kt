@@ -96,14 +96,9 @@ fun BottomNavigationBar(navController: NavHostController) {
 @Composable
 fun InsScreen() {
     val items = listOf(
-        MenuItem("Category", R.drawable.ic_category),
-        MenuItem("Customer", R.drawable.ic_customer),
-        MenuItem("Product", R.drawable.ic_product),
-        MenuItem("Supplier", R.drawable.ic_supplier),
-        MenuItem("Units", R.drawable.ic_units),
-        MenuItem("Warehouse", R.drawable.ic_warehouse),
-        MenuItem("Location", R.drawable.ic_location),
-        MenuItem("Document", R.drawable.ic_document)
+        MenuItem("Purchases Orders", R.drawable.ic_category),
+        MenuItem("Purchases Receipts", R.drawable.ic_customer),
+        MenuItem("Supplier Returns", R.drawable.ic_product),
     )
 
     LazyVerticalGrid(
@@ -123,14 +118,9 @@ fun InsScreen() {
 @Composable
 fun OutsScreen() {
     val items = listOf(
-        MenuItem("Category", R.drawable.ic_category),
-        MenuItem("Customer", R.drawable.ic_customer),
-        MenuItem("Product", R.drawable.ic_product),
-        MenuItem("Supplier", R.drawable.ic_supplier),
-        MenuItem("Units", R.drawable.ic_units),
-        MenuItem("Warehouse", R.drawable.ic_warehouse),
-        MenuItem("Location", R.drawable.ic_location),
-        MenuItem("Document", R.drawable.ic_document)
+        MenuItem("Sales Orders", R.drawable.ic_category),
+        MenuItem("Deliveries", R.drawable.ic_customer),
+        MenuItem("Sales Returns", R.drawable.ic_product),
     )
 
     LazyVerticalGrid(
