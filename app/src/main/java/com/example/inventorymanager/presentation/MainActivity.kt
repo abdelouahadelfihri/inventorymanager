@@ -58,9 +58,9 @@ fun App() {
 }
 
 sealed class BottomNavItem(val route: String, val label: String, val icon: @Composable () -> Unit) {
-    object Catalog : BottomNavItem("home", "Home", { Icon(Icons.Filled.Home, contentDescription = "Home") })
-    object StockInflow : BottomNavItem("search", "Search", { Icon(Icons.Filled.Search, contentDescription = "Search") })
-    object StockOutflow : BottomNavItem("profile", "Profile", { Icon(Icons.Filled.Person, contentDescription = "Profile") })
+    object Catalog : BottomNavItem("catalog", "Catalog", { Icon(Icons.Filled.Home, contentDescription = "Catalog") })
+    object StockInflow : BottomNavItem("stockInflow", "Stock Inflow", { Icon(Icons.Filled.Search, contentDescription = "Stock Inflow") })
+    object StockOutflow : BottomNavItem("stockOutflow", "Stock Outflow", { Icon(Icons.Filled.Person, contentDescription = "Stock Outflow") })
 }
 
 @Composable
