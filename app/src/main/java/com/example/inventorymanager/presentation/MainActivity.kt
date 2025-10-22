@@ -58,9 +58,9 @@ fun App() {
 }
 
 sealed class BottomNavItem(val route: String, val label: String, val icon: @Composable () -> Unit) {
-    object Home : BottomNavItem("home", "Home", { Icon(Icons.Filled.Home, contentDescription = "Home") })
-    object Search : BottomNavItem("search", "Search", { Icon(Icons.Filled.Search, contentDescription = "Search") })
-    object Profile : BottomNavItem("profile", "Profile", { Icon(Icons.Filled.Person, contentDescription = "Profile") })
+    object Catalog : BottomNavItem("home", "Home", { Icon(Icons.Filled.Home, contentDescription = "Home") })
+    object StockInflow : BottomNavItem("search", "Search", { Icon(Icons.Filled.Search, contentDescription = "Search") })
+    object StockOutflow : BottomNavItem("profile", "Profile", { Icon(Icons.Filled.Person, contentDescription = "Profile") })
 }
 
 @Composable
@@ -94,7 +94,7 @@ fun BottomNavigationBar(navController: NavHostController) {
 }
 
 @Composable
-fun InsScreen() {
+fun StockInflowScreen() {
     val items = listOf(
         MenuItem("Purchases Orders", R.drawable.ic_category),
         MenuItem("Purchases Receipts", R.drawable.ic_customer),
@@ -116,7 +116,7 @@ fun InsScreen() {
 }
 
 @Composable
-fun OutsScreen() {
+fun StockOutflowScreen() {
     val items = listOf(
         MenuItem("Sales Orders", R.drawable.ic_category),
         MenuItem("Deliveries", R.drawable.ic_customer),
