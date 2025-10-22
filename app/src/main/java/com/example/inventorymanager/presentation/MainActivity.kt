@@ -47,12 +47,12 @@ fun App() {
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = BottomNavItem.Home.route,
+            startDestination = BottomNavItem.Catalog.route,
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable(BottomNavItem.Home.route) { InsScreen() }
-            composable(BottomNavItem.Search.route) { OutsScreen() }
-            composable(BottomNavItem.Profile.route) { CatalogScreen() }
+            composable(BottomNavItem.Catalog.route) { CatalogScreen() }
+            composable(BottomNavItem.StockOutflow.route) { StockOutflowScreen() }
+            composable(BottomNavItem.StockInflow.route) { StockInflowScreen() }
         }
     }
 }
@@ -66,9 +66,9 @@ sealed class BottomNavItem(val route: String, val label: String, val icon: @Comp
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
     val items = listOf(
-        BottomNavItem.Home,
-        BottomNavItem.Search,
-        BottomNavItem.Profile
+        BottomNavItem.Catalog,
+        BottomNavItem.StockInflow,
+        BottomNavItem.StockOutflow
     )
 
     NavigationBar {
