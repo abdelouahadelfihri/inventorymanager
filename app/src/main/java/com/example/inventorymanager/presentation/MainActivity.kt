@@ -50,9 +50,9 @@ fun App() {
             startDestination = BottomNavItem.Catalog.route,
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable(BottomNavItem.Catalog.route) { CatalogScreen() }
-            composable(BottomNavItem.StockOutflow.route) { StockOutflowScreen() }
-            composable(BottomNavItem.StockInflow.route) { StockInflowScreen() }
+            composable(BottomNavItem.Catalog.route) { catalogScreen() }
+            composable(BottomNavItem.StockOutflow.route) { stockOutflowScreen() }
+            composable(BottomNavItem.StockInflow.route) { stockInflowScreen() }
         }
     }
 }
@@ -94,11 +94,11 @@ fun BottomNavigationBar(navController: NavHostController) {
 }
 
 @Composable
-fun StockInflowScreen() {
+fun stockInflowScreen() {
     val items = listOf(
-        MenuItem("Purchases Orders", R.drawable.ic_category),
-        MenuItem("Purchases Receipts", R.drawable.ic_customer),
-        MenuItem("Supplier Returns", R.drawable.ic_product),
+        MenuItem("Purchases Orders", R.drawable.purchasesorders),
+        MenuItem("Purchases Receipts", R.drawable.purchasesreceipts),
+        MenuItem("Supplier Returns", R.drawable.ordersreturns),
     )
 
     LazyVerticalGrid(
@@ -116,11 +116,11 @@ fun StockInflowScreen() {
 }
 
 @Composable
-fun StockOutflowScreen() {
+fun stockOutflowScreen() {
     val items = listOf(
-        MenuItem("Sales Orders", R.drawable.ic_category),
-        MenuItem("Deliveries", R.drawable.ic_customer),
-        MenuItem("Sales Returns", R.drawable.ic_product),
+        MenuItem("Sales Orders", R.drawable.salesorders),
+        MenuItem("Deliveries", R.drawable.deliveries),
+        MenuItem("Sales Returns", R.drawable.ordersreturns),
     )
 
     LazyVerticalGrid(
@@ -138,11 +138,11 @@ fun StockOutflowScreen() {
 }
 
 @Composable
-fun CatalogScreen() {
+fun catalogScreen() {
     val items = listOf(
-        MenuItem("Category", R.drawable.ic_category),
-        MenuItem("Customer", R.drawable.ic_customer),
-        MenuItem("Product", R.drawable.ic_product),
+        MenuItem("Category", R.drawable.categories),
+        MenuItem("Customer", R.drawable.customers),
+        MenuItem("Product", R.drawable.products),
         MenuItem("Supplier", R.drawable.ic_supplier),
         MenuItem("Units", R.drawable.ic_units),
         MenuItem("Warehouse", R.drawable.ic_warehouse),
